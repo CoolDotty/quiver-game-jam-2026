@@ -1,12 +1,12 @@
-This is a Godot engine game
+This is a Godot engine 4.6 game
 
-Always use godot 4 syntax
+Always use godot 4+ syntax
 
 Always follow `skills/godot-best-practices.md`
 
 You have `godot-mcp` cli at your disposal.
 
-Use `godot-mcp --list-tools` to see avaliable tools
+Check `skills/godot-mcp-cli.md` to see avaliable tools
 
 When making nodes and scenes, make them as bespoke scenes encapsulating the high level concept in an object oriented matter
 
@@ -29,3 +29,5 @@ If you need a placeholder texture, use `assets/placeholders/DevTextures`. It's v
 If you need a more specific placeholder, like an apple.png or something, ask the user to add one in `assets/placeholders/[placeholder file]`
 
 `assets/placeholders/icon.svg` is already in there for your convinience
+
+When adding new input types, make new actions in the InputMap on the project settings. Keep the names of actions semantic.

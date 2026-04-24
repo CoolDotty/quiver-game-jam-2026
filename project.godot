@@ -11,8 +11,21 @@ config_version=5
 [application]
 
 config/name="quiver-game-jam-2025"
+run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://cume7d17dyvqm"
+
+[autoload]
+
+Global="*res://scripts/autoloads/Global.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_mcp/plugin.cfg")
+
+[gui]
+
+theme/custom="res://resources/theme/default_theme.tres"
 
 [physics]
 

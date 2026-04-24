@@ -1,3 +1,13 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+# Local AI tool metadata and cache folders
+.codex/
+.claude/
+.cursor/
+.windsurf/
+.aider/
+.continue/
+.roo/
+.gemini/
