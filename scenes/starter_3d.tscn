@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ckhahx33yngsy"]
+[gd_scene load_steps=24 format=3 uid="uid://ckhahx33yngsy"]
 
 [ext_resource type="Texture2D" uid="uid://5xcj85j1ctpe" path="res://assets/placeholders/DevTextures/Dark/texture_04.png" id="1_gsx76"]
 [ext_resource type="Script" path="res://scripts/mermaid.gd" id="1_mermaid_controller"]
@@ -106,6 +106,9 @@ animations = [{
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fmo7n"]
 albedo_texture = ExtResource("4_4xkce")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_w266b"]
+streams_count = 5
 
 [node name="Starter3D" type="Node3D"]
 
@@ -230,3 +233,8 @@ shape = SubResource("SphereShape3D_vhc0g")
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Mermaid/Tail"]
 radius = 0.25
 material = SubResource("StandardMaterial3D_fmo7n")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Node"]
+stream = SubResource("AudioStreamRandomizer_w266b")
