@@ -1,9 +1,17 @@
-[gd_scene format=3 uid="uid://ckhahx33yngsy"]
+[gd_scene format=3 uid="uid://bjcnlp18bfxwd"]
 
 [ext_resource type="Texture2D" uid="uid://5xcj85j1ctpe" path="res://assets/placeholders/DevTextures/Dark/texture_04.png" id="1_gsx76"]
 [ext_resource type="Script" uid="uid://dy8p2dt6t1fn5" path="res://scripts/mermaid.gd" id="1_mermaid_controller"]
+[ext_resource type="Texture2D" uid="uid://b6fivv0mmney1" path="res://assets/placeholders/fiash-flat-down.png" id="3_2tnqr"]
 [ext_resource type="Texture2D" uid="uid://cjfdvxd3gy4sj" path="res://assets/placeholders/head.png" id="3_4uxoh"]
 [ext_resource type="Texture2D" uid="uid://37dvd41b5hpu" path="res://assets/placeholders/tail.jpg" id="4_4xkce"]
+[ext_resource type="Texture2D" uid="uid://b4ypn1bybrjha" path="res://assets/placeholders/fiash-flat-left.png" id="4_w266b"]
+[ext_resource type="Texture2D" uid="uid://ci01cim2dvri3" path="res://assets/placeholders/fiash-flat-right.png" id="5_0onai"]
+[ext_resource type="Texture2D" uid="uid://b38tm1s4ghl08" path="res://assets/placeholders/fiash-flat-up.png" id="6_3nobw"]
+[ext_resource type="Texture2D" uid="uid://bs1kjco2xvmw0" path="res://assets/placeholders/fiash-bent-down.png" id="7_2bmlf"]
+[ext_resource type="Texture2D" uid="uid://do5cbidaw4du" path="res://assets/placeholders/fiash-bent-left.png" id="8_qr6qn"]
+[ext_resource type="Texture2D" uid="uid://bqxbkmwystgb6" path="res://assets/placeholders/fiash-bent-right.png" id="9_8jr5k"]
+[ext_resource type="Texture2D" uid="uid://chyhne02f5ilt" path="res://assets/placeholders/fiash-bent-up.png" id="10_rkah8"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4uxoh"]
 rough = true
@@ -28,13 +36,80 @@ radius = 0.45
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_btfp6"]
 albedo_texture = ExtResource("3_4uxoh")
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_bap4c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_2tnqr")
+}],
+"loop": true,
+"name": &"fish_flat_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_w266b")
+}],
+"loop": true,
+"name": &"fish_flat_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_0onai")
+}],
+"loop": true,
+"name": &"fish_flat_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_3nobw")
+}],
+"loop": true,
+"name": &"fish_flat_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_2bmlf")
+}],
+"loop": true,
+"name": &"fish_flop_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_qr6qn")
+}],
+"loop": true,
+"name": &"fish_flop_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_8jr5k")
+}],
+"loop": true,
+"name": &"fish_flop_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_rkah8")
+}],
+"loop": true,
+"name": &"fish_flop_up",
+"speed": 5.0
+}]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fmo7n"]
 albedo_texture = ExtResource("4_4xkce")
 
 [node name="Starter3D" type="Node3D" unique_id=173918023]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=878903255]
-transform = Transform3D(1, 0, 0, 0, 0.80901706, 0.58778524, 0, -0.58778524, 0.80901706, -7.450581e-09, 13.949167, 18.929348)
+transform = Transform3D(1, 0, 0, 0, 0.80901706, 0.58778524, 0, -0.58778524, 0.80901706, -7.450581e-09, 5.410118, 8.745848)
 current = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1565072717]
@@ -95,6 +170,12 @@ angular_limit/lower = -0.7853982
 [node name="RigidBody3D3" type="RigidBody3D" parent="Mermaid" unique_id=1521139943]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9702673, 0, 0)
 physics_material_override = SubResource("PhysicsMaterial_4xkce")
+
+[node name="MermaidSprites" type="AnimatedSprite3D" parent="Mermaid/RigidBody3D3" unique_id=318830704]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.027873278, 0.004882425, 0)
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_bap4c")
+animation = &"fish_flat_right"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mermaid/RigidBody3D3" unique_id=1181492612]
 shape = SubResource("SphereShape3D_vhc0g")
