@@ -138,19 +138,57 @@ func get_bend_state() -> BendState:
 	return BendState.BENT if bend_score > BEND_THRESHOLD else BendState.STRAIGHT
 
 
+func _get_bend_offset() -> Vector2:
+	var camera := get_viewport().get_camera_3d()
+	if camera == null:
+		return Vector2.ZERO
+
+	var chain_points := get_chain_points()
+	var projected_points: Array[Vector2] = []
+
+	for point in chain_points:
+		var camera_point := camera.to_local(point)
+		projected_points.append(Vector2(camera_point.x, camera_point.y))
+
+	var middle_point := (
+		projected_points[1]
+		+ projected_points[2]
+		+ projected_points[3]
+	) / 3.0
+	var endpoints_midpoint := projected_points[0].lerp(projected_points[4], 0.5)
+
+	return middle_point - endpoints_midpoint
+
+
 func _update_animation() -> void:
+	var bend_state := get_bend_state()
 	var animation_prefix := "fish_flat"
 
-	if get_bend_state() == BendState.BENT:
+	if bend_state == BendState.BENT:
 		animation_prefix = "fish_flop"
+
+	var flip_h := false
+	var flip_v := false
+	var facing := get_body_facing()
+
+	if bend_state == BendState.BENT:
+		var bend_offset := _get_bend_offset()
+
+		if facing == Facing.LEFT or facing == Facing.RIGHT:
+			flip_v = bend_offset.y < 0.0
+		else:
+			flip_h = bend_offset.x < 0.0
 
 	var animation_name := "%s_%s" % [
 		animation_prefix,
-		_facing_to_suffix(get_body_facing()),
+		_facing_to_suffix(facing),
 	]
 
 	if mermaid_sprites.animation != animation_name:
 		mermaid_sprites.animation = animation_name
+
+	mermaid_sprites.flip_h = flip_h
+	mermaid_sprites.flip_v = flip_v
 
 
 func _facing_to_suffix(facing: Facing) -> String:
