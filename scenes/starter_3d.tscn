@@ -1,20 +1,12 @@
 [gd_scene format=3 uid="uid://bjcnlp18bfxwd"]
 
+[ext_resource type="PackedScene" uid="uid://bnxx425ohqfav" path="res://scenes/item.tscn" id="1_2bmlf"]
 [ext_resource type="Texture2D" uid="uid://5xcj85j1ctpe" path="res://assets/placeholders/DevTextures/Dark/texture_04.png" id="1_gsx76"]
-[ext_resource type="Script" uid="uid://dy8p2dt6t1fn5" path="res://scripts/mermaid.gd" id="1_mermaid_controller"]
-[ext_resource type="Texture2D" uid="uid://b6fivv0mmney1" path="res://assets/placeholders/fiash-flat-down.png" id="3_2tnqr"]
+[ext_resource type="Resource" uid="uid://cw7woat4i8pdf" path="res://resources/pineapple.tres" id="2_qr6qn"]
 [ext_resource type="Texture2D" uid="uid://cjfdvxd3gy4sj" path="res://assets/placeholders/head.png" id="3_4uxoh"]
-[ext_resource type="Script" uid="uid://uflo8kwjqnuj" path="res://scripts/arm.gd" id="4_0onai"]
-[ext_resource type="Texture2D" uid="uid://cqqctuv83p5d6" path="res://assets/placeholders/arm-right.png" id="4_3nobw"]
-[ext_resource type="Texture2D" uid="uid://37dvd41b5hpu" path="res://assets/placeholders/tail.jpg" id="4_4xkce"]
-[ext_resource type="Texture2D" uid="uid://b4ypn1bybrjha" path="res://assets/placeholders/fiash-flat-left.png" id="4_w266b"]
-[ext_resource type="Texture2D" uid="uid://ci01cim2dvri3" path="res://assets/placeholders/fiash-flat-right.png" id="5_0onai"]
-[ext_resource type="Texture2D" uid="uid://b38tm1s4ghl08" path="res://assets/placeholders/fiash-flat-up.png" id="6_3nobw"]
-[ext_resource type="Texture2D" uid="uid://bs1kjco2xvmw0" path="res://assets/placeholders/fiash-bent-down.png" id="7_2bmlf"]
-[ext_resource type="Texture2D" uid="uid://do5cbidaw4du" path="res://assets/placeholders/fiash-bent-left.png" id="8_qr6qn"]
-[ext_resource type="Texture2D" uid="uid://bqxbkmwystgb6" path="res://assets/placeholders/fiash-bent-right.png" id="9_8jr5k"]
-[ext_resource type="Texture2D" uid="uid://chyhne02f5ilt" path="res://assets/placeholders/fiash-bent-up.png" id="10_rkah8"]
-[ext_resource type="Shader" uid="uid://chdtkxll2mgea" path="res://resources/arm_billboard.gdshader" id="11_arm_billboard_shader"]
+[ext_resource type="PackedScene" uid="uid://b1x5f28e07qlr" path="res://scenes/mermaid.tscn" id="4_4xkce"]
+[ext_resource type="Texture2D" uid="uid://da7qw5dgjawjp" path="res://assets/placeholders/breach.jpg" id="7_fmo7n"]
+[ext_resource type="Script" uid="uid://3qx7s4wsbllh" path="res://resources/item_data.gd" id="18_8jr5k"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4uxoh"]
 rough = true
@@ -30,95 +22,16 @@ uv1_scale = Vector3(10, 10, 10)
 [sub_resource type="PlaneMesh" id="2_floor_mesh"]
 size = Vector2(200, 200)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2tnqr"]
-radius = 0.1
-height = 3.4540405
-
-[sub_resource type="ShaderMaterial" id="ArmSpriteMaterial_starter"]
-render_priority = 0
-shader = ExtResource("11_arm_billboard_shader")
-shader_parameter/arm_texture = ExtResource("4_3nobw")
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4xkce"]
-rough = true
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_vhc0g"]
-radius = 0.45
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_btfp6"]
-albedo_texture = ExtResource("3_4uxoh")
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_bap4c"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_2tnqr")
-}],
-"loop": true,
-"name": &"fish_flat_down",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_w266b")
-}],
-"loop": true,
-"name": &"fish_flat_left",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_0onai")
-}],
-"loop": true,
-"name": &"fish_flat_right",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_3nobw")
-}],
-"loop": true,
-"name": &"fish_flat_up",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("7_2bmlf")
-}],
-"loop": true,
-"name": &"fish_flop_down",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("8_qr6qn")
-}],
-"loop": true,
-"name": &"fish_flop_left",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("9_8jr5k")
-}],
-"loop": true,
-"name": &"fish_flop_right",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("10_rkah8")
-}],
-"loop": true,
-"name": &"fish_flop_up",
-"speed": 5.0
-}]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fmo7n"]
-albedo_texture = ExtResource("4_4xkce")
+[sub_resource type="Resource" id="Resource_bap4c"]
+script = ExtResource("18_8jr5k")
+sprite_texture = ExtResource("3_4uxoh")
+item_name = "Banada"
 
 [node name="Starter3D" type="Node3D" unique_id=173918023]
+
+[node name="Item" parent="." unique_id=133743956 instance=ExtResource("1_2bmlf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.451978, 1.6157398, 1.6849356)
+item = ExtResource("2_qr6qn")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=878903255]
 transform = Transform3D(1, 0, 0, 0, 0.80901706, 0.58778524, 0, -0.58778524, 0.80901706, -7.450581e-09, 5.410118, 8.745848)
@@ -136,161 +49,18 @@ physics_material_override = SubResource("PhysicsMaterial_4uxoh")
 shape = SubResource("3_floor_shape")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=126160062]
+visible = false
 material_override = SubResource("1_floor_material")
 mesh = SubResource("2_floor_mesh")
 
-[node name="Mermaid" type="Node3D" parent="." unique_id=2120669967]
-transform = Transform3D(-0.024815975, 0.999692, 0, -0.999692, -0.024815975, 0, 0, 0, 1, 0, 4.656455, 0)
-script = ExtResource("1_mermaid_controller")
+[node name="Mermaid" parent="." unique_id=1293432093 instance=ExtResource("4_4xkce")]
+transform = Transform3D(-0.024815917, 0.999692, 0, -0.999692, -0.024815917, 0, 0, 0, 1, 0, 4.656455, 0)
 
-[node name="Arm1" type="RigidBody3D" parent="Mermaid" unique_id=159107737]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0049447, -0.5438845, 0)
-collision_layer = 4
-collision_mask = 5
-script = ExtResource("4_0onai")
+[node name="Banada" parent="." unique_id=1299485598 instance=ExtResource("1_2bmlf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.03584, 0.49999952, 1.0941715)
+item = SubResource("Resource_bap4c")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mermaid/Arm1" unique_id=1712953135]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004004836, -1.814985, 0)
-shape = SubResource("CapsuleShape3D_2tnqr")
-
-[node name="Sprite3D" type="Sprite3D" parent="Mermaid/Arm1" unique_id=168319499]
-transform = Transform3D(-0.0101375915, 0.24979435, 0, -0.24979435, -0.0101375915, 0, 0, 0, 0.25, 0.20904899, -1.785675, 0)
-material_override = SubResource("ArmSpriteMaterial_starter")
-flip_v = true
-texture = ExtResource("4_3nobw")
-
-[node name="Arm2" type="RigidBody3D" parent="Mermaid" unique_id=80190538]
-transform = Transform3D(-0.9999773, 0.0067719026, 0, -0.0067719026, -0.9999773, 0, 0, 0, 1, 1.003245, 0.15182054, 0.17048824)
-collision_layer = 4
-collision_mask = 5
-script = ExtResource("4_0onai")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mermaid/Arm2" unique_id=2073546128]
-transform = Transform3D(1, 5.029142e-08, 0, -5.029142e-08, 1, 0, 0, 0, 1, 0.004004836, -1.7359146, 0)
-shape = SubResource("CapsuleShape3D_2tnqr")
-
-[node name="Sprite3D" type="Sprite3D" parent="Mermaid/Arm2" unique_id=2053894873]
-transform = Transform3D(-0.010137592, 0.24979438, 0, -0.24979438, -0.010137592, 0, 0, 0, 0.25, -0.24456835, -1.7969358, 0)
-material_override = SubResource("ArmSpriteMaterial_starter")
-texture = ExtResource("4_3nobw")
-
-[node name="Head" type="RigidBody3D" parent="Mermaid" unique_id=581689615]
-visible = false
-collision_layer = 2
-collision_mask = 3
-physics_material_override = SubResource("PhysicsMaterial_4xkce")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mermaid/Head" unique_id=1098626912]
-visible = false
-shape = SubResource("SphereShape3D_vhc0g")
-
-[node name="CSGSphere3D" type="CSGSphere3D" parent="Mermaid/Head" unique_id=1324039030]
-transform = Transform3D(1, 0, 0, 0, 1, 1.7484555e-07, 0, -1.7484555e-07, 1, 0, 0, 0)
-material = SubResource("StandardMaterial3D_btfp6")
-
-[node name="HingeJoint3D" type="HingeJoint3D" parent="Mermaid" unique_id=1200380752]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4937563, -0.013938487, 0)
-node_a = NodePath("../Head")
-node_b = NodePath("../RigidBody3D2")
-angular_limit/enable = true
-angular_limit/upper = 0.7853982
-angular_limit/lower = -0.7853982
-
-[node name="RigidBody3D2" type="RigidBody3D" parent="Mermaid" unique_id=1800289700]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0036154, 0, 0)
-visible = false
-collision_layer = 2
-collision_mask = 3
-physics_material_override = SubResource("PhysicsMaterial_4xkce")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mermaid/RigidBody3D2" unique_id=1117246219]
-shape = SubResource("SphereShape3D_vhc0g")
-
-[node name="CSGSphere3D" type="CSGSphere3D" parent="Mermaid/RigidBody3D2" unique_id=1157275190]
-radius = 0.45
-
-[node name="HingeJoint3D5" type="HingeJoint3D" parent="Mermaid" unique_id=810974018]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0049447, -0.5438845, 0)
-node_a = NodePath("../RigidBody3D2")
-node_b = NodePath("../Arm1")
-angular_limit/enable = true
-angular_limit/upper = 0.7853982
-angular_limit/lower = -0.7853982
-
-[node name="HingeJoint3D6" type="HingeJoint3D" parent="Mermaid" unique_id=1085133340]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.003245, 0.15182054, 0.17048824)
-node_a = NodePath("../RigidBody3D2")
-node_b = NodePath("../Arm2")
-angular_limit/enable = true
-angular_limit/upper = 0.7853982
-angular_limit/lower = -0.7853982
-
-[node name="HingeJoint3D2" type="HingeJoint3D" parent="Mermaid" unique_id=1904618563]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4620543, -0.041273028, 0)
-node_a = NodePath("../RigidBody3D2")
-node_b = NodePath("../RigidBody3D3")
-angular_limit/enable = true
-angular_limit/upper = 0.7853982
-angular_limit/lower = -0.7853982
-
-[node name="RigidBody3D3" type="RigidBody3D" parent="Mermaid" unique_id=1521139943]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9702673, 0, 0)
-collision_layer = 2
-collision_mask = 3
-physics_material_override = SubResource("PhysicsMaterial_4xkce")
-
-[node name="MermaidSprites" type="AnimatedSprite3D" parent="Mermaid/RigidBody3D3" unique_id=318830704]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.027873278, 0.004882425, 0)
+[node name="background" type="Sprite3D" parent="." unique_id=302842814]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -13.00165, -56.099434)
 billboard = 1
-sprite_frames = SubResource("SpriteFrames_bap4c")
-animation = &"fish_flat_right"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mermaid/RigidBody3D3" unique_id=1181492612]
-shape = SubResource("SphereShape3D_vhc0g")
-
-[node name="CSGSphere3D" type="CSGSphere3D" parent="Mermaid/RigidBody3D3" unique_id=1540562146]
-visible = false
-radius = 0.4
-
-[node name="HingeJoint3D3" type="HingeJoint3D" parent="Mermaid" unique_id=57348773]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4341545, -0.06871492, 0)
-node_a = NodePath("../RigidBody3D3")
-node_b = NodePath("../RigidBody3D4")
-angular_limit/enable = true
-angular_limit/upper = 0.7853982
-angular_limit/lower = -0.7853982
-
-[node name="RigidBody3D4" type="RigidBody3D" parent="Mermaid" unique_id=2072313356]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9135919, 0, 0)
-visible = false
-collision_layer = 2
-collision_mask = 3
-physics_material_override = SubResource("PhysicsMaterial_4xkce")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mermaid/RigidBody3D4" unique_id=191525505]
-shape = SubResource("SphereShape3D_vhc0g")
-
-[node name="CSGSphere3D" type="CSGSphere3D" parent="Mermaid/RigidBody3D4" unique_id=1766613724]
-radius = 0.3
-
-[node name="HingeJoint3D4" type="HingeJoint3D" parent="Mermaid" unique_id=2008665190]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4194632, -0.09652966, 0)
-node_a = NodePath("../RigidBody3D4")
-node_b = NodePath("../Tail")
-angular_limit/enable = true
-angular_limit/upper = 0.7853982
-angular_limit/lower = -0.7853982
-
-[node name="Tail" type="RigidBody3D" parent="Mermaid" unique_id=1018348135]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9269004, 0, 0)
-visible = false
-collision_layer = 2
-collision_mask = 3
-physics_material_override = SubResource("PhysicsMaterial_4xkce")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mermaid/Tail" unique_id=153648269]
-shape = SubResource("SphereShape3D_vhc0g")
-
-[node name="CSGSphere3D" type="CSGSphere3D" parent="Mermaid/Tail" unique_id=463219221]
-radius = 0.25
-material = SubResource("StandardMaterial3D_fmo7n")
+texture = ExtResource("7_fmo7n")
