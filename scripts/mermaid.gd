@@ -37,28 +37,11 @@ var _down_timer: float = 0.0
 
 func _ready() -> void:
 	set_process_unhandled_input(true)
-	
-	grab_range_left.body_entered.connect(
-		func(body):
-			print("left:", body)
-			if not body.is_in_group("pickup"):
-				return
-			print("left:", body)
-			body.reparent(holding_left)
-			body.freeze = true
-	)
-	
-	grab_range_right.body_entered.connect(
-		func(body):
-			print("right:", body)
-			if not body.is_in_group("pickup"):
-				return
-			body.reparent(holding_right)
-			body.freeze = true
-	)
+
+	grab_range_left.body_entered.connect(_on_grab_range_left_body_entered)
+	grab_range_right.body_entered.connect(_on_grab_range_right_body_entered)
 
 
-	
 func _process(_delta: float) -> void:
 	_update_animation()
 
@@ -109,6 +92,37 @@ func _unhandled_input(_event: InputEvent) -> void:
 		tail.apply_central_impulse(Vector3.UP * lift_force)
 		
 		_up_timer = FLOP_COOLDOWN
+
+
+const arm_length = 750 * 2
+
+func _on_grab_range_left_body_entered(body: Node) -> void:
+	_try_pick_up(body, holding_left, Vector2(-arm_length, 0))
+
+
+func _on_grab_range_right_body_entered(body: Node) -> void:
+	_try_pick_up(body, holding_right, Vector2(arm_length, 0))
+
+
+func _try_pick_up(body: Node, holding_marker: Marker3D, sprite_offset: Vector2) -> void:
+	var pickup := body as RigidBody3D
+	if pickup == null:
+		return
+
+	if not pickup.is_in_group("pickup"):
+		return
+
+	if pickup.sleeping and pickup.collision_layer == 0 and pickup.collision_mask == 0:
+		return
+
+	pickup.reparent(holding_marker, true)
+	pickup.global_transform = holding_marker.global_transform
+
+	if pickup.has_method("set_held"):
+		pickup.call("set_held", true)
+
+	if pickup.has_method("set_sprite_offset"):
+		pickup.call("set_sprite_offset", sprite_offset)
 
 
 func get_body_axis() -> Vector3:
