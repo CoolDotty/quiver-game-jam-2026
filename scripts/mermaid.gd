@@ -1,8 +1,8 @@
 class_name Mermaid
 extends Node3D
 
-const TAIL_LIFT_FORCE = 14
-const FLOP_COOLDOWN = 0.6
+const TAIL_LIFT_FORCE = 12
+const FLOP_COOLDOWN = 0.5
 const BEND_THRESHOLD = 0.15
 
 enum Facing {
