@@ -3,7 +3,6 @@ extends Node3D
 
 const TAIL_LIFT_FORCE = 14
 const FLOP_COOLDOWN = 0.6
-const TAIL_LIFT_FORCE = 18.0
 const BEND_THRESHOLD = 0.15
 
 enum Facing {
@@ -42,9 +41,9 @@ func _process(_delta: float) -> void:
 
 func _physics_process(_delta: float) -> void:
 	if _up_timer > 0:
-		_up_timer -= delta
+		_up_timer -= _delta
 	if _down_timer > 0:
-		_down_timer -= delta
+		_down_timer -= _delta
 	# Continuous smooth rotation (steering)
 	var body_axis := get_body_axis()
 	var perpendicular_dir = body_axis.cross(Vector3.UP).normalized()
@@ -62,7 +61,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 	var body_axis := get_body_axis()
 
 	if Input.is_action_just_pressed("flop_down") and _down_timer <= 0:
-		var body_axis = (head.global_position - rigid_body_3d_2.global_position).normalized()
+		var real_body_axis = (head.global_position - rigid_body_3d_2.global_position).normalized()
 		
 		# Check if both head and tail are off the ground for bonus force
 		var height_threshold = 0.5
@@ -71,11 +70,11 @@ func _unhandled_input(_event: InputEvent) -> void:
 			propulsion_mult = 2.5 # Significant bonus for "Aerial Slam"
 		
 		# Slam tail down and slightly back to create a kick
-		var slam_dir = (Vector3.DOWN * 0.7 + -body_axis * 0.3).normalized()
+		var slam_dir = (Vector3.DOWN * 0.7 + -real_body_axis * 0.3).normalized()
 		tail.apply_central_impulse(slam_dir * TAIL_LIFT_FORCE)
 		
 		# Propel head forward
-		head.apply_central_impulse(body_axis * TAIL_LIFT_FORCE * propulsion_mult)
+		head.apply_central_impulse(real_body_axis * TAIL_LIFT_FORCE * propulsion_mult)
 		
 		_down_timer = FLOP_COOLDOWN
 		
