@@ -25,6 +25,11 @@ enum BendState {
 @onready var rigid_body_3d_3: RigidBody3D = $RigidBody3D3
 @onready var rigid_body_3d_4: RigidBody3D = $RigidBody3D4
 @onready var mermaid_sprites: AnimatedSprite3D = $RigidBody3D3/MermaidSprites
+@onready var grab_range_left: Area3D = $Arm1/GrabRange
+@onready var grab_range_right: Area3D = $Arm2/GrabRange
+
+@onready var holding_left: Marker3D = $Arm1/Holding
+@onready var holding_right: Marker3D = $Arm2/Holding
 
 var _up_timer: float = 0.0
 var _down_timer: float = 0.0
@@ -32,6 +37,25 @@ var _down_timer: float = 0.0
 
 func _ready() -> void:
 	set_process_unhandled_input(true)
+	
+	grab_range_left.body_entered.connect(
+		func(body):
+			print("left:", body)
+			if not body.is_in_group("pickup"):
+				return
+			print("left:", body)
+			body.reparent(holding_left)
+			body.freeze = true
+	)
+	
+	grab_range_right.body_entered.connect(
+		func(body):
+			print("right:", body)
+			if not body.is_in_group("pickup"):
+				return
+			body.reparent(holding_right)
+			body.freeze = true
+	)
 
 
 	
