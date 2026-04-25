@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://tqs8aoocwkft"]
+
+[ext_resource type="Script" uid="uid://cg2bh7vp6vtuu" path="res://scripts/MusicManager.gd" id="1_script"]
+[ext_resource type="AudioStream" uid="uid://bcigbcta2qph7" path="res://assets/sound/Recording.mp3" id="2_wwfgh"]
+
+[node name="MusicManager" type="Node" unique_id=308557583]
+script = ExtResource("1_script")
+low_track = ExtResource("2_wwfgh")
+medium_track = ExtResource("2_wwfgh")
+high_track = ExtResource("2_wwfgh")
