@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cw7woat4i8pdf"]
-
-[ext_resource type="Script" uid="uid://3qx7s4wsbllh" path="res://resources/item_data.gd" id="1_fotw3"]
-[ext_resource type="Texture2D" uid="uid://cume7d17dyvqm" path="res://icon.png" id="2_o32o1"]
-
-[resource]
-script = ExtResource("1_fotw3")
-sprite_texture = ExtResource("2_o32o1")
-item_name = "Pineapple"
