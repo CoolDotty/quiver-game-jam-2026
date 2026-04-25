@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bgkouysur20si" path="res://assets/placeholders/DevTextures/Orange/texture_10.png" id="1_arm_texture"]
 [ext_resource type="Script" path="res://scripts/mermaid_arms.gd" id="2_arm_script"]
+[ext_resource type="Shader" path="res://resources/arm_billboard.gdshader" id="3_arm_billboard_shader"]
 
 [sub_resource type="PhysicsMaterial" id="1_arm_physics"]
 friction = 0.9
@@ -12,6 +13,10 @@ size = Vector3(0.72, 0.16, 0.16)
 [sub_resource type="BoxShape3D" id="3_left_forearm_shape"]
 size = Vector3(0.56, 0.14, 0.14)
 
+[sub_resource type="ShaderMaterial" id="ArmSpriteMaterial_arms"]
+shader = ExtResource("3_arm_billboard_shader")
+shader_parameter/arm_texture = ExtResource("1_arm_texture")
+
 [node name="MermaidArms" type="Node3D" unique_id=296902482]
 script = ExtResource("2_arm_script")
 
@@ -20,6 +25,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28, 0.12, 0)
 
 [node name="UpperArm" type="AnimatableBody3D" parent="LeftShoulder" unique_id=529833409]
 collision_layer = 4
+collision_mask = 5
 physics_material_override = SubResource("1_arm_physics")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LeftShoulder/UpperArm" unique_id=1104160182]
@@ -29,6 +35,7 @@ shape = SubResource("2_left_upper_shape")
 [node name="Sprite3D" type="Sprite3D" parent="LeftShoulder/UpperArm" unique_id=228725687]
 transform = Transform3D(1, 0, 0, 0, 0.25, 0, 0, 0, 1, 0.36, 0, 0)
 pixel_size = 0.015
+material_override = SubResource("ArmSpriteMaterial_arms")
 texture = ExtResource("1_arm_texture")
 
 [node name="LeftElbow" type="Node3D" parent="LeftShoulder/UpperArm" unique_id=703789700]
@@ -36,6 +43,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.72, 0, 0)
 
 [node name="Forearm" type="AnimatableBody3D" parent="LeftShoulder/UpperArm/LeftElbow" unique_id=280897400]
 collision_layer = 4
+collision_mask = 5
 physics_material_override = SubResource("1_arm_physics")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LeftShoulder/UpperArm/LeftElbow/Forearm" unique_id=1028493352]
@@ -45,6 +53,7 @@ shape = SubResource("3_left_forearm_shape")
 [node name="Sprite3D" type="Sprite3D" parent="LeftShoulder/UpperArm/LeftElbow/Forearm" unique_id=1158208367]
 transform = Transform3D(1, 0, 0, 0, 0.22, 0, 0, 0, 1, 0.28, 0, 0)
 pixel_size = 0.015
+material_override = SubResource("ArmSpriteMaterial_arms")
 texture = ExtResource("1_arm_texture")
 
 [node name="RightShoulder" type="Node3D" parent="." unique_id=1339598291]
@@ -52,6 +61,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28, 0.12, 0)
 
 [node name="UpperArm" type="AnimatableBody3D" parent="RightShoulder" unique_id=332921819]
 collision_layer = 4
+collision_mask = 5
 physics_material_override = SubResource("1_arm_physics")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RightShoulder/UpperArm" unique_id=66278812]
@@ -61,6 +71,7 @@ shape = SubResource("2_left_upper_shape")
 [node name="Sprite3D" type="Sprite3D" parent="RightShoulder/UpperArm" unique_id=988946911]
 transform = Transform3D(1, 0, 0, 0, 0.25, 0, 0, 0, 1, 0.36, 0, 0)
 pixel_size = 0.015
+material_override = SubResource("ArmSpriteMaterial_arms")
 texture = ExtResource("1_arm_texture")
 
 [node name="RightElbow" type="Node3D" parent="RightShoulder/UpperArm" unique_id=1824408636]
@@ -68,6 +79,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.72, 0, 0)
 
 [node name="Forearm" type="AnimatableBody3D" parent="RightShoulder/UpperArm/RightElbow" unique_id=746376445]
 collision_layer = 4
+collision_mask = 5
 physics_material_override = SubResource("1_arm_physics")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RightShoulder/UpperArm/RightElbow/Forearm" unique_id=353713245]
@@ -77,4 +89,5 @@ shape = SubResource("3_left_forearm_shape")
 [node name="Sprite3D" type="Sprite3D" parent="RightShoulder/UpperArm/RightElbow/Forearm" unique_id=1500782320]
 transform = Transform3D(1, 0, 0, 0, 0.22, 0, 0, 0, 1, 0.28, 0, 0)
 pixel_size = 0.015
+material_override = SubResource("ArmSpriteMaterial_arms")
 texture = ExtResource("1_arm_texture")
