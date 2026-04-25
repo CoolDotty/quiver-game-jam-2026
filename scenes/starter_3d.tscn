@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bjcnlp18bfxwd"]
+[gd_scene format=3 uid="uid://ckhahx33yngsy"]
 
 [ext_resource type="Texture2D" uid="uid://5xcj85j1ctpe" path="res://assets/placeholders/DevTextures/Dark/texture_04.png" id="1_gsx76"]
 [ext_resource type="Script" uid="uid://dy8p2dt6t1fn5" path="res://scripts/mermaid.gd" id="1_mermaid_controller"]
