@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bgkouysur20si" path="res://assets/placeholders/DevTextures/Orange/texture_10.png" id="1_arm_texture"]
 [ext_resource type="Script" path="res://scripts/mermaid_arms.gd" id="2_arm_script"]
-[ext_resource type="Shader" path="res://resources/arm_billboard.gdshader" id="3_arm_billboard_shader"]
+[ext_resource type="Shader" path="res://resources/billboard.gdshader" id="3_billboard_shader"]
 
 [sub_resource type="PhysicsMaterial" id="1_arm_physics"]
 friction = 0.9
@@ -13,9 +13,9 @@ size = Vector3(0.72, 0.16, 0.16)
 [sub_resource type="BoxShape3D" id="3_left_forearm_shape"]
 size = Vector3(0.56, 0.14, 0.14)
 
-[sub_resource type="ShaderMaterial" id="ArmSpriteMaterial_arms"]
-shader = ExtResource("3_arm_billboard_shader")
-shader_parameter/arm_texture = ExtResource("1_arm_texture")
+[sub_resource type="ShaderMaterial" id="BillboardSpriteMaterial_arms"]
+shader = ExtResource("3_billboard_shader")
+shader_parameter/billboard_texture = ExtResource("1_arm_texture")
 
 [node name="MermaidArms" type="Node3D" unique_id=296902482]
 script = ExtResource("2_arm_script")
@@ -35,7 +35,7 @@ shape = SubResource("2_left_upper_shape")
 [node name="Sprite3D" type="Sprite3D" parent="LeftShoulder/UpperArm" unique_id=228725687]
 transform = Transform3D(1, 0, 0, 0, 0.25, 0, 0, 0, 1, 0.36, 0, 0)
 pixel_size = 0.015
-material_override = SubResource("ArmSpriteMaterial_arms")
+material_override = SubResource("BillboardSpriteMaterial_arms")
 texture = ExtResource("1_arm_texture")
 
 [node name="LeftElbow" type="Node3D" parent="LeftShoulder/UpperArm" unique_id=703789700]
@@ -53,7 +53,7 @@ shape = SubResource("3_left_forearm_shape")
 [node name="Sprite3D" type="Sprite3D" parent="LeftShoulder/UpperArm/LeftElbow/Forearm" unique_id=1158208367]
 transform = Transform3D(1, 0, 0, 0, 0.22, 0, 0, 0, 1, 0.28, 0, 0)
 pixel_size = 0.015
-material_override = SubResource("ArmSpriteMaterial_arms")
+material_override = SubResource("BillboardSpriteMaterial_arms")
 texture = ExtResource("1_arm_texture")
 
 [node name="RightShoulder" type="Node3D" parent="." unique_id=1339598291]
@@ -71,7 +71,7 @@ shape = SubResource("2_left_upper_shape")
 [node name="Sprite3D" type="Sprite3D" parent="RightShoulder/UpperArm" unique_id=988946911]
 transform = Transform3D(1, 0, 0, 0, 0.25, 0, 0, 0, 1, 0.36, 0, 0)
 pixel_size = 0.015
-material_override = SubResource("ArmSpriteMaterial_arms")
+material_override = SubResource("BillboardSpriteMaterial_arms")
 texture = ExtResource("1_arm_texture")
 
 [node name="RightElbow" type="Node3D" parent="RightShoulder/UpperArm" unique_id=1824408636]
@@ -89,5 +89,5 @@ shape = SubResource("3_left_forearm_shape")
 [node name="Sprite3D" type="Sprite3D" parent="RightShoulder/UpperArm/RightElbow/Forearm" unique_id=1500782320]
 transform = Transform3D(1, 0, 0, 0, 0.22, 0, 0, 0, 1, 0.28, 0, 0)
 pixel_size = 0.015
-material_override = SubResource("ArmSpriteMaterial_arms")
+material_override = SubResource("BillboardSpriteMaterial_arms")
 texture = ExtResource("1_arm_texture")

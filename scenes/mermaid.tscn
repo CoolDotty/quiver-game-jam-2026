@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dy8p2dt6t1fn5" path="res://scripts/mermaid.gd" id="1_k32jb"]
 [ext_resource type="Script" uid="uid://uflo8kwjqnuj" path="res://scripts/arm.gd" id="2_cx8og"]
-[ext_resource type="Shader" uid="uid://chdtkxll2mgea" path="res://resources/arm_billboard.gdshader" id="3_oprnn"]
+[ext_resource type="Shader" uid="uid://chdtkxll2mgea" path="res://resources/billboard.gdshader" id="3_oprnn"]
 [ext_resource type="Texture2D" uid="uid://cqqctuv83p5d6" path="res://assets/placeholders/arm-right.png" id="4_lunbq"]
 [ext_resource type="Texture2D" uid="uid://cjfdvxd3gy4sj" path="res://assets/placeholders/head.png" id="5_2ue8w"]
 [ext_resource type="Texture2D" uid="uid://b6fivv0mmney1" path="res://assets/placeholders/fiash-flat-down.png" id="6_bmyc2"]
@@ -19,13 +19,18 @@
 radius = 0.1
 height = 3.4540405
 
-[sub_resource type="ShaderMaterial" id="ArmSpriteMaterial_starter"]
+[sub_resource type="ShaderMaterial" id="BillboardSpriteMaterial_starter"]
 render_priority = 0
 shader = ExtResource("3_oprnn")
-shader_parameter/arm_texture = ExtResource("4_lunbq")
+shader_parameter/billboard_texture = ExtResource("4_lunbq")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8jr5k"]
 radius = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k32jb"]
+render_priority = 0
+shader = ExtResource("3_oprnn")
+shader_parameter/billboard_texture = ExtResource("4_lunbq")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4xkce"]
 rough = true
@@ -121,9 +126,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004004836, -1.814985, 0)
 shape = SubResource("CapsuleShape3D_2tnqr")
 
 [node name="Sprite3D" type="Sprite3D" parent="Arm1" unique_id=1074684612]
-transform = Transform3D(-0.0101375915, 0.24979435, 0, -0.24979435, -0.0101375915, 0, 0, 0, 0.25, 0.20904899, -1.785675, 0)
-material_override = SubResource("ArmSpriteMaterial_starter")
-flip_v = true
+transform = Transform3D(-0.0101375915, 0.24979435, 0, -0.24979435, -0.0101375915, 0, 0, 0, 0.25, 0, 0, 0)
+material_override = SubResource("BillboardSpriteMaterial_starter")
+offset = Vector2(-750, 0)
+flip_h = true
 texture = ExtResource("4_lunbq")
 
 [node name="GrabRange" type="Area3D" parent="Arm1" unique_id=1927692122]
@@ -133,7 +139,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07723236, -3.1112592, 0)
 shape = SubResource("SphereShape3D_8jr5k")
 
 [node name="Holding" type="Marker3D" parent="Arm1" unique_id=841656818]
-transform = Transform3D(1, 9.872019e-08, 7.016541e-05, 9.872019e-08, 0.999996, -0.0028265584, -7.016542e-05, 0.002826559, 0.999996, 0.0768075, -3.0941298, 0)
 
 [node name="Arm2" type="RigidBody3D" parent="." unique_id=1094448378]
 transform = Transform3D(-0.9999773, 0.0067719026, 0, -0.0067719026, -0.9999773, 0, 0, 0, 1, 1.003245, 0.15182054, 0.17048824)
@@ -146,12 +151,12 @@ transform = Transform3D(1, 5.029142e-08, 0, -5.029142e-08, 1, 0, 0, 0, 1, 0.0040
 shape = SubResource("CapsuleShape3D_2tnqr")
 
 [node name="Sprite3D" type="Sprite3D" parent="Arm2" unique_id=1426194475]
-transform = Transform3D(-0.010137592, 0.24979438, 0, -0.24979438, -0.010137592, 0, 0, 0, 0.25, -0.24456835, -1.7969358, 0)
-material_override = SubResource("ArmSpriteMaterial_starter")
+transform = Transform3D(-0.010137592, 0.24979438, 0, -0.24979438, -0.010137592, 0, 0, 0, 0.25, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_k32jb")
+offset = Vector2(750, 0)
 texture = ExtResource("4_lunbq")
 
 [node name="Holding" type="Marker3D" parent="Arm2" unique_id=1673433421]
-transform = Transform3D(0.9999999, -1.8626451e-09, 0, 1.8626451e-09, 0.9999999, 0, 0, 0, 1, 0.052954674, -2.9340162, 0)
 
 [node name="GrabRange" type="Area3D" parent="Arm2" unique_id=1462275154]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07723236, -3.1112592, 0)
