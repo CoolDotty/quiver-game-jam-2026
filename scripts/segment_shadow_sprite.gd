@@ -3,6 +3,7 @@ extends Sprite3D
 
 const MAX_SHADOW_HEIGHT: float = 6.0
 const MIN_SHADOW_SCALE: float = 0.35
+const SHADOW_GROUND_OFFSET: float = 0.03
 
 var _base_scale: Vector3
 
@@ -21,7 +22,7 @@ func _update_shadow_transform() -> void:
 		return
 
 	var shadow_position := parent_3d.global_position
-	shadow_position.y = 0.0
+	shadow_position.y = SHADOW_GROUND_OFFSET
 	global_position = shadow_position
 
 	var height: float = maxf(parent_3d.global_position.y, 0.0)

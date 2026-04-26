@@ -1,5 +1,8 @@
 extends RigidBody3D
 
+const SHADOW_MODULATE := Color(0, 0, 0, 0.55)
+const SHADOW_SCALE_MULTIPLIER := 1.2
+
 
 @export var item_name: String = ""
 @export var sprite_texture: Texture2D
@@ -7,6 +10,7 @@ extends RigidBody3D
 @export var burns_into: PackedScene
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 @onready var sprite_3d: Sprite3D = $Sprite3D
+@onready var shadow_sprite_3d: Sprite3D = get_node_or_null("Sprite3D_Shadow") as Sprite3D
 
 var _default_collision_layer: int
 var _default_collision_mask: int
@@ -25,6 +29,7 @@ func _ready() -> void:
 		sprite_3d.material_override = material.duplicate()
 
 	_apply_sprite_texture()
+	_configure_shadow_sprite()
 
 
 func set_held(is_held: bool) -> void:
@@ -90,7 +95,17 @@ func _apply_sprite_texture() -> void:
 		return
 
 	sprite_3d.texture = sprite_texture
+	if shadow_sprite_3d != null:
+		shadow_sprite_3d.texture = sprite_texture
 
 	var material := sprite_3d.material_override as ShaderMaterial
 	if material != null and sprite_texture != null:
 		material.set_shader_parameter("billboard_texture", sprite_texture)
+
+
+func _configure_shadow_sprite() -> void:
+	if shadow_sprite_3d == null:
+		return
+
+	shadow_sprite_3d.modulate = SHADOW_MODULATE
+	shadow_sprite_3d.scale = sprite_3d.scale * SHADOW_SCALE_MULTIPLIER

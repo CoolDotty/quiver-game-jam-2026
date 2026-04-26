@@ -1,6 +1,6 @@
 shader_type spatial;
 
-render_mode unshaded, cull_disabled;
+render_mode unshaded, cull_disabled, depth_draw_opaque;
 
 uniform sampler2D albedo_texture : source_color, filter_linear_mipmap, repeat_disable;
 
@@ -40,5 +40,4 @@ void fragment() {
 	col.rgb += foam * foam_boost;
 
 	ALBEDO = col.rgb;
-	ALPHA = col.a;
 }

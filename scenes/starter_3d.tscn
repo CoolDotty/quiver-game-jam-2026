@@ -52,7 +52,7 @@ transform = Transform3D(3, 0, 0, 0, 2.427051, -1.7633557, 0, 1.7633557, 2.427051
 material_override = SubResource("ShaderMaterial_uxg2d")
 billboard = 1
 texture_filter = 0
-render_priority = -10
+render_priority = -100
 texture = ExtResource("2_4xkce")
 
 [node name="BabyMermaid" parent="Camera3D" unique_id=522522784 instance=ExtResource("3_fmo7n")]

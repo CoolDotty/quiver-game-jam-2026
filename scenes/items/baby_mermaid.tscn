@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b8n2qmki2a1v3" path="res://assets/Art/Food/Baby mermaid.png" id="3_texture"]
 [ext_resource type="PackedScene" uid="uid://dkeoiyibyrkw7" path="res://scenes/items/merstake.tscn" id="4_cooked"]
 [ext_resource type="PackedScene" uid="uid://bqti4g84q472q" path="res://scenes/items/smoked_siren.tscn" id="5_burned"]
+[ext_resource type="Script" uid="uid://bs8f4b6eesrcy" path="res://scripts/segment_shadow_sprite.gd" id="6_shadow"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_item"]
 
@@ -27,3 +28,10 @@ shape = SubResource("BoxShape3D_item")
 material_override = SubResource("ShaderMaterial_item")
 billboard = 1
 texture = ExtResource("3_texture")
+
+[node name="Sprite3D_Shadow" type="Sprite3D" parent="." unique_id=1644768117]
+modulate = Color(0, 0, 0, 0.39215687)
+billboard = 1
+render_priority = -1
+texture = ExtResource("3_texture")
+script = ExtResource("6_shadow")

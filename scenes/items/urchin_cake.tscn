@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://88e8qd1n8hgp" path="res://scenes/item.gd" id="1_item"]
 [ext_resource type="Shader" uid="uid://chdtkxll2mgea" path="res://resources/billboard.gdshader" id="2_shader"]
 [ext_resource type="Texture2D" uid="uid://bf8mslbt1eorl" path="res://assets/Art/Food/UrchinCake.png" id="3_texture"]
+[ext_resource type="Script" uid="uid://bs8f4b6eesrcy" path="res://scripts/segment_shadow_sprite.gd" id="4_shadow"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_item"]
 
@@ -24,3 +25,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_item")
 billboard = 1
 texture = ExtResource("3_texture")
+
+[node name="Sprite3D_Shadow" type="Sprite3D" parent="." unique_id=1322662672]
+modulate = Color(0, 0, 0, 0.39215687)
+billboard = 1
+render_priority = -1
+texture = ExtResource("3_texture")
+script = ExtResource("4_shadow")
