@@ -23,8 +23,6 @@ const BOB_AMPLITUDE_BURNED := 0.2
 
 @export_range(1, 12, 1) var recipe_size: int = 3
 @export var interaction_radius: float = 1.75
-@export var cook_duration: float = 3.0
-@export var burn_duration: float = 240.0
 @export var serve_duration: float = 0.35
 
 @onready var interaction_area: Area3D = $InteractionArea
@@ -118,9 +116,7 @@ func _accept_item(item: RigidBody3D) -> bool:
 
 	var entry := PotItemEntry.new(
 		item,
-		_get_time_seconds(),
-		_get_cooked_scene(item),
-		_get_burn_scene(item)
+		_get_time_seconds()
 	)
 	_entries.append(entry)
 
@@ -183,47 +179,34 @@ func _update_item_stages() -> void:
 			_entries.remove_at(index)
 			continue
 
-		var desired_stage := _get_stage_for_age(entry, now - entry.inserted_at)
-		if desired_stage != entry.stage:
-			_advance_entry_to_stage(entry, desired_stage)
+		var cook_time := _get_item_cook_time(entry.item)
+		if cook_time <= 0.0:
+			continue
+
+		if now - entry.stage_started_at >= cook_time:
+			_advance_entry_to_next_stage(entry, now)
 
 
-func _get_stage_for_age(entry: PotItemEntry, age: float) -> ItemStage:
-	if age >= burn_duration and entry.burn_scene != null:
-		return ItemStage.BURNED
-	if age >= cook_duration:
-		return ItemStage.COOKED
-
-	return ItemStage.RAW
-
-
-func _advance_entry_to_stage(entry: PotItemEntry, target_stage: ItemStage) -> void:
+func _advance_entry_to_next_stage(entry: PotItemEntry, now: float) -> void:
 	if entry.item == null or not is_instance_valid(entry.item):
 		return
 
-	if target_stage == ItemStage.COOKED:
-		if entry.cooked_scene == null:
-			return
-
-		_replace_entry_item(entry, entry.cooked_scene, ItemStage.COOKED)
+	if entry.stage == ItemStage.BURNED:
 		return
 
-	if target_stage == ItemStage.BURNED:
-		if entry.stage == ItemStage.RAW:
-			_advance_entry_to_stage(entry, ItemStage.COOKED)
-			if entry.stage != ItemStage.COOKED:
-				return
+	var next_scene := _get_next_scene(entry.item)
+	if next_scene == null:
+		return
 
-		if entry.burn_scene == null:
-			return
-
-		_replace_entry_item(entry, entry.burn_scene, ItemStage.BURNED)
+	var next_stage := ItemStage.COOKED if entry.stage == ItemStage.RAW else ItemStage.BURNED
+	_replace_entry_item(entry, next_scene, next_stage, now)
 
 
 func _replace_entry_item(
 		entry: PotItemEntry,
 		item_scene: PackedScene,
-		new_stage: ItemStage
+		new_stage: ItemStage,
+		now: float
 ) -> void:
 	if entry.item == null or not is_instance_valid(entry.item):
 		return
@@ -243,12 +226,11 @@ func _replace_entry_item(
 		new_item.call("set_in_pot", true)
 	if new_item.has_method("set_held"):
 		new_item.call("set_held", false)
-	if entry.burn_scene != null and new_item.has_method("set_burns_into"):
-		new_item.call("set_burns_into", entry.burn_scene)
 
 	old_item.queue_free()
 	entry.item = new_item
 	entry.stage = new_stage
+	entry.stage_started_at = now
 
 	if slot_index >= 0:
 		new_item.position = _get_slot_position(slot_index)
@@ -307,18 +289,18 @@ func _get_bob_amplitude(stage: ItemStage) -> float:
 	return 0.0
 
 
-func _get_cooked_scene(item: RigidBody3D) -> PackedScene:
+func _get_next_scene(item: RigidBody3D) -> PackedScene:
 	if item.has_method("get_cooks_into"):
 		return item.call("get_cooks_into")
 
 	return null
 
 
-func _get_burn_scene(item: RigidBody3D) -> PackedScene:
-	if item.has_method("get_burns_into"):
-		return item.call("get_burns_into")
+func _get_item_cook_time(item: RigidBody3D) -> float:
+	if item != null and item.has_method("get_cook_time"):
+		return float(item.call("get_cook_time"))
 
-	return null
+	return 3.0
 
 
 func _get_time_seconds() -> float:
@@ -333,7 +315,7 @@ func _begin_serving() -> void:
 
 	for entry in _entries:
 		if entry.stage == ItemStage.RAW:
-			_advance_entry_to_stage(entry, ItemStage.COOKED)
+			_advance_entry_to_next_stage(entry, _get_time_seconds())
 
 	var served_items: Array[RigidBody3D] = []
 	for entry in _entries:
@@ -372,17 +354,13 @@ func _tween_served_item(item: RigidBody3D, index: int) -> void:
 class PotItemEntry:
 	var item: RigidBody3D
 	var inserted_at: float = 0.0
+	var stage_started_at: float = 0.0
 	var stage: ItemStage = ItemStage.RAW
-	var cooked_scene: PackedScene
-	var burn_scene: PackedScene
 
 	func _init(
 			new_item: RigidBody3D,
-			new_inserted_at: float,
-			new_cooked_scene: PackedScene,
-			new_burn_scene: PackedScene
+			new_time: float
 	) -> void:
 		item = new_item
-		inserted_at = new_inserted_at
-		cooked_scene = new_cooked_scene
-		burn_scene = new_burn_scene
+		inserted_at = new_time
+		stage_started_at = new_time

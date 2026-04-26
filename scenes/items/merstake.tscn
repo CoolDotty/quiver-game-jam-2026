@@ -4,6 +4,7 @@
 [ext_resource type="Shader" uid="uid://chdtkxll2mgea" path="res://resources/billboard.gdshader" id="2_shader"]
 [ext_resource type="Texture2D" uid="uid://jhxotysfl53x" path="res://assets/Art/Food/Merstake.png" id="3_texture"]
 [ext_resource type="Script" uid="uid://bs8f4b6eesrcy" path="res://scripts/segment_shadow_sprite.gd" id="4_shadow"]
+[ext_resource type="PackedScene" uid="uid://bqti4g84q472q" path="res://scenes/items/smoked_siren.tscn" id="5_burned"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_item"]
 
@@ -11,6 +12,13 @@
 render_priority = 0
 shader = ExtResource("2_shader")
 shader_parameter/billboard_texture = ExtResource("3_texture")
+shader_parameter/blur_amount = 0.0
+shader_parameter/step_time = 0.25
+shader_parameter/wobble_amount = 0.03
+shader_parameter/wobble_speed = 2.0
+shader_parameter/uv_wobble_amount = 0.01
+shader_parameter/uv_wobble_speed = 2.6
+shader_parameter/center_rigidity = 0.75
 
 [node name="Merstake" type="RigidBody3D" unique_id=1477709063 groups=["pickup"]]
 script = ExtResource("1_item")
@@ -21,7 +29,6 @@ sprite_texture = ExtResource("3_texture")
 shape = SubResource("BoxShape3D_item")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=107786285]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_item")
 billboard = 1
 texture = ExtResource("3_texture")

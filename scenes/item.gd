@@ -6,8 +6,8 @@ const SHADOW_SCALE_MULTIPLIER := 1.2
 
 @export var item_name: String = ""
 @export var sprite_texture: Texture2D
+@export var cook_time: float = 3.0
 @export var cooks_into: PackedScene
-@export var burns_into: PackedScene
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 @onready var sprite_3d: Sprite3D = $Sprite3D
 @onready var shadow_sprite_3d: Sprite3D = get_node_or_null("Sprite3D_Shadow") as Sprite3D
@@ -56,6 +56,14 @@ func is_cookable() -> bool:
 	return cooks_into != null
 
 
+func get_cook_time() -> float:
+	return cook_time
+
+
+func set_cook_time(value: float) -> void:
+	cook_time = value
+
+
 func get_item_name() -> String:
 	return item_name if not item_name.is_empty() else "Unknown Item"
 
@@ -79,14 +87,6 @@ func get_cooks_into() -> PackedScene:
 
 func set_cooks_into(value: PackedScene) -> void:
 	cooks_into = value
-
-
-func get_burns_into() -> PackedScene:
-	return burns_into
-
-
-func set_burns_into(value: PackedScene) -> void:
-	burns_into = value
 
 
 func set_sprite_offset(_offset: Vector2) -> void:

@@ -18,8 +18,8 @@ shader_parameter/billboard_texture = ExtResource("3_texture")
 script = ExtResource("1_item")
 item_name = "Urchin"
 sprite_texture = ExtResource("3_texture")
+cook_time = 3.0
 cooks_into = ExtResource("4_cooked")
-burns_into = ExtResource("5_burned")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=16750773]
 shape = SubResource("BoxShape3D_item")

@@ -3,7 +3,7 @@ extends Node3D
 ## Spawns a physical pile of pickup items in a local area and refills it over time.
 
 @export var item_scene: PackedScene
-@export_range(1, 64, 1) var target_count: int = 5
+@export_range(1, 64, 1) var target_count: int = 3
 @export_range(0.1, 10.0, 0.1) var spawn_interval: float = 1.0
 @export_range(0.0, 10.0, 0.1) var spawn_radius: float = 1.25
 @export_range(0.0, 5.0, 0.1) var spawn_height: float = 0.75

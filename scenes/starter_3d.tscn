@@ -1,15 +1,14 @@
 [gd_scene format=3 uid="uid://ldp8f4crpuj5"]
 
-[ext_resource type="PackedScene" uid="uid://b1cywel308lko" path="res://scenes/items/coconut.tscn" id="1_2bmlf"]
 [ext_resource type="Texture2D" uid="uid://5xcj85j1ctpe" path="res://assets/placeholders/DevTextures/Dark/texture_04.png" id="1_gsx76"]
 [ext_resource type="Texture2D" uid="uid://cihrrs457d48u" path="res://assets/Art/Backgrounds/Main_Background.jpg" id="2_4xkce"]
 [ext_resource type="Shader" uid="uid://b6r1rfexjtmk0" path="res://resources/beach.gdshader" id="2_5chnm"]
-[ext_resource type="PackedScene" uid="uid://bhqhibm1a6q3y" path="res://scenes/items/baby_mermaid.tscn" id="3_fmo7n"]
 [ext_resource type="PackedScene" uid="uid://qq4fwum0xhj3" path="res://scenes/cooking_pot.tscn" id="3_pot"]
 [ext_resource type="PackedScene" uid="uid://cjsufkx45xq8g" path="res://scenes/mermaid.tscn" id="4_4xkce"]
-[ext_resource type="PackedScene" uid="uid://b8pvd7y2yw3yk" path="res://scenes/items/krab.tscn" id="5_4xkce"]
-[ext_resource type="PackedScene" uid="uid://x14dhywp2jgt" path="res://scenes/items/urchin.tscn" id="7_5chnm"]
 [ext_resource type="PackedScene" uid="uid://dt2m1osxcfcry" path="res://scenes/coconut_item_pile_spawner.tscn" id="10_7oiso"]
+[ext_resource type="PackedScene" uid="uid://cbd32f1bc1uwj" path="res://scenes/baby_mermaid_item_pile_spawner.tscn" id="11_w266b"]
+[ext_resource type="PackedScene" uid="uid://dynoodpdky3ky" path="res://scenes/krab_item_pile_spawner.tscn" id="12_0onai"]
+[ext_resource type="PackedScene" uid="uid://cx7puiu50rrwr" path="res://scenes/urchin_item_pile_spawner.tscn" id="13_3nobw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uxg2d"]
 render_priority = 0
@@ -38,11 +37,6 @@ size = Vector2(200, 200)
 
 [node name="Starter3D" type="Node3D" unique_id=173918023]
 
-[node name="Item" parent="." unique_id=133743956 instance=ExtResource("1_2bmlf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.451978, 1.6157398, 1.6849356)
-cooks_into = null
-burns_into = null
-
 [node name="Camera3D" type="Camera3D" parent="." unique_id=878903255]
 transform = Transform3D(1, 0, 0, 0, 0.80901706, 0.58778524, 0, -0.58778524, 0.80901706, -7.450581e-09, 30.995628, 35.03114)
 projection = 1
@@ -56,9 +50,6 @@ billboard = 1
 texture_filter = 0
 render_priority = -100
 texture = ExtResource("2_4xkce")
-
-[node name="BabyMermaid" parent="Camera3D" unique_id=522522784 instance=ExtResource("3_fmo7n")]
-transform = Transform3D(1, 0, 0, 0, 0.80901694, -0.5877852, 0, 0.5877852, 0.80901694, -5.4059258, -1.7760837, -47.56626)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1565072717]
 transform = Transform3D(0.81915206, -0.4055798, 0.4055798, 0, 0.70710677, 0.70710677, -0.57357645, -0.579228, 0.579228, 0, 0, 0)
@@ -79,14 +70,17 @@ mesh = SubResource("2_floor_mesh")
 [node name="Mermaid" parent="." unique_id=1293432093 instance=ExtResource("4_4xkce")]
 transform = Transform3D(-0.024815917, 0.999692, 0, -0.999692, -0.024815917, 0, 0, 0, 1, 0, 4.656455, -6.7339764)
 
-[node name="Krab" parent="." unique_id=746354439 instance=ExtResource("5_4xkce")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.44098508, 0)
-
-[node name="Urchin" parent="." unique_id=2114937 instance=ExtResource("7_5chnm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.204419, 1.599999, 1.555542)
-
 [node name="CookingPot" parent="." unique_id=1158294601 instance=ExtResource("3_pot")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.498369, 0.5, -9.401392)
 
 [node name="CoconutItemPileSpawner" parent="." unique_id=1311437829 instance=ExtResource("10_7oiso")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.952097, 13.766539, -2.4784107)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.952097, 7.8540945, -14.238923)
+
+[node name="BabyMermaidItemPileSpawner" parent="." unique_id=1578946804 instance=ExtResource("11_w266b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.163082, 9.944586, -12.963236)
+
+[node name="KrabItemPileSpawner" parent="." unique_id=1157152294 instance=ExtResource("12_0onai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.05818, 6.9662113, 4.8869133)
+
+[node name="UrchinItemPileSpawner" parent="." unique_id=20315944 instance=ExtResource("13_3nobw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.844056, 8.628871, 3.995201)
