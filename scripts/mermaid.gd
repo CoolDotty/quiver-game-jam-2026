@@ -58,28 +58,28 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 	if Input.is_action_just_pressed("flop_down") and _down_timer <= 0:
 		var real_body_axis = (head.global_position - rigid_body_3d_2.global_position).normalized()
-		
+
 		# Check if both head and tail are off the ground for bonus force
 		var height_threshold = 0.5
 		var propulsion_mult = 1.5
 		if head.global_position.y > height_threshold and tail.global_position.y > height_threshold:
 			propulsion_mult = 2.5 # Significant bonus for "Aerial Slam"
-		
+
 		# Slam tail down and slightly back to create a kick
 		var slam_dir = (Vector3.DOWN * 0.7 + -real_body_axis * 0.3).normalized()
 		tail.apply_central_impulse(slam_dir * TAIL_LIFT_FORCE)
-		
+
 		# Propel head forward
 		head.apply_central_impulse(real_body_axis * TAIL_LIFT_FORCE * propulsion_mult)
-		
+
 		_down_timer = FLOP_COOLDOWN
-		
+
 	if Input.is_action_just_pressed("flop_up") and _up_timer <= 0:
 		# Lift ends to create the curl
 		var lift_force = TAIL_LIFT_FORCE * 0.6
 		head.apply_central_impulse(Vector3.UP * lift_force)
 		tail.apply_central_impulse(Vector3.UP * lift_force)
-		
+
 		_up_timer = FLOP_COOLDOWN
 
 
