@@ -15,7 +15,7 @@ shader = ExtResource("2_s8enn")
 script = ExtResource("1_4gq7n")
 item_name = "Pineapple"
 sprite_texture = ExtResource("3_o32o1")
-cook_time = 3.0
+cook_time = 30.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=812827545]
 shape = SubResource("BoxShape3D_r3ghi")

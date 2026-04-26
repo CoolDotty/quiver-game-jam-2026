@@ -6,7 +6,7 @@ const SHADOW_SCALE_MULTIPLIER := 1.2
 
 @export var item_name: String = ""
 @export var sprite_texture: Texture2D
-@export var cook_time: float = 3.0
+@export var cook_time: float = 30.0
 @export var cooks_into: PackedScene
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 @onready var sprite_3d: Sprite3D = $Sprite3D
@@ -45,6 +45,7 @@ func is_held() -> bool:
 
 func set_in_pot(value: bool) -> void:
 	_is_in_pot = value
+	_update_pickup_group()
 	_refresh_physics_state()
 
 
@@ -112,6 +113,15 @@ func _refresh_physics_state() -> void:
 	collision_shape_3d.disabled = false
 	sleeping = false
 	sprite_3d.position = Vector3.ZERO
+
+
+func _update_pickup_group() -> void:
+	if _is_in_pot:
+		remove_from_group("pickup")
+		return
+
+	if not is_in_group("pickup"):
+		add_to_group("pickup")
 
 
 func _apply_sprite_texture() -> void:
