@@ -19,10 +19,15 @@ run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="uid://cume7d17dyvqm"
 
+[audio]
+
+buses/default_bus_layout="uid://gonqwn0pme64"
+
 [autoload]
 
 Global="*res://scripts/autoloads/Global.gd"
 MCPInputHandler="*res://addons/godot_mcp/mcp_input_handler.gd"
+MusicManager="*uid://brpnve1n4rsk3"
 
 [display]
 

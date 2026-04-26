@@ -1,9 +1,11 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://cvmripn6alr2g"]
 
-[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://assets/Art/Backgrounds/Main menu.jpg" id="2_menu_bg"]
-[ext_resource type="Shader" path="res://resources/beach.gdshader" id="3_beach_shader"]
-[ext_resource type="Texture2D" path="res://assets/Art/Backgrounds/Start game.png" id="4_start_button"]
+[ext_resource type="Script" uid="uid://b63yniu2gurw3" path="res://scripts/main_menu.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://divaykrxuv2pk" path="res://assets/Art/Backgrounds/Main menu.jpg" id="2_menu_bg"]
+[ext_resource type="Shader" uid="uid://b6r1rfexjtmk0" path="res://resources/beach.gdshader" id="3_beach_shader"]
+[ext_resource type="Texture2D" uid="uid://byga8n1p2dl33" path="res://assets/Art/Backgrounds/Start game.png" id="4_start_button"]
+[ext_resource type="AudioStream" uid="uid://dssykbpi7oa2u" path="res://resources/Music/Game_Title_Theme_120_HalfBarPickup.mp3" id="5_8ln24"]
+[ext_resource type="Script" uid="uid://uj6ibc36o8kp" path="res://scenes/main_menu_audio_stream_player_3d.gd" id="6_rtw2f"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_menu_bg"]
 render_priority = 0
@@ -16,16 +18,23 @@ shader_parameter/wave_speed = 0.9
 shader_parameter/distort_amount = 0.009
 shader_parameter/foam_boost = 0.08
 
-[node name="MainMenu" type="Node3D"]
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_rtw2f"]
+clip_count = 1
+clip_0/name = &"Game Title Theme 120 Half Bar Pickup"
+clip_0/stream = ExtResource("5_8ln24")
+clip_0/auto_advance = 1
+clip_0/next_clip = 0
+
+[node name="MainMenu" type="Node3D" unique_id=1155866334]
 script = ExtResource("1_script")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1977029600]
 transform = Transform3D(1, 0, 0, 0, 0.80901706, 0.58778524, 0, -0.58778524, 0.80901706, -7.450581e-09, 30.995628, 35.03114)
 projection = 1
 current = true
 size = 25.0
 
-[node name="Background" type="Sprite3D" parent="Camera3D"]
+[node name="Background" type="Sprite3D" parent="Camera3D" unique_id=4475278]
 transform = Transform3D(3, 0, 0, 0, 2.427051, -1.7633557, 0, 1.7633557, 2.427051, 7.450581e-09, -0.035167336, -113.5824)
 material_override = SubResource("ShaderMaterial_menu_bg")
 billboard = 1
@@ -33,10 +42,10 @@ texture_filter = 0
 render_priority = -100
 texture = ExtResource("2_menu_bg")
 
-[node name="Ui" type="CanvasLayer" parent="."]
+[node name="Ui" type="CanvasLayer" parent="." unique_id=1595186545]
 layer = 200
 
-[node name="Root" type="Control" parent="Ui"]
+[node name="Root" type="Control" parent="Ui" unique_id=263817397]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -44,7 +53,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="StartButton" type="TextureButton" parent="Ui/Root"]
+[node name="StartButton" type="TextureButton" parent="Ui/Root" unique_id=119795141]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -55,14 +64,15 @@ offset_left = -755.0
 offset_top = 240.0
 offset_right = 755.0
 offset_bottom = 792.0
+grow_horizontal = 2
+grow_vertical = 2
 focus_mode = 0
 texture_normal = ExtResource("4_start_button")
 texture_pressed = ExtResource("4_start_button")
 texture_hover = ExtResource("4_start_button")
 texture_focused = ExtResource("4_start_button")
 
-[node name="FadeRect" type="ColorRect" parent="Ui"]
-layout_mode = 1
+[node name="FadeRect" type="ColorRect" parent="Ui" unique_id=974748776]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -70,3 +80,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(1, 1, 1, 0)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=368021495]
+stream = SubResource("AudioStreamInteractive_rtw2f")
+volume_db = 12.263
+script = ExtResource("6_rtw2f")

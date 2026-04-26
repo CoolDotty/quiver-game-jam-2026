@@ -330,3 +330,4 @@ stream = SubResource("AudioStreamRandomizer_frnfl")
 
 [node name="Audio3D_lose" type="AudioStreamPlayer3D" parent="." unique_id=1000255498]
 stream = SubResource("AudioStreamRandomizer_gefff")
+volume_db = 9.927

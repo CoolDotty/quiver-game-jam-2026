@@ -21,7 +21,9 @@ const RECIPE_CATALOG := [
 	},
 ]
 
-const ROUND_DURATION := 120.0
+var _last_portrait_texture: Texture2D = null
+
+const ROUND_DURATION := 30
 const WIN_SCORE := 5
 const SCORE_EMOTE_OVERRIDE_DURATION := 3.0
 const CHEW_DURATION := 3.0
@@ -44,7 +46,6 @@ const LOSS_SHAKE_MAX_SPEED := 16.0
 const LOSS_RENDER_PRIORITY := 127
 const GAME_OVER_SCENE_PATH := "res://scenes/game_over.tscn"
 
-# Idle sound interval: a new idle bark plays every 8–18 seconds
 const IDLE_SOUND_MIN_INTERVAL := 8.0
 const IDLE_SOUND_MAX_INTERVAL := 18.0
 
@@ -89,7 +90,6 @@ func _ready() -> void:
 	_rng.randomize()
 	_recipe_size = _get_recipe_size_from_pot()
 
-	# Stagger the first idle bark so it doesn't fire immediately on load
 	_idle_sound_timer = _rng.randf_range(IDLE_SOUND_MIN_INTERVAL, IDLE_SOUND_MAX_INTERVAL)
 
 	if portrait_sprite != null:
@@ -157,7 +157,6 @@ func _process(delta: float) -> void:
 		if _has_won:
 			return
 
-	# Tick idle sound timer and fire a bark when it expires
 	_idle_sound_timer -= delta
 	if _idle_sound_timer <= 0.0:
 		_play_idle_sound()
@@ -196,9 +195,10 @@ func _apply_score_delta(delta: int) -> void:
 	_play_reaction_sound(delta)
 
 	if _score >= WIN_SCORE and not _has_won:
+		audio_manager.process_mode = Node.PROCESS_MODE_ALWAYS
+		audio_manager.play_sound("Audio3D_win")
 		_has_won = true
 		Global.you_win_requested.emit()
-		audio_manager.play_sound("Audio3d_win")
 
 
 func _generate_recipe(recipe_size: int, is_first: bool = false) -> void:
@@ -378,13 +378,10 @@ func _play_reaction_sound(delta: int) -> void:
 func _play_idle_sound() -> void:
 	var time_ratio := _time_remaining / ROUND_DURATION
 	if time_ratio <= 0.1:
-		# Very angry — last 10% of time
 		audio_manager.play_sound("Audio3D_ANGRY_IDLE")
 	elif time_ratio <= 0.5:
-		# Miffed — between 10% and 50% of time remaining
 		audio_manager.play_sound("Audio3D_ANGRY_IDLE")
 	else:
-		# Neutral/happy — first half of the round
 		audio_manager.play_sound("Audio3D_Happy_IDLE2")
 
 
@@ -436,9 +433,11 @@ func _start_game_over_sequence() -> void:
 			Color(0.0, 0.0, 0.0, 1.0),
 			LOSS_FADE_DURATION
 		)
+
+	audio_manager.process_mode = Node.PROCESS_MODE_ALWAYS
+	audio_manager.play_sound("Audio3D_lose")
 	get_tree().paused = true
 	tween.tween_callback(Callable(self, "_go_to_game_over_scene"))
-	audio_manager.play_sound("Audio3d_lose")
 
 
 func _go_to_game_over_scene() -> void:
@@ -463,12 +462,18 @@ func _get_time_based_portrait_texture() -> Texture2D:
 func _apply_portrait_texture(texture: Texture2D) -> void:
 	if portrait_sprite == null:
 		return
+
+	if texture == _last_portrait_texture:
+		return
+	_last_portrait_texture = texture
+
 	if texture == ANGRY_TEXTURE:
+		print("Clip Swapped to Angry")
 		music_manager.get_stream_playback().switch_to_clip_by_name("Game Theme Loop 140")
-		
-	if texture == MIFFED_TEXTURE:
+	elif texture == MIFFED_TEXTURE:
+		print("Clip Swapped to Miffed")
 		music_manager.get_stream_playback().switch_to_clip_by_name("Game Theme Loop 120")
-		
+
 	portrait_sprite.texture = texture
 
 	if _portrait_shader_material != null:
