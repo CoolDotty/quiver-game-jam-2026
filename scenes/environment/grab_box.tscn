@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://kdbraw78iy14"]
+
+[ext_resource type="Script" uid="uid://bg1ur3lu4avnc" path="res://scripts/grab_box.gd" id="1_script"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_base"]
+albedo_color = Color(0.4, 0.3, 0.2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_base"]
+size = Vector3(1, 0.2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_display"]
+size = Vector3(0.8, 0.8, 0.8)
+
+[node name="GrabBox" type="StaticBody3D" unique_id=590222369]
+script = ExtResource("1_script")
+
+[node name="Base" type="MeshInstance3D" parent="." unique_id=1126655759]
+material_override = SubResource("StandardMaterial3D_base")
+mesh = SubResource("BoxMesh_base")
+
+[node name="DisplayArea" type="Area3D" parent="." unique_id=1212186443]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DisplayArea" unique_id=1783516948]
+shape = SubResource("BoxShape3D_display")
+
+[node name="SpawnPoint" type="Marker3D" parent="." unique_id=1174262291]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="Timer" type="Timer" parent="." unique_id=783426530]
+autostart = true

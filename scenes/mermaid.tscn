@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://b1x5f28e07qlr"]
+[gd_scene format=3 uid="uid://cjsufkx45xq8g"]
 
 [ext_resource type="Script" uid="uid://dy8p2dt6t1fn5" path="res://scripts/mermaid.gd" id="1_k32jb"]
 [ext_resource type="Script" uid="uid://uflo8kwjqnuj" path="res://scripts/arm.gd" id="2_cx8og"]

@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://bjcnlp18bfxwd"]
+[gd_scene format=3 uid="uid://ckhahx33yngsy"]
 
-[ext_resource type="PackedScene" uid="uid://bnxx425ohqfav" path="res://scenes/item.tscn" id="1_2bmlf"]
+[ext_resource type="PackedScene" uid="uid://blk0xu2m2nycq" path="res://scenes/item.tscn" id="1_2bmlf"]
 [ext_resource type="Texture2D" uid="uid://5xcj85j1ctpe" path="res://assets/placeholders/DevTextures/Dark/texture_04.png" id="1_gsx76"]
 [ext_resource type="Resource" uid="uid://cw7woat4i8pdf" path="res://resources/pineapple.tres" id="2_qr6qn"]
 [ext_resource type="Texture2D" uid="uid://cjfdvxd3gy4sj" path="res://assets/placeholders/head.png" id="3_4uxoh"]
@@ -22,16 +22,10 @@ uv1_scale = Vector3(10, 10, 10)
 [sub_resource type="PlaneMesh" id="2_floor_mesh"]
 size = Vector2(200, 200)
 
-[sub_resource type="Resource" id="Resource_bap4c"]
-script = ExtResource("18_8jr5k")
-sprite_texture = ExtResource("3_4uxoh")
-item_name = "Banada"
-
 [node name="Starter3D" type="Node3D" unique_id=173918023]
 
 [node name="Item" parent="." unique_id=133743956 instance=ExtResource("1_2bmlf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.451978, 1.6157398, 1.6849356)
-item = ExtResource("2_qr6qn")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=878903255]
 transform = Transform3D(1, 0, 0, 0, 0.80901706, 0.58778524, 0, -0.58778524, 0.80901706, -7.450581e-09, 5.410118, 8.745848)
@@ -56,11 +50,7 @@ material_override = SubResource("1_floor_material")
 mesh = SubResource("2_floor_mesh")
 
 [node name="Mermaid" parent="." unique_id=1293432093 instance=ExtResource("4_4xkce")]
-transform = Transform3D(-0.024815917, 0.999692, 0, -0.999692, -0.024815917, 0, 0, 0, 1, 0, 4.656455, 0)
-
-[node name="Banada" parent="." unique_id=1299485598 instance=ExtResource("1_2bmlf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.03584, 0.49999952, 1.0941715)
-item = SubResource("Resource_bap4c")
+transform = Transform3D(-0.024815917, 0.999692, 0, -0.999692, -0.024815917, 0, 0, 0, 1, 0, 4.656455, -2.0975704)
 
 [node name="background" type="Sprite3D" parent="." unique_id=302842814]
 transform = Transform3D(0.39, 0, 0, 0, 0.39, 0, 0, 0, 0.39, 0, -42.029, -56.099)
@@ -68,3 +58,11 @@ billboard = 1
 fixed_size = true
 texture_filter = 0
 texture = ExtResource("7_fmo7n")
+
+[node name="item_grab_box" parent="." unique_id=161706655 instance=ExtResource("8_uxg2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 5, -13)
+item_scene = ExtResource("1_2bmlf")
+item_data = ExtResource("2_qr6qn")
+
+[node name="CookBox" parent="." unique_id=1890135954 instance=ExtResource("7_5chnm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.733517, 0.5, -7.238412)
