@@ -2,9 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://blk0xu2m2nycq" path="res://scenes/item.tscn" id="1_2bmlf"]
 [ext_resource type="Texture2D" uid="uid://5xcj85j1ctpe" path="res://assets/placeholders/DevTextures/Dark/texture_04.png" id="1_gsx76"]
-[ext_resource type="PackedScene" path="res://scenes/mermaid.tscn" id="4_4xkce"]
-[ext_resource type="Texture2D" uid="uid://bfuyk dwqaz   1k, ,.;,./'   
-     lsdknywe" path="res://assets/BG/BG_img.jpg" id="7_fmo7n"]
+[ext_resource type="PackedScene" uid="uid://c4ngnojte6l5w" path="res://scenes/mermaid.tscn" id="4_4xkce"]
+[ext_resource type="Texture2D" uid="uid://bfuyklsdknywe" path="res://assets/BG/BG_img.jpg" id="7_fmo7n"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4uxoh"]
 rough = true
@@ -34,6 +33,7 @@ size = 25.0
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1565072717]
 transform = Transform3D(0.81915206, -0.4055798, 0.4055798, 0, 0.70710677, 0.70710677, -0.57357645, -0.579228, 0.579228, 0, 0, 0)
 light_energy = 2.0
+shadow_enabled = true
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1833675114]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 62.870018)
@@ -43,14 +43,14 @@ physics_material_override = SubResource("PhysicsMaterial_4uxoh")
 shape = SubResource("3_floor_shape")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=126160062]
-visible = false
 material_override = SubResource("1_floor_material")
 mesh = SubResource("2_floor_mesh")
 
 [node name="Mermaid" parent="." unique_id=1293432093 instance=ExtResource("4_4xkce")]
-transform = Transform3D(-0.024815917, 0.999692, 0, -0.999692, -0.024815917, 0, 0, 0, 1, 0, 4.656455, -2.0975704)
+transform = Transform3D(-0.9997019, -0.024414586, 0, 0.024414586, -0.9997019, 0, 0, 0, 1, 0, 4.656455, -2.0975704)
 
 [node name="background" type="Sprite3D" parent="." unique_id=302842814]
 transform = Transform3D(5.5, 0, 0, 0, 5.5, 0, 0, 0, 5.5, 0, -1.3555965, -6.491336)
+visible = false
 texture_filter = 0
 texture = ExtResource("7_fmo7n")
