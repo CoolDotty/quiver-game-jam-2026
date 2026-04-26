@@ -1,17 +1,23 @@
 extends RigidBody3D
 
+const SHADOW_MODULATE := Color(0, 0, 0, 0.19607843)
+const SHADOW_SCALE_MULTIPLIER := 1.2
+
 
 @export var item_name: String = ""
 @export var sprite_texture: Texture2D
+@export var cook_time: float = 3.0
 @export var cooks_into: PackedScene
-@export var burns_into: PackedScene
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 @onready var sprite_3d: Sprite3D = $Sprite3D
+@onready var shadow_sprite_3d: Sprite3D = get_node_or_null("Sprite3D_Shadow") as Sprite3D
 
 var _default_collision_layer: int
 var _default_collision_mask: int
 var _default_gravity_scale: float
 var _default_can_sleep: bool
+var _is_held: bool = false
+var _is_in_pot: bool = false
 
 
 func _ready() -> void:
@@ -25,26 +31,37 @@ func _ready() -> void:
 		sprite_3d.material_override = material.duplicate()
 
 	_apply_sprite_texture()
+	_configure_shadow_sprite()
 
 
-func set_held(is_held: bool) -> void:
-	if is_held:
-		linear_velocity = Vector3.ZERO
-		angular_velocity = Vector3.ZERO
-		gravity_scale = 0.0
-		can_sleep = true
-		sleeping = true
-		collision_layer = 0
-		collision_mask = 0
-		collision_shape_3d.disabled = true
-		return
+func set_held(value: bool) -> void:
+	_is_held = value
+	_refresh_physics_state()
 
-	gravity_scale = _default_gravity_scale
-	can_sleep = _default_can_sleep
-	collision_layer = _default_collision_layer
-	collision_mask = _default_collision_mask
-	collision_shape_3d.disabled = false
-	sleeping = false
+
+func is_held() -> bool:
+	return _is_held
+
+
+func set_in_pot(value: bool) -> void:
+	_is_in_pot = value
+	_refresh_physics_state()
+
+
+func is_in_pot() -> bool:
+	return _is_in_pot
+
+
+func is_cookable() -> bool:
+	return cooks_into != null
+
+
+func get_cook_time() -> float:
+	return cook_time
+
+
+func set_cook_time(value: float) -> void:
+	cook_time = value
 
 
 func get_item_name() -> String:
@@ -72,16 +89,29 @@ func set_cooks_into(value: PackedScene) -> void:
 	cooks_into = value
 
 
-func get_burns_into() -> PackedScene:
-	return burns_into
+func set_sprite_offset(_offset: Vector2) -> void:
+	sprite_3d.position = Vector3(_offset.x * 0.001, 0.0, 0.0)
 
 
-func set_burns_into(value: PackedScene) -> void:
-	burns_into = value
+func _refresh_physics_state() -> void:
+	if _is_held or _is_in_pot:
+		linear_velocity = Vector3.ZERO
+		angular_velocity = Vector3.ZERO
+		gravity_scale = 0.0
+		can_sleep = true
+		sleeping = true
+		collision_layer = 0
+		collision_mask = 0
+		collision_shape_3d.disabled = true
+		return
 
-
-func set_sprite_offset(offset: Vector2) -> void:
-	sprite_3d.offset = offset
+	gravity_scale = _default_gravity_scale
+	can_sleep = _default_can_sleep
+	collision_layer = _default_collision_layer
+	collision_mask = _default_collision_mask
+	collision_shape_3d.disabled = false
+	sleeping = false
+	sprite_3d.position = Vector3.ZERO
 
 
 func _apply_sprite_texture() -> void:
@@ -89,7 +119,20 @@ func _apply_sprite_texture() -> void:
 		return
 
 	sprite_3d.texture = sprite_texture
+	if shadow_sprite_3d != null:
+		if shadow_sprite_3d.has_method("set_shadow_texture"):
+			shadow_sprite_3d.call("set_shadow_texture", sprite_texture)
+		else:
+			shadow_sprite_3d.texture = sprite_texture
 
 	var material := sprite_3d.material_override as ShaderMaterial
 	if material != null and sprite_texture != null:
 		material.set_shader_parameter("billboard_texture", sprite_texture)
+
+
+func _configure_shadow_sprite() -> void:
+	if shadow_sprite_3d == null:
+		return
+
+	shadow_sprite_3d.modulate = SHADOW_MODULATE
+	shadow_sprite_3d.scale = sprite_3d.scale * SHADOW_SCALE_MULTIPLIER

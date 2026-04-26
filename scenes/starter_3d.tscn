@@ -1,14 +1,25 @@
-[gd_scene format=3 uid="uid://ckhahx33yngsy"]
+[gd_scene format=3 uid="uid://ldp8f4crpuj5"]
 
-[ext_resource type="PackedScene" uid="uid://b1cywel308lko" path="res://scenes/items/coconut.tscn" id="1_2bmlf"]
 [ext_resource type="Texture2D" uid="uid://5xcj85j1ctpe" path="res://assets/placeholders/DevTextures/Dark/texture_04.png" id="1_gsx76"]
+[ext_resource type="Texture2D" uid="uid://cihrrs457d48u" path="res://assets/Art/Backgrounds/Main_Background.jpg" id="2_4xkce"]
+[ext_resource type="Shader" uid="uid://b6r1rfexjtmk0" path="res://resources/beach.gdshader" id="2_5chnm"]
+[ext_resource type="PackedScene" uid="uid://qq4fwum0xhj3" path="res://scenes/cooking_pot.tscn" id="3_pot"]
 [ext_resource type="PackedScene" uid="uid://cjsufkx45xq8g" path="res://scenes/mermaid.tscn" id="4_4xkce"]
-[ext_resource type="PackedScene" uid="uid://b8pvd7y2yw3yk" path="res://scenes/items/krab.tscn" id="5_4xkce"]
-[ext_resource type="PackedScene" uid="uid://dcut8agpwv8iu" path="res://scenes/item_grab_box.tscn" id="6_fmo7n"]
-[ext_resource type="PackedScene" uid="uid://blk0xu2m2nycq" path="res://scenes/item.tscn" id="7_5chnm"]
-[ext_resource type="Texture2D" uid="uid://bfuyklsdknywe" path="res://assets/BG/BG_img.jpg" id="7_fmo7n"]
-[ext_resource type="PackedScene" uid="uid://cyotyy8cpf8lg" path="res://scenes/audio.tscn" id="8_5chnm"]
-[ext_resource type="Script" uid="uid://cmunwfwxj8r7k" path="res://scenes/boss.gd" id="9_uxg2d"]
+[ext_resource type="PackedScene" uid="uid://dt2m1osxcfcry" path="res://scenes/coconut_item_pile_spawner.tscn" id="10_7oiso"]
+[ext_resource type="PackedScene" uid="uid://cbd32f1bc1uwj" path="res://scenes/baby_mermaid_item_pile_spawner.tscn" id="11_w266b"]
+[ext_resource type="PackedScene" uid="uid://dynoodpdky3ky" path="res://scenes/krab_item_pile_spawner.tscn" id="12_0onai"]
+[ext_resource type="PackedScene" uid="uid://cx7puiu50rrwr" path="res://scenes/urchin_item_pile_spawner.tscn" id="13_3nobw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uxg2d"]
+render_priority = 0
+shader = ExtResource("2_5chnm")
+shader_parameter/albedo_texture = ExtResource("2_4xkce")
+shader_parameter/shoreline_y = 0.205
+shader_parameter/tide_amount = 0.014
+shader_parameter/band_size = 0.07
+shader_parameter/wave_speed = 0.9
+shader_parameter/distort_amount = 0.0045
+shader_parameter/foam_boost = 0.06
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4uxoh"]
 rough = true
@@ -26,26 +37,19 @@ size = Vector2(200, 200)
 
 [node name="Starter3D" type="Node3D" unique_id=173918023]
 
-[node name="Item" parent="." unique_id=133743956 instance=ExtResource("1_2bmlf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.451978, 1.6157398, 1.6849356)
-cooks_into = null
-burns_into = null
-
 [node name="Camera3D" type="Camera3D" parent="." unique_id=878903255]
 transform = Transform3D(1, 0, 0, 0, 0.80901706, 0.58778524, 0, -0.58778524, 0.80901706, -7.450581e-09, 30.995628, 35.03114)
 projection = 1
 current = true
 size = 25.0
 
-[node name="AudioManager" parent="Camera3D" unique_id=268274660 instance=ExtResource("8_5chnm")]
-transform = Transform3D(1, 0, 0, 0, 0.80901694, -0.5877852, 0, 0.5877852, 0.80901694, -0.28184795, -2.6478472, -45.411148)
-
 [node name="background" type="Sprite3D" parent="Camera3D" unique_id=302842814]
-transform = Transform3D(5, 0, 0, 0, 4.045085, -2.938926, 0, 2.938926, 4.045085, 7.450581e-09, -0.035167336, -113.5824)
+transform = Transform3D(3, 0, 0, 0, 2.427051, -1.7633557, 0, 1.7633557, 2.427051, 7.450581e-09, -0.035167336, -113.5824)
+material_override = SubResource("ShaderMaterial_uxg2d")
 billboard = 1
 texture_filter = 0
-render_priority = -10
-texture = ExtResource("7_fmo7n")
+render_priority = -100
+texture = ExtResource("2_4xkce")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1565072717]
 transform = Transform3D(0.81915206, -0.4055798, 0.4055798, 0, 0.70710677, 0.70710677, -0.57357645, -0.579228, 0.579228, 0, 0, 0)
@@ -63,15 +67,76 @@ visible = false
 material_override = SubResource("1_floor_material")
 mesh = SubResource("2_floor_mesh")
 
+[node name="Wall_Left" type="StaticBody3D" parent="." unique_id=774286439]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.383427, -0.1, 0)
+physics_material_override = SubResource("PhysicsMaterial_4uxoh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall_Left" unique_id=1786491811]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -122.5801, 86.726295, 0)
+shape = SubResource("3_floor_shape")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall_Left" unique_id=956988702]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 15.995941, 86.726295, 0)
+visible = false
+material_override = SubResource("1_floor_material")
+mesh = SubResource("2_floor_mesh")
+
+[node name="Wall_Right" type="StaticBody3D" parent="." unique_id=2071445436]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 247.58562, -0.1, 0)
+physics_material_override = SubResource("PhysicsMaterial_4uxoh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall_Right" unique_id=1834136644]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -122.5801, 86.726295, 0)
+shape = SubResource("3_floor_shape")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall_Right" unique_id=144803807]
+transform = Transform3D(4.371139e-08, -1, -8.742278e-08, -1, -4.371139e-08, 0, -3.821371e-15, 8.742278e-08, -1, -224.15417, 86.726295, 0)
+visible = false
+material_override = SubResource("1_floor_material")
+mesh = SubResource("2_floor_mesh")
+
+[node name="Wall_Bottom" type="StaticBody3D" parent="." unique_id=2056833100]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.357887, -0.1, 135.48076)
+physics_material_override = SubResource("PhysicsMaterial_4uxoh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall_Bottom" unique_id=1564923097]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -122.5801, 86.726295, 0)
+shape = SubResource("3_floor_shape")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall_Bottom" unique_id=1476827963]
+transform = Transform3D(4.371139e-08, -1, -8.742278e-08, -1, -4.371139e-08, 0, -3.821371e-15, 8.742278e-08, -1, -222.54541, 86.726295, 0)
+visible = false
+material_override = SubResource("1_floor_material")
+mesh = SubResource("2_floor_mesh")
+
+[node name="Wall_Top" type="StaticBody3D" parent="." unique_id=1130664870]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.176094, -0.1, -168.22466)
+physics_material_override = SubResource("PhysicsMaterial_4uxoh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall_Top" unique_id=1813565407]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -122.5801, 86.726295, 0)
+shape = SubResource("3_floor_shape")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall_Top" unique_id=453990045]
+transform = Transform3D(1.9106855e-15, -4.371139e-08, -1, -1, -4.371139e-08, 0, -4.371139e-08, 1, -4.371139e-08, -122.07638, 86.726295, 99.982735)
+visible = false
+material_override = SubResource("1_floor_material")
+mesh = SubResource("2_floor_mesh")
+
 [node name="Mermaid" parent="." unique_id=1293432093 instance=ExtResource("4_4xkce")]
 transform = Transform3D(-0.024815917, 0.999692, 0, -0.999692, -0.024815917, 0, 0, 0, 1, 0, 4.656455, -6.7339764)
 
-[node name="Krab" parent="." unique_id=746354439 instance=ExtResource("5_4xkce")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.44098508, 0)
+[node name="CookingPot" parent="." unique_id=1158294601 instance=ExtResource("3_pot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.498369, 0.5, -9.401392)
 
-[node name="item_grab_box" parent="." unique_id=161706655 instance=ExtResource("6_fmo7n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5454025, 5.275485, -16.349789)
-item_scene = ExtResource("7_5chnm")
+[node name="CoconutItemPileSpawner" parent="." unique_id=1311437829 instance=ExtResource("10_7oiso")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.952097, 7.8540945, -14.238923)
 
-[node name="Boss" type="Node3D" parent="." unique_id=531979180]
-script = ExtResource("9_uxg2d")
+[node name="BabyMermaidItemPileSpawner" parent="." unique_id=1578946804 instance=ExtResource("11_w266b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.163082, 9.944586, -12.963236)
+
+[node name="KrabItemPileSpawner" parent="." unique_id=1157152294 instance=ExtResource("12_0onai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.05818, 6.9662113, 4.8869133)
+
+[node name="UrchinItemPileSpawner" parent="." unique_id=20315944 instance=ExtResource("13_3nobw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.844056, 8.628871, 3.995201)

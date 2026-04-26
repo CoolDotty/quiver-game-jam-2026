@@ -5,8 +5,6 @@ enum State {
 	COOKING
 }
 
-@export var cooking_time: float = 3.0
-
 @onready var timer: Timer = $Timer
 @onready var interaction_area: Area3D = $InteractionArea
 @onready var item_spawn_point: Marker3D = $ItemSpawnPoint
@@ -30,6 +28,7 @@ func _take_item(item: RigidBody3D) -> void:
 	print("CookBox: Taking item ", item.name)
 	current_item = item
 	current_state = State.COOKING
+	timer.wait_time = _get_cook_time(item)
 	
 	item.remove_from_group("pickup")
 	item.set_deferred("freeze", true)
@@ -67,6 +66,13 @@ func _create_cooked_item(item: RigidBody3D) -> RigidBody3D:
 		return item.duplicate() as RigidBody3D
 
 	return cooked_scene.instantiate() as RigidBody3D
+
+
+func _get_cook_time(item: RigidBody3D) -> float:
+	if item != null and item.has_method("get_cook_time"):
+		return float(item.call("get_cook_time"))
+
+	return 3.0
 
 
 func _spawn_cooked_item(new_item: RigidBody3D) -> void:

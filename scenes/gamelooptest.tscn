@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cjsufkx45xq8g" path="res://scenes/mermaid.tscn" id="1_ay68w"]
 [ext_resource type="PackedScene" uid="uid://dboo86qfbq60c" path="res://scenes/item_grab_box.tscn" id="2_nnebt"]
 [ext_resource type="PackedScene" path="res://scenes/items/coconut.tscn" id="3_lb30q"]
-[ext_resource type="PackedScene" uid="uid://dbfku8tcmpd7p" path="res://scenes/cook_box.tscn" id="3_r5ybp"]
+[ext_resource type="PackedScene" path="res://scenes/cooking_pot.tscn" id="3_r5ybp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vjnhk"]
 
@@ -39,7 +39,7 @@ mesh = SubResource("TextMesh_nnebt")
 [node name="Mermaid" parent="." unique_id=1293432093 instance=ExtResource("1_ay68w")]
 transform = Transform3D(-0.024815975, 0.999692, 0, -0.999692, -0.024815975, 0, 0, 0, 1, 0.09143239, 4.4564652, -0.39649957)
 
-[node name="item_grab_box" parent="." unique_id=161706655 instance=ExtResource("2_nnebt")]
+[node name="ItemPileSpawner" parent="." unique_id=161706655 instance=ExtResource("2_nnebt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7094555, 3.5877485, -12.2265)
 item_scene = ExtResource("3_lb30q")
 

@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cbd32f1bc1uwj"]
+
+[ext_resource type="Script" uid="uid://bg1ur3lu4avnc" path="res://scripts/grab_box.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://drblvbo8vddin" path="res://assets/food_source/palm_tree.png" id="2_texture"]
+[ext_resource type="PackedScene" uid="uid://bhqhibm1a6q3y" path="res://scenes/items/baby_mermaid.tscn" id="3_item_scene"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_root"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_display"]
+
+[node name="BabyMermaidItemPileSpawner" type="StaticBody3D" unique_id=1432133009]
+script = ExtResource("1_script")
+item_scene = ExtResource("3_item_scene")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1899641731]
+shape = SubResource("BoxShape3D_root")
+
+[node name="DisplayArea" type="Area3D" parent="." unique_id=300907561]
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, -1, 1)
+
+[node name="SpawnPoint" type="Marker3D" parent="DisplayArea" unique_id=765494518]
+transform = Transform3D(0.66666675, 0, 0, 0, 0.66666675, 0, 0, 0, 0.66666675, 0, 0.015785784, 0.034546584)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DisplayArea" unique_id=1982049980]
+shape = SubResource("BoxShape3D_display")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=525385394]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+billboard = 1
+texture = ExtResource("2_texture")
+
+[node name="Timer" type="Timer" parent="." unique_id=903942658]

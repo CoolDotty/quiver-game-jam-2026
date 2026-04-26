@@ -3,8 +3,9 @@
 [ext_resource type="Script" uid="uid://88e8qd1n8hgp" path="res://scenes/item.gd" id="1_item"]
 [ext_resource type="Shader" uid="uid://chdtkxll2mgea" path="res://resources/billboard.gdshader" id="2_shader"]
 [ext_resource type="Texture2D" uid="uid://d0kqw7ljvkrg2" path="res://assets/Art/Food/Slurchin.png" id="3_texture"]
+[ext_resource type="Script" uid="uid://bs8f4b6eesrcy" path="res://scripts/segment_shadow_sprite.gd" id="4_shadow"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_item"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_item"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_item"]
 render_priority = 0
@@ -15,12 +16,20 @@ shader_parameter/billboard_texture = ExtResource("3_texture")
 script = ExtResource("1_item")
 item_name = "Slurchin"
 sprite_texture = ExtResource("3_texture")
+cook_time = 3.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1731989042]
-shape = SubResource("SphereShape3D_item")
+shape = SubResource("BoxShape3D_item")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1524044863]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_item")
 billboard = 1
 texture = ExtResource("3_texture")
+
+[node name="Sprite3D_Shadow" type="Sprite3D" parent="." unique_id=1599367029]
+modulate = Color(0, 0, 0, 0.19607843)
+billboard = 1
+render_priority = -1
+texture = ExtResource("3_texture")
+script = ExtResource("4_shadow")
