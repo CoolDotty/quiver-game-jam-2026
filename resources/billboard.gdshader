@@ -2,6 +2,7 @@ shader_type spatial;
 render_mode unshaded, cull_disabled, blend_mix, skip_vertex_transform;
 
 uniform sampler2D billboard_texture : source_color, filter_linear_mipmap, repeat_disable;
+uniform float blur_amount : hint_range(0.0, 10.0) = 0.0;
 
 // Time stepping for the hand-drawn feel.
 uniform float step_time : hint_range(0.05, 1.0) = 0.25;
@@ -103,6 +104,21 @@ void fragment() {
 
 	vec2 final_uv = clamp(uv + uv_offset, vec2(0.0), vec2(1.0));
 	vec4 tex = texture(billboard_texture, final_uv);
+
+	if (blur_amount > 0.0) {
+		vec2 texel_size = vec2(blur_amount) / vec2(textureSize(billboard_texture, 0));
+		vec4 blurred =
+			texture(billboard_texture, final_uv) * 0.20 +
+			texture(billboard_texture, final_uv + vec2(texel_size.x, 0.0)) * 0.15 +
+			texture(billboard_texture, final_uv + vec2(-texel_size.x, 0.0)) * 0.15 +
+			texture(billboard_texture, final_uv + vec2(0.0, texel_size.y)) * 0.15 +
+			texture(billboard_texture, final_uv + vec2(0.0, -texel_size.y)) * 0.15 +
+			texture(billboard_texture, final_uv + vec2(texel_size.x, texel_size.y)) * 0.0875 +
+			texture(billboard_texture, final_uv + vec2(-texel_size.x, texel_size.y)) * 0.0875 +
+			texture(billboard_texture, final_uv + vec2(texel_size.x, -texel_size.y)) * 0.0875 +
+			texture(billboard_texture, final_uv + vec2(-texel_size.x, -texel_size.y)) * 0.0875;
+		tex = blurred;
+	}
 
 	// Preserve Sprite3D modulate / tint / alpha.
 	vec4 final_color = tex * v_color;

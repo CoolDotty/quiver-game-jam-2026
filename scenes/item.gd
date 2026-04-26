@@ -96,7 +96,10 @@ func _apply_sprite_texture() -> void:
 
 	sprite_3d.texture = sprite_texture
 	if shadow_sprite_3d != null:
-		shadow_sprite_3d.texture = sprite_texture
+		if shadow_sprite_3d.has_method("set_shadow_texture"):
+			shadow_sprite_3d.call("set_shadow_texture", sprite_texture)
+		else:
+			shadow_sprite_3d.texture = sprite_texture
 
 	var material := sprite_3d.material_override as ShaderMaterial
 	if material != null and sprite_texture != null:
