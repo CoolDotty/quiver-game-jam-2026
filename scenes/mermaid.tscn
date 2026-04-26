@@ -38,8 +38,33 @@ radius = 0.45
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_btfp6"]
 albedo_texture = ExtResource("5_2ue8w")
 
+[sub_resource type="ShaderMaterial" id="BillboardSpriteMaterial_head"]
+render_priority = 0
+shader = ExtResource("3_oprnn")
+shader_parameter/billboard_texture = ExtResource("6_vfsj7")
+
+[sub_resource type="ShaderMaterial" id="BillboardSpriteMaterial_chest"]
+render_priority = 0
+shader = ExtResource("3_oprnn")
+shader_parameter/billboard_texture = ExtResource("7_ex356")
+
+[sub_resource type="ShaderMaterial" id="BillboardSpriteMaterial_mid"]
+render_priority = 0
+shader = ExtResource("3_oprnn")
+shader_parameter/billboard_texture = ExtResource("16_cri7n")
+
+[sub_resource type="ShaderMaterial" id="BillboardSpriteMaterial_knee"]
+render_priority = 0
+shader = ExtResource("3_oprnn")
+shader_parameter/billboard_texture = ExtResource("17_n58kw")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fmo7n"]
 albedo_texture = ExtResource("14_lgxpy")
+
+[sub_resource type="ShaderMaterial" id="BillboardSpriteMaterial_tail"]
+render_priority = 0
+shader = ExtResource("3_oprnn")
+shader_parameter/billboard_texture = ExtResource("19_8rn3h")
 
 [node name="Mermaid" type="Node3D" unique_id=1293432093]
 transform = Transform3D(-0.024815975, 0.999692, 0, -0.999692, -0.024815975, 0, 0, 0, 1, 0, 0, 0)
@@ -108,6 +133,8 @@ visible = false
 material = SubResource("StandardMaterial3D_btfp6")
 
 [node name="Sprite_Head" type="Sprite3D" parent="Head" unique_id=1446563630]
+material_override = SubResource("BillboardSpriteMaterial_head")
+billboard = 1
 texture = ExtResource("6_vfsj7")
 
 [node name="HingeJoint3D" type="HingeJoint3D" parent="." unique_id=1189188061]
@@ -132,6 +159,7 @@ visible = false
 radius = 0.45
 
 [node name="Sprite_Chest" type="Sprite3D" parent="RigidBody3D2" unique_id=196691518]
+material_override = SubResource("BillboardSpriteMaterial_chest")
 texture = ExtResource("7_ex356")
 
 [node name="HingeJoint3D5" type="HingeJoint3D" parent="." unique_id=1935950945]
@@ -172,6 +200,7 @@ visible = false
 radius = 0.4
 
 [node name="Sprite_Mid" type="Sprite3D" parent="RigidBody3D3" unique_id=1732713114]
+material_override = SubResource("BillboardSpriteMaterial_mid")
 texture = ExtResource("16_cri7n")
 
 [node name="HingeJoint3D3" type="HingeJoint3D" parent="." unique_id=959740729]
@@ -196,6 +225,7 @@ visible = false
 radius = 0.3
 
 [node name="Sprite_Knee" type="Sprite3D" parent="RigidBody3D4" unique_id=1964650245]
+material_override = SubResource("BillboardSpriteMaterial_knee")
 texture = ExtResource("17_n58kw")
 
 [node name="HingeJoint3D4" type="HingeJoint3D" parent="." unique_id=19128249]
@@ -221,4 +251,5 @@ radius = 0.25
 material = SubResource("StandardMaterial3D_fmo7n")
 
 [node name="Sprite_Tail" type="Sprite3D" parent="Tail" unique_id=1986586727]
+material_override = SubResource("BillboardSpriteMaterial_tail")
 texture = ExtResource("19_8rn3h")
