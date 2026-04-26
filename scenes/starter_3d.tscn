@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://ldp8f4crpuj5"]
 
+[ext_resource type="Script" path="res://scripts/starter_3d.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://5xcj85j1ctpe" path="res://assets/placeholders/DevTextures/Dark/texture_04.png" id="1_gsx76"]
 [ext_resource type="Texture2D" uid="uid://cihrrs457d48u" path="res://assets/Art/Backgrounds/Main_Background.jpg" id="2_4xkce"]
 [ext_resource type="Shader" uid="uid://b6r1rfexjtmk0" path="res://resources/beach.gdshader" id="2_5chnm"]
@@ -43,6 +44,7 @@ size = Vector3(2, 20, 44)
 size = Vector3(50, 20, 2)
 
 [node name="Starter3D" type="Node3D" unique_id=173918023]
+script = ExtResource("1_script")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=878903255]
 transform = Transform3D(1, 0, 0, 0, 0.80901706, 0.58778524, 0, -0.58778524, 0.80901706, -7.450581e-09, 30.995628, 35.03114)
@@ -142,3 +144,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.889149, 6.9662113, 4.88691
 
 [node name="UrchinItemPileSpawner" parent="." unique_id=20315944 instance=ExtResource("13_3nobw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.054876, 8.628871, 3.995201)
+
+[node name="FadeLayer" type="CanvasLayer" parent="."]
+layer = 200
+
+[node name="FadeRect" type="ColorRect" parent="FadeLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+offset_right = 1477.0
+offset_bottom = 789.0
+color = Color(0, 0, 0, 0)

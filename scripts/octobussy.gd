@@ -22,6 +22,7 @@ const RECIPE_CATALOG := [
 ]
 
 const ROUND_DURATION := 120.0
+const WIN_SCORE := 5
 const SCORE_EMOTE_OVERRIDE_DURATION := 3.0
 const SUPER_ANGRY_DURATION := 10.0
 const LOSS_MOVE_DURATION := 1.25
@@ -55,6 +56,7 @@ var _current_recipe: Array[RecipeSlot] = []
 var _portrait_rest_position: Vector3 = Vector3.ZERO
 var _shake_time: float = 0.0
 var _is_game_over: bool = false
+var _has_won: bool = false
 
 
 func _ready() -> void:
@@ -81,7 +83,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if _is_game_over:
+	if _is_game_over or _has_won:
 		return
 
 	if _time_remaining > 0.0:
@@ -96,6 +98,11 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("debug_decrease_time"):
 		_time_remaining = maxf(_time_remaining - 10.0, 0.0)
 
+	if Input.is_action_just_pressed("debug_add_point"):
+		_apply_score_delta(1)
+		if _has_won:
+			return
+
 	_update_loss_shake(delta)
 	_update_timer_label()
 	_update_portrait_emote()
@@ -105,14 +112,28 @@ func _process(delta: float) -> void:
 
 
 func _on_cooking_pot_recipe_completed(_pot: Node, items: Array) -> void:
+	if _is_game_over or _has_won:
+		return
+
 	var delivered_item_names := _snapshot_item_names(items)
 	var delta := _score_delivered_batch(delivered_item_names)
 
+	_apply_score_delta(delta)
+	if _has_won:
+		return
+
+	_generate_recipe(max(_current_recipe.size(), delivered_item_names.size()))
+
+
+func _apply_score_delta(delta: int) -> void:
 	_score += delta
 	_update_score_label()
 	_score_emote_override_remaining = SCORE_EMOTE_OVERRIDE_DURATION
 	_update_portrait_emote()
-	_generate_recipe(max(_current_recipe.size(), delivered_item_names.size()))
+
+	if _score >= WIN_SCORE and not _has_won:
+		_has_won = true
+		Global.you_win_requested.emit()
 
 
 func _generate_recipe(recipe_size: int) -> void:
