@@ -26,7 +26,7 @@ func _on_timer_timeout() -> void:
 
 func _is_area_occupied() -> bool:
 	for body in display_area.get_overlapping_bodies():
-		if body == self:
+		if body is StaticBody3D:
 			continue
 		return true
 	return false

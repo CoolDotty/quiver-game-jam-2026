@@ -4,9 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://5xcj85j1ctpe" path="res://assets/placeholders/DevTextures/Dark/texture_04.png" id="1_gsx76"]
 [ext_resource type="Resource" uid="uid://cw7woat4i8pdf" path="res://resources/pineapple.tres" id="2_qr6qn"]
 [ext_resource type="PackedScene" uid="uid://cjsufkx45xq8g" path="res://scenes/mermaid.tscn" id="4_4xkce"]
+<<<<<<< Updated upstream
 [ext_resource type="PackedScene" path="res://scenes/cook_box.tscn" id="7_5chnm"]
 [ext_resource type="Texture2D" uid="uid://da7qw5dgjawjp" path="res://assets/placeholders/breach.jpg" id="7_fmo7n"]
 [ext_resource type="PackedScene" uid="uid://dboo86qfbq60c" path="res://scenes/item_grab_box.tscn" id="8_uxg2d"]
+=======
+[ext_resource type="PackedScene" uid="uid://dbfku8tcmpd7p" path="res://scenes/cook_box.tscn" id="5_btfp6"]
+[ext_resource type="PackedScene" uid="uid://dboo86qfbq60c" path="res://scenes/item_grab_box.tscn" id="6_fmo7n"]
+[ext_resource type="Texture2D" uid="uid://bfuyklsdknywe" path="res://assets/BG/BG_img.jpg" id="7_fmo7n"]
+>>>>>>> Stashed changes
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4uxoh"]
 rough = true
@@ -55,6 +61,7 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -13.00165, -56.099434)
 billboard = 1
 texture = ExtResource("7_fmo7n")
 
+<<<<<<< Updated upstream
 [node name="item_grab_box" parent="." unique_id=161706655 instance=ExtResource("8_uxg2d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 5, -13)
 item_scene = ExtResource("1_2bmlf")
@@ -62,3 +69,12 @@ item_data = ExtResource("2_qr6qn")
 
 [node name="CookBox" parent="." unique_id=1890135954 instance=ExtResource("7_5chnm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.733517, 0.5, -7.238412)
+=======
+[node name="CookBox" parent="." unique_id=1912571744 instance=ExtResource("5_btfp6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6377497, 0.50000095, -6.615059)
+
+[node name="item_grab_box" parent="." unique_id=161706655 instance=ExtResource("6_fmo7n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.573801, 5.12, -5.4462786)
+item_scene = ExtResource("1_2bmlf")
+item_data = ExtResource("2_qr6qn")
+>>>>>>> Stashed changes
