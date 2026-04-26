@@ -6,7 +6,7 @@ const SHADOW_SCALE_MULTIPLIER := 1.2
 
 @export var item_name: String = ""
 @export var sprite_texture: Texture2D
-@export var cook_time: float = 3.0
+@export var cook_time: float = 30.0
 @export var cooks_into: PackedScene
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 @onready var sprite_3d: Sprite3D = $Sprite3D
@@ -16,6 +16,7 @@ var _default_collision_layer: int
 var _default_collision_mask: int
 var _default_gravity_scale: float
 var _default_can_sleep: bool
+var _default_freeze: bool
 var _is_held: bool = false
 var _is_in_pot: bool = false
 
@@ -25,6 +26,7 @@ func _ready() -> void:
 	_default_collision_mask = collision_mask
 	_default_gravity_scale = gravity_scale
 	_default_can_sleep = can_sleep
+	_default_freeze = freeze
 
 	var material := sprite_3d.material_override as ShaderMaterial
 	if material != null:
@@ -45,6 +47,7 @@ func is_held() -> bool:
 
 func set_in_pot(value: bool) -> void:
 	_is_in_pot = value
+	_update_pickup_group()
 	_refresh_physics_state()
 
 
@@ -100,6 +103,7 @@ func _refresh_physics_state() -> void:
 		gravity_scale = 0.0
 		can_sleep = true
 		sleeping = true
+		freeze = true
 		collision_layer = 0
 		collision_mask = 0
 		collision_shape_3d.disabled = true
@@ -107,11 +111,21 @@ func _refresh_physics_state() -> void:
 
 	gravity_scale = _default_gravity_scale
 	can_sleep = _default_can_sleep
+	freeze = _default_freeze
 	collision_layer = _default_collision_layer
 	collision_mask = _default_collision_mask
 	collision_shape_3d.disabled = false
 	sleeping = false
 	sprite_3d.position = Vector3.ZERO
+
+
+func _update_pickup_group() -> void:
+	if _is_in_pot:
+		remove_from_group("pickup")
+		return
+
+	if not is_in_group("pickup"):
+		add_to_group("pickup")
 
 
 func _apply_sprite_texture() -> void:

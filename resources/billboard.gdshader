@@ -15,6 +15,12 @@ uniform float wobble_speed : hint_range(0.0, 10.0) = 2.0;
 uniform float uv_wobble_amount : hint_range(0.0, 0.03) = 0.01;
 uniform float uv_wobble_speed : hint_range(0.0, 10.0) = 2.6;
 
+// Squash / stretch (animated jello effect).
+// Both default to 0, so disabled unless you turn them up.
+uniform float squash_x : hint_range(0.0, 0.95) = 0.0;
+uniform float squash_y : hint_range(0.0, 0.95) = 0.0;
+uniform float squash_speed : hint_range(0.0, 10.0) = 2.2;
+
 // How much the middle stays stable compared to the edges.
 // Lower = whole card wiggles more. Higher = edges/corners do most of the wobbling.
 uniform float center_rigidity : hint_range(0.0, 1.0) = 0.75;
@@ -45,6 +51,23 @@ void vertex() {
 	// Stronger wobble at the outer edges / corners, less in the center.
 	float corner_dist = clamp(length(corner) / 1.41421356, 0.0, 1.0);
 	float wobble_mask = mix(center_rigidity, 1.0, smoothstep(0.1, 1.0, corner_dist));
+
+	// -----------------------------
+	// Squash / stretch jello motion
+	// -----------------------------
+	// Uses stepped time too, so it keeps the same sketchy/chunky feel.
+	float sq_t = stepped_time(squash_speed);
+
+	// Two slightly different wave patterns so it feels alive instead of robotic.
+	float x_push = sin(sq_t * 1.0);
+	float y_push = sin(sq_t * 1.27 + 1.57079632679);
+
+	// Each axis pushes against the opposite axis so it behaves like squash/stretch.
+	// If X widens, Y compresses. If Y rises, X compresses.
+	float sx = (1.0 + squash_x * x_push) / max(0.001, 1.0 + squash_y * y_push);
+	float sy = (1.0 + squash_y * y_push) / max(0.001, 1.0 + squash_x * x_push);
+
+	local_offset *= vec2(sx, sy);
 
 	// Quantized time: updates every step_time seconds.
 	float t = stepped_time(wobble_speed);

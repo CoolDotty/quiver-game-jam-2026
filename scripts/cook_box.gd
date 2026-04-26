@@ -29,8 +29,9 @@ func _take_item(item: RigidBody3D) -> void:
 	current_item = item
 	current_state = State.COOKING
 	timer.wait_time = _get_cook_time(item)
-	
+
 	item.remove_from_group("pickup")
+	Global.cooking_item_consumed.emit(self, item)
 	item.set_deferred("freeze", true)
 	item.call_deferred("reparent", self)
 	call_deferred("_deferred_position_item", item)

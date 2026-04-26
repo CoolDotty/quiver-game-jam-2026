@@ -142,9 +142,10 @@ func _try_pick_up_from_range() -> void:
 	if _held_item != null and is_instance_valid(_held_item):
 		return
 
+	_prune_pickups_in_range()
+
 	for pickup in _pickups_in_range:
-		if is_instance_valid(pickup):
-			_try_pick_up(pickup)
+		if _try_pick_up(pickup):
 			return
 
 
@@ -178,28 +179,27 @@ func _on_cooking_pot_item_inserted(_pot: Node, item: RigidBody3D) -> void:
 	if item != _held_item:
 		return
 
-	_held_item = null
-	_holder_velocity = Vector3.ZERO
+	_clear_held_item(item)
 
 
-func _try_pick_up(body: Node) -> void:
+func _try_pick_up(body: Node) -> bool:
 	var pickup: RigidBody3D = body as RigidBody3D
 	if pickup == null:
-		return
+		return false
 
 	if _held_item != null:
 		if is_instance_valid(_held_item):
-			return
+			return false
 		_held_item = null
 
 	if not pickup.is_in_group("pickup"):
-		return
+		return false
 
 	if pickup.has_method("is_held") and pickup.call("is_held"):
-		return
+		return false
 
 	if pickup.has_method("is_in_pot") and pickup.call("is_in_pot"):
-		return
+		return false
 
 	held_item_holder.global_transform = holding_right.global_transform
 	pickup.reparent(held_item_holder, true)
@@ -208,28 +208,75 @@ func _try_pick_up(body: Node) -> void:
 	if pickup.has_method("set_held"):
 		pickup.call("set_held", true)
 
-
-	_held_item = pickup
-	
-	var scene_path = _held_item.scene_file_path
-	if scene_path == "res://scenes/items/krab.tscn":
-		audio_manager.play_sound("Audio3D_pickup_crab")
-	elif scene_path == "res://scenes/items/coconut.tscn":
-		audio_manager.play_sound("Audio3D_pickup_coconut")
-	elif scene_path == "res://scenes/items/baby_mermaid.tscn":
-		audio_manager.play_sound("Audio3D_pickup_baby")
-	elif scene_path == "res://scenes/items/urchin.tscn":
-		audio_manager.play_sound("Audio3D_pickup_urchin")
-			
+	_set_held_item(pickup)
 	_last_holder_position = held_item_holder.global_position
 	_holder_velocity = Vector3.ZERO
 	_pickups_in_range.erase(pickup)
-	if not pickup.tree_exited.is_connected(_on_held_item_tree_exited):
-		pickup.tree_exited.connect(_on_held_item_tree_exited)
+	return true
 
 
-func _on_held_item_tree_exited() -> void:
+func _set_held_item(item: RigidBody3D) -> void:
+	if item == _held_item:
+		return
+
+	_clear_held_item(_held_item)
+	_held_item = item
+
+	if _held_item == null:
+		_holder_velocity = Vector3.ZERO
+		return
+
+	var exit_callable := _get_held_item_tree_exited_callable(_held_item)
+	if not _held_item.tree_exited.is_connected(exit_callable):
+		_held_item.tree_exited.connect(exit_callable)
+
+
+func _clear_held_item(expected_item: RigidBody3D = null) -> void:
+	if expected_item != null and expected_item != _held_item:
+		return
+
+	if _held_item != null and is_instance_valid(_held_item):
+		var exit_callable := _get_held_item_tree_exited_callable(_held_item)
+		if _held_item.tree_exited.is_connected(exit_callable):
+			_held_item.tree_exited.disconnect(exit_callable)
+
 	_held_item = null
+	_holder_velocity = Vector3.ZERO
+
+
+func _on_held_item_tree_exited(exiting_item: Node) -> void:
+	if exiting_item != _held_item:
+		return
+
+	_held_item = null
+	_holder_velocity = Vector3.ZERO
+
+
+func _get_held_item_tree_exited_callable(item: RigidBody3D) -> Callable:
+	return Callable(self, "_on_held_item_tree_exited").bind(item)
+
+
+func _prune_pickups_in_range() -> void:
+	for index in range(_pickups_in_range.size() - 1, -1, -1):
+		var pickup: RigidBody3D = _pickups_in_range[index]
+		if not _is_valid_pickup_candidate(pickup):
+			_pickups_in_range.remove_at(index)
+
+
+func _is_valid_pickup_candidate(pickup: RigidBody3D) -> bool:
+	if pickup == null or not is_instance_valid(pickup):
+		return false
+
+	if not pickup.is_in_group("pickup"):
+		return false
+
+	if pickup.has_method("is_held") and pickup.call("is_held"):
+		return false
+
+	if pickup.has_method("is_in_pot") and pickup.call("is_in_pot"):
+		return false
+
+	return true
 
 
 func _eject_held_item() -> void:
@@ -237,12 +284,12 @@ func _eject_held_item() -> void:
 		return
 
 	if not is_instance_valid(_held_item):
-		_held_item = null
+		_clear_held_item()
 		return
 
 	var item: RigidBody3D = _held_item
-	_held_item = null
 	var launch_velocity: Vector3 = _holder_velocity * EJECT_VELOCITY_SCALE
+	_clear_held_item(item)
 	launch_velocity.y = maxf(launch_velocity.y, -0.35)
 
 	var world_root: Node = get_tree().current_scene

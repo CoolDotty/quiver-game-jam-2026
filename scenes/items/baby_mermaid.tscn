@@ -24,7 +24,7 @@ shader_parameter/center_rigidity = 0.75
 script = ExtResource("1_item")
 item_name = "Baby mermaid"
 sprite_texture = ExtResource("3_texture")
-cook_time = 3.0
+cook_time = 30.0
 cooks_into = ExtResource("4_cooked")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=578149209]

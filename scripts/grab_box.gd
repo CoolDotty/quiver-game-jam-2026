@@ -27,6 +27,8 @@ func _ready() -> void:
 	timer.timeout.connect(_on_timer_timeout)
 
 	_rng.randomize()
+	if not Global.cooking_item_consumed.is_connected(_on_cooking_item_consumed):
+		Global.cooking_item_consumed.connect(_on_cooking_item_consumed)
 	_sync_spawn_timer()
 
 
@@ -128,3 +130,13 @@ func _sync_spawn_timer() -> void:
 
 	if timer.is_stopped():
 		timer.start()
+
+
+func _on_cooking_item_consumed(_source: Node, item: RigidBody3D) -> void:
+	if item == null or not is_instance_valid(item):
+		return
+
+	if not item.is_in_group(_spawn_group):
+		return
+
+	_sync_spawn_timer()

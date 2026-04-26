@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://ckhahx33yngsy"]
 
+[ext_resource type="Script" path="res://scripts/starter_3d.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://5xcj85j1ctpe" path="res://assets/placeholders/DevTextures/Dark/texture_04.png" id="1_gsx76"]
 [ext_resource type="Texture2D" uid="uid://cihrrs457d48u" path="res://assets/Art/Backgrounds/Main_Background.jpg" id="2_4xkce"]
 [ext_resource type="Shader" uid="uid://b6r1rfexjtmk0" path="res://resources/beach.gdshader" id="2_5chnm"]
@@ -15,6 +16,11 @@
 [ext_resource type="PackedScene" path="res://scenes/baby_mermaid_item_pile_spawner.tscn" id="11_w266b"]
 [ext_resource type="PackedScene" path="res://scenes/krab_item_pile_spawner.tscn" id="12_0onai"]
 [ext_resource type="PackedScene" path="res://scenes/urchin_item_pile_spawner.tscn" id="13_3nobw"]
+[ext_resource type="PackedScene" uid="uid://by7tr4stivq8q" path="res://scenes/octobussy.tscn" id="5_octobussy"]
+[ext_resource type="PackedScene" uid="uid://dt2m1osxcfcry" path="res://scenes/coconut_item_pile_spawner.tscn" id="10_7oiso"]
+[ext_resource type="PackedScene" uid="uid://cbd32f1bc1uwj" path="res://scenes/baby_mermaid_item_pile_spawner.tscn" id="11_w266b"]
+[ext_resource type="PackedScene" uid="uid://dynoodpdky3ky" path="res://scenes/krab_item_pile_spawner.tscn" id="12_0onai"]
+[ext_resource type="PackedScene" uid="uid://cx7puiu50rrwr" path="res://scenes/urchin_item_pile_spawner.tscn" id="13_3nobw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uxg2d"]
 render_priority = 0
@@ -74,7 +80,14 @@ uv1_scale = Vector3(10, 10, 10)
 [sub_resource type="PlaneMesh" id="2_floor_mesh"]
 size = Vector2(200, 200)
 
+[sub_resource type="BoxShape3D" id="4_wall_vertical_shape"]
+size = Vector3(2, 20, 44)
+
+[sub_resource type="BoxShape3D" id="5_wall_horizontal_shape"]
+size = Vector3(50, 20, 2)
+
 [node name="Starter3D" type="Node3D" unique_id=173918023]
+script = ExtResource("1_script")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=878903255]
 transform = Transform3D(1, 0, 0, 0, 0.80901706, 0.58778524, 0, -0.58778524, 0.80901706, -7.450581e-09, 30.995628, 35.03114)
@@ -113,57 +126,49 @@ material_override = SubResource("1_floor_material")
 mesh = SubResource("2_floor_mesh")
 
 [node name="Wall_Left" type="StaticBody3D" parent="." unique_id=774286439]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.383427, -0.1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 10, 0)
 physics_material_override = SubResource("PhysicsMaterial_4uxoh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall_Left" unique_id=1786491811]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -122.5801, 86.726295, 0)
-shape = SubResource("3_floor_shape")
+shape = SubResource("4_wall_vertical_shape")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wall_Left" unique_id=956988702]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 15.995941, 86.726295, 0)
 visible = false
 material_override = SubResource("1_floor_material")
 mesh = SubResource("2_floor_mesh")
 
 [node name="Wall_Right" type="StaticBody3D" parent="." unique_id=2071445436]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 247.58562, -0.1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 10, 0)
 physics_material_override = SubResource("PhysicsMaterial_4uxoh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall_Right" unique_id=1834136644]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -122.5801, 86.726295, 0)
-shape = SubResource("3_floor_shape")
+shape = SubResource("4_wall_vertical_shape")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wall_Right" unique_id=144803807]
-transform = Transform3D(4.371139e-08, -1, -8.742278e-08, -1, -4.371139e-08, 0, -3.821371e-15, 8.742278e-08, -1, -224.15417, 86.726295, 0)
 visible = false
 material_override = SubResource("1_floor_material")
 mesh = SubResource("2_floor_mesh")
 
 [node name="Wall_Bottom" type="StaticBody3D" parent="." unique_id=2056833100]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.357887, -0.1, 135.48076)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 20)
 physics_material_override = SubResource("PhysicsMaterial_4uxoh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall_Bottom" unique_id=1564923097]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -122.5801, 86.726295, 0)
-shape = SubResource("3_floor_shape")
+shape = SubResource("5_wall_horizontal_shape")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wall_Bottom" unique_id=1476827963]
-transform = Transform3D(4.371139e-08, -1, -8.742278e-08, -1, -4.371139e-08, 0, -3.821371e-15, 8.742278e-08, -1, -222.54541, 86.726295, 0)
 visible = false
 material_override = SubResource("1_floor_material")
 mesh = SubResource("2_floor_mesh")
 
 [node name="Wall_Top" type="StaticBody3D" parent="." unique_id=1130664870]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.176094, -0.1, -168.22466)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -20)
 physics_material_override = SubResource("PhysicsMaterial_4uxoh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall_Top" unique_id=1813565407]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -122.5801, 86.726295, 0)
-shape = SubResource("3_floor_shape")
+shape = SubResource("5_wall_horizontal_shape")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wall_Top" unique_id=453990045]
-transform = Transform3D(1.9106855e-15, -4.371139e-08, -1, -1, -4.371139e-08, 0, -4.371139e-08, 1, -4.371139e-08, -122.07638, 86.726295, 99.982735)
 visible = false
 material_override = SubResource("1_floor_material")
 mesh = SubResource("2_floor_mesh")
@@ -174,14 +179,30 @@ transform = Transform3D(-0.024815917, 0.999692, 0, -0.999692, -0.024815917, 0, 0
 [node name="CookingPot" parent="." unique_id=1158294601 instance=ExtResource("3_pot")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.498369, 0.5, -9.401392)
 
+[node name="Octobussy" parent="." unique_id=21931450 instance=ExtResource("5_octobussy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0020999908, 3.694951, -19.98154)
+
 [node name="CoconutItemPileSpawner" parent="." unique_id=1311437829 instance=ExtResource("10_7oiso")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.952097, 7.8540945, -14.238923)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.699636, 7.8540945, -14.238923)
 
 [node name="BabyMermaidItemPileSpawner" parent="." unique_id=1578946804 instance=ExtResource("11_w266b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.163082, 9.944586, -12.963236)
 
 [node name="KrabItemPileSpawner" parent="." unique_id=1157152294 instance=ExtResource("12_0onai")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.05818, 6.9662113, 4.8869133)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.889149, 6.9662113, 4.8869133)
 
 [node name="UrchinItemPileSpawner" parent="." unique_id=20315944 instance=ExtResource("13_3nobw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.844056, 8.628871, 3.995201)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.054876, 8.628871, 3.995201)
+
+[node name="FadeLayer" type="CanvasLayer" parent="."]
+layer = 200
+
+[node name="FadeRect" type="ColorRect" parent="FadeLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+offset_right = 1477.0
+offset_bottom = 789.0
+color = Color(0, 0, 0, 0)
