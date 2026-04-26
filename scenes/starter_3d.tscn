@@ -2,11 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://blk0xu2m2nycq" path="res://scenes/item.tscn" id="1_2bmlf"]
 [ext_resource type="Texture2D" uid="uid://5xcj85j1ctpe" path="res://assets/placeholders/DevTextures/Dark/texture_04.png" id="1_gsx76"]
-[ext_resource type="Resource" uid="uid://cw7woat4i8pdf" path="res://resources/pineapple.tres" id="2_qr6qn"]
-[ext_resource type="Texture2D" uid="uid://cjfdvxd3gy4sj" path="res://assets/placeholders/head.png" id="3_4uxoh"]
-[ext_resource type="PackedScene" uid="uid://b1x5f28e07qlr" path="res://scenes/mermaid.tscn" id="4_4xkce"]
+[ext_resource type="PackedScene" uid="uid://cjsufkx45xq8g" path="res://scenes/mermaid.tscn" id="4_4xkce"]
 [ext_resource type="Texture2D" uid="uid://bfuyklsdknywe" path="res://assets/BG/BG_img.jpg" id="7_fmo7n"]
-[ext_resource type="Script" uid="uid://3qx7s4wsbllh" path="res://resources/item_data.gd" id="18_8jr5k"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4uxoh"]
 rough = true
@@ -58,11 +55,3 @@ billboard = 1
 fixed_size = true
 texture_filter = 0
 texture = ExtResource("7_fmo7n")
-
-[node name="item_grab_box" parent="." unique_id=161706655 instance=ExtResource("8_uxg2d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 5, -13)
-item_scene = ExtResource("1_2bmlf")
-item_data = ExtResource("2_qr6qn")
-
-[node name="CookBox" parent="." unique_id=1890135954 instance=ExtResource("7_5chnm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.733517, 0.5, -7.238412)
