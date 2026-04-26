@@ -74,7 +74,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 		var height_threshold = 0.5
 		var propulsion_mult = 1.5
 		if head.global_position.y > height_threshold and tail.global_position.y > height_threshold:
-			propulsion_mult = 2.5 # Significant bonus for "Aerial Slam"
+			propulsion_mult = 1.0 # Significant bonus for "Aerial Slam"
 		
 		# Slam tail down and slightly back to create a kick
 		var slam_dir = (Vector3.DOWN * 0.7 + -real_body_axis * 0.3).normalized()
