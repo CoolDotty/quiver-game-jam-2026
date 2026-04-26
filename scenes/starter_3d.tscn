@@ -1,9 +1,11 @@
-[gd_scene format=3 uid="uid://ldp8f4crpuj5"]
+[gd_scene format=3 uid="uid://ckhahx33yngsy"]
 
-[ext_resource type="PackedScene" path="res://scenes/items/coconut.tscn" id="1_2bmlf"]
+[ext_resource type="PackedScene" uid="uid://b1cywel308lko" path="res://scenes/items/coconut.tscn" id="1_2bmlf"]
 [ext_resource type="Texture2D" uid="uid://5xcj85j1ctpe" path="res://assets/placeholders/DevTextures/Dark/texture_04.png" id="1_gsx76"]
 [ext_resource type="PackedScene" uid="uid://cjsufkx45xq8g" path="res://scenes/mermaid.tscn" id="4_4xkce"]
 [ext_resource type="PackedScene" path="res://scenes/items/krab.tscn" id="5_4xkce"]
+[ext_resource type="PackedScene" uid="uid://dboo86qfbq60c" path="res://scenes/item_grab_box.tscn" id="6_fmo7n"]
+[ext_resource type="PackedScene" uid="uid://blk0xu2m2nycq" path="res://scenes/item.tscn" id="7_5chnm"]
 [ext_resource type="Texture2D" uid="uid://bfuyklsdknywe" path="res://assets/BG/BG_img.jpg" id="7_fmo7n"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4uxoh"]
@@ -61,3 +63,7 @@ transform = Transform3D(-0.024815917, 0.999692, 0, -0.999692, -0.024815917, 0, 0
 
 [node name="Krab" parent="." unique_id=746354439 instance=ExtResource("5_4xkce")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.44098508, 0)
+
+[node name="item_grab_box" parent="." unique_id=161706655 instance=ExtResource("6_fmo7n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5454025, 5.275485, -16.349789)
+item_scene = ExtResource("7_5chnm")
