@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://qq4fwum0xhj3"]
+
+[ext_resource type="Script" uid="uid://63cvs05pxywn" path="res://scripts/cooking_pot.gd" id="1_script"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pot"]
+size = Vector3(10, 10, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pot"]
+
+[node name="CookingPot" type="Node3D" unique_id=1931727583]
+script = ExtResource("1_script")
+
+[node name="ContentsRoot" type="Node3D" parent="." unique_id=1560287994]
+
+[node name="ServeAnchor" type="Marker3D" parent="." unique_id=677537113]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, 0)
+
+[node name="InteractionArea" type="Area3D" parent="." unique_id=699475372]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea" unique_id=383169172]
+shape = SubResource("BoxShape3D_pot")
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1837893995]
+mesh = SubResource("BoxMesh_pot")

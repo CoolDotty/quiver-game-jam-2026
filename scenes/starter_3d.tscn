@@ -5,9 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://cihrrs457d48u" path="res://assets/Art/Backgrounds/Main_Background.jpg" id="2_4xkce"]
 [ext_resource type="Shader" uid="uid://b6r1rfexjtmk0" path="res://resources/beach.gdshader" id="2_5chnm"]
 [ext_resource type="PackedScene" uid="uid://bhqhibm1a6q3y" path="res://scenes/items/baby_mermaid.tscn" id="3_fmo7n"]
+[ext_resource type="PackedScene" uid="uid://qq4fwum0xhj3" path="res://scenes/cooking_pot.tscn" id="3_pot"]
 [ext_resource type="PackedScene" uid="uid://cjsufkx45xq8g" path="res://scenes/mermaid.tscn" id="4_4xkce"]
 [ext_resource type="PackedScene" uid="uid://b8pvd7y2yw3yk" path="res://scenes/items/krab.tscn" id="5_4xkce"]
 [ext_resource type="PackedScene" uid="uid://x14dhywp2jgt" path="res://scenes/items/urchin.tscn" id="7_5chnm"]
+[ext_resource type="PackedScene" uid="uid://dt2m1osxcfcry" path="res://scenes/coconut_item_pile_spawner.tscn" id="10_7oiso"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uxg2d"]
 render_priority = 0
@@ -82,3 +84,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.44098508, 0)
 
 [node name="Urchin" parent="." unique_id=2114937 instance=ExtResource("7_5chnm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.204419, 1.599999, 1.555542)
+
+[node name="CookingPot" parent="." unique_id=1158294601 instance=ExtResource("3_pot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.498369, 0.5, -9.401392)
+
+[node name="CoconutItemPileSpawner" parent="." unique_id=1311437829 instance=ExtResource("10_7oiso")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.952097, 13.766539, -2.4784107)

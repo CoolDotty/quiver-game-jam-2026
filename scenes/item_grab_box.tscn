@@ -7,7 +7,7 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jqsf7"]
 
-[node name="item_grab_box" type="StaticBody3D" unique_id=161706655]
+[node name="ItemPileSpawner" type="StaticBody3D" unique_id=161706655]
 script = ExtResource("1_mejj2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1455046784]
@@ -24,5 +24,6 @@ shape = SubResource("BoxShape3D_jqsf7")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=240653524]
 texture = ExtResource("2_04kh8")
+billboard = 1
 
 [node name="Timer" type="Timer" parent="." unique_id=952765237]

@@ -1,0 +1,31 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/grab_box.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/food_source/palm_tree.png" id="2_texture"]
+[ext_resource type="PackedScene" path="res://scenes/items/baby_mermaid.tscn" id="3_item_scene"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_root"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_display"]
+
+[node name="BabyMermaidItemPileSpawner" type="StaticBody3D"]
+script = ExtResource("1_script")
+item_scene = ExtResource("3_item_scene")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_root")
+
+[node name="DisplayArea" type="Area3D" parent="."]
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, -1, 1)
+
+[node name="SpawnPoint" type="Marker3D" parent="DisplayArea"]
+transform = Transform3D(0.66666675, 0, 0, 0, 0.66666675, 0, 0, 0, 0.66666675, 0, 0.015785784, 0.034546584)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DisplayArea"]
+shape = SubResource("BoxShape3D_display")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = ExtResource("2_texture")
+billboard = 1
+
+[node name="Timer" type="Timer" parent="."]

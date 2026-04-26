@@ -16,6 +16,8 @@ var _default_collision_layer: int
 var _default_collision_mask: int
 var _default_gravity_scale: float
 var _default_can_sleep: bool
+var _is_held: bool = false
+var _is_in_pot: bool = false
 
 
 func _ready() -> void:
@@ -32,25 +34,26 @@ func _ready() -> void:
 	_configure_shadow_sprite()
 
 
-func set_held(is_held: bool) -> void:
-	if is_held:
-		linear_velocity = Vector3.ZERO
-		angular_velocity = Vector3.ZERO
-		gravity_scale = 0.0
-		can_sleep = true
-		sleeping = true
-		collision_layer = 0
-		collision_mask = 0
-		collision_shape_3d.disabled = true
-		return
+func set_held(value: bool) -> void:
+	_is_held = value
+	_refresh_physics_state()
 
-	gravity_scale = _default_gravity_scale
-	can_sleep = _default_can_sleep
-	collision_layer = _default_collision_layer
-	collision_mask = _default_collision_mask
-	collision_shape_3d.disabled = false
-	sleeping = false
-	sprite_3d.position = Vector3.ZERO
+
+func is_held() -> bool:
+	return _is_held
+
+
+func set_in_pot(value: bool) -> void:
+	_is_in_pot = value
+	_refresh_physics_state()
+
+
+func is_in_pot() -> bool:
+	return _is_in_pot
+
+
+func is_cookable() -> bool:
+	return cooks_into != null
 
 
 func get_item_name() -> String:
@@ -88,6 +91,27 @@ func set_burns_into(value: PackedScene) -> void:
 
 func set_sprite_offset(_offset: Vector2) -> void:
 	sprite_3d.position = Vector3(_offset.x * 0.001, 0.0, 0.0)
+
+
+func _refresh_physics_state() -> void:
+	if _is_held or _is_in_pot:
+		linear_velocity = Vector3.ZERO
+		angular_velocity = Vector3.ZERO
+		gravity_scale = 0.0
+		can_sleep = true
+		sleeping = true
+		collision_layer = 0
+		collision_mask = 0
+		collision_shape_3d.disabled = true
+		return
+
+	gravity_scale = _default_gravity_scale
+	can_sleep = _default_can_sleep
+	collision_layer = _default_collision_layer
+	collision_mask = _default_collision_mask
+	collision_shape_3d.disabled = false
+	sleeping = false
+	sprite_3d.position = Vector3.ZERO
 
 
 func _apply_sprite_texture() -> void:

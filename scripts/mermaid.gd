@@ -46,6 +46,7 @@ func _ready() -> void:
 
 	grab_range_head.body_entered.connect(_on_grab_range_head_body_entered)
 	grab_range_head.body_exited.connect(_on_grab_range_head_body_exited)
+	Global.cooking_pot_item_inserted.connect(_on_cooking_pot_item_inserted)
 	_last_holder_position = held_item_holder.global_position
 
 
@@ -141,10 +142,36 @@ func _try_pick_up_from_range() -> void:
 
 func _interact() -> void:
 	if _held_item != null and is_instance_valid(_held_item):
+		if _try_interact_with_pot():
+			return
 		_eject_held_item()
 		return
 
+	if _try_interact_with_pot():
+		return
+
 	_try_pick_up_from_range()
+
+
+func _try_interact_with_pot() -> bool:
+	var pots := get_tree().get_nodes_in_group("cooking_pot")
+	for node in pots:
+		var pot := node as CookingPot
+		if pot == null:
+			continue
+
+		if pot.try_interact(_held_item, held_item_holder.global_position):
+			return true
+
+	return false
+
+
+func _on_cooking_pot_item_inserted(_pot: Node, item: RigidBody3D) -> void:
+	if item != _held_item:
+		return
+
+	_held_item = null
+	_holder_velocity = Vector3.ZERO
 
 
 func _try_pick_up(body: Node) -> void:
@@ -160,7 +187,10 @@ func _try_pick_up(body: Node) -> void:
 	if not pickup.is_in_group("pickup"):
 		return
 
-	if pickup.sleeping and pickup.collision_layer == 0 and pickup.collision_mask == 0:
+	if pickup.has_method("is_held") and pickup.call("is_held"):
+		return
+
+	if pickup.has_method("is_in_pot") and pickup.call("is_in_pot"):
 		return
 
 	held_item_holder.global_transform = holding_right.global_transform

@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dt2m1osxcfcry"]
+
+[ext_resource type="Script" uid="uid://bg1ur3lu4avnc" path="res://scripts/grab_box.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://drblvbo8vddin" path="res://assets/food_source/palm_tree.png" id="2_texture"]
+[ext_resource type="PackedScene" uid="uid://b1cywel308lko" path="res://scenes/items/coconut.tscn" id="3_item_scene"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_root"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_display"]
+
+[node name="CoconutItemPileSpawner" type="StaticBody3D" unique_id=1334314431]
+script = ExtResource("1_script")
+item_scene = ExtResource("3_item_scene")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=674452200]
+shape = SubResource("BoxShape3D_root")
+
+[node name="DisplayArea" type="Area3D" parent="." unique_id=1851917528]
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, -1, 1)
+
+[node name="SpawnPoint" type="Marker3D" parent="DisplayArea" unique_id=995796733]
+transform = Transform3D(0.66666675, 0, 0, 0, 0.66666675, 0, 0, 0, 0.66666675, 0, 0.015785784, 0.034546584)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DisplayArea" unique_id=1770411803]
+shape = SubResource("BoxShape3D_display")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=575818681]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+billboard = 1
+texture = ExtResource("2_texture")
+
+[node name="Timer" type="Timer" parent="." unique_id=601127516]

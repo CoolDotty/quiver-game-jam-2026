@@ -13,13 +13,20 @@
 render_priority = 0
 shader = ExtResource("2_shader")
 shader_parameter/billboard_texture = ExtResource("3_texture")
+shader_parameter/blur_amount = 0.0
+shader_parameter/step_time = 0.25
+shader_parameter/wobble_amount = 0.03
+shader_parameter/wobble_speed = 2.0
+shader_parameter/uv_wobble_amount = 0.01
+shader_parameter/uv_wobble_speed = 2.6
+shader_parameter/center_rigidity = 0.75
 
 [node name="BabyMermaid" type="RigidBody3D" unique_id=522522784 groups=["pickup"]]
 script = ExtResource("1_item")
 item_name = "Baby mermaid"
 sprite_texture = ExtResource("3_texture")
-cooks_into = ExtResource("4_cooked")
-burns_into = ExtResource("5_burned")
+cooks_into = ExtResource("5_burned")
+burns_into = ExtResource("4_cooked")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=578149209]
 shape = SubResource("BoxShape3D_item")
