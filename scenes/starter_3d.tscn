@@ -1,18 +1,14 @@
 [gd_scene format=3 uid="uid://ckhahx33yngsy"]
 
 [ext_resource type="Texture2D" uid="uid://5xcj85j1ctpe" path="res://assets/placeholders/DevTextures/Dark/texture_04.png" id="1_gsx76"]
-[ext_resource type="Script" path="res://scripts/starter_3d.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://co2gqo24h2xo5" path="res://scripts/starter_3d.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://cihrrs457d48u" path="res://assets/Art/Backgrounds/Main_Background.jpg" id="2_4xkce"]
 [ext_resource type="Shader" uid="uid://b6r1rfexjtmk0" path="res://resources/beach.gdshader" id="2_5chnm"]
-[ext_resource type="PackedScene" path="res://scenes/cooking_pot.tscn" id="3_pot"]
-[ext_resource type="AudioStream" uid="uid://dkkmfg0rwgey6" path="res://resources/Music/Game_Intro_Theme_110_HalfBarPickup.mp3" id="4_3nobw"]
+[ext_resource type="PackedScene" uid="uid://qq4fwum0xhj3" path="res://scenes/cooking_pot.tscn" id="3_pot"]
 [ext_resource type="PackedScene" uid="uid://cjsufkx45xq8g" path="res://scenes/mermaid.tscn" id="4_4xkce"]
-[ext_resource type="AudioStream" uid="uid://cpiw8qfvauy7o" path="res://resources/Music/Game_Theme_Loop_100.mp3" id="5_2bmlf"]
 [ext_resource type="PackedScene" path="res://scenes/octobussy.tscn" id="5_octobussy"]
-[ext_resource type="AudioStream" uid="uid://dn73dfqjjvgoj" path="res://resources/Music/Game_Theme_Loop_120.mp3" id="6_qr6qn"]
-[ext_resource type="AudioStream" uid="uid://bnlnbcvbhcu7o" path="res://resources/Music/Game_Theme_Loop_140.mp3" id="7_8jr5k"]
+[ext_resource type="PackedScene" uid="uid://iw7kru50e3e6" path="res://scenes/music_manager.tscn" id="5_w266b"]
 [ext_resource type="PackedScene" uid="uid://ci56d0qsgpiiy" path="res://scenes/audio.tscn" id="8_5chnm"]
-[ext_resource type="Script" uid="uid://brpnve1n4rsk3" path="res://scenes/music_manager.gd" id="8_rkah8"]
 [ext_resource type="PackedScene" path="res://scenes/coconut_item_pile_spawner.tscn" id="10_7oiso"]
 [ext_resource type="PackedScene" path="res://scenes/baby_mermaid_item_pile_spawner.tscn" id="11_w266b"]
 [ext_resource type="PackedScene" path="res://scenes/krab_item_pile_spawner.tscn" id="12_0onai"]
@@ -28,42 +24,6 @@ shader_parameter/band_size = 0.07
 shader_parameter/wave_speed = 0.9
 shader_parameter/distort_amount = 0.009
 shader_parameter/foam_boost = 0.08
-
-[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_7oiso"]
-clip_count = 4
-clip_0/name = &"Game Intro Theme 110 Half Bar Pickup"
-clip_0/stream = ExtResource("4_3nobw")
-clip_0/auto_advance = 1
-clip_0/next_clip = 0
-clip_1/name = &"Game Theme Loop 100"
-clip_1/stream = ExtResource("5_2bmlf")
-clip_1/auto_advance = 0
-clip_2/name = &"Game Theme Loop 120"
-clip_2/stream = ExtResource("6_qr6qn")
-clip_2/auto_advance = 0
-clip_3/name = &"Game Theme Loop 140"
-clip_3/stream = ExtResource("7_8jr5k")
-clip_3/auto_advance = 0
-_transitions = {
-Vector2i(1, 0): {
-"fade_beats": 1.0,
-"fade_mode": 4,
-"from_time": 2,
-"to_time": 1
-},
-Vector2i(2, 0): {
-"fade_beats": 1.0,
-"fade_mode": 4,
-"from_time": 2,
-"to_time": 1
-},
-Vector2i(3, 0): {
-"fade_beats": 1.0,
-"fade_mode": 4,
-"from_time": 2,
-"to_time": 1
-}
-}
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4uxoh"]
 rough = true
@@ -104,9 +64,7 @@ texture_filter = 0
 render_priority = -100
 texture = ExtResource("2_4xkce")
 
-[node name="MusicManager" type="AudioStreamPlayer3D" parent="Camera3D" unique_id=1792240214]
-stream = SubResource("AudioStreamInteractive_7oiso")
-script = ExtResource("8_rkah8")
+[node name="MusicManager" parent="Camera3D" unique_id=1372575430 instance=ExtResource("5_w266b")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1565072717]
 transform = Transform3D(0.81915206, -0.4055798, 0.4055798, 0, 0.70710677, 0.70710677, -0.57357645, -0.579228, 0.579228, 0, 0, 0)
@@ -202,4 +160,3 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = 1477.0
 offset_bottom = 789.0
-color = Color(1, 1, 1, 1)

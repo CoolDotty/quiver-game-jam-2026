@@ -1,6 +1,5 @@
 class_name MainMenu
 extends Node3D
-## Handles the main menu background and the white transition into gameplay.
 
 const GAMEPLAY_SCENE_PATH := "res://scenes/starter_3d.tscn"
 const MENU_FADE_DURATION := 0.5
@@ -12,10 +11,10 @@ var _is_transitioning: bool = false
 
 
 func _ready() -> void:
-	if start_button != null and not start_button.pressed.is_connected(
-			_on_start_button_pressed):
-		start_button.pressed.connect(_on_start_button_pressed)
+	MusicManager.switch_clip("Main Menu")
 
+	if start_button != null and not start_button.pressed.is_connected(_on_start_button_pressed):
+		start_button.pressed.connect(_on_start_button_pressed)
 	if fade_rect != null:
 		fade_rect.color = Color(1.0, 1.0, 1.0, 0.0)
 		fade_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -24,12 +23,11 @@ func _ready() -> void:
 func _on_start_button_pressed() -> void:
 	if _is_transitioning:
 		return
-
 	_is_transitioning = true
-
 	if start_button != null:
 		start_button.disabled = true
 
+	MusicManager.switch_clip("Game Intro Theme 110 Half Bar Pickup")
 	await _fade_to_white()
 	_switch_to_gameplay_scene()
 
@@ -37,7 +35,6 @@ func _on_start_button_pressed() -> void:
 func _fade_to_white() -> void:
 	if fade_rect == null:
 		return
-
 	var tween := create_tween()
 	tween.set_trans(Tween.TRANS_QUAD)
 	tween.set_ease(Tween.EASE_IN_OUT)
