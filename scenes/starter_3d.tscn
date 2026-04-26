@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cbd32f1bc1uwj" path="res://scenes/baby_mermaid_item_pile_spawner.tscn" id="11_w266b"]
 [ext_resource type="PackedScene" uid="uid://dynoodpdky3ky" path="res://scenes/krab_item_pile_spawner.tscn" id="12_0onai"]
 [ext_resource type="PackedScene" uid="uid://cx7puiu50rrwr" path="res://scenes/urchin_item_pile_spawner.tscn" id="13_3nobw"]
+[ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="14_pause_menu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uxg2d"]
 render_priority = 0
@@ -157,3 +158,5 @@ mouse_filter = 2
 offset_right = 1477.0
 offset_bottom = 789.0
 color = Color(1, 1, 1, 1)
+
+[node name="PauseMenu" parent="." instance=ExtResource("14_pause_menu")]

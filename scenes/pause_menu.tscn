@@ -1,0 +1,66 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/Art/Backgrounds/Pause.png" id="2_pause_title"]
+[ext_resource type="Texture2D" path="res://assets/Art/Backgrounds/Resume.png" id="3_resume_button"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+layer = 220
+script = ExtResource("1_script")
+
+[node name="Root" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+visible = false
+
+[node name="Backdrop" type="ColorRect" parent="Root"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.55)
+
+[node name="CenterContainer" type="CenterContainer" parent="Root"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuColumn" type="VBoxContainer" parent="Root/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 28
+
+[node name="PauseTitle" type="TextureButton" parent="Root/CenterContainer/MenuColumn"]
+layout_mode = 2
+mouse_filter = 2
+focus_mode = 0
+texture_normal = ExtResource("2_pause_title")
+texture_pressed = ExtResource("2_pause_title")
+texture_hover = ExtResource("2_pause_title")
+texture_focused = ExtResource("2_pause_title")
+texture_disabled = ExtResource("2_pause_title")
+
+[node name="ResumeButton" type="TextureButton" parent="Root/CenterContainer/MenuColumn"]
+layout_mode = 2
+focus_mode = 2
+texture_normal = ExtResource("3_resume_button")
+texture_pressed = ExtResource("3_resume_button")
+texture_hover = ExtResource("3_resume_button")
+texture_focused = ExtResource("3_resume_button")
+
+[node name="RestartButton" type="Button" parent="Root/CenterContainer/MenuColumn"]
+custom_minimum_size = Vector2(640, 96)
+layout_mode = 2
+focus_mode = 2
+text = "Restart"
