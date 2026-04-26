@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bwqty3kdjfkuw"]
+[gd_scene load_steps=0 format=3 uid="uid://bwqty3kdjfkuw"]
 
 [ext_resource type="Texture2D" uid="uid://bgkouysur20si" path="res://assets/placeholders/DevTextures/Orange/texture_10.png" id="1_arm_texture"]
 [ext_resource type="Script" path="res://scripts/mermaid_arms.gd" id="2_arm_script"]

@@ -67,6 +67,62 @@ visible = false
 material_override = SubResource("1_floor_material")
 mesh = SubResource("2_floor_mesh")
 
+[node name="Wall_Left" type="StaticBody3D" parent="." unique_id=774286439]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.383427, -0.1, 0)
+physics_material_override = SubResource("PhysicsMaterial_4uxoh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall_Left" unique_id=1786491811]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -122.5801, 86.726295, 0)
+shape = SubResource("3_floor_shape")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall_Left" unique_id=956988702]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 15.995941, 86.726295, 0)
+visible = false
+material_override = SubResource("1_floor_material")
+mesh = SubResource("2_floor_mesh")
+
+[node name="Wall_Right" type="StaticBody3D" parent="." unique_id=2071445436]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 247.58562, -0.1, 0)
+physics_material_override = SubResource("PhysicsMaterial_4uxoh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall_Right" unique_id=1834136644]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -122.5801, 86.726295, 0)
+shape = SubResource("3_floor_shape")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall_Right" unique_id=144803807]
+transform = Transform3D(4.371139e-08, -1, -8.742278e-08, -1, -4.371139e-08, 0, -3.821371e-15, 8.742278e-08, -1, -224.15417, 86.726295, 0)
+visible = false
+material_override = SubResource("1_floor_material")
+mesh = SubResource("2_floor_mesh")
+
+[node name="Wall_Bottom" type="StaticBody3D" parent="." unique_id=2056833100]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.357887, -0.1, 135.48076)
+physics_material_override = SubResource("PhysicsMaterial_4uxoh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall_Bottom" unique_id=1564923097]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -122.5801, 86.726295, 0)
+shape = SubResource("3_floor_shape")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall_Bottom" unique_id=1476827963]
+transform = Transform3D(4.371139e-08, -1, -8.742278e-08, -1, -4.371139e-08, 0, -3.821371e-15, 8.742278e-08, -1, -222.54541, 86.726295, 0)
+visible = false
+material_override = SubResource("1_floor_material")
+mesh = SubResource("2_floor_mesh")
+
+[node name="Wall_Top" type="StaticBody3D" parent="." unique_id=1130664870]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.176094, -0.1, -168.22466)
+physics_material_override = SubResource("PhysicsMaterial_4uxoh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall_Top" unique_id=1813565407]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -122.5801, 86.726295, 0)
+shape = SubResource("3_floor_shape")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall_Top" unique_id=453990045]
+transform = Transform3D(1.9106855e-15, -4.371139e-08, -1, -1, -4.371139e-08, 0, -4.371139e-08, 1, -4.371139e-08, -122.07638, 86.726295, 99.982735)
+visible = false
+material_override = SubResource("1_floor_material")
+mesh = SubResource("2_floor_mesh")
+
 [node name="Mermaid" parent="." unique_id=1293432093 instance=ExtResource("4_4xkce")]
 transform = Transform3D(-0.024815917, 0.999692, 0, -0.999692, -0.024815917, 0, 0, 0, 1, 0, 4.656455, -6.7339764)
 
