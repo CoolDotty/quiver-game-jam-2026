@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://bjcnlp18bfxwd"]
+[gd_scene load_steps=111 format=3 uid="uid://bjcnlp18bfxwd"]
 
 [ext_resource type="PackedScene" path="res://scenes/item.tscn" id="1_2bmlf"]
 [ext_resource type="Texture2D" uid="uid://5xcj85j1ctpe" path="res://assets/placeholders/DevTextures/Dark/texture_04.png" id="1_gsx76"]
@@ -70,6 +70,26 @@
 [ext_resource type="AudioStream" uid="uid://ofomphlobv8b" path="res://resources/A-HAPPY-VoiceLines/IDLE/Feed_me.wav" id="68_w3c0s"]
 [ext_resource type="AudioStream" uid="uid://b0jtkiexub4kw" path="res://resources/A-HAPPY-VoiceLines/IDLE/Im_a_big_hungry_monster.wav" id="69_a4vvi"]
 [ext_resource type="AudioStream" uid="uid://ckkcs7s6pdyo5" path="res://resources/A-HAPPY-VoiceLines/IDLE/Not_weird.wav" id="70_q5vgi"]
+[ext_resource type="AudioStream" uid="uid://b1yu53qxblums" path="res://resources/Food-Voices/Coconuts/Ahhhh.mp3" id="71_bf2qu"]
+[ext_resource type="AudioStream" uid="uid://bmrxxdl0qalmy" path="res://resources/Food-Voices/Coconuts/Go_shake_another_tree.mp3" id="72_6r173"]
+[ext_resource type="AudioStream" uid="uid://twpbxlub3iwv" path="res://resources/Food-Voices/Coconuts/Were_not_ready.mp3" id="73_ygdcl"]
+[ext_resource type="AudioStream" uid="uid://dach3t6mbhe1c" path="res://resources/Food-Voices/Urchin/gargle_1.mp3" id="74_s6r0y"]
+[ext_resource type="AudioStream" uid="uid://d36sq0gk3c551" path="res://resources/Food-Voices/Urchin/gargle_2.mp3" id="75_4q2bg"]
+[ext_resource type="AudioStream" uid="uid://c8pje2vur5s0x" path="res://resources/Food-Voices/Urchin/gargle_3.mp3" id="76_lumd7"]
+[ext_resource type="AudioStream" uid="uid://cgxoafdvlwskx" path="res://resources/Food-Voices/Urchin/I_think_were_poisonous.mp3" id="77_toyka"]
+[ext_resource type="AudioStream" uid="uid://cuxyso0sw7e62" path="res://resources/Food-Voices/Urchin/Woah_this_is_gonna_hurt.mp3" id="78_fcj46"]
+[ext_resource type="AudioStream" uid="uid://bcc055x3qa2d1" path="res://resources/Food-Voices/Crab/Ah_1.mp3" id="79_524bb"]
+[ext_resource type="AudioStream" uid="uid://rugcannjfb61" path="res://resources/Food-Voices/Crab/Ah_2.mp3" id="80_67a0a"]
+[ext_resource type="AudioStream" uid="uid://cpnmobmuyfbh4" path="res://resources/Food-Voices/Crab/Ah_3.mp3" id="81_nmu3p"]
+[ext_resource type="AudioStream" uid="uid://bkrfvn3attvk4" path="res://resources/Food-Voices/Crab/Im_all_claws..mp3" id="82_oey4q"]
+[ext_resource type="AudioStream" uid="uid://lxy4w7ai2thy" path="res://resources/Food-Voices/Crab/Run_away.mp3" id="83_k43bh"]
+[ext_resource type="AudioStream" uid="uid://d3ya1dm2n0o7h" path="res://resources/Mermaid-Flops/Movement/Sand_Hard_1_Squelch.mp3" id="84_fcj46"]
+[ext_resource type="AudioStream" uid="uid://cfmbqgivb2xsv" path="res://resources/Mermaid-Flops/Movement/Sand_Hard_2_Squelch.mp3" id="85_524bb"]
+[ext_resource type="AudioStream" uid="uid://c7ht1j4cor4xu" path="res://resources/Mermaid-Flops/Movement/Sand_Hard_3_Squelch.mp3" id="86_67a0a"]
+[ext_resource type="AudioStream" uid="uid://bsuykwrpp0ncr" path="res://resources/Mermaid-Flops/Movement/Sand_Soft_1_Squelch.mp3" id="87_nmu3p"]
+[ext_resource type="AudioStream" uid="uid://c6rui3trr34vt" path="res://resources/Mermaid-Flops/Movement/Sand_Soft_2_Squelch.mp3" id="88_oey4q"]
+[ext_resource type="AudioStream" uid="uid://dpwl82k08j8s3" path="res://resources/Mermaid-Flops/Movement/Sand_Soft_3_Squelch.mp3" id="89_k43bh"]
+[ext_resource type="AudioStream" uid="uid://bty6s8x8bbeku" path="res://resources/Mermaid-Flops/Movement/Sand_Loop__00_01_750.mp3" id="90_1pfdt"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4uxoh"]
 rough = true
@@ -190,6 +210,45 @@ stream_10/stream = ExtResource("29_0mgun")
 stream_11/stream = ExtResource("64_11ral")
 stream_12/stream = ExtResource("31_wu2eq")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1pfdt"]
+streams_count = 3
+stream_0/stream = ExtResource("71_bf2qu")
+stream_1/stream = ExtResource("72_6r173")
+stream_2/stream = ExtResource("73_ygdcl")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_humvb"]
+streams_count = 5
+stream_0/stream = ExtResource("74_s6r0y")
+stream_1/stream = ExtResource("75_4q2bg")
+stream_2/stream = ExtResource("76_lumd7")
+stream_3/stream = ExtResource("77_toyka")
+stream_4/stream = ExtResource("78_fcj46")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0l6x5"]
+streams_count = 5
+stream_0/stream = ExtResource("79_524bb")
+stream_1/stream = ExtResource("80_67a0a")
+stream_2/stream = ExtResource("81_nmu3p")
+stream_3/stream = ExtResource("82_oey4q")
+stream_4/stream = ExtResource("83_k43bh")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_11ral"]
+streams_count = 3
+stream_0/stream = ExtResource("84_fcj46")
+stream_1/stream = ExtResource("85_524bb")
+stream_2/stream = ExtResource("86_67a0a")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rt3x2"]
+streams_count = 3
+stream_0/stream = ExtResource("87_nmu3p")
+stream_1/stream = ExtResource("88_oey4q")
+stream_2/stream = ExtResource("89_k43bh")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hwhc8"]
+playback_mode = 1
+streams_count = 1
+stream_0/stream = ExtResource("90_1pfdt")
+
 [node name="Starter3D" type="Node3D"]
 
 [node name="Item" parent="." instance=ExtResource("1_2bmlf")]
@@ -254,3 +313,21 @@ stream = SubResource("AudioStreamRandomizer_xqevm")
 
 [node name="Audio3D_Happy_IDLE2" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_ccco1")
+
+[node name="Audio3D_food_Coconut" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_1pfdt")
+
+[node name="Audio3D_food_Urchin" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_humvb")
+
+[node name="Audio3D_food_Crab" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_0l6x5")
+
+[node name="Audio3D_MermaidTail" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_11ral")
+
+[node name="Audio3D_Mermaidhead" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_rt3x2")
+
+[node name="Audio3D_MermaidLOOP" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_hwhc8")
