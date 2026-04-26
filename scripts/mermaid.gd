@@ -1,7 +1,7 @@
 class_name Mermaid
 extends Node3D
 
-const TAIL_LIFT_FORCE = 12
+const TAIL_LIFT_FORCE = 8
 const FLOP_COOLDOWN = 0.5
 const BEND_THRESHOLD = 0.15
 
@@ -56,9 +56,9 @@ func _physics_process(_delta: float) -> void:
 	var perpendicular_dir = body_axis.cross(Vector3.UP).normalized()
 
 	if Input.is_action_pressed("roll_right"):
-		head.apply_central_force(perpendicular_dir * TAIL_LIFT_FORCE * 2.50)
+		head.apply_central_force(perpendicular_dir * TAIL_LIFT_FORCE * 2.55)
 	if Input.is_action_pressed("roll_left"):
-		head.apply_central_force(-perpendicular_dir * TAIL_LIFT_FORCE * 2.50)
+		head.apply_central_force(-perpendicular_dir * TAIL_LIFT_FORCE * 2.55)
 
 
 
@@ -77,7 +77,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 			propulsion_mult = 1.0 # Significant bonus for "Aerial Slam"
 		
 		# Slam tail down and slightly back to create a kick
-		var slam_dir = (Vector3.DOWN * 0.7 + -real_body_axis * 0.3).normalized()
+		var slam_dir = (Vector3.DOWN * .7 + -real_body_axis * 0.3).normalized()
 		tail.apply_central_impulse(slam_dir * TAIL_LIFT_FORCE)
 		
 		# Propel head forward
