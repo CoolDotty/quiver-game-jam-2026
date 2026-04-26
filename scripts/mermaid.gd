@@ -16,6 +16,7 @@ enum Facing {
 }
 
 @onready var audio_manager: AudioStreamPlayer3D = $"../Camera3D/AudioManager"
+@onready var music_manager: AudioStreamPlayer3D = $"../Camera3D/MusicManager"
 
 @onready var head: RigidBody3D = $Head
 @onready var tail: RigidBody3D = $Tail
@@ -62,6 +63,11 @@ func _physics_process(_delta: float) -> void:
 
 	if Input.is_action_pressed("roll_right"):
 		head.apply_central_force(perpendicular_dir * TAIL_LIFT_FORCE * 2.50)
+		
+		if not music_manager.playing:
+			music_manager.play()
+		music_manager.get_stream_playback().switch_to_clip_by_name("Game Theme Loop 140")
+		
 	if Input.is_action_pressed("roll_left"):
 		head.apply_central_force(-perpendicular_dir * TAIL_LIFT_FORCE * 2.50)
 
