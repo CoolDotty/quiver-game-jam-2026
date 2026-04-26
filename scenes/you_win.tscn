@@ -1,35 +1,46 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://cw4bomdbc8d7"]
 
-[ext_resource type="Script" path="res://scripts/you_win.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://kr7sa12ltaqn" path="res://scripts/you_win.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://0pmgb6743wjy" path="res://assets/Art/Backgrounds/GoodtimeSketch.png" id="2_ibln8"]
 
-[node name="YouWin" type="Control"]
+[node name="YouWin" type="Control" unique_id=420938846]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_script")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-layout_mode = 3
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1569236299]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="WinLabel" type="Label" parent="CenterContainer"]
+[node name="WinLabel" type="Label" parent="CenterContainer" unique_id=1612224419]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 96
-horizontal_alignment = 1
 text = "You Win"
+horizontal_alignment = 1
 
-[node name="Blackout" type="ColorRect" parent="."]
-layout_mode = 3
+[node name="GoodtimeSketch" type="Sprite2D" parent="." unique_id=598992133]
+position = Vector2(983, 552)
+texture = ExtResource("2_ibln8")
+
+[node name="Blackout" type="ColorRect" parent="." unique_id=1174458408]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 2
 offset_right = 1477.0
 offset_bottom = 789.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 1)

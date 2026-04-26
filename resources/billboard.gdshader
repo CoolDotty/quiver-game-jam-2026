@@ -5,7 +5,8 @@ uniform sampler2D billboard_texture : source_color, filter_linear_mipmap, repeat
 uniform float blur_amount : hint_range(0.0, 10.0) = 0.0;
 
 // Time stepping for the hand-drawn feel.
-uniform float step_time : hint_range(0.05, 1.0) = 0.25;
+// Set to 0.0 for smooth animation.
+uniform float step_time : hint_range(0.0, 1.0) = 0.25;
 
 // Vertex wobble (shape motion).
 uniform float wobble_amount : hint_range(0.0, 0.12) = 0.03;
@@ -29,6 +30,10 @@ varying vec2 v_uv;
 varying vec4 v_color;
 
 float stepped_time(float speed) {
+	if (step_time <= 0.0) {
+		return TIME * speed;
+	}
+
 	return floor(TIME / step_time) * step_time * speed;
 }
 
