@@ -64,6 +64,9 @@ func _ready() -> void:
 
 	if portrait_sprite != null:
 		_portrait_rest_position = portrait_sprite.position
+		var material := portrait_sprite.material_override as ShaderMaterial
+		if material != null:
+			portrait_sprite.material_override = material.duplicate()
 
 	if loss_fade_rect != null:
 		loss_fade_rect.color = Color(0.0, 0.0, 0.0, 0.0)
@@ -232,10 +235,10 @@ func _update_portrait_emote() -> void:
 		return
 
 	if _score_emote_override_remaining > 0.0:
-		portrait_sprite.texture = SAD_TEXTURE if _score < 0 else NEUTRAL_TEXTURE
+		_apply_portrait_texture(SAD_TEXTURE if _score < 0 else NEUTRAL_TEXTURE)
 		return
 
-	portrait_sprite.texture = _get_time_based_portrait_texture()
+	_apply_portrait_texture(_get_time_based_portrait_texture())
 
 
 func _update_loss_shake(delta: float) -> void:
@@ -337,6 +340,17 @@ func _get_time_based_portrait_texture() -> Texture2D:
 		return MIFFED_TEXTURE
 
 	return NEUTRAL_TEXTURE
+
+
+func _apply_portrait_texture(texture: Texture2D) -> void:
+	if portrait_sprite == null:
+		return
+
+	portrait_sprite.texture = texture
+
+	var material := portrait_sprite.material_override as ShaderMaterial
+	if material != null:
+		material.set_shader_parameter("billboard_texture", texture)
 
 
 func _update_recipe_label() -> void:
