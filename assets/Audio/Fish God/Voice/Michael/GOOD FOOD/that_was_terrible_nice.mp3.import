@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dgisw1uwgukxk"
+path="res://.godot/imported/that_was_terrible_nice.mp3-996e1450f2f103ec739bbcb7f57da56e.mp3str"
+
+[deps]
+
+source_file="res://assets/Audio/Fish God/Voice/Michael/GOOD FOOD/that_was_terrible_nice.mp3"
+dest_files=["res://.godot/imported/that_was_terrible_nice.mp3-996e1450f2f103ec739bbcb7f57da56e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

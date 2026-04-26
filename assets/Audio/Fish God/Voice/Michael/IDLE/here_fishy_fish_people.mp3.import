@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://lnvhy2rumbty"
+path="res://.godot/imported/here_fishy_fish_people.mp3-5646a513e8b9d0303d15f012e471269d.mp3str"
+
+[deps]
+
+source_file="res://assets/Audio/Fish God/Voice/Michael/IDLE/here_fishy_fish_people.mp3"
+dest_files=["res://.godot/imported/here_fishy_fish_people.mp3-5646a513e8b9d0303d15f012e471269d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

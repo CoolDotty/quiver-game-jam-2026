@@ -1,18 +1,10 @@
-[gd_scene format=3 uid="uid://ckhahx33yngsy"]
+[gd_scene format=3 uid="uid://ldp8f4crpuj5"]
 
-[ext_resource type="PackedScene" uid="uid://blk0xu2m2nycq" path="res://scenes/item.tscn" id="1_2bmlf"]
+[ext_resource type="PackedScene" path="res://scenes/items/coconut.tscn" id="1_2bmlf"]
 [ext_resource type="Texture2D" uid="uid://5xcj85j1ctpe" path="res://assets/placeholders/DevTextures/Dark/texture_04.png" id="1_gsx76"]
-[ext_resource type="Resource" uid="uid://cw7woat4i8pdf" path="res://resources/pineapple.tres" id="2_qr6qn"]
 [ext_resource type="PackedScene" uid="uid://cjsufkx45xq8g" path="res://scenes/mermaid.tscn" id="4_4xkce"]
-<<<<<<< Updated upstream
-[ext_resource type="PackedScene" path="res://scenes/cook_box.tscn" id="7_5chnm"]
-[ext_resource type="Texture2D" uid="uid://da7qw5dgjawjp" path="res://assets/placeholders/breach.jpg" id="7_fmo7n"]
-[ext_resource type="PackedScene" uid="uid://dboo86qfbq60c" path="res://scenes/item_grab_box.tscn" id="8_uxg2d"]
-=======
-[ext_resource type="PackedScene" uid="uid://dbfku8tcmpd7p" path="res://scenes/cook_box.tscn" id="5_btfp6"]
-[ext_resource type="PackedScene" uid="uid://dboo86qfbq60c" path="res://scenes/item_grab_box.tscn" id="6_fmo7n"]
+[ext_resource type="PackedScene" path="res://scenes/items/krab.tscn" id="5_4xkce"]
 [ext_resource type="Texture2D" uid="uid://bfuyklsdknywe" path="res://assets/BG/BG_img.jpg" id="7_fmo7n"]
->>>>>>> Stashed changes
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4uxoh"]
 rough = true
@@ -32,10 +24,21 @@ size = Vector2(200, 200)
 
 [node name="Item" parent="." unique_id=133743956 instance=ExtResource("1_2bmlf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.451978, 1.6157398, 1.6849356)
+cooks_into = null
+burns_into = null
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=878903255]
-transform = Transform3D(1, 0, 0, 0, 0.80901706, 0.58778524, 0, -0.58778524, 0.80901706, -7.450581e-09, 5.410118, 8.745848)
+transform = Transform3D(1, 0, 0, 0, 0.80901706, 0.58778524, 0, -0.58778524, 0.80901706, -7.450581e-09, 30.995628, 35.03114)
+projection = 1
 current = true
+size = 25.0
+
+[node name="background" type="Sprite3D" parent="Camera3D" unique_id=302842814]
+transform = Transform3D(5, 0, 0, 0, 4.045085, -2.938926, 0, 2.938926, 4.045085, 7.450581e-09, -0.035167336, -113.5824)
+billboard = 1
+texture_filter = 0
+render_priority = -10
+texture = ExtResource("7_fmo7n")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1565072717]
 transform = Transform3D(0.81915206, -0.4055798, 0.4055798, 0, 0.70710677, 0.70710677, -0.57357645, -0.579228, 0.579228, 0, 0, 0)
@@ -54,27 +57,7 @@ material_override = SubResource("1_floor_material")
 mesh = SubResource("2_floor_mesh")
 
 [node name="Mermaid" parent="." unique_id=1293432093 instance=ExtResource("4_4xkce")]
-transform = Transform3D(-0.024815917, 0.999692, 0, -0.999692, -0.024815917, 0, 0, 0, 1, 0, 4.656455, -2.0975704)
+transform = Transform3D(-0.024815917, 0.999692, 0, -0.999692, -0.024815917, 0, 0, 0, 1, 0, 4.656455, -6.7339764)
 
-[node name="background" type="Sprite3D" parent="." unique_id=302842814]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -13.00165, -56.099434)
-billboard = 1
-texture = ExtResource("7_fmo7n")
-
-<<<<<<< Updated upstream
-[node name="item_grab_box" parent="." unique_id=161706655 instance=ExtResource("8_uxg2d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 5, -13)
-item_scene = ExtResource("1_2bmlf")
-item_data = ExtResource("2_qr6qn")
-
-[node name="CookBox" parent="." unique_id=1890135954 instance=ExtResource("7_5chnm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.733517, 0.5, -7.238412)
-=======
-[node name="CookBox" parent="." unique_id=1912571744 instance=ExtResource("5_btfp6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6377497, 0.50000095, -6.615059)
-
-[node name="item_grab_box" parent="." unique_id=161706655 instance=ExtResource("6_fmo7n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.573801, 5.12, -5.4462786)
-item_scene = ExtResource("1_2bmlf")
-item_data = ExtResource("2_qr6qn")
->>>>>>> Stashed changes
+[node name="Krab" parent="." unique_id=746354439 instance=ExtResource("5_4xkce")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.44098508, 0)

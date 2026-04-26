@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dauu1uwfivrdb"
+path="res://.godot/imported/please_can_you_add_some_flavour_please.mp3-5968e40b2bd55717b5523efba76f2491.mp3str"
+
+[deps]
+
+source_file="res://assets/Audio/Fish God/Voice/Michael/IDLE/please_can_you_add_some_flavour_please.mp3"
+dest_files=["res://.godot/imported/please_can_you_add_some_flavour_please.mp3-5968e40b2bd55717b5523efba76f2491.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

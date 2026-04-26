@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://f2j1uikfskkh"
+path="res://.godot/imported/a_friend_told_me_about_this_one.mp3-fdcf1a6c3b7515dd0b9f54e7f065d1fe.mp3str"
+
+[deps]
+
+source_file="res://assets/Audio/Fish God/Voice/Michael/IDLE/a_friend_told_me_about_this_one.mp3"
+dest_files=["res://.godot/imported/a_friend_told_me_about_this_one.mp3-fdcf1a6c3b7515dd0b9f54e7f065d1fe.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

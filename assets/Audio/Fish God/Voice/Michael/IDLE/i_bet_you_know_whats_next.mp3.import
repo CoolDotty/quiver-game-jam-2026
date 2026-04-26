@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://s65u68pfqa7o"
+path="res://.godot/imported/i_bet_you_know_whats_next.mp3-d508d7714b6f3d6d97edf62ad2d6c867.mp3str"
+
+[deps]
+
+source_file="res://assets/Audio/Fish God/Voice/Michael/IDLE/i_bet_you_know_whats_next.mp3"
+dest_files=["res://.godot/imported/i_bet_you_know_whats_next.mp3-d508d7714b6f3d6d97edf62ad2d6c867.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
