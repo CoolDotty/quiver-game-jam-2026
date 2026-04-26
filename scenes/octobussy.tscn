@@ -8,6 +8,16 @@
 render_priority = 0
 shader = ExtResource("2_shader")
 shader_parameter/billboard_texture = ExtResource("2_texture")
+shader_parameter/blur_amount = 0.0
+shader_parameter/step_time = 0.25
+shader_parameter/wobble_amount = 0.03
+shader_parameter/wobble_speed = 2.0
+shader_parameter/uv_wobble_amount = 0.01
+shader_parameter/uv_wobble_speed = 2.6
+shader_parameter/squash_x = 0.0
+shader_parameter/squash_y = 0.0
+shader_parameter/squash_speed = 2.2
+shader_parameter/center_rigidity = 0.75
 
 [node name="Octobussy" type="Node3D" unique_id=1303750881]
 process_mode = 3
@@ -39,6 +49,7 @@ offset_left = -280.0
 offset_top = 24.0
 offset_right = -48.0
 offset_bottom = 104.0
+grow_horizontal = 0
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
