@@ -4,10 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://5xcj85j1ctpe" path="res://assets/placeholders/DevTextures/Dark/texture_04.png" id="1_gsx76"]
 [ext_resource type="PackedScene" uid="uid://cjsufkx45xq8g" path="res://scenes/mermaid.tscn" id="4_4xkce"]
 [ext_resource type="PackedScene" uid="uid://b8pvd7y2yw3yk" path="res://scenes/items/krab.tscn" id="5_4xkce"]
-[ext_resource type="PackedScene" path="res://scenes/item_grab_box.tscn" id="6_fmo7n"]
+[ext_resource type="PackedScene" uid="uid://dcut8agpwv8iu" path="res://scenes/item_grab_box.tscn" id="6_fmo7n"]
 [ext_resource type="PackedScene" uid="uid://blk0xu2m2nycq" path="res://scenes/item.tscn" id="7_5chnm"]
 [ext_resource type="Texture2D" uid="uid://bfuyklsdknywe" path="res://assets/BG/BG_img.jpg" id="7_fmo7n"]
 [ext_resource type="PackedScene" uid="uid://cyotyy8cpf8lg" path="res://scenes/audio.tscn" id="8_5chnm"]
+[ext_resource type="Script" uid="uid://cmunwfwxj8r7k" path="res://scenes/boss.gd" id="9_uxg2d"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4uxoh"]
 rough = true
@@ -71,3 +72,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.44098508, 0)
 [node name="item_grab_box" parent="." unique_id=161706655 instance=ExtResource("6_fmo7n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5454025, 5.275485, -16.349789)
 item_scene = ExtResource("7_5chnm")
+
+[node name="Boss" type="Node3D" parent="." unique_id=531979180]
+script = ExtResource("9_uxg2d")
