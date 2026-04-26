@@ -131,16 +131,16 @@ transform = Transform3D(-0.024815917, 0.999692, 0, -0.999692, -0.024815917, 0, 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.498369, 0.5, -9.401392)
 
 [node name="Octobussy" parent="." unique_id=21931450 instance=ExtResource("5_octobussy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0020999908, 0.5, -19.98154)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0020999908, 3.694951, -19.98154)
 
 [node name="CoconutItemPileSpawner" parent="." unique_id=1311437829 instance=ExtResource("10_7oiso")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.952097, 7.8540945, -14.238923)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.699636, 7.8540945, -14.238923)
 
 [node name="BabyMermaidItemPileSpawner" parent="." unique_id=1578946804 instance=ExtResource("11_w266b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.163082, 9.944586, -12.963236)
 
 [node name="KrabItemPileSpawner" parent="." unique_id=1157152294 instance=ExtResource("12_0onai")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.05818, 6.9662113, 4.8869133)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.889149, 6.9662113, 4.8869133)
 
 [node name="UrchinItemPileSpawner" parent="." unique_id=20315944 instance=ExtResource("13_3nobw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.844056, 8.628871, 3.995201)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.054876, 8.628871, 3.995201)

@@ -23,6 +23,17 @@ const RECIPE_CATALOG := [
 
 const ROUND_DURATION := 120.0
 const SCORE_EMOTE_OVERRIDE_DURATION := 3.0
+const SUPER_ANGRY_DURATION := 10.0
+const LOSS_MOVE_DURATION := 1.25
+const LOSS_FADE_DURATION := 1.25
+const LOSS_CAMERA_DISTANCE := 4.5
+const LOSS_SCALE_MULTIPLIER := 20.0
+const LOSS_SHAKE_MIN_AMPLITUDE := 0.015
+const LOSS_SHAKE_MAX_AMPLITUDE := 0.18
+const LOSS_SHAKE_MIN_SPEED := 7.0
+const LOSS_SHAKE_MAX_SPEED := 16.0
+const LOSS_RENDER_PRIORITY := 127
+const GAME_OVER_SCENE_PATH := "res://scenes/game_over.tscn"
 
 const NEUTRAL_TEXTURE := preload("res://assets/Art/Characters/octobussy_neutral.png")
 const MIFFED_TEXTURE := preload("res://assets/Art/Characters/Octobussy.png")
@@ -30,6 +41,7 @@ const ANGRY_TEXTURE := preload("res://assets/Art/Characters/octobussy_angry.png"
 const SAD_TEXTURE := preload("res://assets/Art/Characters/sad_octobussy.png")
 
 @onready var portrait_sprite: Sprite3D = $Portrait
+@onready var loss_fade_rect: ColorRect = $LossFade/Blackout
 @onready var score_label: Label = $HUD/ScoreLabel
 @onready var recipe_label: Label = $HUD/RecipeLabel
 @onready var timer_label: Label = $HUD/TimerCenter/TimerLabel
@@ -40,11 +52,21 @@ var _recipe_size: int = 3
 var _time_remaining: float = ROUND_DURATION
 var _score_emote_override_remaining: float = 0.0
 var _current_recipe: Array[RecipeSlot] = []
+var _portrait_rest_position: Vector3 = Vector3.ZERO
+var _shake_time: float = 0.0
+var _is_game_over: bool = false
 
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	_rng.randomize()
 	_recipe_size = _get_recipe_size_from_pot()
+
+	if portrait_sprite != null:
+		_portrait_rest_position = portrait_sprite.position
+
+	if loss_fade_rect != null:
+		loss_fade_rect.color = Color(0.0, 0.0, 0.0, 0.0)
 
 	if not Global.cooking_pot_recipe_completed.is_connected(_on_cooking_pot_recipe_completed):
 		Global.cooking_pot_recipe_completed.connect(_on_cooking_pot_recipe_completed)
@@ -56,6 +78,9 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	if _is_game_over:
+		return
+
 	if _time_remaining > 0.0:
 		_time_remaining = maxf(_time_remaining - delta, 0.0)
 
@@ -65,8 +90,15 @@ func _process(delta: float) -> void:
 			0.0
 		)
 
+	if Input.is_action_just_pressed("debug_decrease_time"):
+		_time_remaining = maxf(_time_remaining - 10.0, 0.0)
+
+	_update_loss_shake(delta)
 	_update_timer_label()
 	_update_portrait_emote()
+
+	if _time_remaining <= 0.0:
+		_start_game_over_sequence()
 
 
 func _on_cooking_pot_recipe_completed(_pot: Node, items: Array) -> void:
@@ -204,6 +236,94 @@ func _update_portrait_emote() -> void:
 		return
 
 	portrait_sprite.texture = _get_time_based_portrait_texture()
+
+
+func _update_loss_shake(delta: float) -> void:
+	if portrait_sprite == null:
+		return
+
+	if _time_remaining > SUPER_ANGRY_DURATION:
+		portrait_sprite.position = _portrait_rest_position
+		_shake_time = 0.0
+		return
+
+	var time_ratio := clampf(_time_remaining / SUPER_ANGRY_DURATION, 0.0, 1.0)
+	var intensity := 1.0 - time_ratio
+	var shake_speed := lerpf(
+		LOSS_SHAKE_MIN_SPEED,
+		LOSS_SHAKE_MAX_SPEED,
+		intensity
+	)
+	var shake_amplitude := lerpf(
+		LOSS_SHAKE_MIN_AMPLITUDE,
+		LOSS_SHAKE_MAX_AMPLITUDE,
+		intensity * intensity
+	)
+
+	_shake_time += delta * shake_speed
+	portrait_sprite.position = _portrait_rest_position + Vector3(
+		sin(_shake_time * 11.0) * shake_amplitude,
+		cos(_shake_time * 13.0) * shake_amplitude * 0.8,
+		sin(_shake_time * 7.0) * shake_amplitude * 0.25,
+	)
+
+
+func _start_game_over_sequence() -> void:
+	if _is_game_over:
+		return
+
+	_is_game_over = true
+	_time_remaining = 0.0
+	_update_timer_label()
+
+	if portrait_sprite != null:
+		portrait_sprite.position = _portrait_rest_position
+		portrait_sprite.render_priority = LOSS_RENDER_PRIORITY
+
+	if loss_fade_rect != null:
+		loss_fade_rect.color = Color(0.0, 0.0, 0.0, 0.0)
+
+	var camera := get_viewport().get_camera_3d()
+	var target_position := global_position
+	if camera != null:
+		var viewport_size := get_viewport().get_visible_rect().size
+		var screen_center := viewport_size * 0.5
+		target_position = camera.project_position(
+			screen_center,
+			LOSS_CAMERA_DISTANCE
+		)
+
+	var tween := create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	tween.set_trans(Tween.TRANS_QUAD)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.parallel().tween_property(
+		self,
+		"global_position",
+		target_position,
+		LOSS_MOVE_DURATION
+	)
+	tween.parallel().tween_property(
+		self,
+		"scale",
+		Vector3.ONE * LOSS_SCALE_MULTIPLIER,
+		LOSS_MOVE_DURATION
+	)
+	if loss_fade_rect != null:
+		tween.parallel().tween_property(
+			loss_fade_rect,
+			"color",
+			Color(0.0, 0.0, 0.0, 1.0),
+			LOSS_FADE_DURATION
+		)
+	get_tree().paused = true
+	tween.tween_callback(Callable(self, "_go_to_game_over_scene"))
+
+
+func _go_to_game_over_scene() -> void:
+	var error := get_tree().change_scene_to_file(GAME_OVER_SCENE_PATH)
+	if error != OK:
+		push_error("Failed to load game over scene: %s" % GAME_OVER_SCENE_PATH)
 
 
 func _get_time_based_portrait_texture() -> Texture2D:
