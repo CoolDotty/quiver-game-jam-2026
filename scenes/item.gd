@@ -16,6 +16,7 @@ var _default_collision_layer: int
 var _default_collision_mask: int
 var _default_gravity_scale: float
 var _default_can_sleep: bool
+var _default_freeze: bool
 var _is_held: bool = false
 var _is_in_pot: bool = false
 
@@ -25,6 +26,7 @@ func _ready() -> void:
 	_default_collision_mask = collision_mask
 	_default_gravity_scale = gravity_scale
 	_default_can_sleep = can_sleep
+	_default_freeze = freeze
 
 	var material := sprite_3d.material_override as ShaderMaterial
 	if material != null:
@@ -101,6 +103,7 @@ func _refresh_physics_state() -> void:
 		gravity_scale = 0.0
 		can_sleep = true
 		sleeping = true
+		freeze = true
 		collision_layer = 0
 		collision_mask = 0
 		collision_shape_3d.disabled = true
@@ -108,6 +111,7 @@ func _refresh_physics_state() -> void:
 
 	gravity_scale = _default_gravity_scale
 	can_sleep = _default_can_sleep
+	freeze = _default_freeze
 	collision_layer = _default_collision_layer
 	collision_mask = _default_collision_mask
 	collision_shape_3d.disabled = false
