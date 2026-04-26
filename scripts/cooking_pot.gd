@@ -132,6 +132,7 @@ func _accept_item(item: RigidBody3D) -> bool:
 	_layout_items()
 	item_inserted.emit(item)
 	Global.cooking_pot_item_inserted.emit(self, item)
+	Global.cooking_item_consumed.emit(self, item)
 
 	if _entries.size() >= recipe_size:
 		_begin_serving()
