@@ -3,6 +3,7 @@ extends Node3D
 ## Owns the gameplay-to-win transition for the starter scene.
 
 const YOU_WIN_SCENE_PATH := "res://scenes/you_win.tscn"
+const STARTUP_FADE_DURATION := 0.5
 const FADE_OUT_DURATION := 0.5
 
 @onready var fade_rect: ColorRect = $FadeLayer/FadeRect
@@ -15,8 +16,10 @@ func _ready() -> void:
 		Global.you_win_requested.connect(_on_you_win_requested)
 
 	if fade_rect != null:
-		fade_rect.color = Color(0.0, 0.0, 0.0, 0.0)
+		fade_rect.color = Color.WHITE
 		fade_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+		await _fade_from_white()
 
 
 func _on_you_win_requested() -> void:
@@ -26,6 +29,22 @@ func _on_you_win_requested() -> void:
 	_is_transitioning = true
 	await _fade_to_black()
 	_switch_to_you_win_scene()
+
+
+func _fade_from_white() -> void:
+	if fade_rect == null:
+		return
+
+	var tween := create_tween()
+	tween.set_trans(Tween.TRANS_QUAD)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.tween_property(
+		fade_rect,
+		"color",
+		Color(1.0, 1.0, 1.0, 0.0),
+		STARTUP_FADE_DURATION
+	)
+	await tween.finished
 
 
 func _fade_to_black() -> void:

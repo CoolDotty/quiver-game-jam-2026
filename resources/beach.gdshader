@@ -5,19 +5,19 @@ render_mode unshaded, cull_disabled, depth_draw_opaque;
 uniform sampler2D albedo_texture : source_color, filter_linear_mipmap, repeat_disable;
 
 uniform float shoreline_y : hint_range(0.0, 1.0) = 0.205;
-uniform float tide_amount : hint_range(0.0, 0.08) = 0.014;
+uniform float tide_amount : hint_range(0.0, 0.08) = 0.024;
 uniform float band_size : hint_range(0.01, 0.2) = 0.07;
 uniform float wave_speed : hint_range(0.0, 4.0) = 0.9;
-uniform float distort_amount : hint_range(0.0, 0.03) = 0.0045;
-uniform float foam_boost : hint_range(0.0, 0.3) = 0.06;
+uniform float distort_amount : hint_range(0.0, 0.03) = 0.009;
+uniform float foam_boost : hint_range(0.0, 0.3) = 0.08;
 
 void fragment() {
 	vec2 uv = UV;
 
 	float shoreline =
 		shoreline_y +
-		sin(uv.x * 10.0 + TIME * 0.35) * 0.008 +
-		sin(uv.x * 23.0 - TIME * 0.22) * 0.004;
+		sin(uv.x * 10.0 + TIME * 0.35) * 0.014 +
+		sin(uv.x * 23.0 - TIME * 0.22) * 0.008;
 
 	float tide = sin(TIME * wave_speed) * tide_amount;
 	float front = shoreline + tide;

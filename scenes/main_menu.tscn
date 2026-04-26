@@ -1,0 +1,72 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/Art/Backgrounds/Main menu.jpg" id="2_menu_bg"]
+[ext_resource type="Shader" path="res://resources/beach.gdshader" id="3_beach_shader"]
+[ext_resource type="Texture2D" path="res://assets/Art/Backgrounds/Start game.png" id="4_start_button"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_menu_bg"]
+render_priority = 0
+shader = ExtResource("3_beach_shader")
+shader_parameter/albedo_texture = ExtResource("2_menu_bg")
+shader_parameter/shoreline_y = 0.205
+shader_parameter/tide_amount = 0.024
+shader_parameter/band_size = 0.07
+shader_parameter/wave_speed = 0.9
+shader_parameter/distort_amount = 0.009
+shader_parameter/foam_boost = 0.08
+
+[node name="MainMenu" type="Node3D"]
+script = ExtResource("1_script")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.80901706, 0.58778524, 0, -0.58778524, 0.80901706, -7.450581e-09, 30.995628, 35.03114)
+projection = 1
+current = true
+size = 25.0
+
+[node name="Background" type="Sprite3D" parent="Camera3D"]
+transform = Transform3D(3, 0, 0, 0, 2.427051, -1.7633557, 0, 1.7633557, 2.427051, 7.450581e-09, -0.035167336, -113.5824)
+material_override = SubResource("ShaderMaterial_menu_bg")
+billboard = 1
+texture_filter = 0
+render_priority = -100
+texture = ExtResource("2_menu_bg")
+
+[node name="Ui" type="CanvasLayer" parent="."]
+layer = 200
+
+[node name="Root" type="Control" parent="Ui"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButton" type="TextureButton" parent="Ui/Root"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -755.0
+offset_top = 240.0
+offset_right = 755.0
+offset_bottom = 792.0
+focus_mode = 0
+texture_normal = ExtResource("4_start_button")
+texture_pressed = ExtResource("4_start_button")
+texture_hover = ExtResource("4_start_button")
+texture_focused = ExtResource("4_start_button")
+
+[node name="FadeRect" type="ColorRect" parent="Ui"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
