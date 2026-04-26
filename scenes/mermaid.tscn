@@ -1,8 +1,8 @@
-[gd_scene load_steps=0 format=3 uid="uid://b1x5f28e07qlr"]
+[gd_scene load_steps=23 format=3 uid="uid://mk1btm0y25n0"]
 
 [ext_resource type="Script" uid="uid://dy8p2dt6t1fn5" path="res://scripts/mermaid.gd" id="1_k32jb"]
-[ext_resource type="Script" uid="uid://uflo8kwjqnuj" path="res://scripts/arm.gd" id="2_cx8og"]
-[ext_resource type="Shader" uid="uid://chdtkxll2mgea" path="res://resources/arm_billboard.gdshader" id="3_oprnn"]
+[ext_resource type="Script" path="res://scripts/arm.gd" id="2_cx8og"]
+[ext_resource type="Shader" path="res://resources/arm_billboard.gdshader" id="3_oprnn"]
 [ext_resource type="Texture2D" uid="uid://cqqctuv83p5d6" path="res://assets/placeholders/arm-right.png" id="4_lunbq"]
 [ext_resource type="Texture2D" uid="uid://cjfdvxd3gy4sj" path="res://assets/placeholders/head.png" id="5_2ue8w"]
 [ext_resource type="Texture2D" uid="uid://b6fivv0mmney1" path="res://assets/placeholders/fiash-flat-down.png" id="6_bmyc2"]
@@ -106,74 +106,73 @@ animations = [{
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fmo7n"]
 albedo_texture = ExtResource("14_lgxpy")
 
-[node name="Mermaid" type="Node3D" unique_id=1293432093]
+[node name="Mermaid" type="Node3D"]
 transform = Transform3D(-0.024815975, 0.999692, 0, -0.999692, -0.024815975, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("1_k32jb")
 
-[node name="Arm1" type="RigidBody3D" parent="." unique_id=1255857368]
+[node name="Arm1" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0049447, -0.5438845, 0)
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("2_cx8og")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Arm1" unique_id=1884859503]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arm1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004004836, -1.814985, 0)
 shape = SubResource("CapsuleShape3D_2tnqr")
 
-[node name="Sprite3D" type="Sprite3D" parent="Arm1" unique_id=1074684612]
+[node name="Sprite3D" type="Sprite3D" parent="Arm1"]
 transform = Transform3D(-0.0101375915, 0.24979435, 0, -0.24979435, -0.0101375915, 0, 0, 0, 0.25, 0.20904899, -1.785675, 0)
 material_override = SubResource("ArmSpriteMaterial_starter")
 flip_v = true
 texture = ExtResource("4_lunbq")
 
-[node name="GrabRange" type="Area3D" parent="Arm1" unique_id=1927692122]
+[node name="GrabRange" type="Area3D" parent="Arm1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07723236, -3.1112592, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Arm1/GrabRange" unique_id=908074556]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arm1/GrabRange"]
 shape = SubResource("SphereShape3D_8jr5k")
 
-[node name="Holding" type="Marker3D" parent="Arm1" unique_id=841656818]
+[node name="Holding" type="Marker3D" parent="Arm1"]
 transform = Transform3D(1, 9.872019e-08, 7.016541e-05, 9.872019e-08, 0.999996, -0.0028265584, -7.016542e-05, 0.002826559, 0.999996, 0.0768075, -3.0941298, 0)
 
-[node name="Arm2" type="RigidBody3D" parent="." unique_id=1094448378]
+[node name="Arm2" type="RigidBody3D" parent="."]
 transform = Transform3D(-0.9999773, 0.0067719026, 0, -0.0067719026, -0.9999773, 0, 0, 0, 1, 1.003245, 0.15182054, 0.17048824)
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("2_cx8og")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Arm2" unique_id=1653961310]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arm2"]
 transform = Transform3D(1, 5.029142e-08, 0, -5.029142e-08, 1, 0, 0, 0, 1, 0.004004836, -1.7359146, 0)
 shape = SubResource("CapsuleShape3D_2tnqr")
 
-[node name="Sprite3D" type="Sprite3D" parent="Arm2" unique_id=1426194475]
+[node name="Sprite3D" type="Sprite3D" parent="Arm2"]
 transform = Transform3D(-0.010137592, 0.24979438, 0, -0.24979438, -0.010137592, 0, 0, 0, 0.25, -0.24456835, -1.7969358, 0)
 material_override = SubResource("ArmSpriteMaterial_starter")
 texture = ExtResource("4_lunbq")
 
-[node name="Holding" type="Marker3D" parent="Arm2" unique_id=1673433421]
+[node name="Holding" type="Marker3D" parent="Arm2"]
 transform = Transform3D(0.9999999, -1.8626451e-09, 0, 1.8626451e-09, 0.9999999, 0, 0, 0, 1, 0.052954674, -2.9340162, 0)
 
-[node name="GrabRange" type="Area3D" parent="Arm2" unique_id=1462275154]
+[node name="GrabRange" type="Area3D" parent="Arm2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07723236, -3.1112592, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Arm2/GrabRange" unique_id=365988165]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arm2/GrabRange"]
 shape = SubResource("SphereShape3D_8jr5k")
 
-[node name="Head" type="RigidBody3D" parent="." unique_id=457580459]
+[node name="Head" type="RigidBody3D" parent="."]
 visible = false
 collision_layer = 2
 collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_4xkce")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Head" unique_id=40366244]
-visible = false
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head"]
 shape = SubResource("SphereShape3D_vhc0g")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="Head" unique_id=1200343191]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 1.7484555e-07, 0, -1.7484555e-07, 1, 0, 0, 0)
 material = SubResource("StandardMaterial3D_btfp6")
 
-[node name="HingeJoint3D" type="HingeJoint3D" parent="." unique_id=1189188061]
+[node name="HingeJoint3D" type="HingeJoint3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4937563, -0.013938487, 0)
 node_a = NodePath("../Head")
 node_b = NodePath("../RigidBody3D2")
@@ -181,20 +180,19 @@ angular_limit/enable = true
 angular_limit/upper = 0.7853982
 angular_limit/lower = -0.7853982
 
-[node name="RigidBody3D2" type="RigidBody3D" parent="." unique_id=1756605966]
+[node name="RigidBody3D2" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0036154, 0, 0)
-visible = false
 collision_layer = 2
 collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_4xkce")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2" unique_id=343956404]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2"]
 shape = SubResource("SphereShape3D_vhc0g")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="RigidBody3D2" unique_id=1188776943]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="RigidBody3D2"]
 radius = 0.45
 
-[node name="HingeJoint3D5" type="HingeJoint3D" parent="." unique_id=1935950945]
+[node name="HingeJoint3D5" type="HingeJoint3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0049447, -0.5438845, 0)
 node_a = NodePath("../RigidBody3D2")
 node_b = NodePath("../Arm1")
@@ -202,7 +200,7 @@ angular_limit/enable = true
 angular_limit/upper = 0.7853982
 angular_limit/lower = -0.7853982
 
-[node name="HingeJoint3D6" type="HingeJoint3D" parent="." unique_id=1880235634]
+[node name="HingeJoint3D6" type="HingeJoint3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.003245, 0.15182054, 0.17048824)
 node_a = NodePath("../RigidBody3D2")
 node_b = NodePath("../Arm2")
@@ -210,7 +208,7 @@ angular_limit/enable = true
 angular_limit/upper = 0.7853982
 angular_limit/lower = -0.7853982
 
-[node name="HingeJoint3D2" type="HingeJoint3D" parent="." unique_id=1884713991]
+[node name="HingeJoint3D2" type="HingeJoint3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4620543, -0.041273028, 0)
 node_a = NodePath("../RigidBody3D2")
 node_b = NodePath("../RigidBody3D3")
@@ -218,26 +216,25 @@ angular_limit/enable = true
 angular_limit/upper = 0.7853982
 angular_limit/lower = -0.7853982
 
-[node name="RigidBody3D3" type="RigidBody3D" parent="." unique_id=1209476374]
+[node name="RigidBody3D3" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9702673, 0, 0)
 collision_layer = 2
 collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_4xkce")
 
-[node name="MermaidSprites" type="AnimatedSprite3D" parent="RigidBody3D3" unique_id=2027069760]
+[node name="MermaidSprites" type="AnimatedSprite3D" parent="RigidBody3D3"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.027873278, 0.004882425, 0)
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_bap4c")
 animation = &"fish_flat_right"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D3" unique_id=233046034]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D3"]
 shape = SubResource("SphereShape3D_vhc0g")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="RigidBody3D3" unique_id=1611097588]
-visible = false
+[node name="CSGSphere3D" type="CSGSphere3D" parent="RigidBody3D3"]
 radius = 0.4
 
-[node name="HingeJoint3D3" type="HingeJoint3D" parent="." unique_id=959740729]
+[node name="HingeJoint3D3" type="HingeJoint3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4341545, -0.06871492, 0)
 node_a = NodePath("../RigidBody3D3")
 node_b = NodePath("../RigidBody3D4")
@@ -245,20 +242,19 @@ angular_limit/enable = true
 angular_limit/upper = 0.7853982
 angular_limit/lower = -0.7853982
 
-[node name="RigidBody3D4" type="RigidBody3D" parent="." unique_id=1735669331]
+[node name="RigidBody3D4" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9135919, 0, 0)
-visible = false
 collision_layer = 2
 collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_4xkce")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D4" unique_id=599223956]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D4"]
 shape = SubResource("SphereShape3D_vhc0g")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="RigidBody3D4" unique_id=1042299548]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="RigidBody3D4"]
 radius = 0.3
 
-[node name="HingeJoint3D4" type="HingeJoint3D" parent="." unique_id=19128249]
+[node name="HingeJoint3D4" type="HingeJoint3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4194632, -0.09652966, 0)
 node_a = NodePath("../RigidBody3D4")
 node_b = NodePath("../Tail")
@@ -266,16 +262,15 @@ angular_limit/enable = true
 angular_limit/upper = 0.7853982
 angular_limit/lower = -0.7853982
 
-[node name="Tail" type="RigidBody3D" parent="." unique_id=642197373]
+[node name="Tail" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9269004, 0, 0)
-visible = false
 collision_layer = 2
 collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_4xkce")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tail" unique_id=873289638]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tail"]
 shape = SubResource("SphereShape3D_vhc0g")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="Tail" unique_id=1373565189]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Tail"]
 radius = 0.25
 material = SubResource("StandardMaterial3D_fmo7n")

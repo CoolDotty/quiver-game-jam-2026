@@ -1,12 +1,75 @@
-[gd_scene format=3 uid="uid://bjcnlp18bfxwd"]
+[gd_scene load_steps=85 format=3 uid="uid://bjcnlp18bfxwd"]
 
-[ext_resource type="PackedScene" uid="uid://bnxx425ohqfav" path="res://scenes/item.tscn" id="1_2bmlf"]
+[ext_resource type="PackedScene" path="res://scenes/item.tscn" id="1_2bmlf"]
 [ext_resource type="Texture2D" uid="uid://5xcj85j1ctpe" path="res://assets/placeholders/DevTextures/Dark/texture_04.png" id="1_gsx76"]
 [ext_resource type="Resource" uid="uid://cw7woat4i8pdf" path="res://resources/pineapple.tres" id="2_qr6qn"]
 [ext_resource type="Texture2D" uid="uid://cjfdvxd3gy4sj" path="res://assets/placeholders/head.png" id="3_4uxoh"]
-[ext_resource type="PackedScene" uid="uid://b1x5f28e07qlr" path="res://scenes/mermaid.tscn" id="4_4xkce"]
+[ext_resource type="PackedScene" uid="uid://mk1btm0y25n0" path="res://scenes/mermaid.tscn" id="4_4xkce"]
 [ext_resource type="Texture2D" uid="uid://da7qw5dgjawjp" path="res://assets/placeholders/breach.jpg" id="7_fmo7n"]
-[ext_resource type="Script" uid="uid://3qx7s4wsbllh" path="res://resources/item_data.gd" id="18_8jr5k"]
+[ext_resource type="AudioStream" uid="uid://dmofmxe5llqjp" path="res://resources/ANGRY-VoiceLines/IDLE/are_you_done_yet.mp3" id="8_2tnqr"]
+[ext_resource type="AudioStream" uid="uid://bl6v3bat4wxv4" path="res://resources/ANGRY-VoiceLines/BAD FOOD/sloppy.mp3" id="8_mdhxr"]
+[ext_resource type="AudioStream" uid="uid://dog0fmgw47h3i" path="res://resources/ANGRY-VoiceLines/BAD FOOD/unedible.mp3" id="9_8lq4q"]
+[ext_resource type="AudioStream" uid="uid://cnbfomx4rlx2k" path="res://resources/ANGRY-VoiceLines/IDLE/get_that_taste_exactly_right.mp3" id="10_0onai"]
+[ext_resource type="AudioStream" uid="uid://oqh3c6r1i3xj" path="res://resources/ANGRY-VoiceLines/BAD FOOD/unedible_2.mp3" id="10_ryqva"]
+[ext_resource type="AudioStream" uid="uid://qrnpqwtesa2r" path="res://resources/ANGRY-VoiceLines/BAD FOOD/what_is_this_sludge.mp3" id="11_wgxf1"]
+[ext_resource type="AudioStream" uid="uid://d38p6ejb4w6pp" path="res://resources/ANGRY-VoiceLines/IDLE/growl_1.mp3" id="12_2bmlf"]
+[ext_resource type="AudioStream" uid="uid://cqvam5qeimohq" path="res://resources/ANGRY-VoiceLines/BAD FOOD/youre_next.mp3" id="12_4wwqf"]
+[ext_resource type="AudioStream" uid="uid://8fti4rktukbt" path="res://resources/ANGRY-VoiceLines/BAD FOOD/you_should_die_for_that.mp3" id="13_bagcb"]
+[ext_resource type="AudioStream" uid="uid://cilgrh175i5mw" path="res://resources/A-HAPPY-VoiceLines/IDLE/I_crave_flesh.wav" id="14_t1wjo"]
+[ext_resource type="AudioStream" uid="uid://s5y1yrybvq6" path="res://resources/A-HAPPY-VoiceLines/IDLE/Get_in_mah_bellies.wav" id="15_n65iu"]
+[ext_resource type="AudioStream" uid="uid://cvpwej2pthbdw" path="res://resources/ANGRY-VoiceLines/GOOD FOOD/fiesty_that_one.mp3" id="16_b3rgr"]
+[ext_resource type="AudioStream" uid="uid://dq653vjq02ik6" path="res://resources/ANGRY-VoiceLines/GOOD FOOD/that_was_terrible_nice.mp3" id="17_5sn1f"]
+[ext_resource type="AudioStream" uid="uid://dtrg6n72ou56n" path="res://resources/ANGRY-VoiceLines/GOOD FOOD/that_was_terrible_nice_2.mp3" id="18_1rsa3"]
+[ext_resource type="Script" path="res://resources/item_data.gd" id="18_8jr5k"]
+[ext_resource type="AudioStream" uid="uid://38bcxyyvkj0u" path="res://resources/ANGRY-VoiceLines/GOOD FOOD/theres_always_bones.mp3" id="19_g4q6e"]
+[ext_resource type="AudioStream" uid="uid://df6dg3kywhch3" path="res://resources/ANGRY-VoiceLines/IDLE/a_friend_told_me_about_this_one.mp3" id="20_4630u"]
+[ext_resource type="AudioStream" uid="uid://b1abl3dypcsld" path="res://resources/ANGRY-VoiceLines/IDLE/have_you_ever_tried_this.mp3" id="22_ppxbv"]
+[ext_resource type="AudioStream" uid="uid://dhvweiieh3ou7" path="res://resources/ANGRY-VoiceLines/IDLE/i_bet_you_know_whats_next.mp3" id="23_t6bow"]
+[ext_resource type="AudioStream" uid="uid://bif7m7tdfwgc7" path="res://resources/ANGRY-VoiceLines/IDLE/i_want_something_like_this.mp3" id="25_x16tv"]
+[ext_resource type="AudioStream" uid="uid://jogks6tyj77l" path="res://resources/ANGRY-VoiceLines/IDLE/this_is_how_you_beat_allergies.mp3" id="26_7xw4q"]
+[ext_resource type="AudioStream" uid="uid://dbo75ygnpkead" path="res://resources/ANGRY-VoiceLines/IDLE/you_can_read_minds_right.mp3" id="27_5kpo0"]
+[ext_resource type="AudioStream" uid="uid://c36vmfam4qbox" path="res://resources/ANGRY-VoiceLines/IDLE/growl_2.mp3" id="28_3sdpb"]
+[ext_resource type="AudioStream" uid="uid://vh15hua1n53w" path="res://resources/ANGRY-VoiceLines/IDLE/please_can_you_add_some_flavour_please.mp3" id="29_0mgun"]
+[ext_resource type="AudioStream" uid="uid://5aflcpmmu5j1" path="res://resources/ANGRY-VoiceLines/IDLE/where_are_you.mp3" id="30_p5qk0"]
+[ext_resource type="AudioStream" uid="uid://cltltj4xfmp2r" path="res://resources/ANGRY-VoiceLines/IDLE/you_can_find_some_over_there.mp3" id="31_wu2eq"]
+[ext_resource type="AudioStream" uid="uid://b0wqo014o8uek" path="res://resources/ANGRY-VoiceLines/IDLE/dont_forget_the_krill.mp3" id="35_svt4a"]
+[ext_resource type="AudioStream" uid="uid://dud3rgu2byta" path="res://resources/ANGRY-VoiceLines/IDLE/im_a_big_hungry_monster.mp3" id="37_bxo02"]
+[ext_resource type="AudioStream" uid="uid://2amr4mrbdxw" path="res://resources/ANGRY-VoiceLines/IDLE/more_more.mp3" id="37_xfswb"]
+[ext_resource type="AudioStream" uid="uid://b7nu1p2iimxxg" path="res://resources/A-HAPPY-VoiceLines/BAD FOOD/Sloppy.wav" id="38_cr6up"]
+[ext_resource type="AudioStream" uid="uid://cf83rie1y45wb" path="res://resources/ANGRY-VoiceLines/IDLE/its_not_weird.mp3" id="38_xlbxr"]
+[ext_resource type="AudioStream" uid="uid://dsrimcspexdk2" path="res://resources/ANGRY-VoiceLines/IDLE/i_crave_flesh.mp3" id="39_0cvuj"]
+[ext_resource type="AudioStream" uid="uid://dotvfe1xupjrj" path="res://resources/A-HAPPY-VoiceLines/BAD FOOD/Unedible.wav" id="39_m76qi"]
+[ext_resource type="AudioStream" uid="uid://bv81v4ash8adg" path="res://resources/A-HAPPY-VoiceLines/BAD FOOD/No_krill.wav" id="40_vonw6"]
+[ext_resource type="AudioStream" uid="uid://c760des1qhul8" path="res://resources/A-HAPPY-VoiceLines/BAD FOOD/What_is_this_sludge.wav" id="41_yy44k"]
+[ext_resource type="AudioStream" uid="uid://ci2f3hba4fotm" path="res://resources/A-HAPPY-VoiceLines/BAD FOOD/Youre_next.wav" id="42_4fs8n"]
+[ext_resource type="AudioStream" uid="uid://7t146tqtu6io" path="res://resources/A-HAPPY-VoiceLines/BAD FOOD/You_should_die_for_that.wav" id="43_3246x"]
+[ext_resource type="AudioStream" uid="uid://c00ue1dsm25v0" path="res://resources/A-HAPPY-VoiceLines/IDLE/Eat_you_too.wav" id="44_cgj3i"]
+[ext_resource type="AudioStream" uid="uid://dkq2uxidd1ijh" path="res://resources/A-HAPPY-VoiceLines/GOOD FOOD/Feisty.wav" id="45_jkfnv"]
+[ext_resource type="AudioStream" uid="uid://culae00n4w55t" path="res://resources/A-HAPPY-VoiceLines/GOOD FOOD/More_More.wav" id="46_lt0qp"]
+[ext_resource type="AudioStream" uid="uid://5045a0nji4g7" path="res://resources/A-HAPPY-VoiceLines/GOOD FOOD/nom_nom.wav" id="47_wnuil"]
+[ext_resource type="AudioStream" uid="uid://c1nlxtrfr30mk" path="res://resources/A-HAPPY-VoiceLines/GOOD FOOD/Seven_out_of_ten.wav" id="48_bf2qu"]
+[ext_resource type="AudioStream" uid="uid://c4yyay2mb6888" path="res://resources/A-HAPPY-VoiceLines/GOOD FOOD/Thank_you_Meat.wav" id="49_6r173"]
+[ext_resource type="AudioStream" uid="uid://d1ntg41nt2ofu" path="res://resources/A-HAPPY-VoiceLines/GOOD FOOD/That_was_terrible_nice.wav" id="50_ygdcl"]
+[ext_resource type="AudioStream" uid="uid://wsvky0tjhl4h" path="res://resources/A-HAPPY-VoiceLines/GOOD FOOD/Gets_stuck_in_my_teeth.wav" id="51_s6r0y"]
+[ext_resource type="AudioStream" uid="uid://2acfjg5hdbvw" path="res://resources/A-HAPPY-VoiceLines/GOOD FOOD/Its_meat_for_a_vegan.wav" id="52_4q2bg"]
+[ext_resource type="AudioStream" uid="uid://cvvx5srjov3qh" path="res://resources/A-HAPPY-VoiceLines/GOOD FOOD/Love_the_spines.wav" id="53_lumd7"]
+[ext_resource type="AudioStream" uid="uid://boksi75ds0t65" path="res://resources/A-HAPPY-VoiceLines/GOOD FOOD/Theres_always_bones.wav" id="54_toyka"]
+[ext_resource type="AudioStream" uid="uid://du6kyar78d8ip" path="res://resources/A-HAPPY-VoiceLines/IDLE/A_friend_told_me_about_this.wav" id="55_fcj46"]
+[ext_resource type="AudioStream" uid="uid://b2te7g0xjnrnk" path="res://resources/A-HAPPY-VoiceLines/IDLE/Dont_forget_the_krill.wav" id="56_524bb"]
+[ext_resource type="AudioStream" uid="uid://wxtejp6d3g3s" path="res://resources/A-HAPPY-VoiceLines/IDLE/Have_you_ever_tried_this.wav" id="57_67a0a"]
+[ext_resource type="AudioStream" uid="uid://cktc8bh6di630" path="res://resources/A-HAPPY-VoiceLines/IDLE/I_bet_you_know_whats_next.wav" id="58_nmu3p"]
+[ext_resource type="AudioStream" uid="uid://bfoaq48d0yb71" path="res://resources/A-HAPPY-VoiceLines/IDLE/I_want_something_like_this.wav" id="59_oey4q"]
+[ext_resource type="AudioStream" uid="uid://8jgh1f8eh7gf" path="res://resources/A-HAPPY-VoiceLines/IDLE/Yeah_you_can_find_some_over_there.wav" id="60_k43bh"]
+[ext_resource type="AudioStream" uid="uid://l138nslig0eb" path="res://resources/A-HAPPY-VoiceLines/IDLE/You_can_read_minds_right.wav" id="61_1pfdt"]
+[ext_resource type="AudioStream" uid="uid://cl4jguywd1jga" path="res://resources/A-HAPPY-VoiceLines/IDLE/Graaaah.wav" id="62_humvb"]
+[ext_resource type="AudioStream" uid="uid://ccdufm8d67e02" path="res://resources/A-HAPPY-VoiceLines/IDLE/Flavour_please.wav" id="63_0l6x5"]
+[ext_resource type="AudioStream" uid="uid://bkl3jnafhjvj4" path="res://resources/A-HAPPY-VoiceLines/IDLE/Where_are_you.wav" id="64_11ral"]
+[ext_resource type="AudioStream" uid="uid://bx5frxjlsk71n" path="res://resources/A-HAPPY-VoiceLines/IDLE/Get_the_taste_right.wav" id="65_rt3x2"]
+[ext_resource type="AudioStream" uid="uid://0hrr0syrn0s4" path="res://resources/A-HAPPY-VoiceLines/IDLE/Are_you_done_yet.wav" id="66_hwhc8"]
+[ext_resource type="AudioStream" uid="uid://ru0ap0uxhbw3" path="res://resources/A-HAPPY-VoiceLines/IDLE/Blood_of_innocents.wav" id="67_262ud"]
+[ext_resource type="AudioStream" uid="uid://ofomphlobv8b" path="res://resources/A-HAPPY-VoiceLines/IDLE/Feed_me.wav" id="68_w3c0s"]
+[ext_resource type="AudioStream" uid="uid://b0jtkiexub4kw" path="res://resources/A-HAPPY-VoiceLines/IDLE/Im_a_big_hungry_monster.wav" id="69_a4vvi"]
+[ext_resource type="AudioStream" uid="uid://ckkcs7s6pdyo5" path="res://resources/A-HAPPY-VoiceLines/IDLE/Not_weird.wav" id="70_q5vgi"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4uxoh"]
 rough = true
@@ -27,40 +90,167 @@ script = ExtResource("18_8jr5k")
 sprite_texture = ExtResource("3_4uxoh")
 item_name = "Banada"
 
-[node name="Starter3D" type="Node3D" unique_id=173918023]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_m4823"]
+streams_count = 8
+stream_0/stream = ExtResource("8_mdhxr")
+stream_1/stream = ExtResource("9_8lq4q")
+stream_2/stream = ExtResource("10_ryqva")
+stream_3/stream = ExtResource("11_wgxf1")
+stream_4/stream = ExtResource("12_4wwqf")
+stream_5/stream = ExtResource("13_bagcb")
+stream_6/stream = ExtResource("14_t1wjo")
+stream_7/stream = ExtResource("15_n65iu")
 
-[node name="Item" parent="." unique_id=133743956 instance=ExtResource("1_2bmlf")]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gkoni"]
+streams_count = 5
+stream_0/stream = ExtResource("16_b3rgr")
+stream_1/stream = ExtResource("17_5sn1f")
+stream_2/stream = ExtResource("18_1rsa3")
+stream_3/stream = ExtResource("19_g4q6e")
+stream_4/stream = ExtResource("12_2bmlf")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mo7ly"]
+streams_count = 8
+stream_0/stream = ExtResource("20_4630u")
+stream_1/stream = ExtResource("35_svt4a")
+stream_2/stream = ExtResource("22_ppxbv")
+stream_3/stream = ExtResource("23_t6bow")
+stream_4/stream = ExtResource("39_0cvuj")
+stream_5/stream = ExtResource("25_x16tv")
+stream_6/stream = ExtResource("27_5kpo0")
+stream_7/stream = ExtResource("31_wu2eq")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_t1wjo"]
+streams_count = 12
+stream_0/stream = ExtResource("28_3sdpb")
+stream_1/stream = ExtResource("29_0mgun")
+stream_2/stream = ExtResource("10_0onai")
+stream_3/stream = ExtResource("35_svt4a")
+stream_4/stream = ExtResource("8_2tnqr")
+stream_5/stream = ExtResource("26_7xw4q")
+stream_6/stream = ExtResource("37_bxo02")
+stream_7/stream = ExtResource("38_xlbxr")
+stream_8/stream = ExtResource("37_xfswb")
+stream_9/stream = ExtResource("29_0mgun")
+stream_10/stream = ExtResource("30_p5qk0")
+stream_11/stream = ExtResource("31_wu2eq")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_se0hx"]
+streams_count = 8
+stream_0/stream = ExtResource("38_cr6up")
+stream_1/stream = ExtResource("39_m76qi")
+stream_2/stream = ExtResource("40_vonw6")
+stream_3/stream = ExtResource("41_yy44k")
+stream_4/stream = ExtResource("42_4fs8n")
+stream_5/stream = ExtResource("43_3246x")
+stream_6/stream = ExtResource("14_t1wjo")
+stream_7/stream = ExtResource("15_n65iu")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_w6v1t"]
+streams_count = 7
+stream_0/stream = ExtResource("44_cgj3i")
+stream_1/stream = ExtResource("45_jkfnv")
+stream_2/stream = ExtResource("46_lt0qp")
+stream_3/stream = ExtResource("47_wnuil")
+stream_4/stream = ExtResource("48_bf2qu")
+stream_5/stream = ExtResource("49_6r173")
+stream_6/stream = ExtResource("50_ygdcl")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wj3xp"]
+streams_count = 4
+stream_0/stream = ExtResource("51_s6r0y")
+stream_1/stream = ExtResource("52_4q2bg")
+stream_2/stream = ExtResource("53_lumd7")
+stream_3/stream = ExtResource("54_toyka")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xqevm"]
+streams_count = 8
+stream_0/stream = ExtResource("55_fcj46")
+stream_1/stream = ExtResource("56_524bb")
+stream_2/stream = ExtResource("57_67a0a")
+stream_3/stream = ExtResource("58_nmu3p")
+stream_4/stream = ExtResource("14_t1wjo")
+stream_5/stream = ExtResource("59_oey4q")
+stream_6/stream = ExtResource("60_k43bh")
+stream_7/stream = ExtResource("61_1pfdt")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ccco1"]
+streams_count = 13
+stream_0/stream = ExtResource("62_humvb")
+stream_1/stream = ExtResource("63_0l6x5")
+stream_2/stream = ExtResource("65_rt3x2")
+stream_3/stream = ExtResource("56_524bb")
+stream_4/stream = ExtResource("66_hwhc8")
+stream_5/stream = ExtResource("67_262ud")
+stream_6/stream = ExtResource("68_w3c0s")
+stream_7/stream = ExtResource("69_a4vvi")
+stream_8/stream = ExtResource("70_q5vgi")
+stream_9/stream = ExtResource("14_t1wjo")
+stream_10/stream = ExtResource("29_0mgun")
+stream_11/stream = ExtResource("64_11ral")
+stream_12/stream = ExtResource("31_wu2eq")
+
+[node name="Starter3D" type="Node3D"]
+
+[node name="Item" parent="." instance=ExtResource("1_2bmlf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.451978, 1.6157398, 1.6849356)
 item = ExtResource("2_qr6qn")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=878903255]
+[node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.80901706, 0.58778524, 0, -0.58778524, 0.80901706, -7.450581e-09, 5.410118, 8.745848)
 current = true
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1565072717]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.81915206, -0.4055798, 0.4055798, 0, 0.70710677, 0.70710677, -0.57357645, -0.579228, 0.579228, 0, 0, 0)
 light_energy = 2.0
 
-[node name="Floor" type="StaticBody3D" parent="." unique_id=1833675114]
+[node name="Floor" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 physics_material_override = SubResource("PhysicsMaterial_4uxoh")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1801628329]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 shape = SubResource("3_floor_shape")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=126160062]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
 visible = false
 material_override = SubResource("1_floor_material")
 mesh = SubResource("2_floor_mesh")
 
-[node name="Mermaid" parent="." unique_id=1293432093 instance=ExtResource("4_4xkce")]
+[node name="Mermaid" parent="." instance=ExtResource("4_4xkce")]
 transform = Transform3D(-0.024815917, 0.999692, 0, -0.999692, -0.024815917, 0, 0, 0, 1, 0, 4.656455, 0)
 
-[node name="Banada" parent="." unique_id=1299485598 instance=ExtResource("1_2bmlf")]
+[node name="Banada" parent="." instance=ExtResource("1_2bmlf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.03584, 0.49999952, 1.0941715)
 item = SubResource("Resource_bap4c")
 
-[node name="background" type="Sprite3D" parent="." unique_id=302842814]
+[node name="background" type="Sprite3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -13.00165, -56.099434)
 billboard = 1
 texture = ExtResource("7_fmo7n")
+
+[node name="Audio3D_ANGRY_BAD" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_m4823")
+
+[node name="Audio3D_ANGRY_GOOD" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_gkoni")
+
+[node name="Audio3D_ANGRY_RECIPE" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_mo7ly")
+
+[node name="Audio3D_ANGRY_IDLE" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_t1wjo")
+
+[node name="Audio3D_Happy_BAD2" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_se0hx")
+
+[node name="Audio3D_Happy_GOOD2" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_w6v1t")
+
+[node name="Audio3D_Happy_FOODspecific" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_wj3xp")
+
+[node name="Audio3D_Happy_RECIPE2" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_xqevm")
+
+[node name="Audio3D_Happy_IDLE2" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_ccco1")
