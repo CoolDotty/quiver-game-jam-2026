@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://n07fwm61l0jl"
+path="res://.godot/imported/feed_me.mp3-b0ea3e80f7dd5d2f08fd2ec070f2713e.mp3str"
+
+[deps]
+
+source_file="res://assets/Audio/Fish God/Voice/Michael/IDLE/feed_me.mp3"
+dest_files=["res://.godot/imported/feed_me.mp3-b0ea3e80f7dd5d2f08fd2ec070f2713e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://2nw6p344irmy"
+path="res://.godot/imported/this_is_how_you_beat_allergies.mp3-6a554b7fda6466a5fee1b58d064bf1d4.mp3str"
+
+[deps]
+
+source_file="res://assets/Audio/Fish God/Voice/Michael/IDLE/this_is_how_you_beat_allergies.mp3"
+dest_files=["res://.godot/imported/this_is_how_you_beat_allergies.mp3-6a554b7fda6466a5fee1b58d064bf1d4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
