@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://ckhahx33yngsy"]
+[gd_scene format=3 uid="uid://ldp8f4crpuj5"]
 
 [ext_resource type="PackedScene" uid="uid://blk0xu2m2nycq" path="res://scenes/item.tscn" id="1_2bmlf"]
 [ext_resource type="Texture2D" uid="uid://5xcj85j1ctpe" path="res://assets/placeholders/DevTextures/Dark/texture_04.png" id="1_gsx76"]
@@ -42,7 +42,6 @@ physics_material_override = SubResource("PhysicsMaterial_4uxoh")
 shape = SubResource("3_floor_shape")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=126160062]
-visible = false
 material_override = SubResource("1_floor_material")
 mesh = SubResource("2_floor_mesh")
 
@@ -51,6 +50,7 @@ transform = Transform3D(-0.024815917, 0.999692, 0, -0.999692, -0.024815917, 0, 0
 
 [node name="background" type="Sprite3D" parent="." unique_id=302842814]
 transform = Transform3D(0.39, 0, 0, 0, 0.39, 0, 0, 0, 0.39, 0, -42.029, -56.099)
+visible = false
 billboard = 1
 fixed_size = true
 texture_filter = 0

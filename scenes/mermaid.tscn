@@ -181,10 +181,12 @@ pixel_size = 0.007
 texture = ExtResource("5_bmyc2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Head" unique_id=40366244]
+visible = false
 shape = SubResource("SphereShape3D_vhc0g")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Head" unique_id=1200343191]
 transform = Transform3D(1, 0, 0, 0, 1, 1.7484555e-07, 0, -1.7484555e-07, 1, 0, 0, 0)
+visible = false
 material = SubResource("StandardMaterial3D_btfp6")
 
 [node name="HingeJoint3D" type="HingeJoint3D" parent="." unique_id=1189188061]
@@ -205,6 +207,7 @@ physics_material_override = SubResource("PhysicsMaterial_4xkce")
 shape = SubResource("SphereShape3D_vhc0g")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="RigidBody3D2" unique_id=1188776943]
+visible = false
 radius = 0.45
 
 [node name="SpriteChest" type="Sprite3D" parent="RigidBody3D2" unique_id=354470085]
@@ -213,6 +216,7 @@ texture = ExtResource("7_ex356")
 
 [node name="HingeJoint3D5" type="HingeJoint3D" parent="." unique_id=1935950945]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0049447, -0.5438845, 0)
+visible = false
 node_a = NodePath("../RigidBody3D2")
 node_b = NodePath("../Arm1")
 angular_limit/enable = true
@@ -253,9 +257,11 @@ sprite_frames = SubResource("SpriteFrames_bap4c")
 animation = &"fish_flat_right"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D3" unique_id=233046034]
+visible = false
 shape = SubResource("SphereShape3D_vhc0g")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="RigidBody3D3" unique_id=1611097588]
+visible = false
 radius = 0.4
 
 [node name="HingeJoint3D3" type="HingeJoint3D" parent="." unique_id=959740729]
@@ -273,9 +279,11 @@ collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_4xkce")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D4" unique_id=599223956]
+visible = false
 shape = SubResource("SphereShape3D_vhc0g")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="RigidBody3D4" unique_id=1042299548]
+visible = false
 radius = 0.3
 
 [node name="SpriteKnee" type="Sprite3D" parent="RigidBody3D4" unique_id=2103371607]
@@ -297,9 +305,11 @@ collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_4xkce")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tail" unique_id=873289638]
+visible = false
 shape = SubResource("SphereShape3D_vhc0g")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Tail" unique_id=1373565189]
+visible = false
 radius = 0.25
 material = SubResource("StandardMaterial3D_fmo7n")
 
