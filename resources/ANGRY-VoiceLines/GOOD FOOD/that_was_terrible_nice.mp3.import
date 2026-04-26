@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dq653vjq02ik6"
+path="res://.godot/imported/that_was_terrible_nice.mp3-61a0ba27c218f0e7ce80b37185d75982.mp3str"
+
+[deps]
+
+source_file="res://resources/ANGRY-VoiceLines/GOOD FOOD/that_was_terrible_nice.mp3"
+dest_files=["res://.godot/imported/that_was_terrible_nice.mp3-61a0ba27c218f0e7ce80b37185d75982.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
