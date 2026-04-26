@@ -77,7 +77,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 			propulsion_mult = 1.0 # Significant bonus for "Aerial Slam"
 		
 		# Slam tail down and slightly back to create a kick
-		var slam_dir = (Vector3.DOWN * 0.7 + -real_body_axis * 0.3).normalized()
+		var slam_dir = (Vector3.DOWN * 100.7 + -real_body_axis * 0.3).normalized()
 		tail.apply_central_impulse(slam_dir * TAIL_LIFT_FORCE)
 		
 		# Propel head forward
