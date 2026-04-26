@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://w8vsaohvb6l5"]
+
+[ext_resource type="Script" uid="uid://dbrowm0s8td01" path="res://scripts/cook_box.gd" id="1_qpo5o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hhtwg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jqsf7"]
+
+[node name="RigidBody3D" type="StaticBody3D" unique_id=756128222]
+script = ExtResource("1_qpo5o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1455046784]
+shape = SubResource("BoxShape3D_hhtwg")
+
+[node name="InteractArea" type="Area3D" parent="." unique_id=800383041]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea" unique_id=724248784]
+shape = SubResource("BoxShape3D_jqsf7")
+
+[node name="ItemDisplayArea" type="Marker3D" parent="." unique_id=1480378133]
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=240653524]

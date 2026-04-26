@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dboo86qfbq60c"]
+
+[ext_resource type="Script" uid="uid://bg1ur3lu4avnc" path="res://scripts/grab_box.gd" id="1_mejj2"]
+[ext_resource type="Texture2D" uid="uid://dh7j2xavu6lmt" path="res://assets/placeholders/DevTextures/Dark/texture_01.png" id="2_04kh8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hhtwg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jqsf7"]
+
+[node name="item_grab_box" type="StaticBody3D" unique_id=161706655]
+script = ExtResource("1_mejj2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1455046784]
+shape = SubResource("BoxShape3D_hhtwg")
+
+[node name="DisplayArea" type="Area3D" parent="." unique_id=800383041]
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, -1, 1)
+
+[node name="SpawnPoint" type="Marker3D" parent="DisplayArea" unique_id=1480378133]
+transform = Transform3D(0.66666675, 0, 0, 0, 0.66666675, 0, 0, 0, 0.66666675, 0, 0.015785784, 0.034546584)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DisplayArea" unique_id=724248784]
+shape = SubResource("BoxShape3D_jqsf7")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=240653524]
+texture = ExtResource("2_04kh8")
+
+[node name="Timer" type="Timer" parent="." unique_id=952765237]

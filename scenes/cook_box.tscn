@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dbfku8tcmpd7p"]
+
+[ext_resource type="Script" uid="uid://dbrowm0s8td01" path="res://scripts/cook_box.gd" id="1_script"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1"]
+
+[node name="CookBox" type="Node3D" unique_id=1912571744]
+script = ExtResource("1_script")
+
+[node name="ItemSpawnPoint" type="Marker3D" parent="." unique_id=783224580]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="InteractionArea" type="Area3D" parent="." unique_id=1758855716]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea" unique_id=1500635375]
+shape = SubResource("BoxShape3D_1")
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1200851178]
+mesh = SubResource("BoxMesh_1")
+
+[node name="Timer" type="Timer" parent="." unique_id=1526379934]
+one_shot = true

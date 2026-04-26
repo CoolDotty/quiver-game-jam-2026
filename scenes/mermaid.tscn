@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://b1x5f28e07qlr"]
+[gd_scene format=3 uid="uid://cjsufkx45xq8g"]
 
 [ext_resource type="Script" uid="uid://dy8p2dt6t1fn5" path="res://scripts/mermaid.gd" id="1_k32jb"]
-[ext_resource type="Script" uid="uid://uflo8kwjqnuj" path="res://scripts/arm.gd" id="2_cx8og"]
-[ext_resource type="Shader" uid="uid://chdtkxll2mgea" path="res://resources/arm_billboard.gdshader" id="3_oprnn"]
+[ext_resource type="Script" path="res://scripts/arm.gd" id="2_cx8og"]
+[ext_resource type="Shader" path="res://resources/arm_billboard.gdshader" id="3_oprnn"]
 [ext_resource type="Texture2D" uid="uid://cqqctuv83p5d6" path="res://assets/placeholders/arm-right.png" id="4_lunbq"]
 [ext_resource type="Texture2D" uid="uid://cjfdvxd3gy4sj" path="res://assets/placeholders/head.png" id="5_2ue8w"]
 [ext_resource type="Texture2D" uid="uid://b6fivv0mmney1" path="res://assets/placeholders/fiash-flat-down.png" id="6_bmyc2"]

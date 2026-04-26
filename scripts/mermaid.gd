@@ -44,8 +44,8 @@ func _ready() -> void:
 			if not body.is_in_group("pickup"):
 				return
 			print("left:", body)
-			body.reparent(holding_left)
-			body.freeze = true
+			body.call_deferred("reparent", holding_left)
+			body.set_deferred("freeze", true)
 	)
 	
 	grab_range_right.body_entered.connect(
@@ -53,8 +53,8 @@ func _ready() -> void:
 			print("right:", body)
 			if not body.is_in_group("pickup"):
 				return
-			body.reparent(holding_right)
-			body.freeze = true
+			body.call_deferred("reparent", holding_right)
+			body.set_deferred("freeze", true)
 	)
 
 
