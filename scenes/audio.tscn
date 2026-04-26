@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=3 uid="uid://wrirglvtgey4"]
+[gd_scene format=3 uid="uid://bjxixg1qtrc11"]
 
 [ext_resource type="AudioStream" uid="uid://bl6v3bat4wxv4" path="res://resources/ANGRY-VoiceLines/BAD FOOD/sloppy.mp3" id="1_qicqv"]
 [ext_resource type="AudioStream" uid="uid://dog0fmgw47h3i" path="res://resources/ANGRY-VoiceLines/BAD FOOD/unedible.mp3" id="2_q0022"]
@@ -83,6 +83,8 @@
 [ext_resource type="AudioStream" uid="uid://c6rui3trr34vt" path="res://resources/Mermaid-Flops/Movement/Sand_Soft_2_Squelch.mp3" id="81_u5xjw"]
 [ext_resource type="AudioStream" uid="uid://dpwl82k08j8s3" path="res://resources/Mermaid-Flops/Movement/Sand_Soft_3_Squelch.mp3" id="82_dlgq1"]
 [ext_resource type="AudioStream" uid="uid://bty6s8x8bbeku" path="res://resources/Mermaid-Flops/Movement/Sand_Loop__00_01_750.mp3" id="83_kxpau"]
+
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_qicqv"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_m4823"]
 streams_count = 8
@@ -223,49 +225,51 @@ playback_mode = 1
 streams_count = 1
 stream_0/stream = ExtResource("83_kxpau")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+[node name="AudioManager" type="AudioStreamPlayer3D" unique_id=268274660]
+stream = SubResource("AudioStreamPolyphonic_qicqv")
+playback_type = 1
 
-[node name="Audio3D_ANGRY_BAD" type="AudioStreamPlayer3D" parent="."]
+[node name="Audio3D_ANGRY_BAD" type="AudioStreamPlayer3D" parent="." unique_id=2087393965]
 stream = SubResource("AudioStreamRandomizer_m4823")
 
-[node name="Audio3D_ANGRY_GOOD" type="AudioStreamPlayer3D" parent="."]
+[node name="Audio3D_ANGRY_GOOD" type="AudioStreamPlayer3D" parent="." unique_id=686878000]
 stream = SubResource("AudioStreamRandomizer_gkoni")
 
-[node name="Audio3D_ANGRY_RECIPE" type="AudioStreamPlayer3D" parent="."]
+[node name="Audio3D_ANGRY_RECIPE" type="AudioStreamPlayer3D" parent="." unique_id=1784085404]
 stream = SubResource("AudioStreamRandomizer_mo7ly")
 
-[node name="Audio3D_ANGRY_IDLE" type="AudioStreamPlayer3D" parent="."]
+[node name="Audio3D_ANGRY_IDLE" type="AudioStreamPlayer3D" parent="." unique_id=668590446]
 stream = SubResource("AudioStreamRandomizer_t1wjo")
 
-[node name="Audio3D_Happy_BAD2" type="AudioStreamPlayer3D" parent="."]
+[node name="Audio3D_Happy_BAD2" type="AudioStreamPlayer3D" parent="." unique_id=679887597]
 stream = SubResource("AudioStreamRandomizer_se0hx")
 
-[node name="Audio3D_Happy_GOOD2" type="AudioStreamPlayer3D" parent="."]
+[node name="Audio3D_Happy_GOOD2" type="AudioStreamPlayer3D" parent="." unique_id=303518692]
 stream = SubResource("AudioStreamRandomizer_w6v1t")
 
-[node name="Audio3D_Happy_FOODspecific" type="AudioStreamPlayer3D" parent="."]
+[node name="Audio3D_Happy_FOODspecific" type="AudioStreamPlayer3D" parent="." unique_id=148655971]
 stream = SubResource("AudioStreamRandomizer_wj3xp")
 
-[node name="Audio3D_Happy_RECIPE2" type="AudioStreamPlayer3D" parent="."]
+[node name="Audio3D_Happy_RECIPE2" type="AudioStreamPlayer3D" parent="." unique_id=473170836]
 stream = SubResource("AudioStreamRandomizer_xqevm")
 
-[node name="Audio3D_Happy_IDLE2" type="AudioStreamPlayer3D" parent="."]
+[node name="Audio3D_Happy_IDLE2" type="AudioStreamPlayer3D" parent="." unique_id=1925740064]
 stream = SubResource("AudioStreamRandomizer_ccco1")
 
-[node name="Audio3D_food_Coconut" type="AudioStreamPlayer3D" parent="."]
+[node name="Audio3D_food_Coconut" type="AudioStreamPlayer3D" parent="." unique_id=27137561]
 stream = SubResource("AudioStreamRandomizer_1pfdt")
 
-[node name="Audio3D_food_Urchin" type="AudioStreamPlayer3D" parent="."]
+[node name="Audio3D_food_Urchin" type="AudioStreamPlayer3D" parent="." unique_id=1698346612]
 stream = SubResource("AudioStreamRandomizer_humvb")
 
-[node name="Audio3D_food_Crab" type="AudioStreamPlayer3D" parent="."]
+[node name="Audio3D_food_Crab" type="AudioStreamPlayer3D" parent="." unique_id=166114337]
 stream = SubResource("AudioStreamRandomizer_0l6x5")
 
-[node name="Audio3D_MermaidTail" type="AudioStreamPlayer3D" parent="."]
+[node name="Audio3D_MermaidTail" type="AudioStreamPlayer3D" parent="." unique_id=363294548]
 stream = SubResource("AudioStreamRandomizer_11ral")
 
-[node name="Audio3D_Mermaidhead" type="AudioStreamPlayer3D" parent="."]
+[node name="Audio3D_Mermaidhead" type="AudioStreamPlayer3D" parent="." unique_id=1944501184]
 stream = SubResource("AudioStreamRandomizer_rt3x2")
 
-[node name="Audio3D_MermaidLOOP" type="AudioStreamPlayer3D" parent="."]
+[node name="Audio3D_MermaidLOOP" type="AudioStreamPlayer3D" parent="." unique_id=905671745]
 stream = SubResource("AudioStreamRandomizer_hwhc8")
