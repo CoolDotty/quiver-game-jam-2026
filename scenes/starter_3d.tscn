@@ -1,14 +1,15 @@
-[gd_scene format=3 uid="uid://ldp8f4crpuj5"]
+[gd_scene format=3 uid="uid://ckhahx33yngsy"]
 
 [ext_resource type="Texture2D" uid="uid://5xcj85j1ctpe" path="res://assets/placeholders/DevTextures/Dark/texture_04.png" id="1_gsx76"]
 [ext_resource type="Texture2D" uid="uid://cihrrs457d48u" path="res://assets/Art/Backgrounds/Main_Background.jpg" id="2_4xkce"]
 [ext_resource type="Shader" uid="uid://b6r1rfexjtmk0" path="res://resources/beach.gdshader" id="2_5chnm"]
-[ext_resource type="PackedScene" uid="uid://qq4fwum0xhj3" path="res://scenes/cooking_pot.tscn" id="3_pot"]
+[ext_resource type="PackedScene" path="res://scenes/cooking_pot.tscn" id="3_pot"]
 [ext_resource type="PackedScene" uid="uid://cjsufkx45xq8g" path="res://scenes/mermaid.tscn" id="4_4xkce"]
-[ext_resource type="PackedScene" uid="uid://dt2m1osxcfcry" path="res://scenes/coconut_item_pile_spawner.tscn" id="10_7oiso"]
-[ext_resource type="PackedScene" uid="uid://cbd32f1bc1uwj" path="res://scenes/baby_mermaid_item_pile_spawner.tscn" id="11_w266b"]
-[ext_resource type="PackedScene" uid="uid://dynoodpdky3ky" path="res://scenes/krab_item_pile_spawner.tscn" id="12_0onai"]
-[ext_resource type="PackedScene" uid="uid://cx7puiu50rrwr" path="res://scenes/urchin_item_pile_spawner.tscn" id="13_3nobw"]
+[ext_resource type="PackedScene" uid="uid://ci56d0qsgpiiy" path="res://scenes/audio.tscn" id="8_5chnm"]
+[ext_resource type="PackedScene" path="res://scenes/coconut_item_pile_spawner.tscn" id="10_7oiso"]
+[ext_resource type="PackedScene" path="res://scenes/baby_mermaid_item_pile_spawner.tscn" id="11_w266b"]
+[ext_resource type="PackedScene" path="res://scenes/krab_item_pile_spawner.tscn" id="12_0onai"]
+[ext_resource type="PackedScene" path="res://scenes/urchin_item_pile_spawner.tscn" id="13_3nobw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uxg2d"]
 render_priority = 0
@@ -20,6 +21,13 @@ shader_parameter/band_size = 0.07
 shader_parameter/wave_speed = 0.9
 shader_parameter/distort_amount = 0.0045
 shader_parameter/foam_boost = 0.06
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_7oiso"]
+clip_count = 2
+clip_0/name = &""
+clip_0/auto_advance = 0
+clip_1/name = &""
+clip_1/auto_advance = 0
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4uxoh"]
 rough = true
@@ -43,6 +51,8 @@ projection = 1
 current = true
 size = 25.0
 
+[node name="AudioManager" parent="Camera3D" unique_id=268274660 instance=ExtResource("8_5chnm")]
+
 [node name="background" type="Sprite3D" parent="Camera3D" unique_id=302842814]
 transform = Transform3D(3, 0, 0, 0, 2.427051, -1.7633557, 0, 1.7633557, 2.427051, 7.450581e-09, -0.035167336, -113.5824)
 material_override = SubResource("ShaderMaterial_uxg2d")
@@ -50,6 +60,9 @@ billboard = 1
 texture_filter = 0
 render_priority = -100
 texture = ExtResource("2_4xkce")
+
+[node name="MusicManager" type="AudioStreamPlayer3D" parent="Camera3D" unique_id=1792240214]
+stream = SubResource("AudioStreamInteractive_7oiso")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1565072717]
 transform = Transform3D(0.81915206, -0.4055798, 0.4055798, 0, 0.70710677, 0.70710677, -0.57357645, -0.579228, 0.579228, 0, 0, 0)

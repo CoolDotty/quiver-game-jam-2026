@@ -7,7 +7,6 @@ func _ready() -> void:
 	for child in get_children():
 		if child is AudioStreamPlayer3D:
 			_sounds[child.name] = child
-	_sounds["Audio3D_ANGRY_BAD"].play()
 
 func play_sound(sound_name: String) -> void:
 	print("A sound has been player: ")

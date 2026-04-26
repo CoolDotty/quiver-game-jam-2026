@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cyotyy8cpf8lg"]
+[gd_scene format=3 uid="uid://ci56d0qsgpiiy"]
 
 [ext_resource type="Script" uid="uid://ct60l5kdw6k6x" path="res://scenes/audio.gd" id="1_q0022"]
 [ext_resource type="AudioStream" uid="uid://bl6v3bat4wxv4" path="res://resources/ANGRY-VoiceLines/BAD FOOD/sloppy.mp3" id="1_qicqv"]
@@ -83,7 +83,10 @@
 [ext_resource type="AudioStream" uid="uid://bsuykwrpp0ncr" path="res://resources/Mermaid-Flops/Movement/Sand_Soft_1_Squelch.mp3" id="80_wcfmk"]
 [ext_resource type="AudioStream" uid="uid://c6rui3trr34vt" path="res://resources/Mermaid-Flops/Movement/Sand_Soft_2_Squelch.mp3" id="81_u5xjw"]
 [ext_resource type="AudioStream" uid="uid://dpwl82k08j8s3" path="res://resources/Mermaid-Flops/Movement/Sand_Soft_3_Squelch.mp3" id="82_dlgq1"]
-[ext_resource type="AudioStream" uid="uid://bty6s8x8bbeku" path="res://resources/Mermaid-Flops/Movement/Sand_Loop__00_01_750.mp3" id="83_kxpau"]
+[ext_resource type="AudioStream" uid="uid://ddqeu4npjgp1" path="res://resources/Cookin-sounds/Cooking/Pick_Up_Urchin.mp3" id="84_q0022"]
+[ext_resource type="AudioStream" uid="uid://b4c1drmx5bkso" path="res://resources/Cookin-sounds/Cooking/Pick_Up_Baby.mp3" id="85_8abb2"]
+[ext_resource type="AudioStream" uid="uid://crh8eantdloc3" path="res://resources/Cookin-sounds/Cooking/Pick_Up_Coconut.mp3" id="86_54ha2"]
+[ext_resource type="AudioStream" uid="uid://c5xhjxvlhrbrf" path="res://resources/Cookin-sounds/Cooking/Pick_Up_Crab.mp3" id="87_3ug1q"]
 
 [sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_qicqv"]
 
@@ -224,7 +227,27 @@ stream_2/stream = ExtResource("82_dlgq1")
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hwhc8"]
 playback_mode = 1
 streams_count = 1
-stream_0/stream = ExtResource("83_kxpau")
+stream_0/stream = ExtResource("84_q0022")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7k56w"]
+playback_mode = 1
+streams_count = 1
+stream_0/stream = ExtResource("85_8abb2")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fasog"]
+playback_mode = 1
+streams_count = 1
+stream_0/stream = ExtResource("86_54ha2")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4dtnr"]
+playback_mode = 1
+streams_count = 1
+stream_0/stream = ExtResource("87_3ug1q")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_e78ff"]
+playback_mode = 1
+streams_count = 1
+stream_0/stream = ExtResource("84_q0022")
 
 [node name="AudioManager" type="AudioStreamPlayer3D" unique_id=268274660]
 stream = SubResource("AudioStreamPolyphonic_qicqv")
@@ -277,3 +300,15 @@ stream = SubResource("AudioStreamRandomizer_rt3x2")
 
 [node name="Audio3D_MermaidLOOP" type="AudioStreamPlayer3D" parent="." unique_id=905671745]
 stream = SubResource("AudioStreamRandomizer_hwhc8")
+
+[node name="Audio3D_pickup_baby" type="AudioStreamPlayer3D" parent="." unique_id=1697185189]
+stream = SubResource("AudioStreamRandomizer_7k56w")
+
+[node name="Audio3D_pickup_coconut" type="AudioStreamPlayer3D" parent="." unique_id=1938397121]
+stream = SubResource("AudioStreamRandomizer_fasog")
+
+[node name="Audio3D_pickup_crab" type="AudioStreamPlayer3D" parent="." unique_id=406648397]
+stream = SubResource("AudioStreamRandomizer_4dtnr")
+
+[node name="Audio3D_pickup_urchin" type="AudioStreamPlayer3D" parent="." unique_id=1746373736]
+stream = SubResource("AudioStreamRandomizer_e78ff")

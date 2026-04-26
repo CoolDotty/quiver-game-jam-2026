@@ -81,7 +81,6 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 	if Input.is_action_just_pressed("flop_down") and _down_timer <= 0:
 		audio_manager.play_sound("Audio3D_MermaidTail")
-		var real_body_axis = (head.global_position - rigid_body_3d_2.global_position).normalized()
 		var real_body_axis: Vector3 = (head.global_position - rigid_body_3d_2.global_position).normalized()
 
 		# Check if both head and tail are off the ground for bonus force
@@ -203,7 +202,19 @@ func _try_pick_up(body: Node) -> void:
 	if pickup.has_method("set_held"):
 		pickup.call("set_held", true)
 
+
 	_held_item = pickup
+	
+	var scene_path = _held_item.scene_file_path
+	if scene_path == "res://scenes/items/krab.tscn":
+		audio_manager.play_sound("Audio3D_pickup_crab")
+	elif scene_path == "res://scenes/items/coconut.tscn":
+		audio_manager.play_sound("Audio3D_pickup_coconut")
+	elif scene_path == "res://scenes/items/baby_mermaid.tscn":
+		audio_manager.play_sound("Audio3D_pickup_baby")
+	elif scene_path == "res://scenes/items/urchin.tscn":
+		audio_manager.play_sound("Audio3D_pickup_urchin")
+			
 	_last_holder_position = held_item_holder.global_position
 	_holder_velocity = Vector3.ZERO
 	_pickups_in_range.erase(pickup)
