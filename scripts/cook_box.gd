@@ -45,7 +45,7 @@ func _on_cooking_finished() -> void:
 	print("CookBox: Item finished cooking! Spawning new item.")
 	if current_item == null: return
 	
-	var cooked_item := _create_cooked_item(current_item)
+	var cooked_item: RigidBody3D = _create_cooked_item(current_item)
 	if cooked_item == null:
 		current_item.queue_free()
 		current_item = null

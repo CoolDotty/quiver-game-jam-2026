@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://ldp8f4crpuj5"]
 
-[ext_resource type="PackedScene" uid="uid://blk0xu2m2nycq" path="res://scenes/item.tscn" id="1_2bmlf"]
+[ext_resource type="PackedScene" path="res://scenes/items/coconut.tscn" id="1_2bmlf"]
 [ext_resource type="Texture2D" uid="uid://5xcj85j1ctpe" path="res://assets/placeholders/DevTextures/Dark/texture_04.png" id="1_gsx76"]
 [ext_resource type="PackedScene" uid="uid://cjsufkx45xq8g" path="res://scenes/mermaid.tscn" id="4_4xkce"]
+[ext_resource type="PackedScene" path="res://scenes/items/krab.tscn" id="5_4xkce"]
 [ext_resource type="Texture2D" uid="uid://bfuyklsdknywe" path="res://assets/BG/BG_img.jpg" id="7_fmo7n"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4uxoh"]
@@ -23,6 +24,8 @@ size = Vector2(200, 200)
 
 [node name="Item" parent="." unique_id=133743956 instance=ExtResource("1_2bmlf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.451978, 1.6157398, 1.6849356)
+cooks_into = null
+burns_into = null
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=878903255]
 transform = Transform3D(1, 0, 0, 0, 0.80901706, 0.58778524, 0, -0.58778524, 0.80901706, -7.450581e-09, 30.995628, 35.03114)
@@ -55,3 +58,6 @@ mesh = SubResource("2_floor_mesh")
 
 [node name="Mermaid" parent="." unique_id=1293432093 instance=ExtResource("4_4xkce")]
 transform = Transform3D(-0.024815917, 0.999692, 0, -0.999692, -0.024815917, 0, 0, 0, 1, 0, 4.656455, -6.7339764)
+
+[node name="Krab" parent="." unique_id=746354439 instance=ExtResource("5_4xkce")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.44098508, 0)

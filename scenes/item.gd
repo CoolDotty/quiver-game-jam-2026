@@ -4,6 +4,7 @@ extends RigidBody3D
 @export var item_name: String = ""
 @export var sprite_texture: Texture2D
 @export var cooks_into: PackedScene
+@export var burns_into: PackedScene
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 @onready var sprite_3d: Sprite3D = $Sprite3D
 
@@ -69,6 +70,14 @@ func get_cooks_into() -> PackedScene:
 
 func set_cooks_into(value: PackedScene) -> void:
 	cooks_into = value
+
+
+func get_burns_into() -> PackedScene:
+	return burns_into
+
+
+func set_burns_into(value: PackedScene) -> void:
+	burns_into = value
 
 
 func set_sprite_offset(offset: Vector2) -> void:

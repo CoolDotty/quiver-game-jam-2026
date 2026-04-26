@@ -19,6 +19,6 @@ sprite_texture = ExtResource("3_o32o1")
 shape = SubResource("SphereShape3D_r3ghi")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1999240213]
-transform = Transform3D(-0.010137592, 0.24979438, 0, -0.24979438, -0.010137592, 0, 0, 0, 0.25, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_6muww")
 billboard = 1
