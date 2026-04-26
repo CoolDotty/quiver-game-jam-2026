@@ -40,7 +40,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 62.870018)
 physics_material_override = SubResource("PhysicsMaterial_4uxoh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1801628329]
-transform = Transform3D(1, 0, 0, 0, 50, 0, 0, 0, 1, 0, -4.9, 0)
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, -4.9, 0)
 shape = SubResource("3_floor_shape")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=126160062]
