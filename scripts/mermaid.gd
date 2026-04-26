@@ -55,10 +55,10 @@ func _physics_process(_delta: float) -> void:
 	var body_axis := get_body_axis()
 	var perpendicular_dir = body_axis.cross(Vector3.UP).normalized()
 
-	if Input.is_action_pressed("roll_right"):
-		head.apply_central_force(perpendicular_dir * TAIL_LIFT_FORCE * 2.50)
-	if Input.is_action_pressed("roll_left"):
-		head.apply_central_force(-perpendicular_dir * TAIL_LIFT_FORCE * 2.50)
+	if Input.is_action_just_pressed("roll_right"):
+		head.apply_central_force((perpendicular_dir + Vector3.UP.normalized()) * TAIL_LIFT_FORCE * 40.50)
+	if Input.is_action_just_pressed("roll_left"):
+		head.apply_central_force((-perpendicular_dir + Vector3.UP.normalized()) * TAIL_LIFT_FORCE * 40.50)
 
 
 
@@ -87,7 +87,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 		
 	if Input.is_action_just_pressed("flop_up") and _up_timer <= 0:
 		# Lift ends to create the curl
-		var lift_force = TAIL_LIFT_FORCE * 0.6
+		var lift_force = TAIL_LIFT_FORCE * 0.6 * 2
 		head.apply_central_impulse(Vector3.UP * lift_force)
 		tail.apply_central_impulse(Vector3.UP * lift_force)
 		
