@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://dboo86qfbq60c"]
+[gd_scene format=3 uid="uid://dcut8agpwv8iu"]
 
-[ext_resource type="Script" uid="uid://bg1ur3lu4avnc" path="res://scripts/grab_box.gd" id="1_mejj2"]
+[ext_resource type="Script" path="res://scripts/grab_box.gd" id="1_mejj2"]
 [ext_resource type="Texture2D" uid="uid://dh7j2xavu6lmt" path="res://assets/placeholders/DevTextures/Dark/texture_01.png" id="2_04kh8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hhtwg"]

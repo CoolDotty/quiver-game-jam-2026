@@ -11,6 +11,7 @@ enum Facing {
 	RIGHT,
 }
 
+@onready var audio_manager: AudioStreamPlayer3D = $"../Camera3D/AudioManager"
 
 @onready var head: RigidBody3D = $Head
 @onready var tail: RigidBody3D = $Tail
@@ -55,7 +56,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 	# var d = hinge_joint_3d.get_contact_local_normal(0)
 
 	if Input.is_action_just_pressed("flop_down") and _down_timer <= 0:
-		
+		audio_manager.play_sound("Audio3D_MermaidTail")
 		var real_body_axis = (head.global_position - rigid_body_3d_2.global_position).normalized()
 
 		# Check if both head and tail are off the ground for bonus force

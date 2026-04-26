@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" path="res://scenes/item_grab_box.tscn" id="6_fmo7n"]
 [ext_resource type="PackedScene" uid="uid://blk0xu2m2nycq" path="res://scenes/item.tscn" id="7_5chnm"]
 [ext_resource type="Texture2D" uid="uid://bfuyklsdknywe" path="res://assets/BG/BG_img.jpg" id="7_fmo7n"]
+[ext_resource type="PackedScene" uid="uid://cyotyy8cpf8lg" path="res://scenes/audio.tscn" id="8_5chnm"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4uxoh"]
 rough = true
@@ -34,6 +35,9 @@ transform = Transform3D(1, 0, 0, 0, 0.80901706, 0.58778524, 0, -0.58778524, 0.80
 projection = 1
 current = true
 size = 25.0
+
+[node name="AudioManager" parent="Camera3D" unique_id=268274660 instance=ExtResource("8_5chnm")]
+transform = Transform3D(1, 0, 0, 0, 0.80901694, -0.5877852, 0, 0.5877852, 0.80901694, -0.28184795, -2.6478472, -45.411148)
 
 [node name="background" type="Sprite3D" parent="Camera3D" unique_id=302842814]
 transform = Transform3D(5, 0, 0, 0, 4.045085, -2.938926, 0, 2.938926, 4.045085, 7.450581e-09, -0.035167336, -113.5824)

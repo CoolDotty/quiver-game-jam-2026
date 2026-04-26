@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cyotyy8cpf8lg"]
 
+[ext_resource type="Script" uid="uid://ct60l5kdw6k6x" path="res://scenes/audio.gd" id="1_q0022"]
 [ext_resource type="AudioStream" uid="uid://bl6v3bat4wxv4" path="res://resources/ANGRY-VoiceLines/BAD FOOD/sloppy.mp3" id="1_qicqv"]
 [ext_resource type="AudioStream" uid="uid://dog0fmgw47h3i" path="res://resources/ANGRY-VoiceLines/BAD FOOD/unedible.mp3" id="2_q0022"]
 [ext_resource type="AudioStream" uid="uid://oqh3c6r1i3xj" path="res://resources/ANGRY-VoiceLines/BAD FOOD/unedible_2.mp3" id="3_x6vto"]
@@ -228,9 +229,11 @@ stream_0/stream = ExtResource("83_kxpau")
 [node name="AudioManager" type="AudioStreamPlayer3D" unique_id=268274660]
 stream = SubResource("AudioStreamPolyphonic_qicqv")
 playback_type = 1
+script = ExtResource("1_q0022")
 
 [node name="Audio3D_ANGRY_BAD" type="AudioStreamPlayer3D" parent="." unique_id=2087393965]
 stream = SubResource("AudioStreamRandomizer_m4823")
+volume_db = 23.942
 
 [node name="Audio3D_ANGRY_GOOD" type="AudioStreamPlayer3D" parent="." unique_id=686878000]
 stream = SubResource("AudioStreamRandomizer_gkoni")
@@ -267,6 +270,7 @@ stream = SubResource("AudioStreamRandomizer_0l6x5")
 
 [node name="Audio3D_MermaidTail" type="AudioStreamPlayer3D" parent="." unique_id=363294548]
 stream = SubResource("AudioStreamRandomizer_11ral")
+volume_db = 15.0
 
 [node name="Audio3D_Mermaidhead" type="AudioStreamPlayer3D" parent="." unique_id=1944501184]
 stream = SubResource("AudioStreamRandomizer_rt3x2")
