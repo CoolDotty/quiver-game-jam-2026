@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://blkmqxtguh5cr" path="res://scenes/items/coco_cream.tscn" id="4_cooked"]
 [ext_resource type="PackedScene" uid="uid://cow85lluaf03v" path="res://scenes/items/unfortunately.tscn" id="5_burned"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_item"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_item"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_item"]
 render_priority = 0
@@ -21,7 +21,7 @@ cooks_into = ExtResource("4_cooked")
 burns_into = ExtResource("5_burned")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=826365457]
-shape = SubResource("SphereShape3D_item")
+shape = SubResource("BoxShape3D_item")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1170104991]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

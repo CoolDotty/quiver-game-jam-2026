@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dkeoiyibyrkw7" path="res://scenes/items/merstake.tscn" id="4_cooked"]
 [ext_resource type="PackedScene" uid="uid://bqti4g84q472q" path="res://scenes/items/smoked_siren.tscn" id="5_burned"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_item"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_item"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_item"]
 render_priority = 0
@@ -21,7 +21,7 @@ cooks_into = ExtResource("4_cooked")
 burns_into = ExtResource("5_burned")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=578149209]
-shape = SubResource("SphereShape3D_item")
+shape = SubResource("BoxShape3D_item")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=176649369]
 material_override = SubResource("ShaderMaterial_item")
