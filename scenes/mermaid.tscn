@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cqqctuv83p5d6" path="res://assets/placeholders/arm-right.png" id="4_lunbq"]
 [ext_resource type="Texture2D" uid="uid://cjfdvxd3gy4sj" path="res://assets/placeholders/head.png" id="5_2ue8w"]
 [ext_resource type="Texture2D" uid="uid://b6fivv0mmney1" path="res://assets/placeholders/fiash-flat-down.png" id="6_bmyc2"]
+[ext_resource type="Texture2D" uid="uid://cigsydrcfi0oo" path="res://assets/Art/Char_Sprites/char_mermaid_head.png" id="6_vfsj7"]
+[ext_resource type="Texture2D" uid="uid://b4ca63k5a5s1o" path="res://assets/Art/Char_Sprites/char_mermaid_chest.png" id="7_ex356"]
 [ext_resource type="Texture2D" uid="uid://b4ypn1bybrjha" path="res://assets/placeholders/fiash-flat-left.png" id="7_vfsj7"]
 [ext_resource type="Texture2D" uid="uid://ci01cim2dvri3" path="res://assets/placeholders/fiash-flat-right.png" id="8_ex356"]
 [ext_resource type="Texture2D" uid="uid://b38tm1s4ghl08" path="res://assets/placeholders/fiash-flat-up.png" id="9_cri7n"]
@@ -14,6 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://bqxbkmwystgb6" path="res://assets/placeholders/fiash-bent-right.png" id="12_8ne86"]
 [ext_resource type="Texture2D" uid="uid://chyhne02f5ilt" path="res://assets/placeholders/fiash-bent-up.png" id="13_hx8gk"]
 [ext_resource type="Texture2D" uid="uid://37dvd41b5hpu" path="res://assets/placeholders/tail.jpg" id="14_lgxpy"]
+[ext_resource type="Texture2D" uid="uid://bkff4s1w2jm1l" path="res://assets/Art/Char_Sprites/char_mermaid_mid.png" id="16_cri7n"]
+[ext_resource type="Texture2D" uid="uid://b814obyp6cotk" path="res://assets/Art/Char_Sprites/char_mermaid_knee.png" id="17_n58kw"]
+[ext_resource type="Texture2D" uid="uid://cl2urs1rj3u5m" path="res://assets/Art/Char_Sprites/char_mermaid_tail.png" id="19_8rn3h"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2tnqr"]
 radius = 0.1
@@ -178,7 +183,8 @@ shape = SubResource("SphereShape3D_vhc0g")
 transform = Transform3D(1, 0, 0, 0, 1, 1.7484555e-07, 0, -1.7484555e-07, 1, 0, 0, 0)
 material = SubResource("StandardMaterial3D_btfp6")
 
-[node name="Sprite3D" type="Sprite3D" parent="Head" unique_id=1446563630]
+[node name="Sprite_Head" type="Sprite3D" parent="Head" unique_id=1446563630]
+texture = ExtResource("6_vfsj7")
 
 [node name="HingeJoint3D" type="HingeJoint3D" parent="." unique_id=1189188061]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4937563, -0.013938487, 0)
@@ -201,7 +207,8 @@ shape = SubResource("SphereShape3D_vhc0g")
 [node name="CSGSphere3D" type="CSGSphere3D" parent="RigidBody3D2" unique_id=1188776943]
 radius = 0.45
 
-[node name="Sprite3D" type="Sprite3D" parent="RigidBody3D2" unique_id=196691518]
+[node name="Sprite_Chest" type="Sprite3D" parent="RigidBody3D2" unique_id=196691518]
+texture = ExtResource("7_ex356")
 
 [node name="HingeJoint3D5" type="HingeJoint3D" parent="." unique_id=1935950945]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0049447, -0.5438845, 0)
@@ -246,7 +253,8 @@ shape = SubResource("SphereShape3D_vhc0g")
 visible = false
 radius = 0.4
 
-[node name="Sprite3D" type="Sprite3D" parent="RigidBody3D3" unique_id=1732713114]
+[node name="Sprite_Mid" type="Sprite3D" parent="RigidBody3D3" unique_id=1732713114]
+texture = ExtResource("16_cri7n")
 
 [node name="HingeJoint3D3" type="HingeJoint3D" parent="." unique_id=959740729]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4341545, -0.06871492, 0)
@@ -269,7 +277,8 @@ shape = SubResource("SphereShape3D_vhc0g")
 [node name="CSGSphere3D" type="CSGSphere3D" parent="RigidBody3D4" unique_id=1042299548]
 radius = 0.3
 
-[node name="Sprite3D" type="Sprite3D" parent="RigidBody3D4" unique_id=1964650245]
+[node name="Sprite_Knee" type="Sprite3D" parent="RigidBody3D4" unique_id=1964650245]
+texture = ExtResource("17_n58kw")
 
 [node name="HingeJoint3D4" type="HingeJoint3D" parent="." unique_id=19128249]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4194632, -0.09652966, 0)
@@ -293,4 +302,5 @@ shape = SubResource("SphereShape3D_vhc0g")
 radius = 0.25
 material = SubResource("StandardMaterial3D_fmo7n")
 
-[node name="Sprite3D" type="Sprite3D" parent="Tail" unique_id=1986586727]
+[node name="Sprite_Tail" type="Sprite3D" parent="Tail" unique_id=1986586727]
+texture = ExtResource("19_8rn3h")
