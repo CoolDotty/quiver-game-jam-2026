@@ -25,10 +25,17 @@ size = Vector2(200, 200)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.451978, 1.6157398, 1.6849356)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=878903255]
-transform = Transform3D(1, 0, 0, 0, 0.80901706, 0.58778524, 0, -0.58778524, 0.80901706, -7.450581e-09, 5.410118, 8.745848)
+transform = Transform3D(1, 0, 0, 0, 0.80901706, 0.58778524, 0, -0.58778524, 0.80901706, -7.450581e-09, 30.995628, 35.03114)
 projection = 1
 current = true
 size = 25.0
+
+[node name="background" type="Sprite3D" parent="Camera3D" unique_id=302842814]
+transform = Transform3D(5, 0, 0, 0, 4.045085, -2.938926, 0, 2.938926, 4.045085, 7.450581e-09, -0.035167336, -113.5824)
+billboard = 1
+texture_filter = 0
+render_priority = -10
+texture = ExtResource("7_fmo7n")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1565072717]
 transform = Transform3D(0.81915206, -0.4055798, 0.4055798, 0, 0.70710677, 0.70710677, -0.57357645, -0.579228, 0.579228, 0, 0, 0)
@@ -47,11 +54,4 @@ material_override = SubResource("1_floor_material")
 mesh = SubResource("2_floor_mesh")
 
 [node name="Mermaid" parent="." unique_id=1293432093 instance=ExtResource("4_4xkce")]
-transform = Transform3D(-0.024815917, 0.999692, 0, -0.999692, -0.024815917, 0, 0, 0, 1, 0, 4.656455, -2.0975704)
-
-[node name="background" type="Sprite3D" parent="." unique_id=302842814]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -42.029, -56.099)
-billboard = 1
-texture_filter = 0
-render_priority = -10
-texture = ExtResource("7_fmo7n")
+transform = Transform3D(-0.024815917, 0.999692, 0, -0.999692, -0.024815917, 0, 0, 0, 1, 0, 4.656455, -6.7339764)
