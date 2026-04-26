@@ -268,7 +268,7 @@ script = ExtResource("1_q0022")
 
 [node name="Audio3D_ANGRY_BAD" type="AudioStreamPlayer3D" parent="." unique_id=2087393965]
 stream = SubResource("AudioStreamRandomizer_m4823")
-volume_db = 16.351
+volume_db = 23.942
 
 [node name="Audio3D_ANGRY_GOOD" type="AudioStreamPlayer3D" parent="." unique_id=686878000]
 stream = SubResource("AudioStreamRandomizer_gkoni")

@@ -53,6 +53,7 @@ const MIFFED_TEXTURE := preload("res://assets/Art/Characters/Octobussy.png")
 const ANGRY_TEXTURE := preload("res://assets/Art/Characters/octobussy_angry.png")
 const SAD_TEXTURE := preload("res://assets/Art/Characters/sad_octobussy.png")
 
+@onready var music_manager: AudioStreamPlayer3D = $"../Camera3D/MusicManager"
 @onready var audio_manager: AudioStreamPlayer3D = $"../Camera3D/AudioManager"
 @onready var portrait_sprite: Sprite3D = $Portrait
 @onready var loss_fade_rect: ColorRect = $LossFade/Blackout
@@ -376,9 +377,14 @@ func _play_reaction_sound(delta: int) -> void:
 
 func _play_idle_sound() -> void:
 	var time_ratio := _time_remaining / ROUND_DURATION
-	if time_ratio <= 0.5:
+	if time_ratio <= 0.1:
+		# Very angry — last 10% of time
+		audio_manager.play_sound("Audio3D_ANGRY_IDLE")
+	elif time_ratio <= 0.5:
+		# Miffed — between 10% and 50% of time remaining
 		audio_manager.play_sound("Audio3D_ANGRY_IDLE")
 	else:
+		# Neutral/happy — first half of the round
 		audio_manager.play_sound("Audio3D_Happy_IDLE2")
 
 
@@ -457,14 +463,12 @@ func _get_time_based_portrait_texture() -> Texture2D:
 func _apply_portrait_texture(texture: Texture2D) -> void:
 	if portrait_sprite == null:
 		return
-
 	if texture == ANGRY_TEXTURE:
-		MusicManager.switch_clip("Game Theme Loop 140")
-	elif texture == MIFFED_TEXTURE:
-		MusicManager.switch_clip("Game Theme Loop 120")
-	else:
-		MusicManager.switch_clip("Game Theme Loop 100")
-
+		music_manager.get_stream_playback().switch_to_clip_by_name("Game Theme Loop 140")
+		
+	if texture == MIFFED_TEXTURE:
+		music_manager.get_stream_playback().switch_to_clip_by_name("Game Theme Loop 120")
+		
 	portrait_sprite.texture = texture
 
 	if _portrait_shader_material != null:
