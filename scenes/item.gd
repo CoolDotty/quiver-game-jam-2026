@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-const SHADOW_MODULATE := Color(0, 0, 0, 0.55)
+const SHADOW_MODULATE := Color(0, 0, 0, 0.19607843)
 const SHADOW_SCALE_MULTIPLIER := 1.2
 
 

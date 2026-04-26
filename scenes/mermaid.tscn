@@ -172,7 +172,7 @@ billboard = 1
 texture = ExtResource("6_vfsj7")
 
 [node name="Sprite_Head_Shadow" type="Sprite3D" parent="Head" unique_id=2146533556]
-modulate = Color(0, 0, 0, 0.39215687)
+modulate = Color(0, 0, 0, 0.19607843)
 billboard = 1
 render_priority = -1
 texture = ExtResource("6_vfsj7")
@@ -210,7 +210,7 @@ material_override = SubResource("BillboardSpriteMaterial_chest")
 texture = ExtResource("7_ex356")
 
 [node name="Sprite_Chest_Shadow" type="Sprite3D" parent="RigidBody3D2" unique_id=1746300985]
-modulate = Color(0, 0, 0, 0.39215687)
+modulate = Color(0, 0, 0, 0.19607843)
 billboard = 1
 render_priority = -1
 texture = ExtResource("7_ex356")
@@ -258,7 +258,7 @@ material_override = SubResource("BillboardSpriteMaterial_mid")
 texture = ExtResource("16_cri7n")
 
 [node name="Sprite_Mid_Shadow" type="Sprite3D" parent="RigidBody3D3" unique_id=1733142450]
-modulate = Color(0, 0, 0, 0.39215687)
+modulate = Color(0, 0, 0, 0.19607843)
 billboard = 1
 render_priority = -1
 texture = ExtResource("16_cri7n")
@@ -290,7 +290,7 @@ material_override = SubResource("BillboardSpriteMaterial_knee")
 texture = ExtResource("17_n58kw")
 
 [node name="Sprite_Knee_Shadow" type="Sprite3D" parent="RigidBody3D4" unique_id=1127768423]
-modulate = Color(0, 0, 0, 0.39215687)
+modulate = Color(0, 0, 0, 0.19607843)
 billboard = 1
 render_priority = -1
 texture = ExtResource("17_n58kw")
@@ -323,7 +323,7 @@ material_override = SubResource("BillboardSpriteMaterial_tail")
 texture = ExtResource("19_8rn3h")
 
 [node name="Sprite_Tail_Shadow" type="Sprite3D" parent="Tail" unique_id=1292974277]
-modulate = Color(0, 0, 0, 0.39215687)
+modulate = Color(0, 0, 0, 0.19607843)
 billboard = 1
 render_priority = -1
 texture = ExtResource("19_8rn3h")

@@ -31,7 +31,7 @@ billboard = 1
 texture = ExtResource("3_texture")
 
 [node name="Sprite3D_Shadow" type="Sprite3D" parent="." unique_id=1390489444]
-modulate = Color(0, 0, 0, 0.39215687)
+modulate = Color(0, 0, 0, 0.19607843)
 billboard = 1
 render_priority = -1
 texture = ExtResource("3_texture")
