@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cjsufkx45xq8g"]
 
 [ext_resource type="Script" uid="uid://dy8p2dt6t1fn5" path="res://scripts/mermaid.gd" id="1_k32jb"]
+[ext_resource type="Script" path="res://scripts/mermaid_movement_controller.gd" id="20_movement_controller"]
 [ext_resource type="Script" uid="uid://uflo8kwjqnuj" path="res://scripts/arm.gd" id="2_cx8og"]
 [ext_resource type="Script" uid="uid://bs8f4b6eesrcy" path="res://scripts/segment_shadow_sprite.gd" id="3_n8k2q"]
 [ext_resource type="Shader" uid="uid://chdtkxll2mgea" path="res://resources/billboard.gdshader" id="3_oprnn"]
@@ -54,6 +55,7 @@ shader_parameter/center_rigidity = 0.35
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4xkce"]
 rough = true
+friction = 0.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vhc0g"]
 radius = 0.45
@@ -187,6 +189,9 @@ texture = ExtResource("5_cx8og")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.6, 0)
 
 [node name="HeldItemHolder" type="Node3D" parent="." unique_id=1492349194]
+
+[node name="MovementController" type="Node" parent="."]
+script = ExtResource("20_movement_controller")
 
 [node name="Head" type="RigidBody3D" parent="." unique_id=457580459]
 collision_layer = 2

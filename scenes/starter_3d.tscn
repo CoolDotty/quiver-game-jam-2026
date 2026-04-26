@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ldp8f4crpuj5"]
 
-[ext_resource type="Script" path="res://scripts/starter_3d.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://5xcj85j1ctpe" path="res://assets/placeholders/DevTextures/Dark/texture_04.png" id="1_gsx76"]
+[ext_resource type="Script" uid="uid://co2gqo24h2xo5" path="res://scripts/starter_3d.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://cihrrs457d48u" path="res://assets/Art/Backgrounds/Main_Background.jpg" id="2_4xkce"]
 [ext_resource type="Shader" uid="uid://b6r1rfexjtmk0" path="res://resources/beach.gdshader" id="2_5chnm"]
 [ext_resource type="PackedScene" uid="uid://qq4fwum0xhj3" path="res://scenes/cooking_pot.tscn" id="3_pot"]
@@ -24,8 +24,8 @@ shader_parameter/wave_speed = 0.9
 shader_parameter/distort_amount = 0.009
 shader_parameter/foam_boost = 0.08
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4uxoh"]
-rough = true
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_floor"]
+friction = 0.55
 bounce = 0.25
 
 [sub_resource type="BoxShape3D" id="3_floor_shape"]
@@ -37,6 +37,10 @@ uv1_scale = Vector3(10, 10, 10)
 
 [sub_resource type="PlaneMesh" id="2_floor_mesh"]
 size = Vector2(200, 200)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4uxoh"]
+rough = true
+bounce = 0.25
 
 [sub_resource type="BoxShape3D" id="4_wall_vertical_shape"]
 size = Vector3(2, 20, 44)
@@ -67,7 +71,7 @@ light_energy = 2.0
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1833675114]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
-physics_material_override = SubResource("PhysicsMaterial_4uxoh")
+physics_material_override = SubResource("PhysicsMaterial_floor")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1801628329]
 shape = SubResource("3_floor_shape")
@@ -146,17 +150,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.889149, 6.9662113, 4.88691
 [node name="UrchinItemPileSpawner" parent="." unique_id=20315944 instance=ExtResource("13_3nobw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.054876, 8.628871, 3.995201)
 
-[node name="FadeLayer" type="CanvasLayer" parent="."]
+[node name="FadeLayer" type="CanvasLayer" parent="." unique_id=226922779]
 layer = 200
 
-[node name="FadeRect" type="ColorRect" parent="FadeLayer"]
-layout_mode = 3
+[node name="FadeRect" type="ColorRect" parent="FadeLayer" unique_id=1900200966]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 2
 offset_right = 1477.0
 offset_bottom = 789.0
-color = Color(1, 1, 1, 1)
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
-[node name="PauseMenu" parent="." instance=ExtResource("14_pause_menu")]
+[node name="PauseMenu" parent="." unique_id=884376440 instance=ExtResource("14_pause_menu")]
