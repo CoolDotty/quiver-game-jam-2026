@@ -87,6 +87,8 @@
 [ext_resource type="AudioStream" uid="uid://b4c1drmx5bkso" path="res://resources/Cookin-sounds/Cooking/Pick_Up_Baby.mp3" id="85_8abb2"]
 [ext_resource type="AudioStream" uid="uid://crh8eantdloc3" path="res://resources/Cookin-sounds/Cooking/Pick_Up_Coconut.mp3" id="86_54ha2"]
 [ext_resource type="AudioStream" uid="uid://c5xhjxvlhrbrf" path="res://resources/Cookin-sounds/Cooking/Pick_Up_Crab.mp3" id="87_3ug1q"]
+[ext_resource type="AudioStream" uid="uid://boiv643hggg0u" path="res://resources/Endings/Win_Game.mp3" id="88_3ug1q"]
+[ext_resource type="AudioStream" uid="uid://c121s16yx2ym0" path="res://resources/Endings/Lose_Game.mp3" id="89_7k56w"]
 
 [sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_qicqv"]
 
@@ -249,6 +251,16 @@ playback_mode = 1
 streams_count = 1
 stream_0/stream = ExtResource("84_q0022")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_frnfl"]
+playback_mode = 1
+streams_count = 1
+stream_0/stream = ExtResource("88_3ug1q")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gefff"]
+playback_mode = 1
+streams_count = 1
+stream_0/stream = ExtResource("89_7k56w")
+
 [node name="AudioManager" type="AudioStreamPlayer3D" unique_id=268274660]
 stream = SubResource("AudioStreamPolyphonic_qicqv")
 playback_type = 1
@@ -312,3 +324,9 @@ stream = SubResource("AudioStreamRandomizer_4dtnr")
 
 [node name="Audio3D_pickup_urchin" type="AudioStreamPlayer3D" parent="." unique_id=1746373736]
 stream = SubResource("AudioStreamRandomizer_e78ff")
+
+[node name="Audio3D_win" type="AudioStreamPlayer3D" parent="." unique_id=1158886427]
+stream = SubResource("AudioStreamRandomizer_frnfl")
+
+[node name="Audio3D_lose" type="AudioStreamPlayer3D" parent="." unique_id=1000255498]
+stream = SubResource("AudioStreamRandomizer_gefff")

@@ -36,11 +36,17 @@ const LOSS_SHAKE_MAX_SPEED := 16.0
 const LOSS_RENDER_PRIORITY := 127
 const GAME_OVER_SCENE_PATH := "res://scenes/game_over.tscn"
 
+# Idle sound interval: a new idle bark plays every 8–18 seconds
+const IDLE_SOUND_MIN_INTERVAL := 8.0
+const IDLE_SOUND_MAX_INTERVAL := 18.0
+
 const NEUTRAL_TEXTURE := preload("res://assets/Art/Characters/octobussy_neutral.png")
 const MIFFED_TEXTURE := preload("res://assets/Art/Characters/Octobussy.png")
 const ANGRY_TEXTURE := preload("res://assets/Art/Characters/octobussy_angry.png")
 const SAD_TEXTURE := preload("res://assets/Art/Characters/sad_octobussy.png")
 
+@onready var music_manager: AudioStreamPlayer3D = $"../Camera3D/MusicManager"
+@onready var audio_manager: AudioStreamPlayer3D = $"../Camera3D/AudioManager"
 @onready var portrait_sprite: Sprite3D = $Portrait
 @onready var loss_fade_rect: ColorRect = $LossFade/Blackout
 @onready var score_label: Label = $HUD/ScoreLabel
@@ -57,12 +63,16 @@ var _portrait_rest_position: Vector3 = Vector3.ZERO
 var _shake_time: float = 0.0
 var _is_game_over: bool = false
 var _has_won: bool = false
+var _idle_sound_timer: float = 0.0
 
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	_rng.randomize()
 	_recipe_size = _get_recipe_size_from_pot()
+
+	# Stagger the first idle bark so it doesn't fire immediately on load
+	_idle_sound_timer = _rng.randf_range(IDLE_SOUND_MIN_INTERVAL, IDLE_SOUND_MAX_INTERVAL)
 
 	if portrait_sprite != null:
 		_portrait_rest_position = portrait_sprite.position
@@ -79,7 +89,7 @@ func _ready() -> void:
 	_update_score_label()
 	_update_timer_label()
 	_update_portrait_emote()
-	_generate_recipe(_recipe_size)
+	_generate_recipe(_recipe_size, true)
 
 
 func _process(delta: float) -> void:
@@ -102,6 +112,12 @@ func _process(delta: float) -> void:
 		_apply_score_delta(1)
 		if _has_won:
 			return
+
+	# Tick idle sound timer and fire a bark when it expires
+	_idle_sound_timer -= delta
+	if _idle_sound_timer <= 0.0:
+		_play_idle_sound()
+		_idle_sound_timer = _rng.randf_range(IDLE_SOUND_MIN_INTERVAL, IDLE_SOUND_MAX_INTERVAL)
 
 	_update_loss_shake(delta)
 	_update_timer_label()
@@ -131,12 +147,15 @@ func _apply_score_delta(delta: int) -> void:
 	_score_emote_override_remaining = SCORE_EMOTE_OVERRIDE_DURATION
 	_update_portrait_emote()
 
+	_play_reaction_sound(delta)
+
 	if _score >= WIN_SCORE and not _has_won:
 		_has_won = true
 		Global.you_win_requested.emit()
+		audio_manager.play_sound("Audio3d_win")
 
 
-func _generate_recipe(recipe_size: int) -> void:
+func _generate_recipe(recipe_size: int, is_first: bool = false) -> void:
 	if recipe_size <= 0:
 		return
 
@@ -154,6 +173,9 @@ func _generate_recipe(recipe_size: int) -> void:
 		)
 
 	_update_recipe_label()
+
+	if is_first:
+		audio_manager.play_sound("Audio3D_Happy_RECIPE2")
 
 
 func _snapshot_item_names(items: Array) -> PackedStringArray:
@@ -292,6 +314,34 @@ func _update_loss_shake(delta: float) -> void:
 	)
 
 
+func _play_reaction_sound(delta: int) -> void:
+	var time_ratio := _time_remaining / ROUND_DURATION
+	var boss_is_happy := time_ratio > 0.5
+	var food_is_good := delta > 0
+
+	if boss_is_happy and food_is_good:
+		audio_manager.play_sound("Audio3D_Happy_GOOD2")
+	elif boss_is_happy and not food_is_good:
+		audio_manager.play_sound("Audio3D_Happy_BAD2")
+	elif not boss_is_happy and food_is_good:
+		audio_manager.play_sound("Audio3D_ANGRY_GOOD")
+	else:
+		audio_manager.play_sound("Audio3D_ANGRY_BAD")
+
+
+func _play_idle_sound() -> void:
+	var time_ratio := _time_remaining / ROUND_DURATION
+	if time_ratio <= 0.1:
+		# Very angry — last 10% of time
+		audio_manager.play_sound("Audio3D_ANGRY_IDLE")
+	elif time_ratio <= 0.5:
+		# Miffed — between 10% and 50% of time remaining
+		audio_manager.play_sound("Audio3D_ANGRY_IDLE")
+	else:
+		# Neutral/happy — first half of the round
+		audio_manager.play_sound("Audio3D_Happy_IDLE2")
+
+
 func _start_game_over_sequence() -> void:
 	if _is_game_over:
 		return
@@ -342,6 +392,7 @@ func _start_game_over_sequence() -> void:
 		)
 	get_tree().paused = true
 	tween.tween_callback(Callable(self, "_go_to_game_over_scene"))
+	audio_manager.play_sound("Audio3d_lose")
 
 
 func _go_to_game_over_scene() -> void:
@@ -366,7 +417,12 @@ func _get_time_based_portrait_texture() -> Texture2D:
 func _apply_portrait_texture(texture: Texture2D) -> void:
 	if portrait_sprite == null:
 		return
-
+	if texture == ANGRY_TEXTURE:
+		music_manager.get_stream_playback().switch_to_clip_by_name("Game Theme Loop 140")
+		
+	if texture == MIFFED_TEXTURE:
+		music_manager.get_stream_playback().switch_to_clip_by_name("Game Theme Loop 120")
+		
 	portrait_sprite.texture = texture
 
 	var material := portrait_sprite.material_override as ShaderMaterial

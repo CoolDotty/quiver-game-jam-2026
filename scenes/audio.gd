@@ -4,7 +4,7 @@ extends AudioStreamPlayer3D
 var _sounds: Dictionary = {}
 
 func _ready() -> void:
-	for child in get_children():
+	for child in get_children():	
 		if child is AudioStreamPlayer3D:
 			_sounds[child.name] = child
 
