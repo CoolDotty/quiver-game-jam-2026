@@ -45,6 +45,7 @@ func set_held(is_held: bool) -> void:
 	collision_mask = _default_collision_mask
 	collision_shape_3d.disabled = false
 	sleeping = false
+	sprite_3d.position = Vector3.ZERO
 
 
 func get_item_name() -> String:
@@ -80,8 +81,8 @@ func set_burns_into(value: PackedScene) -> void:
 	burns_into = value
 
 
-func set_sprite_offset(offset: Vector2) -> void:
-	sprite_3d.offset = offset
+func set_sprite_offset(_offset: Vector2) -> void:
+	sprite_3d.position = Vector3(_offset.x * 0.001, 0.0, 0.0)
 
 
 func _apply_sprite_texture() -> void:

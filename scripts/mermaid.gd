@@ -18,11 +18,9 @@ enum Facing {
 @onready var rigid_body_3d_2: RigidBody3D = $RigidBody3D2
 @onready var rigid_body_3d_3: RigidBody3D = $RigidBody3D3
 @onready var rigid_body_3d_4: RigidBody3D = $RigidBody3D4
-@onready var grab_range_left: Area3D = $Arm1/GrabRange
 @onready var grab_range_right: Area3D = $Arm2/GrabRange
 
-@onready var holding_left: Marker3D = $Arm1/Holding
-@onready var holding_right: Marker3D = $Arm2/Holding
+@onready var holding_right: Marker3D = $Arm2/Holding/HandAnchor
 
 var _up_timer: float = 0.0
 var _down_timer: float = 0.0
@@ -31,7 +29,6 @@ var _down_timer: float = 0.0
 func _ready() -> void:
 	set_process_unhandled_input(true)
 
-	grab_range_left.body_entered.connect(_on_grab_range_left_body_entered)
 	grab_range_right.body_entered.connect(_on_grab_range_right_body_entered)
 
 
@@ -81,17 +78,11 @@ func _unhandled_input(_event: InputEvent) -> void:
 		_up_timer = FLOP_COOLDOWN
 
 
-const arm_length = 750 * 2
-
-func _on_grab_range_left_body_entered(body: Node) -> void:
-	_try_pick_up(body, holding_left, Vector2(-arm_length, 0))
-
-
 func _on_grab_range_right_body_entered(body: Node) -> void:
-	_try_pick_up(body, holding_right, Vector2(arm_length, 0))
+	_try_pick_up(body, holding_right)
 
 
-func _try_pick_up(body: Node, holding_marker: Marker3D, sprite_offset: Vector2) -> void:
+func _try_pick_up(body: Node, holding_marker: Marker3D) -> void:
 	var pickup := body as RigidBody3D
 	if pickup == null:
 		return
@@ -107,9 +98,6 @@ func _try_pick_up(body: Node, holding_marker: Marker3D, sprite_offset: Vector2) 
 
 	if pickup.has_method("set_held"):
 		pickup.call("set_held", true)
-
-	if pickup.has_method("set_sprite_offset"):
-		pickup.call("set_sprite_offset", sprite_offset)
 
 
 func get_body_axis() -> Vector3:

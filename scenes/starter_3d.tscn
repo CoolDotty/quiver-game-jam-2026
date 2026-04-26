@@ -1,10 +1,24 @@
 [gd_scene format=3 uid="uid://ldp8f4crpuj5"]
 
-[ext_resource type="PackedScene" path="res://scenes/items/coconut.tscn" id="1_2bmlf"]
+[ext_resource type="PackedScene" uid="uid://b1cywel308lko" path="res://scenes/items/coconut.tscn" id="1_2bmlf"]
 [ext_resource type="Texture2D" uid="uid://5xcj85j1ctpe" path="res://assets/placeholders/DevTextures/Dark/texture_04.png" id="1_gsx76"]
+[ext_resource type="Texture2D" uid="uid://cihrrs457d48u" path="res://assets/Art/Backgrounds/Main_Background.jpg" id="2_4xkce"]
+[ext_resource type="Shader" uid="uid://b6r1rfexjtmk0" path="res://resources/beach.gdshader" id="2_5chnm"]
+[ext_resource type="PackedScene" uid="uid://bhqhibm1a6q3y" path="res://scenes/items/baby_mermaid.tscn" id="3_fmo7n"]
 [ext_resource type="PackedScene" uid="uid://cjsufkx45xq8g" path="res://scenes/mermaid.tscn" id="4_4xkce"]
-[ext_resource type="PackedScene" path="res://scenes/items/krab.tscn" id="5_4xkce"]
-[ext_resource type="Texture2D" uid="uid://bfuyklsdknywe" path="res://assets/BG/BG_img.jpg" id="7_fmo7n"]
+[ext_resource type="PackedScene" uid="uid://b8pvd7y2yw3yk" path="res://scenes/items/krab.tscn" id="5_4xkce"]
+[ext_resource type="PackedScene" uid="uid://x14dhywp2jgt" path="res://scenes/items/urchin.tscn" id="7_5chnm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uxg2d"]
+render_priority = 0
+shader = ExtResource("2_5chnm")
+shader_parameter/albedo_texture = ExtResource("2_4xkce")
+shader_parameter/shoreline_y = 0.205
+shader_parameter/tide_amount = 0.014
+shader_parameter/band_size = 0.07
+shader_parameter/wave_speed = 0.9
+shader_parameter/distort_amount = 0.0045
+shader_parameter/foam_boost = 0.06
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4uxoh"]
 rough = true
@@ -34,11 +48,15 @@ current = true
 size = 25.0
 
 [node name="background" type="Sprite3D" parent="Camera3D" unique_id=302842814]
-transform = Transform3D(5, 0, 0, 0, 4.045085, -2.938926, 0, 2.938926, 4.045085, 7.450581e-09, -0.035167336, -113.5824)
+transform = Transform3D(3, 0, 0, 0, 2.427051, -1.7633557, 0, 1.7633557, 2.427051, 7.450581e-09, -0.035167336, -113.5824)
+material_override = SubResource("ShaderMaterial_uxg2d")
 billboard = 1
 texture_filter = 0
 render_priority = -10
-texture = ExtResource("7_fmo7n")
+texture = ExtResource("2_4xkce")
+
+[node name="BabyMermaid" parent="Camera3D" unique_id=522522784 instance=ExtResource("3_fmo7n")]
+transform = Transform3D(1, 0, 0, 0, 0.80901694, -0.5877852, 0, 0.5877852, 0.80901694, -5.4059258, -1.7760837, -47.56626)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1565072717]
 transform = Transform3D(0.81915206, -0.4055798, 0.4055798, 0, 0.70710677, 0.70710677, -0.57357645, -0.579228, 0.579228, 0, 0, 0)
@@ -61,3 +79,6 @@ transform = Transform3D(-0.024815917, 0.999692, 0, -0.999692, -0.024815917, 0, 0
 
 [node name="Krab" parent="." unique_id=746354439 instance=ExtResource("5_4xkce")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.44098508, 0)
+
+[node name="Urchin" parent="." unique_id=2114937 instance=ExtResource("7_5chnm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.204419, 1.599999, 1.555542)
