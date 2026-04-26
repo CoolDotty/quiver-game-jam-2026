@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://ckhahx33yngsy"]
+[gd_scene format=3 uid="uid://ldp8f4crpuj5"]
 
 [ext_resource type="PackedScene" uid="uid://blk0xu2m2nycq" path="res://scenes/item.tscn" id="1_2bmlf"]
 [ext_resource type="Texture2D" uid="uid://5xcj85j1ctpe" path="res://assets/placeholders/DevTextures/Dark/texture_04.png" id="1_gsx76"]
@@ -50,8 +50,8 @@ mesh = SubResource("2_floor_mesh")
 transform = Transform3D(-0.024815917, 0.999692, 0, -0.999692, -0.024815917, 0, 0, 0, 1, 0, 4.656455, -2.0975704)
 
 [node name="background" type="Sprite3D" parent="." unique_id=302842814]
-transform = Transform3D(0.39, 0, 0, 0, 0.39, 0, 0, 0, 0.39, 0, -42.029, -56.099)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -42.029, -56.099)
 billboard = 1
-fixed_size = true
 texture_filter = 0
+render_priority = -10
 texture = ExtResource("7_fmo7n")

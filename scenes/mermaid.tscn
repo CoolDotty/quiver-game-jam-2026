@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dy8p2dt6t1fn5" path="res://scripts/mermaid.gd" id="1_k32jb"]
 [ext_resource type="Script" uid="uid://uflo8kwjqnuj" path="res://scripts/arm.gd" id="2_cx8og"]
+[ext_resource type="Script" uid="uid://bs8f4b6eesrcy" path="res://scripts/segment_shadow_sprite.gd" id="3_n8k2q"]
 [ext_resource type="Shader" uid="uid://chdtkxll2mgea" path="res://resources/billboard.gdshader" id="3_oprnn"]
 [ext_resource type="Texture2D" uid="uid://cqqctuv83p5d6" path="res://assets/placeholders/arm-right.png" id="4_lunbq"]
 [ext_resource type="Texture2D" uid="uid://cjfdvxd3gy4sj" path="res://assets/placeholders/head.png" id="5_2ue8w"]
@@ -137,6 +138,13 @@ material_override = SubResource("BillboardSpriteMaterial_head")
 billboard = 1
 texture = ExtResource("6_vfsj7")
 
+[node name="Sprite_Head_Shadow" type="Sprite3D" parent="Head" unique_id=2146533556]
+modulate = Color(0, 0, 0, 0.39215687)
+billboard = 1
+render_priority = -1
+texture = ExtResource("6_vfsj7")
+script = ExtResource("3_n8k2q")
+
 [node name="HingeJoint3D" type="HingeJoint3D" parent="." unique_id=1189188061]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4937563, -0.013938487, 0)
 node_a = NodePath("../Head")
@@ -161,6 +169,13 @@ radius = 0.45
 [node name="Sprite_Chest" type="Sprite3D" parent="RigidBody3D2" unique_id=196691518]
 material_override = SubResource("BillboardSpriteMaterial_chest")
 texture = ExtResource("7_ex356")
+
+[node name="Sprite_Chest_Shadow" type="Sprite3D" parent="RigidBody3D2" unique_id=1746300985]
+modulate = Color(0, 0, 0, 0.39215687)
+billboard = 1
+render_priority = -1
+texture = ExtResource("7_ex356")
+script = ExtResource("3_n8k2q")
 
 [node name="HingeJoint3D5" type="HingeJoint3D" parent="." unique_id=1935950945]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0049447, -0.5438845, 0)
@@ -203,6 +218,13 @@ radius = 0.4
 material_override = SubResource("BillboardSpriteMaterial_mid")
 texture = ExtResource("16_cri7n")
 
+[node name="Sprite_Mid_Shadow" type="Sprite3D" parent="RigidBody3D3" unique_id=1733142450]
+modulate = Color(0, 0, 0, 0.39215687)
+billboard = 1
+render_priority = -1
+texture = ExtResource("16_cri7n")
+script = ExtResource("3_n8k2q")
+
 [node name="HingeJoint3D3" type="HingeJoint3D" parent="." unique_id=959740729]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4341545, -0.06871492, 0)
 node_a = NodePath("../RigidBody3D3")
@@ -227,6 +249,13 @@ radius = 0.3
 [node name="Sprite_Knee" type="Sprite3D" parent="RigidBody3D4" unique_id=1964650245]
 material_override = SubResource("BillboardSpriteMaterial_knee")
 texture = ExtResource("17_n58kw")
+
+[node name="Sprite_Knee_Shadow" type="Sprite3D" parent="RigidBody3D4" unique_id=1127768423]
+modulate = Color(0, 0, 0, 0.39215687)
+billboard = 1
+render_priority = -1
+texture = ExtResource("17_n58kw")
+script = ExtResource("3_n8k2q")
 
 [node name="HingeJoint3D4" type="HingeJoint3D" parent="." unique_id=19128249]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4194632, -0.09652966, 0)
@@ -253,3 +282,10 @@ material = SubResource("StandardMaterial3D_fmo7n")
 [node name="Sprite_Tail" type="Sprite3D" parent="Tail" unique_id=1986586727]
 material_override = SubResource("BillboardSpriteMaterial_tail")
 texture = ExtResource("19_8rn3h")
+
+[node name="Sprite_Tail_Shadow" type="Sprite3D" parent="Tail" unique_id=1292974277]
+modulate = Color(0, 0, 0, 0.39215687)
+billboard = 1
+render_priority = -1
+texture = ExtResource("19_8rn3h")
+script = ExtResource("3_n8k2q")
