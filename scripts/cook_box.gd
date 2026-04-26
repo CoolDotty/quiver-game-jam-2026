@@ -6,7 +6,6 @@ enum State {
 }
 
 @export var cooking_time: float = 3.0
-@export var modified_item_prefix: String = "Cooked "
 
 @onready var timer: Timer = $Timer
 @onready var interaction_area: Area3D = $InteractionArea
@@ -46,35 +45,42 @@ func _on_cooking_finished() -> void:
 	print("CookBox: Item finished cooking! Spawning new item.")
 	if current_item == null: return
 	
-	_modify_item()
-	
-	# We pass the current_item to a deferred function to handle spawning
-	# to avoid "not in tree" errors when setting global_position
-	call_deferred("_spawn_cooked_item", current_item)
+	var cooked_item := _create_cooked_item(current_item)
+	if cooked_item == null:
+		current_item.queue_free()
+		current_item = null
+		current_state = State.EMPTY
+		return
+
+	call_deferred("_spawn_cooked_item", cooked_item)
 	
 	current_item.queue_free()
 	current_item = null
 	current_state = State.EMPTY
 
-func _spawn_cooked_item(item_to_duplicate: RigidBody3D) -> void:
-	var newItem = item_to_duplicate.duplicate()
-	
-	# Add to tree FIRST so global_position works
-	get_tree().root.add_child(newItem)
-	
-	newItem.add_to_group("pickup")
-	newItem.set_deferred("freeze", false)
-	
-	# Position: 5 units up and 4 units to the right (relative to box facing)
-	var spawn_pos = global_position + Vector3.UP * 5.0 + (global_transform.basis.x * 4.0)
-	newItem.global_position = spawn_pos
-	
-	print("CookBox: Spawned modified item at ", spawn_pos)
+func _create_cooked_item(item: RigidBody3D) -> RigidBody3D:
+	var cooked_scene: PackedScene = null
+	if item.has_method("get_cooks_into"):
+		cooked_scene = item.call("get_cooks_into") as PackedScene
 
-func _modify_item() -> void:
-	if current_item == null: return
-	if "data" in current_item and current_item.data:
-		current_item.data.item_name = modified_item_prefix + current_item.data.item_name
-		if current_item.has_node("Sprite3D"):
-			current_item.get_node("Sprite3D").texture = current_item.data.sprite_texture
-	print("CookBox: Item modified to: ", current_item.data.item_name if "data" in current_item and current_item.data else "Unknown")
+	if cooked_scene == null:
+		return item.duplicate() as RigidBody3D
+
+	return cooked_scene.instantiate() as RigidBody3D
+
+
+func _spawn_cooked_item(new_item: RigidBody3D) -> void:
+	if new_item == null:
+		return
+
+	get_tree().root.add_child(new_item)
+
+	new_item.add_to_group("pickup")
+	new_item.set_deferred("freeze", false)
+
+	var spawn_pos = global_position + Vector3.UP * 5.0 + (
+		global_transform.basis.x * 4.0
+	)
+	new_item.global_position = spawn_pos
+
+	print("CookBox: Spawned cooked item at ", spawn_pos)

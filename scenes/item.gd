@@ -1,7 +1,9 @@
 extends RigidBody3D
 
 
-@export var item: ItemData
+@export var item_name: String = ""
+@export var sprite_texture: Texture2D
+@export var cooks_into: PackedScene
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 @onready var sprite_3d: Sprite3D = $Sprite3D
 
@@ -17,14 +19,11 @@ func _ready() -> void:
 	_default_gravity_scale = gravity_scale
 	_default_can_sleep = can_sleep
 
-	if item != null and item.sprite_texture != null:
-		sprite_3d.texture = item.sprite_texture
-
 	var material := sprite_3d.material_override as ShaderMaterial
-	if material != null and item != null and item.sprite_texture != null:
-		material = material.duplicate() as ShaderMaterial
-		sprite_3d.material_override = material
-		material.set_shader_parameter("billboard_texture", item.sprite_texture)
+	if material != null:
+		sprite_3d.material_override = material.duplicate()
+
+	_apply_sprite_texture()
 
 
 func set_held(is_held: bool) -> void:
@@ -47,5 +46,41 @@ func set_held(is_held: bool) -> void:
 	sleeping = false
 
 
+func get_item_name() -> String:
+	return item_name if not item_name.is_empty() else "Unknown Item"
+
+
+func set_item_name(value: String) -> void:
+	item_name = value
+
+
+func get_sprite_texture() -> Texture2D:
+	return sprite_texture
+
+
+func set_sprite_texture(value: Texture2D) -> void:
+	sprite_texture = value
+	_apply_sprite_texture()
+
+
+func get_cooks_into() -> PackedScene:
+	return cooks_into
+
+
+func set_cooks_into(value: PackedScene) -> void:
+	cooks_into = value
+
+
 func set_sprite_offset(offset: Vector2) -> void:
 	sprite_3d.offset = offset
+
+
+func _apply_sprite_texture() -> void:
+	if sprite_3d == null:
+		return
+
+	sprite_3d.texture = sprite_texture
+
+	var material := sprite_3d.material_override as ShaderMaterial
+	if material != null and sprite_texture != null:
+		material.set_shader_parameter("billboard_texture", sprite_texture)

@@ -1,24 +1,40 @@
 extends RigidBody3D
 
-@export var data: Resource # This will hold the ItemData resource
+@export var item_name: String = ""
+@export var sprite_texture: Texture2D
 
-var item_name: String:
-	get:
-		return data.item_name if data else "Unknown Item"
+@onready var sprite_3d: Sprite3D = get_node_or_null("Sprite3D") as Sprite3D
 
-func set_item_data(new_data: Resource) -> void:
-	data = new_data
-	# You can update visuals here based on data (e.g., change color if it's a golden coconut)
-	if data:
-		print("Item data injected: ", data.item_name)
 
 func _ready() -> void:
 	contact_monitor = true
 	max_contacts_reported = 1
 	body_entered.connect(_on_body_entered)
 
+	if sprite_3d != null:
+		sprite_3d.texture = sprite_texture
+
+
+func get_item_name() -> String:
+	return item_name if not item_name.is_empty() else "Unknown Item"
+
+
+func set_item_name(value: String) -> void:
+	item_name = value
+
+
+func get_sprite_texture() -> Texture2D:
+	return sprite_texture
+
+
+func set_sprite_texture(value: Texture2D) -> void:
+	sprite_texture = value
+	if sprite_3d != null:
+		sprite_3d.texture = sprite_texture
+
+
 func _on_body_entered(body: Node) -> void:
-	if body.collision_layer & (1 << 3): 
+	if body.collision_layer & (1 << 3):
 		print("Item touched by arm!")
-		Global.collect_item(item_name)
+		Global.collect_item(get_item_name())
 		queue_free()

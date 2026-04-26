@@ -1,7 +1,6 @@
 extends Node3D
 
 @export var item_scene: PackedScene
-@export var item_data: Resource
 @export var spawn_interval: float = 5.0
 
 @onready var timer: Timer = $Timer
@@ -34,12 +33,7 @@ func _is_area_occupied() -> bool:
 func spawn_item() -> void:
 	if not item_scene: return
 	var item = item_scene.instantiate()
-	
-	if item.has_method("set_item_data"):
-		item.set_item_data(item_data)
-	elif "data" in item:
-		item.data = item_data
-		
+
 	add_child(item)
 	item.global_transform = spawn_point.global_transform
 	item.add_to_group("pickup")

@@ -54,8 +54,6 @@ func _physics_process(_delta: float) -> void:
 func _unhandled_input(_event: InputEvent) -> void:
 	# var d = hinge_joint_3d.get_contact_local_normal(0)
 
-	var body_axis := get_body_axis()
-
 	if Input.is_action_just_pressed("flop_down") and _down_timer <= 0:
 		var real_body_axis = (head.global_position - rigid_body_3d_2.global_position).normalized()
 
