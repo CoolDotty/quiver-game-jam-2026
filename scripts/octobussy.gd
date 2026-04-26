@@ -24,6 +24,14 @@ const RECIPE_CATALOG := [
 const ROUND_DURATION := 120.0
 const WIN_SCORE := 5
 const SCORE_EMOTE_OVERRIDE_DURATION := 3.0
+const CHEW_DURATION := 3.0
+const CHEW_SQUASH_X := 0.08
+const CHEW_SQUASH_Y := 0.12
+const CHEW_SQUASH_SPEED := 22.0
+const CHEW_WOBBLE_AMOUNT := 0.01
+const CHEW_WOBBLE_SPEED := 1.2
+const CHEW_UV_WOBBLE_AMOUNT := 0.003
+const CHEW_UV_WOBBLE_SPEED := 1.4
 const SUPER_ANGRY_DURATION := 10.0
 const LOSS_MOVE_DURATION := 1.25
 const LOSS_FADE_DURATION := 1.25
@@ -57,6 +65,16 @@ var _portrait_rest_position: Vector3 = Vector3.ZERO
 var _shake_time: float = 0.0
 var _is_game_over: bool = false
 var _has_won: bool = false
+var _portrait_shader_material: ShaderMaterial
+var _portrait_squash_x: float = 0.0
+var _portrait_squash_y: float = 0.0
+var _portrait_squash_speed: float = 2.2
+var _portrait_step_time: float = 0.25
+var _portrait_wobble_amount: float = 0.03
+var _portrait_wobble_speed: float = 2.0
+var _portrait_uv_wobble_amount: float = 0.01
+var _portrait_uv_wobble_speed: float = 2.6
+var _chew_remaining: float = 0.0
 
 
 func _ready() -> void:
@@ -69,6 +87,28 @@ func _ready() -> void:
 		var material := portrait_sprite.material_override as ShaderMaterial
 		if material != null:
 			portrait_sprite.material_override = material.duplicate()
+			_portrait_shader_material = portrait_sprite.material_override as ShaderMaterial
+			if _portrait_shader_material != null:
+				_portrait_squash_x = _portrait_shader_material.get_shader_parameter("squash_x")
+				_portrait_squash_y = _portrait_shader_material.get_shader_parameter("squash_y")
+				_portrait_squash_speed = _portrait_shader_material.get_shader_parameter(
+					"squash_speed"
+				)
+				_portrait_step_time = _portrait_shader_material.get_shader_parameter(
+					"step_time"
+				)
+				_portrait_wobble_amount = _portrait_shader_material.get_shader_parameter(
+					"wobble_amount"
+				)
+				_portrait_wobble_speed = _portrait_shader_material.get_shader_parameter(
+					"wobble_speed"
+				)
+				_portrait_uv_wobble_amount = _portrait_shader_material.get_shader_parameter(
+					"uv_wobble_amount"
+				)
+				_portrait_uv_wobble_speed = _portrait_shader_material.get_shader_parameter(
+					"uv_wobble_speed"
+				)
 
 	if loss_fade_rect != null:
 		loss_fade_rect.color = Color(0.0, 0.0, 0.0, 0.0)
@@ -95,6 +135,10 @@ func _process(delta: float) -> void:
 			0.0
 		)
 
+	if _chew_remaining > 0.0:
+		_chew_remaining = maxf(_chew_remaining - delta, 0.0)
+		_update_chew_shader()
+
 	if Input.is_action_just_pressed("debug_decrease_time"):
 		_time_remaining = maxf(_time_remaining - 10.0, 0.0)
 
@@ -114,6 +158,8 @@ func _process(delta: float) -> void:
 func _on_cooking_pot_recipe_completed(_pot: Node, items: Array) -> void:
 	if _is_game_over or _has_won:
 		return
+
+	_trigger_chew_animation()
 
 	var delivered_item_names := _snapshot_item_names(items)
 	var delta := _score_delivered_batch(delivered_item_names)
@@ -369,9 +415,62 @@ func _apply_portrait_texture(texture: Texture2D) -> void:
 
 	portrait_sprite.texture = texture
 
-	var material := portrait_sprite.material_override as ShaderMaterial
-	if material != null:
-		material.set_shader_parameter("billboard_texture", texture)
+	if _portrait_shader_material != null:
+		_portrait_shader_material.set_shader_parameter("billboard_texture", texture)
+
+
+func _trigger_chew_animation() -> void:
+	_chew_remaining = CHEW_DURATION
+	_update_chew_shader()
+
+
+func _update_chew_shader() -> void:
+	if _portrait_shader_material == null:
+		return
+
+	if _chew_remaining > 0.0:
+		_portrait_shader_material.set_shader_parameter("step_time", 0.1)
+		_portrait_shader_material.set_shader_parameter("squash_x", CHEW_SQUASH_X)
+		_portrait_shader_material.set_shader_parameter("squash_y", CHEW_SQUASH_Y)
+		_portrait_shader_material.set_shader_parameter(
+			"squash_speed",
+			CHEW_SQUASH_SPEED
+		)
+		_portrait_shader_material.set_shader_parameter(
+			"wobble_amount",
+			CHEW_WOBBLE_AMOUNT
+		)
+		_portrait_shader_material.set_shader_parameter(
+			"wobble_speed",
+			CHEW_WOBBLE_SPEED
+		)
+		_portrait_shader_material.set_shader_parameter(
+			"uv_wobble_amount",
+			CHEW_UV_WOBBLE_AMOUNT
+		)
+		_portrait_shader_material.set_shader_parameter(
+			"uv_wobble_speed",
+			CHEW_UV_WOBBLE_SPEED
+		)
+		return
+
+	_portrait_shader_material.set_shader_parameter("step_time", _portrait_step_time)
+	_portrait_shader_material.set_shader_parameter("squash_x", _portrait_squash_x)
+	_portrait_shader_material.set_shader_parameter("squash_y", _portrait_squash_y)
+	_portrait_shader_material.set_shader_parameter(
+		"squash_speed",
+		_portrait_squash_speed
+	)
+	_portrait_shader_material.set_shader_parameter("wobble_amount", _portrait_wobble_amount)
+	_portrait_shader_material.set_shader_parameter("wobble_speed", _portrait_wobble_speed)
+	_portrait_shader_material.set_shader_parameter(
+		"uv_wobble_amount",
+		_portrait_uv_wobble_amount
+	)
+	_portrait_shader_material.set_shader_parameter(
+		"uv_wobble_speed",
+		_portrait_uv_wobble_speed
+	)
 
 
 func _update_recipe_label() -> void:
