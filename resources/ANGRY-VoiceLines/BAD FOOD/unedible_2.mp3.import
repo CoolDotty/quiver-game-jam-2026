@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://oqh3c6r1i3xj"
+path="res://.godot/imported/unedible_2.mp3-a0f9558e98b074fa35aecf1641666a91.mp3str"
+
+[deps]
+
+source_file="res://resources/ANGRY-VoiceLines/BAD FOOD/unedible_2.mp3"
+dest_files=["res://.godot/imported/unedible_2.mp3-a0f9558e98b074fa35aecf1641666a91.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

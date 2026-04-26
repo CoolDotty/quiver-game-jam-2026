@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://b1cywel308lko" path="res://scenes/items/coconut.tscn" id="1_2bmlf"]
 [ext_resource type="Texture2D" uid="uid://5xcj85j1ctpe" path="res://assets/placeholders/DevTextures/Dark/texture_04.png" id="1_gsx76"]
 [ext_resource type="PackedScene" uid="uid://cjsufkx45xq8g" path="res://scenes/mermaid.tscn" id="4_4xkce"]
-[ext_resource type="PackedScene" path="res://scenes/items/krab.tscn" id="5_4xkce"]
-[ext_resource type="PackedScene" uid="uid://dboo86qfbq60c" path="res://scenes/item_grab_box.tscn" id="6_fmo7n"]
+[ext_resource type="PackedScene" uid="uid://b8pvd7y2yw3yk" path="res://scenes/items/krab.tscn" id="5_4xkce"]
+[ext_resource type="PackedScene" path="res://scenes/item_grab_box.tscn" id="6_fmo7n"]
 [ext_resource type="PackedScene" uid="uid://blk0xu2m2nycq" path="res://scenes/item.tscn" id="7_5chnm"]
 [ext_resource type="Texture2D" uid="uid://bfuyklsdknywe" path="res://assets/BG/BG_img.jpg" id="7_fmo7n"]
 

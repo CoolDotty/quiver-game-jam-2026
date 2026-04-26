@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cvpwej2pthbdw"
+path="res://.godot/imported/fiesty_that_one.mp3-b3a7627a3f5fe31efba80f11dcb87f1e.mp3str"
+
+[deps]
+
+source_file="res://resources/ANGRY-VoiceLines/GOOD FOOD/fiesty_that_one.mp3"
+dest_files=["res://.godot/imported/fiesty_that_one.mp3-b3a7627a3f5fe31efba80f11dcb87f1e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

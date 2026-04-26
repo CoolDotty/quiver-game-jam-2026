@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dotvfe1xupjrj"
+path="res://.godot/imported/Unedible.wav-f821edeb05c784c8a8dc75dc2a763586.sample"
+
+[deps]
+
+source_file="res://resources/A-HAPPY-VoiceLines/BAD FOOD/Unedible.wav"
+dest_files=["res://.godot/imported/Unedible.wav-f821edeb05c784c8a8dc75dc2a763586.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

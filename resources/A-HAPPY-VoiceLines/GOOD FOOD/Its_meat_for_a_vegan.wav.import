@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://2acfjg5hdbvw"
+path="res://.godot/imported/Its_meat_for_a_vegan.wav-ee16c03e6310e997d118dc1ddb3498cb.sample"
+
+[deps]
+
+source_file="res://resources/A-HAPPY-VoiceLines/GOOD FOOD/Its_meat_for_a_vegan.wav"
+dest_files=["res://.godot/imported/Its_meat_for_a_vegan.wav-ee16c03e6310e997d118dc1ddb3498cb.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

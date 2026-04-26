@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cvvx5srjov3qh"
+path="res://.godot/imported/Love_the_spines.wav-4e356afab62bbd7981284b62ed7a9b20.sample"
+
+[deps]
+
+source_file="res://resources/A-HAPPY-VoiceLines/GOOD FOOD/Love_the_spines.wav"
+dest_files=["res://.godot/imported/Love_the_spines.wav-4e356afab62bbd7981284b62ed7a9b20.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
