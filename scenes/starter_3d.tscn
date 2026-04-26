@@ -47,7 +47,7 @@ material_override = SubResource("1_floor_material")
 mesh = SubResource("2_floor_mesh")
 
 [node name="Mermaid" parent="." unique_id=1293432093 instance=ExtResource("4_4xkce")]
-transform = Transform3D(-0.9997019, -0.024414586, 0, 0.024414586, -0.9997019, 0, 0, 0, 1, 0, 4.656455, -2.0975704)
+transform = Transform3D(-0.024815917, 0.999692, 0, -0.017848318, -0.00044305885, 0.9998406, 0.9995327, 0.024811963, 0.017853817, 0, 4.656455, -2.0975704)
 
 [node name="background" type="Sprite3D" parent="." unique_id=302842814]
 transform = Transform3D(5.5, 0, 0, 0, 5.5, 0, 0, 0, 5.5, 0, -1.3555965, -6.491336)
