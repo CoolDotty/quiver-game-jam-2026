@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://uhwrovnuuv8o"
+path="res://.godot/imported/You_should_die_for_that.ogg-b0f101e1ac2fb361f12e8ae59a68217a.oggvorbisstr"
+
+[deps]
+
+source_file="res://resources/A-HAPPY-VoiceLines/BAD FOOD/You_should_die_for_that.ogg"
+dest_files=["res://.godot/imported/You_should_die_for_that.ogg-b0f101e1ac2fb361f12e8ae59a68217a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

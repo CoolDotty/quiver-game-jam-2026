@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bg3cwhvva1o4h"
+path="res://.godot/imported/you_can_find_some_over_there.ogg-1827bf55f8337a82a1cc98aede43c611.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Audio/Fish God/Voice/Michael/IDLE/you_can_find_some_over_there.ogg"
+dest_files=["res://.godot/imported/you_can_find_some_over_there.ogg-1827bf55f8337a82a1cc98aede43c611.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

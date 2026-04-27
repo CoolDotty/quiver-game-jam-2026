@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://87tieuip5bso"
+path="res://.godot/imported/what_is_this_sludge.ogg-746503b85f538d20f04bb79525aadafb.oggvorbisstr"
+
+[deps]
+
+source_file="res://resources/ANGRY-VoiceLines/BAD FOOD/what_is_this_sludge.ogg"
+dest_files=["res://.godot/imported/what_is_this_sludge.ogg-746503b85f538d20f04bb79525aadafb.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

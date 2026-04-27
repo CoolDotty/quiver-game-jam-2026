@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://66xjeb2e0x5b"
+path="res://.godot/imported/Seven_out_of_ten.ogg-c7fd8dcc8a496360c97cafed3067abea.oggvorbisstr"
+
+[deps]
+
+source_file="res://resources/A-HAPPY-VoiceLines/GOOD FOOD/Seven_out_of_ten.ogg"
+dest_files=["res://.godot/imported/Seven_out_of_ten.ogg-c7fd8dcc8a496360c97cafed3067abea.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

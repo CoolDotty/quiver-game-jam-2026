@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://djqbsjmbqkwdj"
+path="res://.godot/imported/What_is_this_sludge.ogg-a3e234001a998160972b37733a730a23.oggvorbisstr"
+
+[deps]
+
+source_file="res://resources/A-HAPPY-VoiceLines/BAD FOOD/What_is_this_sludge.ogg"
+dest_files=["res://.godot/imported/What_is_this_sludge.ogg-a3e234001a998160972b37733a730a23.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

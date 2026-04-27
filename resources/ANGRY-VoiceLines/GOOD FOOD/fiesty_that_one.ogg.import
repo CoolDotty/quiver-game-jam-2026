@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d16dtd3wxf632"
+path="res://.godot/imported/fiesty_that_one.ogg-b8291a2a782cc79e4f1e764a12b4b75f.oggvorbisstr"
+
+[deps]
+
+source_file="res://resources/ANGRY-VoiceLines/GOOD FOOD/fiesty_that_one.ogg"
+dest_files=["res://.godot/imported/fiesty_that_one.ogg-b8291a2a782cc79e4f1e764a12b4b75f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

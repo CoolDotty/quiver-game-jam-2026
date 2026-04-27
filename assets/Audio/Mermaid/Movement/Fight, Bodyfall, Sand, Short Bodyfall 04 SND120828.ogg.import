@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://1xwyraj48v6h"
+path="res://.godot/imported/Fight, Bodyfall, Sand, Short Bodyfall 04 SND120828.ogg-564e27ea4402e92ed200b064785fd23d.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Audio/Mermaid/Movement/Fight, Bodyfall, Sand, Short Bodyfall 04 SND120828.ogg"
+dest_files=["res://.godot/imported/Fight, Bodyfall, Sand, Short Bodyfall 04 SND120828.ogg-564e27ea4402e92ed200b064785fd23d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

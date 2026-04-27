@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bnq1jri4uplkv"
+path="res://.godot/imported/here_fishy_fish_people.ogg-924d619c4de46e066501032ec19a90d0.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Audio/Fish God/Voice/Michael/IDLE/here_fishy_fish_people.ogg"
+dest_files=["res://.godot/imported/here_fishy_fish_people.ogg-924d619c4de46e066501032ec19a90d0.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

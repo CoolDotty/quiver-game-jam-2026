@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bix7ojx4trwu8"
+path="res://.godot/imported/Thank_you_Meat.ogg-b01499a040b9feaaa2fe09da88f3f64f.oggvorbisstr"
+
+[deps]
+
+source_file="res://resources/A-HAPPY-VoiceLines/GOOD FOOD/Thank_you_Meat.ogg"
+dest_files=["res://.godot/imported/Thank_you_Meat.ogg-b01499a040b9feaaa2fe09da88f3f64f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

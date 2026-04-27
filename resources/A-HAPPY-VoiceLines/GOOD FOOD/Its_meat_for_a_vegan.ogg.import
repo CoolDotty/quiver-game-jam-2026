@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://2ijc15awlwkb"
+path="res://.godot/imported/Its_meat_for_a_vegan.ogg-c36d198c4d89d7fdc0cf7d20eb987ddc.oggvorbisstr"
+
+[deps]
+
+source_file="res://resources/A-HAPPY-VoiceLines/GOOD FOOD/Its_meat_for_a_vegan.ogg"
+dest_files=["res://.godot/imported/Its_meat_for_a_vegan.ogg-c36d198c4d89d7fdc0cf7d20eb987ddc.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dblsx4h04j1l0"
+path="res://.godot/imported/this_is_how_you_beat_allergies.ogg-2da4778a30d410d41e516dac94a9932c.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Audio/Fish God/Voice/Michael/IDLE/this_is_how_you_beat_allergies.ogg"
+dest_files=["res://.godot/imported/this_is_how_you_beat_allergies.ogg-2da4778a30d410d41e516dac94a9932c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

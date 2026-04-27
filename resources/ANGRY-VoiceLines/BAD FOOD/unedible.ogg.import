@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bs32fsdwrtl4e"
+path="res://.godot/imported/unedible.ogg-b6237f044aad2a349c004f3c90a1a57d.oggvorbisstr"
+
+[deps]
+
+source_file="res://resources/ANGRY-VoiceLines/BAD FOOD/unedible.ogg"
+dest_files=["res://.godot/imported/unedible.ogg-b6237f044aad2a349c004f3c90a1a57d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

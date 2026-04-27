@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bn6ol6h4g2e3o"
+path="res://.godot/imported/Love_the_spines.ogg-df85aa34eb6ef661c1c2d4b0ab4371bb.oggvorbisstr"
+
+[deps]
+
+source_file="res://resources/A-HAPPY-VoiceLines/GOOD FOOD/Love_the_spines.ogg"
+dest_files=["res://.godot/imported/Love_the_spines.ogg-df85aa34eb6ef661c1c2d4b0ab4371bb.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

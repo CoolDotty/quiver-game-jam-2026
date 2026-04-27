@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dojyfeigrdc5u"
+path="res://.godot/imported/Gets_stuck_in_my_teeth.ogg-b5f2ce214e0f223cb9ceb78f8006b8e3.oggvorbisstr"
+
+[deps]
+
+source_file="res://resources/A-HAPPY-VoiceLines/GOOD FOOD/Gets_stuck_in_my_teeth.ogg"
+dest_files=["res://.godot/imported/Gets_stuck_in_my_teeth.ogg-b5f2ce214e0f223cb9ceb78f8006b8e3.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

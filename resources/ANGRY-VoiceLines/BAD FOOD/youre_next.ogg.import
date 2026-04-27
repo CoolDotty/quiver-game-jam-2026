@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bpyycea1wdk3u"
+path="res://.godot/imported/youre_next.ogg-36601b2b820af2adeb9b5a1bdedcdf4c.oggvorbisstr"
+
+[deps]
+
+source_file="res://resources/ANGRY-VoiceLines/BAD FOOD/youre_next.ogg"
+dest_files=["res://.godot/imported/youre_next.ogg-36601b2b820af2adeb9b5a1bdedcdf4c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

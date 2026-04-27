@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cny7xhqkmjkig"
+path="res://.godot/imported/Youre_next.ogg-223f0248b5c7b61901450563473c7e6c.oggvorbisstr"
+
+[deps]
+
+source_file="res://resources/A-HAPPY-VoiceLines/BAD FOOD/Youre_next.ogg"
+dest_files=["res://.godot/imported/Youre_next.ogg-223f0248b5c7b61901450563473c7e6c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

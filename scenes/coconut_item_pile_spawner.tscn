@@ -25,6 +25,7 @@ shader_parameter/squash_speed = 2.2
 shader_parameter/center_rigidity = 0.68
 
 [node name="CoconutItemPileSpawner" type="StaticBody3D" unique_id=1334314431]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_script")
 item_scene = ExtResource("3_item_scene")
 

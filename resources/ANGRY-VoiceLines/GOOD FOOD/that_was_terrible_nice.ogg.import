@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ckqi5kkr0ah6c"
+path="res://.godot/imported/that_was_terrible_nice.ogg-3e68371b63b3fc87aa683eb2af062fd7.oggvorbisstr"
+
+[deps]
+
+source_file="res://resources/ANGRY-VoiceLines/GOOD FOOD/that_was_terrible_nice.ogg"
+dest_files=["res://.godot/imported/that_was_terrible_nice.ogg-3e68371b63b3fc87aa683eb2af062fd7.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

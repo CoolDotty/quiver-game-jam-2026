@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ccrtholx18r6w"
+path="res://.godot/imported/please_can_you_add_some_flavour_please.ogg-0d5cc2ea49d82dbc84682aa12069459d.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Audio/Fish God/Voice/Michael/IDLE/please_can_you_add_some_flavour_please.ogg"
+dest_files=["res://.godot/imported/please_can_you_add_some_flavour_please.ogg-0d5cc2ea49d82dbc84682aa12069459d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

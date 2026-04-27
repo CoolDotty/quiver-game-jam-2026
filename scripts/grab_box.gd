@@ -1,10 +1,13 @@
 class_name ItemPileSpawner
 extends Node3D
 ## Spawns a physical pile of pickup items in a local area and refills it over time.
+
+const SPAWN_INTERVAL_MIN := 5.0
+const SPAWN_INTERVAL_MAX := 15.0
+
 @onready var audio_manager: AudioStreamPlayer3D = $"../Camera3D/AudioManager"
 @export var item_scene: PackedScene
 @export_range(1, 64, 1) var target_count: int = 3
-@export_range(0.1, 10.0, 0.1) var spawn_interval: float = 1.0
 @export_range(0.0, 10.0, 0.1) var spawn_radius: float = 1.25
 @export_range(0.0, 5.0, 0.1) var spawn_height: float = 0.75
 @export_range(0.0, 20.0, 0.1) var launch_impulse: float = 2.5
@@ -22,14 +25,13 @@ func _ready() -> void:
 	_spawn_group = "item_pile_%s" % str(get_instance_id())
 
 	timer.one_shot = true
-	timer.wait_time = spawn_interval
 	timer.process_callback = Timer.TIMER_PROCESS_PHYSICS
 	timer.timeout.connect(_on_timer_timeout)
 
 	_rng.randomize()
 	if not Global.cooking_item_consumed.is_connected(_on_cooking_item_consumed):
 		Global.cooking_item_consumed.connect(_on_cooking_item_consumed)
-	_sync_spawn_timer()
+	_sync_spawn_timer(true)
 
 
 func _on_timer_timeout() -> void:
@@ -119,7 +121,7 @@ func _get_spawned_item_count() -> int:
 	return count
 
 
-func _sync_spawn_timer() -> void:
+func _sync_spawn_timer(initial_delay: bool = false) -> void:
 	if item_scene == null:
 		timer.stop()
 		return
@@ -129,7 +131,15 @@ func _sync_spawn_timer() -> void:
 		return
 
 	if timer.is_stopped():
+		timer.wait_time = _get_spawn_wait_time(initial_delay)
 		timer.start()
+
+
+func _get_spawn_wait_time(initial_delay: bool = false) -> float:
+	if initial_delay:
+		return SPAWN_INTERVAL_MIN
+
+	return _rng.randf_range(SPAWN_INTERVAL_MIN, SPAWN_INTERVAL_MAX)
 
 
 func _on_cooking_item_consumed(_source: Node, item: RigidBody3D) -> void:

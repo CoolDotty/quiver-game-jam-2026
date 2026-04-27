@@ -6,16 +6,16 @@
 [ext_resource type="Shader" uid="uid://b6r1rfexjtmk0" path="res://resources/beach.gdshader" id="2_5chnm"]
 [ext_resource type="PackedScene" uid="uid://qq4fwum0xhj3" path="res://scenes/cooking_pot.tscn" id="3_pot"]
 [ext_resource type="PackedScene" uid="uid://cjsufkx45xq8g" path="res://scenes/mermaid.tscn" id="4_4xkce"]
-[ext_resource type="AudioStream" uid="uid://cpiw8qfvauy7o" path="res://resources/Music/Game_Theme_Loop_100.mp3" id="5_2bmlf"]
-[ext_resource type="PackedScene" path="res://scenes/octobussy.tscn" id="5_octobussy"]
-[ext_resource type="AudioStream" uid="uid://dn73dfqjjvgoj" path="res://resources/Music/Game_Theme_Loop_120.mp3" id="6_qr6qn"]
-[ext_resource type="AudioStream" uid="uid://bnlnbcvbhcu7o" path="res://resources/Music/Game_Theme_Loop_140.mp3" id="7_8jr5k"]
+[ext_resource type="AudioStream" uid="uid://b550mv3qjrkxe" path="res://resources/Music/Game_Theme_Loop_100.ogg" id="5_2bmlf"]
+[ext_resource type="PackedScene" uid="uid://by7tr4stivq8q" path="res://scenes/octobussy.tscn" id="5_octobussy"]
+[ext_resource type="AudioStream" uid="uid://dfd3g71dfnf5g" path="res://resources/Music/Game_Theme_Loop_120.ogg" id="6_qr6qn"]
+[ext_resource type="AudioStream" uid="uid://igh60yi8yvo6" path="res://resources/Music/Game_Theme_Loop_140.ogg" id="7_8jr5k"]
 [ext_resource type="PackedScene" uid="uid://ci56d0qsgpiiy" path="res://scenes/audio.tscn" id="8_5chnm"]
 [ext_resource type="Script" path="res://scenes/music_manager.gd" id="8_rkah8"]
-[ext_resource type="PackedScene" path="res://scenes/coconut_item_pile_spawner.tscn" id="10_7oiso"]
-[ext_resource type="PackedScene" path="res://scenes/baby_mermaid_item_pile_spawner.tscn" id="11_w266b"]
-[ext_resource type="PackedScene" path="res://scenes/krab_item_pile_spawner.tscn" id="12_0onai"]
-[ext_resource type="PackedScene" path="res://scenes/urchin_item_pile_spawner.tscn" id="13_3nobw"]
+[ext_resource type="PackedScene" uid="uid://dt2m1osxcfcry" path="res://scenes/coconut_item_pile_spawner.tscn" id="10_7oiso"]
+[ext_resource type="PackedScene" uid="uid://cbd32f1bc1uwj" path="res://scenes/baby_mermaid_item_pile_spawner.tscn" id="11_w266b"]
+[ext_resource type="PackedScene" uid="uid://dynoodpdky3ky" path="res://scenes/krab_item_pile_spawner.tscn" id="12_0onai"]
+[ext_resource type="PackedScene" uid="uid://cx7puiu50rrwr" path="res://scenes/urchin_item_pile_spawner.tscn" id="13_3nobw"]
 [ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="14_pause_menu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uxg2d"]
@@ -182,16 +182,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21091413, 0.5, -9.401392)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0020999908, 3.694951, -19.98154)
 
 [node name="CoconutItemPileSpawner" parent="." unique_id=1311437829 instance=ExtResource("10_7oiso")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.699636, 4.8540945, -14.238923)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.396126, 4.8540945, -5.7967024)
 
 [node name="BabyMermaidItemPileSpawner" parent="." unique_id=1578946804 instance=ExtResource("11_w266b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.163082, 2.8139868, -12.963236)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.044978, 2.8139868, 6.1956263)
 
 [node name="KrabItemPileSpawner" parent="." unique_id=1157152294 instance=ExtResource("12_0onai")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.889149, 1.6749616, 4.8869133)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.606831, 1.6749616, 7.489047)
 
 [node name="UrchinItemPileSpawner" parent="." unique_id=20315944 instance=ExtResource("13_3nobw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.438278, 1.628871, 3.995201)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.438278, 1.628871, -9.13476)
 
 [node name="FadeLayer" type="CanvasLayer" parent="." unique_id=226922779]
 layer = 200

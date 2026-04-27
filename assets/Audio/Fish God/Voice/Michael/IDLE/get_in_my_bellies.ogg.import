@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d2b4unu6vshl0"
+path="res://.godot/imported/get_in_my_bellies.ogg-1f7425fefad0d71e75111965861ab001.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Audio/Fish God/Voice/Michael/IDLE/get_in_my_bellies.ogg"
+dest_files=["res://.godot/imported/get_in_my_bellies.ogg-1f7425fefad0d71e75111965861ab001.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

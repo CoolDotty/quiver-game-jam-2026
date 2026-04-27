@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://rhxqluyww4p3"
+path="res://.godot/imported/Feisty.ogg-224e2b7f3efd3785746fda0dd9c77e33.oggvorbisstr"
+
+[deps]
+
+source_file="res://resources/A-HAPPY-VoiceLines/GOOD FOOD/Feisty.ogg"
+dest_files=["res://.godot/imported/Feisty.ogg-224e2b7f3efd3785746fda0dd9c77e33.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

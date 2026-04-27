@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b07fpgdiwa56d"
+path="res://.godot/imported/feed_me.ogg-00f1ba32f897986e98a5fe77163e343f.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Audio/Fish God/Voice/Michael/IDLE/feed_me.ogg"
+dest_files=["res://.godot/imported/feed_me.ogg-00f1ba32f897986e98a5fe77163e343f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

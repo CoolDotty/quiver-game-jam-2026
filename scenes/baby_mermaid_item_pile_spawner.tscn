@@ -25,6 +25,7 @@ shader_parameter/squash_speed = 2.2
 shader_parameter/center_rigidity = 0.68
 
 [node name="BabyMermaidItemPileSpawner" type="StaticBody3D" unique_id=1432133009]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_script")
 item_scene = ExtResource("3_item_scene")
 

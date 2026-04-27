@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ckbi7imbm4a6i"
+path="res://.godot/imported/sloppy.ogg-31cf2b9577ff1f297e57cf6520535fbc.oggvorbisstr"
+
+[deps]
+
+source_file="res://resources/ANGRY-VoiceLines/BAD FOOD/sloppy.ogg"
+dest_files=["res://.godot/imported/sloppy.ogg-31cf2b9577ff1f297e57cf6520535fbc.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bgy0cmnoastuk"
+path="res://.godot/imported/are_you_done_yet.ogg-681ee16af0b86097b3e2674de018fc0b.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Audio/Fish God/Voice/Michael/IDLE/are_you_done_yet.ogg"
+dest_files=["res://.godot/imported/are_you_done_yet.ogg-681ee16af0b86097b3e2674de018fc0b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

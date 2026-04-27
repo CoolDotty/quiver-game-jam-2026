@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://vtq7or3b4ext"
+path="res://.godot/imported/theres_always_bones.ogg-311eec8da827c349efbd9539703a1858.oggvorbisstr"
+
+[deps]
+
+source_file="res://resources/ANGRY-VoiceLines/GOOD FOOD/theres_always_bones.ogg"
+dest_files=["res://.godot/imported/theres_always_bones.ogg-311eec8da827c349efbd9539703a1858.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

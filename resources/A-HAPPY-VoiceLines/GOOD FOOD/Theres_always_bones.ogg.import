@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bdh4u0f8nu304"
+path="res://.godot/imported/Theres_always_bones.ogg-6cb640962007572a46c8e51ebda857b1.oggvorbisstr"
+
+[deps]
+
+source_file="res://resources/A-HAPPY-VoiceLines/GOOD FOOD/Theres_always_bones.ogg"
+dest_files=["res://.godot/imported/Theres_always_bones.ogg-6cb640962007572a46c8e51ebda857b1.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

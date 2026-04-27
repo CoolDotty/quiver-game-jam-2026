@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cdy5lgrbdqcmt"
+path="res://.godot/imported/Fight, Bodyfall, On Sand, Land, Impact SND150857 1.ogg-b71932fe383d6d37b2a02e06f237434f.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Audio/Mermaid/Movement/Fight, Bodyfall, On Sand, Land, Impact SND150857 1.ogg"
+dest_files=["res://.godot/imported/Fight, Bodyfall, On Sand, Land, Impact SND150857 1.ogg-b71932fe383d6d37b2a02e06f237434f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

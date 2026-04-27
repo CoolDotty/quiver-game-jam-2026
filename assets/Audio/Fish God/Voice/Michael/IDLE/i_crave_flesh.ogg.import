@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dopd4skf47cer"
+path="res://.godot/imported/i_crave_flesh.ogg-12590d3cd1c8dd6c889143b8d304ad4e.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Audio/Fish God/Voice/Michael/IDLE/i_crave_flesh.ogg"
+dest_files=["res://.godot/imported/i_crave_flesh.ogg-12590d3cd1c8dd6c889143b8d304ad4e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://divaykrxuv2pk" path="res://assets/Art/Backgrounds/Main menu.jpg" id="2_menu_bg"]
 [ext_resource type="Shader" uid="uid://b6r1rfexjtmk0" path="res://resources/beach.gdshader" id="3_beach_shader"]
 [ext_resource type="Texture2D" uid="uid://byga8n1p2dl33" path="res://assets/Art/Backgrounds/Start game.png" id="4_start_button"]
-[ext_resource type="AudioStream" uid="uid://dssykbpi7oa2u" path="res://resources/Music/Game_Title_Theme_120_HalfBarPickup.mp3" id="5_8ln24"]
-[ext_resource type="AudioStream" uid="uid://c1ks1ddxeuddc" path="res://resources/Music/Game_Title_Theme_120_Loop.mp3" id="6_oa1go"]
+[ext_resource type="AudioStream" uid="uid://bc0nlukm3vclk" path="res://resources/Music/Game_Title_Theme_120_HalfBarPickup.ogg" id="5_8ln24"]
+[ext_resource type="AudioStream" uid="uid://dsf8vdjl0f2vw" path="res://resources/Music/Game_Title_Theme_120_Loop.ogg" id="6_oa1go"]
 [ext_resource type="Script" uid="uid://uj6ibc36o8kp" path="res://scenes/main_menu_audio_stream_player_3d.gd" id="6_rtw2f"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_menu_bg"]

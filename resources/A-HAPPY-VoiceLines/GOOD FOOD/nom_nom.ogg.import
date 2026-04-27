@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c7r0hiousdduc"
+path="res://.godot/imported/nom_nom.ogg-d0342fd34c86141cd91223e139dfb19d.oggvorbisstr"
+
+[deps]
+
+source_file="res://resources/A-HAPPY-VoiceLines/GOOD FOOD/nom_nom.ogg"
+dest_files=["res://.godot/imported/nom_nom.ogg-d0342fd34c86141cd91223e139dfb19d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

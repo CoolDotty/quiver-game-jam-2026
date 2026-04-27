@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ctrrpyl3urd3k"
+path="res://.godot/imported/Unedible.ogg-95e4f330c8a953de152164293c9f7873.oggvorbisstr"
+
+[deps]
+
+source_file="res://resources/A-HAPPY-VoiceLines/BAD FOOD/Unedible.ogg"
+dest_files=["res://.godot/imported/Unedible.ogg-95e4f330c8a953de152164293c9f7873.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
