@@ -163,6 +163,7 @@ func _on_cooking_pot_recipe_completed(_pot: Node, items: Array) -> void:
 	var delivered_item_names := _snapshot_item_names(items)
 	var delta := _score_delivered_batch(delivered_item_names)
 
+	Global.cooking_pot_meal_scored.emit(_pot, delta)
 	_apply_score_delta(delta)
 	if _has_won:
 		return

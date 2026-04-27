@@ -1,16 +1,26 @@
 [gd_scene format=3 uid="uid://qq4fwum0xhj3"]
 
 [ext_resource type="Script" uid="uid://63cvs05pxywn" path="res://scripts/cooking_pot.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://wwu7mtgnk55a" path="res://assets/placeholders/cooking_pot.png" id="2_texture"]
-[ext_resource type="Shader" path="res://resources/billboard.gdshader" id="3_shader"]
+[ext_resource type="Texture2D" uid="uid://b158b24qp0gqg" path="res://assets/Art/Interactables/CauldronHappy.png" id="2_texture"]
+[ext_resource type="Shader" uid="uid://chdtkxll2mgea" path="res://resources/billboard.gdshader" id="4_shader"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pot"]
 size = Vector3(10, 10, 10)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pot"]
 render_priority = 0
-shader = ExtResource("3_shader")
+shader = ExtResource("4_shader")
 shader_parameter/billboard_texture = ExtResource("2_texture")
+shader_parameter/blur_amount = 0.0
+shader_parameter/step_time = 0.2
+shader_parameter/wobble_amount = 0.02
+shader_parameter/wobble_speed = 2.1
+shader_parameter/uv_wobble_amount = 0.006
+shader_parameter/uv_wobble_speed = 2.3
+shader_parameter/squash_x = 0.0
+shader_parameter/squash_y = 0.0
+shader_parameter/squash_speed = 2.2
+shader_parameter/center_rigidity = 0.68
 
 [node name="CookingPot" type="Node3D" unique_id=1931727583]
 script = ExtResource("1_script")
@@ -26,8 +36,10 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea" unique_id=383169172]
 shape = SubResource("BoxShape3D_pot")
 
-[node name="Mesh" type="Sprite3D" parent="." unique_id=1837893995]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1837893995]
 material_override = SubResource("ShaderMaterial_pot")
 billboard = 1
 texture = ExtResource("2_texture")
+
+[node name="TextureSwapTimer" type="Timer" parent="." unique_id=1487560924]
+wait_time = 0.5

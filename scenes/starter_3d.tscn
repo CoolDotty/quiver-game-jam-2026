@@ -71,13 +71,13 @@ light_energy = 2.0
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1833675114]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+visible = false
 physics_material_override = SubResource("PhysicsMaterial_floor")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1801628329]
 shape = SubResource("3_floor_shape")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=126160062]
-visible = false
 material_override = SubResource("1_floor_material")
 mesh = SubResource("2_floor_mesh")
 
@@ -130,10 +130,10 @@ material_override = SubResource("1_floor_material")
 mesh = SubResource("2_floor_mesh")
 
 [node name="Mermaid" parent="." unique_id=1293432093 instance=ExtResource("4_4xkce")]
-transform = Transform3D(-0.024815917, 0.999692, 0, -0.999692, -0.024815917, 0, 0, 0, 1, 0, 4.656455, -6.7339764)
+transform = Transform3D(-0.024815917, 0.999692, 0, -0.999692, -0.024815917, 0, 0, 0, 1, 0, 4.656455, -0.8306513)
 
 [node name="CookingPot" parent="." unique_id=1158294601 instance=ExtResource("3_pot")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.498369, 0.5, -9.401392)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21091413, 0.5, -9.401392)
 
 [node name="Octobussy" parent="." unique_id=21931450 instance=ExtResource("5_octobussy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0020999908, 3.694951, -19.98154)
@@ -148,7 +148,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.163082, 9.944586, -12.963
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.889149, 6.9662113, 4.8869133)
 
 [node name="UrchinItemPileSpawner" parent="." unique_id=20315944 instance=ExtResource("13_3nobw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.054876, 8.628871, 3.995201)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.438278, 1.628871, 3.995201)
 
 [node name="FadeLayer" type="CanvasLayer" parent="." unique_id=226922779]
 layer = 200

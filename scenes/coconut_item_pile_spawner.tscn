@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://bg1ur3lu4avnc" path="res://scripts/grab_box.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://drblvbo8vddin" path="res://assets/food_source/palm_tree.png" id="2_texture"]
 [ext_resource type="PackedScene" uid="uid://b1cywel308lko" path="res://scenes/items/coconut.tscn" id="3_item_scene"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_root"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_display"]

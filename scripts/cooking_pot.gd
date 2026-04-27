@@ -20,6 +20,20 @@ const BOB_SPEED := 7.5
 const BOB_AMPLITUDE_RAW := 0.8
 const BOB_AMPLITUDE_COOKED := 0.5
 const BOB_AMPLITUDE_BURNED := 0.2
+const ANIMATION_INTERVAL := 0.5
+const CAULDRON_HAPPY_TEXTURE_FRAMES: Array[Texture2D] = [
+	preload("res://assets/Art/Interactables/CauldronHappy.png"),
+	preload("res://assets/Art/Interactables/CauldronBoiling.png"),
+]
+const CAULDRON_SAD_TEXTURE_FRAMES: Array[Texture2D] = [
+	preload("res://assets/Art/Interactables/CauldronSad.png"),
+	preload("res://assets/Art/Interactables/Cauldron_sad.png"),
+]
+
+enum CauldronMood {
+	HAPPY,
+	SAD,
+}
 
 @export_range(1, 12, 1) var recipe_size: int = 3
 @export var interaction_radius: float = 1.75
@@ -28,19 +42,34 @@ const BOB_AMPLITUDE_BURNED := 0.2
 @onready var interaction_area: Area3D = $InteractionArea
 @onready var contents_root: Node3D = $ContentsRoot
 @onready var serve_anchor: Marker3D = $ServeAnchor
+@onready var sprite_3d: Sprite3D = $Sprite3D
+@onready var texture_swap_timer: Timer = $TextureSwapTimer
 
 var _entries: Array[PotItemEntry] = []
 var _is_serving: bool = false
+var _sprite_material: ShaderMaterial
+var _texture_frame_index: int = 0
+var _cauldron_mood: CauldronMood = CauldronMood.HAPPY
+var _current_texture_frames: Array[Texture2D] = CAULDRON_HAPPY_TEXTURE_FRAMES
 
 
 func _ready() -> void:
 	add_to_group("cooking_pot")
 
-	if interaction_area == null or contents_root == null or serve_anchor == null:
+	if (
+			interaction_area == null
+			or contents_root == null
+			or serve_anchor == null
+			or sprite_3d == null
+			or texture_swap_timer == null
+	):
 		push_error("CookingPot is missing required child nodes.")
 		return
 
+	_setup_texture_animation()
 	interaction_area.body_entered.connect(_on_interaction_area_body_entered)
+	if not Global.cooking_pot_meal_scored.is_connected(_on_cooking_pot_meal_scored):
+		Global.cooking_pot_meal_scored.connect(_on_cooking_pot_meal_scored)
 	call_deferred("_collect_overlapping_items")
 
 
@@ -306,6 +335,77 @@ func _get_item_cook_time(item: RigidBody3D) -> float:
 
 func _get_time_seconds() -> float:
 	return Time.get_ticks_msec() * 0.001
+
+
+func _setup_texture_animation() -> void:
+	var material := sprite_3d.material_override as ShaderMaterial
+	if material == null:
+		push_error("CookingPot sprite is missing the billboard shader material.")
+		return
+
+	_sprite_material = material.duplicate() as ShaderMaterial
+	if _sprite_material == null:
+		push_error("CookingPot sprite material could not be duplicated.")
+		return
+
+	sprite_3d.material_override = _sprite_material
+	texture_swap_timer.wait_time = ANIMATION_INTERVAL
+
+	var timeout_callable := Callable(self, "_on_texture_swap_timer_timeout")
+	if not texture_swap_timer.timeout.is_connected(timeout_callable):
+		texture_swap_timer.timeout.connect(timeout_callable)
+
+	_set_cauldron_mood(CauldronMood.HAPPY)
+	texture_swap_timer.start()
+
+
+func _on_texture_swap_timer_timeout() -> void:
+	if _current_texture_frames.is_empty():
+		return
+
+	_texture_frame_index = (_texture_frame_index + 1) % _current_texture_frames.size()
+	_apply_texture_frame(_texture_frame_index)
+
+
+func _on_cooking_pot_meal_scored(judged_pot: Node, score_delta: int) -> void:
+	if judged_pot != self:
+		return
+
+	if score_delta <= 0:
+		_set_cauldron_mood(CauldronMood.SAD)
+		return
+
+	_set_cauldron_mood(CauldronMood.HAPPY)
+
+
+func _set_cauldron_mood(new_mood: CauldronMood) -> void:
+	if _cauldron_mood == new_mood:
+		_texture_frame_index = 0
+		_apply_texture_frame(_texture_frame_index)
+		texture_swap_timer.start()
+		return
+
+	_cauldron_mood = new_mood
+	_current_texture_frames = (
+		CAULDRON_SAD_TEXTURE_FRAMES
+		if new_mood == CauldronMood.SAD
+		else CAULDRON_HAPPY_TEXTURE_FRAMES
+	)
+	_texture_frame_index = 0
+	_apply_texture_frame(_texture_frame_index)
+	texture_swap_timer.start()
+
+
+func _apply_texture_frame(frame_index: int) -> void:
+	if sprite_3d == null or _sprite_material == null:
+		return
+
+	if frame_index < 0 or frame_index >= _current_texture_frames.size():
+		return
+
+	var frame_texture := _current_texture_frames[frame_index]
+	sprite_3d.texture = frame_texture
+	_sprite_material.set_shader_parameter("billboard_texture", frame_texture)
 
 
 func _begin_serving() -> void:
