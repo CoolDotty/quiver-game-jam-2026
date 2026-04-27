@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ci56d0qsgpiiy"]
 
-[ext_resource type="Script" path="res://scenes/audio.gd" id="1_q0022"]
+[ext_resource type="Script" uid="uid://ct60l5kdw6k6x" path="res://scenes/audio.gd" id="1_q0022"]
 [ext_resource type="AudioStream" uid="uid://bl6v3bat4wxv4" path="res://resources/ANGRY-VoiceLines/BAD FOOD/sloppy.mp3" id="1_qicqv"]
 [ext_resource type="AudioStream" uid="uid://dog0fmgw47h3i" path="res://resources/ANGRY-VoiceLines/BAD FOOD/unedible.mp3" id="2_q0022"]
 [ext_resource type="AudioStream" uid="uid://oqh3c6r1i3xj" path="res://resources/ANGRY-VoiceLines/BAD FOOD/unedible_2.mp3" id="3_x6vto"]

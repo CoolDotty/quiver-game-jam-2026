@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7ylw5b5fvg75"
-path.s3tc="res://.godot/imported/char_mermaid_head.png-dc32fb4f0585df854b27d42e834c4373.s3tc.ctex"
+uid="uid://1ji0bkn4qqsc"
+path.s3tc="res://.godot/imported/Start screen.png-757109d7f2ae6cdbc5111c98b51afaef.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Art/Characters/char_mermaid_head.png"
-dest_files=["res://.godot/imported/char_mermaid_head.png-dc32fb4f0585df854b27d42e834c4373.s3tc.ctex"]
+source_file="res://assets/Art/Backgrounds/Start screen.png"
+dest_files=["res://.godot/imported/Start screen.png-757109d7f2ae6cdbc5111c98b51afaef.s3tc.ctex"]
 
 [params]
 

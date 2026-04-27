@@ -9,10 +9,7 @@ func _ready() -> void:
 			_sounds[child.name] = child
 
 func play_sound(sound_name: String) -> void:
-	print("A sound has been player: ")
-	print(sound_name)
 	if _sounds.has(sound_name):
 		_sounds[sound_name].play()
-		print("The sound actually played")
 	else:
 		push_warning("SoundManager: no child named '%s'" % sound_name)

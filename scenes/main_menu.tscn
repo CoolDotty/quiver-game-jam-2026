@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://cvmripn6alr2g"]
 
 [ext_resource type="Script" uid="uid://b63yniu2gurw3" path="res://scripts/main_menu.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://divaykrxuv2pk" path="res://assets/Art/Backgrounds/Main menu.jpg" id="2_menu_bg"]
 [ext_resource type="Shader" uid="uid://b6r1rfexjtmk0" path="res://resources/beach.gdshader" id="3_beach_shader"]
 [ext_resource type="Texture2D" uid="uid://byga8n1p2dl33" path="res://assets/Art/Backgrounds/Start game.png" id="4_start_button"]
+[ext_resource type="Texture2D" uid="uid://1ji0bkn4qqsc" path="res://assets/Art/Backgrounds/Start screen.png" id="4_tbmy8"]
 [ext_resource type="AudioStream" uid="uid://dssykbpi7oa2u" path="res://resources/Music/Game_Title_Theme_120_HalfBarPickup.mp3" id="5_8ln24"]
 [ext_resource type="AudioStream" uid="uid://c1ks1ddxeuddc" path="res://resources/Music/Game_Title_Theme_120_Loop.mp3" id="6_oa1go"]
 [ext_resource type="Script" path="res://scenes/main_menu_audio_stream_player_3d.gd" id="6_rtw2f"]
@@ -11,7 +11,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_menu_bg"]
 render_priority = 0
 shader = ExtResource("3_beach_shader")
-shader_parameter/albedo_texture = ExtResource("2_menu_bg")
+shader_parameter/albedo_texture = ExtResource("4_tbmy8")
 shader_parameter/shoreline_y = 0.205
 shader_parameter/tide_amount = 0.024
 shader_parameter/band_size = 0.07
@@ -53,7 +53,7 @@ material_override = SubResource("ShaderMaterial_menu_bg")
 billboard = 1
 texture_filter = 0
 render_priority = -100
-texture = ExtResource("2_menu_bg")
+texture = ExtResource("4_tbmy8")
 
 [node name="Ui" type="CanvasLayer" parent="." unique_id=1595186545]
 layer = 200
@@ -73,10 +73,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -755.5
-offset_top = -416.5
-offset_right = 754.5
-offset_bottom = 135.5
+offset_left = -637.5
+offset_top = -36.5
+offset_right = 872.5
+offset_bottom = 515.5
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0

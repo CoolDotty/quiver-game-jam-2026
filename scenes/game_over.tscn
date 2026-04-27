@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://u1ci4citwe1j"]
+[gd_scene format=3 uid="uid://cuffckfyyab83"]
 
 [ext_resource type="Script" uid="uid://hnyc5x3up8hc" path="res://scripts/game_over.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://b851xweu670yx" path="res://assets/Art/Backgrounds/BadEndingSketch.png" id="2_wqhvx"]
+[ext_resource type="Texture2D" uid="uid://bnp4p8htndwtf" path="res://assets/Art/Backgrounds/BadendScreen.png" id="2_wqhvx"]
 
 [node name="GameOver" type="CanvasLayer" unique_id=929185198]
 process_mode = 3
@@ -38,7 +38,6 @@ position = Vector2(793, 443)
 texture = ExtResource("2_wqhvx")
 
 [node name="Blackout" type="ColorRect" parent="." unique_id=394838603]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

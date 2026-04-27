@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://cw4bomdbc8d7"]
+[gd_scene format=3 uid="uid://b4ikj4bh6sntk"]
 
 [ext_resource type="Script" uid="uid://kr7sa12ltaqn" path="res://scripts/you_win.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://0pmgb6743wjy" path="res://assets/Art/Backgrounds/GoodtimeSketch.png" id="2_ibln8"]
+[ext_resource type="Texture2D" uid="uid://ckcy808b14o8k" path="res://assets/Art/Backgrounds/Goodtimeending.png" id="2_ibln8"]
 
 [node name="YouWin" type="Control" unique_id=420938846]
 layout_mode = 3
