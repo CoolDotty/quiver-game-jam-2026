@@ -2,22 +2,31 @@ class_name Octobussy
 extends Node3D
 ## Judges completed pot batches against a rotating recipe and updates the HUD.
 
+const COCONUT_TEXTURE := preload("res://assets/Art/Food/Coconut.png")
+const KRAB_TEXTURE := preload("res://assets/Art/Food/Krab.png")
+const BABY_MERMAID_TEXTURE := preload("res://assets/Art/Food/Baby mermaid.png")
+const URCHIN_TEXTURE := preload("res://assets/Art/Food/Urchin.png")
+
 const RECIPE_CATALOG := [
 	{
 		"cooked_name": "Coco cream",
 		"burnt_name": "Unfortunately",
+		"display_texture": COCONUT_TEXTURE,
 	},
 	{
 		"cooked_name": "Krabwich",
 		"burnt_name": "Krap",
+		"display_texture": KRAB_TEXTURE,
 	},
 	{
 		"cooked_name": "SmokedSiren",
 		"burnt_name": "Merstake",
+		"display_texture": BABY_MERMAID_TEXTURE,
 	},
 	{
 		"cooked_name": "UrchinCake",
 		"burnt_name": "Slurchin",
+		"display_texture": URCHIN_TEXTURE,
 	},
 ]
 
@@ -52,7 +61,7 @@ const SAD_TEXTURE := preload("res://assets/Art/Characters/sad_octobussy.png")
 @onready var portrait_sprite: Sprite3D = $Portrait
 @onready var loss_fade_rect: ColorRect = $LossFade/Blackout
 @onready var score_label: Label = $HUD/ScoreLabel
-@onready var recipe_label: Label = $HUD/RecipeLabel
+@onready var recipe_items_container: HFlowContainer = $HUD/RecipeBubble/RecipeColumn/RecipeItems
 @onready var timer_label: Label = $HUD/TimerCenter/TimerLabel
 
 var _rng := RandomNumberGenerator.new()
@@ -187,19 +196,27 @@ func _generate_recipe(recipe_size: int) -> void:
 		return
 
 	_current_recipe.clear()
+	var available_entries := RECIPE_CATALOG.duplicate()
 
-	for _index in range(recipe_size):
-		var catalog_entry: Dictionary = RECIPE_CATALOG[
-			_rng.randi_range(0, RECIPE_CATALOG.size() - 1)
-		]
+	while _current_recipe.size() < recipe_size and not available_entries.is_empty():
+		var catalog_entry := available_entries.pop_at(
+			_rng.randi_range(0, available_entries.size() - 1)
+		) as Dictionary
 		_current_recipe.append(
 			RecipeSlot.new(
 				catalog_entry["cooked_name"],
-				catalog_entry["burnt_name"]
+				catalog_entry["burnt_name"],
+				catalog_entry["display_texture"]
 			)
 		)
 
-	_update_recipe_label()
+	if _current_recipe.size() < recipe_size:
+		push_warning(
+			"Recipe size %d exceeds unique recipe options %d."
+			% [recipe_size, RECIPE_CATALOG.size()]
+		)
+
+	_update_recipe_display()
 
 
 func _snapshot_item_names(items: Array) -> PackedStringArray:
@@ -473,24 +490,37 @@ func _update_chew_shader() -> void:
 	)
 
 
-func _update_recipe_label() -> void:
-	var lines := PackedStringArray()
-	lines.append("Recipe:")
+func _update_recipe_display() -> void:
+	if recipe_items_container == null:
+		return
+
+	for child in recipe_items_container.get_children():
+		child.queue_free()
 
 	for slot in _current_recipe:
-		lines.append("- %s" % slot.cooked_name)
-
-	recipe_label.text = "\n".join(lines)
+		var icon := TextureRect.new()
+		icon.texture = slot.display_texture
+		icon.custom_minimum_size = Vector2(144.0, 144.0)
+		icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		recipe_items_container.add_child(icon)
 
 
 class RecipeSlot:
 	var cooked_name: String
 	var burnt_name: String
+	var display_texture: Texture2D
 
 
-	func _init(new_cooked_name: String, new_burnt_name: String) -> void:
+	func _init(
+			new_cooked_name: String,
+			new_burnt_name: String,
+			new_display_texture: Texture2D
+	) -> void:
 		cooked_name = new_cooked_name
 		burnt_name = new_burnt_name
+		display_texture = new_display_texture
 
 
 	func matches_item_name(item_name: String) -> bool:

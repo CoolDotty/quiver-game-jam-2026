@@ -1,6 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+/exports/
 
 # Local AI tool metadata and cache folders
 .codex/
