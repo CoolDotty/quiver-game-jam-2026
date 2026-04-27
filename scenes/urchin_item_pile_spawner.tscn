@@ -14,15 +14,15 @@ render_priority = -10
 shader = ExtResource("3_ie20t")
 shader_parameter/billboard_texture = ExtResource("4_83vyh")
 shader_parameter/blur_amount = 0.0
-shader_parameter/step_time = 0.25
-shader_parameter/wobble_amount = 0.03
-shader_parameter/wobble_speed = 2.0
-shader_parameter/uv_wobble_amount = 0.01
-shader_parameter/uv_wobble_speed = 2.6
+shader_parameter/step_time = 0.2
+shader_parameter/wobble_amount = 0.02
+shader_parameter/wobble_speed = 2.1
+shader_parameter/uv_wobble_amount = 0.006
+shader_parameter/uv_wobble_speed = 2.3
 shader_parameter/squash_x = 0.0
 shader_parameter/squash_y = 0.0
 shader_parameter/squash_speed = 2.2
-shader_parameter/center_rigidity = 0.75
+shader_parameter/center_rigidity = 0.68
 
 [node name="UrchinItemPileSpawner" type="StaticBody3D" unique_id=161901450]
 script = ExtResource("1_script")

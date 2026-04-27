@@ -1,11 +1,28 @@
 [gd_scene format=3 uid="uid://dynoodpdky3ky"]
 
 [ext_resource type="Script" uid="uid://bg1ur3lu4avnc" path="res://scripts/grab_box.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://drblvbo8vddin" path="res://assets/food_source/palm_tree.png" id="2_texture"]
+[ext_resource type="Shader" uid="uid://chdtkxll2mgea" path="res://resources/billboard.gdshader" id="2_shader"]
+[ext_resource type="Texture2D" uid="uid://cdg2p1fmf36f3" path="res://assets/Art/Interactables/KrabHouse.png" id="3_4gpbd"]
 [ext_resource type="PackedScene" uid="uid://b8pvd7y2yw3yk" path="res://scenes/items/krab.tscn" id="3_item_scene"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_root"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_display"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_billboard"]
+render_priority = -10
+shader = ExtResource("2_shader")
+shader_parameter/billboard_texture = ExtResource("3_4gpbd")
+shader_parameter/blur_amount = 0.0
+shader_parameter/step_time = 0.2
+shader_parameter/wobble_amount = 0.02
+shader_parameter/wobble_speed = 2.1
+shader_parameter/uv_wobble_amount = 0.006
+shader_parameter/uv_wobble_speed = 2.3
+shader_parameter/squash_x = 0.0
+shader_parameter/squash_y = 0.0
+shader_parameter/squash_speed = 2.2
+shader_parameter/center_rigidity = 0.68
 
 [node name="KrabItemPileSpawner" type="StaticBody3D" unique_id=1629220653]
 script = ExtResource("1_script")
@@ -24,8 +41,8 @@ transform = Transform3D(0.66666675, 0, 0, 0, 0.66666675, 0, 0, 0, 0.66666675, 0,
 shape = SubResource("BoxShape3D_display")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=476859626]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_billboard")
 billboard = 1
-texture = ExtResource("2_texture")
+texture = ExtResource("3_4gpbd")
 
 [node name="Timer" type="Timer" parent="." unique_id=1569957440]

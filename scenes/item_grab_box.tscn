@@ -1,11 +1,27 @@
 [gd_scene format=3 uid="uid://dboo86qfbq60c"]
 
 [ext_resource type="Script" uid="uid://bg1ur3lu4avnc" path="res://scripts/grab_box.gd" id="1_mejj2"]
+[ext_resource type="Shader" uid="uid://chdtkxll2mgea" path="res://resources/billboard.gdshader" id="2_shader"]
 [ext_resource type="Texture2D" uid="uid://dh7j2xavu6lmt" path="res://assets/placeholders/DevTextures/Dark/texture_01.png" id="2_04kh8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hhtwg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jqsf7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_billboard"]
+render_priority = -10
+shader = ExtResource("2_shader")
+shader_parameter/billboard_texture = ExtResource("2_04kh8")
+shader_parameter/blur_amount = 0.0
+shader_parameter/step_time = 0.2
+shader_parameter/wobble_amount = 0.02
+shader_parameter/wobble_speed = 2.1
+shader_parameter/uv_wobble_amount = 0.006
+shader_parameter/uv_wobble_speed = 2.3
+shader_parameter/squash_x = 0.0
+shader_parameter/squash_y = 0.0
+shader_parameter/squash_speed = 2.2
+shader_parameter/center_rigidity = 0.68
 
 [node name="ItemPileSpawner" type="StaticBody3D" unique_id=161706655]
 script = ExtResource("1_mejj2")
@@ -23,6 +39,7 @@ transform = Transform3D(0.66666675, 0, 0, 0, 0.66666675, 0, 0, 0, 0.66666675, 0,
 shape = SubResource("BoxShape3D_jqsf7")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=240653524]
+material_override = SubResource("ShaderMaterial_billboard")
 texture = ExtResource("2_04kh8")
 billboard = 1
 
