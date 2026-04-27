@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://ldp8f4crpuj5"]
+[gd_scene format=3 uid="uid://ckhahx33yngsy"]
 
 [ext_resource type="Texture2D" uid="uid://5xcj85j1ctpe" path="res://assets/placeholders/DevTextures/Dark/texture_04.png" id="1_gsx76"]
 [ext_resource type="Script" uid="uid://co2gqo24h2xo5" path="res://scripts/starter_3d.gd" id="1_script"]
@@ -6,11 +6,16 @@
 [ext_resource type="Shader" uid="uid://b6r1rfexjtmk0" path="res://resources/beach.gdshader" id="2_5chnm"]
 [ext_resource type="PackedScene" uid="uid://qq4fwum0xhj3" path="res://scenes/cooking_pot.tscn" id="3_pot"]
 [ext_resource type="PackedScene" uid="uid://cjsufkx45xq8g" path="res://scenes/mermaid.tscn" id="4_4xkce"]
-[ext_resource type="PackedScene" uid="uid://by7tr4stivq8q" path="res://scenes/octobussy.tscn" id="5_octobussy"]
-[ext_resource type="PackedScene" uid="uid://dt2m1osxcfcry" path="res://scenes/coconut_item_pile_spawner.tscn" id="10_7oiso"]
-[ext_resource type="PackedScene" uid="uid://cbd32f1bc1uwj" path="res://scenes/baby_mermaid_item_pile_spawner.tscn" id="11_w266b"]
-[ext_resource type="PackedScene" uid="uid://dynoodpdky3ky" path="res://scenes/krab_item_pile_spawner.tscn" id="12_0onai"]
-[ext_resource type="PackedScene" uid="uid://cx7puiu50rrwr" path="res://scenes/urchin_item_pile_spawner.tscn" id="13_3nobw"]
+[ext_resource type="AudioStream" uid="uid://cpiw8qfvauy7o" path="res://resources/Music/Game_Theme_Loop_100.mp3" id="5_2bmlf"]
+[ext_resource type="PackedScene" path="res://scenes/octobussy.tscn" id="5_octobussy"]
+[ext_resource type="AudioStream" uid="uid://dn73dfqjjvgoj" path="res://resources/Music/Game_Theme_Loop_120.mp3" id="6_qr6qn"]
+[ext_resource type="AudioStream" uid="uid://bnlnbcvbhcu7o" path="res://resources/Music/Game_Theme_Loop_140.mp3" id="7_8jr5k"]
+[ext_resource type="PackedScene" uid="uid://ci56d0qsgpiiy" path="res://scenes/audio.tscn" id="8_5chnm"]
+[ext_resource type="Script" path="res://scenes/music_manager.gd" id="8_rkah8"]
+[ext_resource type="PackedScene" path="res://scenes/coconut_item_pile_spawner.tscn" id="10_7oiso"]
+[ext_resource type="PackedScene" path="res://scenes/baby_mermaid_item_pile_spawner.tscn" id="11_w266b"]
+[ext_resource type="PackedScene" path="res://scenes/krab_item_pile_spawner.tscn" id="12_0onai"]
+[ext_resource type="PackedScene" path="res://scenes/urchin_item_pile_spawner.tscn" id="13_3nobw"]
 [ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="14_pause_menu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uxg2d"]
@@ -23,6 +28,38 @@ shader_parameter/band_size = 0.07
 shader_parameter/wave_speed = 0.9
 shader_parameter/distort_amount = 0.009
 shader_parameter/foam_boost = 0.08
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_2bmlf"]
+clip_count = 3
+clip_0/name = &"Game Theme Loop 100"
+clip_0/stream = ExtResource("5_2bmlf")
+clip_0/auto_advance = 0
+clip_1/name = &"Game Theme Loop 120"
+clip_1/stream = ExtResource("6_qr6qn")
+clip_1/auto_advance = 0
+clip_2/name = &"Game Theme Loop 140"
+clip_2/stream = ExtResource("7_8jr5k")
+clip_2/auto_advance = 0
+_transitions = {
+Vector2i(0, 0): {
+"fade_beats": 1.0,
+"fade_mode": 4,
+"from_time": 2,
+"to_time": 0
+},
+Vector2i(1, 0): {
+"fade_beats": 1.0,
+"fade_mode": 4,
+"from_time": 2,
+"to_time": 0
+},
+Vector2i(2, 0): {
+"fade_beats": 1.0,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 1
+}
+}
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_floor"]
 friction = 0.55
@@ -57,6 +94,8 @@ projection = 1
 current = true
 size = 25.0
 
+[node name="AudioManager" parent="Camera3D" unique_id=268274660 instance=ExtResource("8_5chnm")]
+
 [node name="background" type="Sprite3D" parent="Camera3D" unique_id=302842814]
 transform = Transform3D(3, 0, 0, 0, 2.427051, -1.7633557, 0, 1.7633557, 2.427051, 7.450581e-09, -0.035167336, -113.5824)
 material_override = SubResource("ShaderMaterial_uxg2d")
@@ -64,6 +103,10 @@ billboard = 1
 texture_filter = 0
 render_priority = -100
 texture = ExtResource("2_4xkce")
+
+[node name="MusicManager" type="AudioStreamPlayer3D" parent="Camera3D" unique_id=514259563]
+stream = SubResource("AudioStreamInteractive_2bmlf")
+script = ExtResource("8_rkah8")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1565072717]
 transform = Transform3D(0.81915206, -0.4055798, 0.4055798, 0, 0.70710677, 0.70710677, -0.57357645, -0.579228, 0.579228, 0, 0, 0)

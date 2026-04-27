@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://qrnpqwtesa2r"
+path="res://.godot/imported/what_is_this_sludge.mp3-aca87b994c17c72e1a775cbd3fb4ca69.mp3str"
+
+[deps]
+
+source_file="res://resources/ANGRY-VoiceLines/BAD FOOD/what_is_this_sludge.mp3"
+dest_files=["res://.godot/imported/what_is_this_sludge.mp3-aca87b994c17c72e1a775cbd3fb4ca69.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

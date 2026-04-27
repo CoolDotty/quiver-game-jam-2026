@@ -1,7 +1,7 @@
 class_name ItemPileSpawner
 extends Node3D
 ## Spawns a physical pile of pickup items in a local area and refills it over time.
-
+@onready var audio_manager: AudioStreamPlayer3D = $"../Camera3D/AudioManager"
 @export var item_scene: PackedScene
 @export_range(1, 64, 1) var target_count: int = 3
 @export_range(0.1, 10.0, 0.1) var spawn_interval: float = 1.0
@@ -54,6 +54,12 @@ func _spawn_item() -> void:
 		world_root = get_tree().root
 
 	world_root.add_child(item)
+	if item_scene.resource_path == "res://scenes/items/krab.tscn":
+		audio_manager.play_sound("Audio3D_food_Crab")
+	if item_scene.resource_path == "res://scenes/items/coconut.tscn":
+		audio_manager.play_sound("Audio3D_food_Coconut")
+	if item_scene.resource_path == "res://scenes/items/urchin.tscn":
+		audio_manager.play_sound("Audio3D_food_Urchin")
 
 	item.add_to_group("pickup")
 	item.add_to_group(_spawn_group)

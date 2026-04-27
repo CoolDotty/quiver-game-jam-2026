@@ -13,6 +13,8 @@ enum Facing {
 	RIGHT,
 }
 
+@onready var audio_manager: AudioStreamPlayer3D = $"../Camera3D/AudioManager"
+@onready var music_manager: AudioStreamPlayer3D = $"../Camera3D/MusicManager"
 
 @onready var head: RigidBody3D = $Head
 @onready var tail: RigidBody3D = $Tail

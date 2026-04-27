@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://dsukchbmxb55y"]
+
+[ext_resource type="PackedScene" uid="uid://dbfku8tcmpd7p" path="res://scenes/cook_box.tscn" id="1_6gt1b"]
+[ext_resource type="PackedScene" uid="uid://cjsufkx45xq8g" path="res://scenes/mermaid.tscn" id="2_2thlh"]
+[ext_resource type="PackedScene" uid="uid://dboo86qfbq60c" path="res://scenes/item_grab_box.tscn" id="3_gro1k"]
+[ext_resource type="PackedScene" uid="uid://blk0xu2m2nycq" path="res://scenes/item.tscn" id="4_y6nay"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vjnhk"]
+
+[sub_resource type="TextMesh" id="TextMesh_nnebt"]
+
+[node name="greybox" type="Node3D" unique_id=1981201388]
+
+[node name="CookBox4" parent="." unique_id=1912571744 instance=ExtResource("1_6gt1b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.174214, 1.6012726, -8.449528)
+
+[node name="CookBox3" parent="." unique_id=140822835 instance=ExtResource("1_6gt1b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5717635, 0.8006363, -10.660634)
+
+[node name="CookBox" parent="." unique_id=907020051 instance=ExtResource("1_6gt1b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.498369, 0.5, -9.401392)
+
+[node name="CookBox2" parent="." unique_id=1607029166 instance=ExtResource("1_6gt1b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7595701, 1, -15.794427)
+
+[node name="CookBox2" parent="CookBox2" unique_id=1777582877 instance=ExtResource("1_6gt1b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.977518, 1, 1.1006212)
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=760540537]
+transform = Transform3D(-0.024165055, 2.0560153, 0, -0.9734703, -0.051037744, 0, 0, 0, 1.4741167, 15.539148, 1.1795492, -11.281659)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" unique_id=218422657]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=43486369]
+transform = Transform3D(42.07547, 0, 0, 0, 1, 0, 0, 0, 35.419285, 0, -0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=2092743805]
+transform = Transform3D(1.7704778, 0, 0, 0, 1.1756219, 0, 0, 0, 1.8817161, 0, 0, 0)
+shape = SubResource("BoxShape3D_vjnhk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1601617010]
+transform = Transform3D(1.2648369, 0, 0, 0, 0.9999999, 0, 0, 0, 1.3412212, 0, 0, 0)
+mesh = SubResource("TextMesh_nnebt")
+
+[node name="Mermaid" parent="." unique_id=1293432093 instance=ExtResource("2_2thlh")]
+transform = Transform3D(-0.024815975, 0.999692, 0, -0.999692, -0.024815975, 0, 0, 0, 1, 0.09143239, 4.4564652, -3.8461654)
+
+[node name="item_grab_box" parent="." unique_id=161706655 instance=ExtResource("3_gro1k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7094555, 3.5877485, -24.999294)
+item_scene = ExtResource("4_y6nay")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1587061510]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4536033, 3.5498905, 7.4027004)
+
+[node name="Item" parent="." unique_id=133743956 instance=ExtResource("4_y6nay")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1801047, 2.175303, -0.2682202)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2145645015]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.211617, 6.8904285)

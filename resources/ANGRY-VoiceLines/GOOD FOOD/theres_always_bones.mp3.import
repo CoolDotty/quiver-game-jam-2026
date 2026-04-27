@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://38bcxyyvkj0u"
+path="res://.godot/imported/theres_always_bones.mp3-d2e955a14c083ee01079bba0162806c1.mp3str"
+
+[deps]
+
+source_file="res://resources/ANGRY-VoiceLines/GOOD FOOD/theres_always_bones.mp3"
+dest_files=["res://.godot/imported/theres_always_bones.mp3-d2e955a14c083ee01079bba0162806c1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

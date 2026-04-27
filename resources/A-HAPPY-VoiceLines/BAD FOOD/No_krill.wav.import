@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bv81v4ash8adg"
+path="res://.godot/imported/No_krill.wav-a52e618032437552dcb2d548428c8a21.sample"
+
+[deps]
+
+source_file="res://resources/A-HAPPY-VoiceLines/BAD FOOD/No_krill.wav"
+dest_files=["res://.godot/imported/No_krill.wav-a52e618032437552dcb2d548428c8a21.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
