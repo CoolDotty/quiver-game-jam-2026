@@ -82,10 +82,12 @@ func _unhandled_input(_event: InputEvent) -> void:
 			else:
 				movement_controller.burst_forward()
 		if Input.is_action_just_pressed("flop_down"):
+			audio_manager.play_sound("Audio3D_MermaidTail")
 			movement_controller.burst_forward()
 
 	if Input.is_action_just_pressed("interact"):
 		_interact()
+
 
 
 func _on_grab_range_head_body_entered(body: Node) -> void:
@@ -179,7 +181,17 @@ func _try_pick_up(body: Node) -> bool:
 
 	if pickup.has_method("set_held"):
 		pickup.call("set_held", true)
-
+		
+	if pickup.get_scene_file_path() == "res://scenes/items/baby_mermaid.tscn":
+		audio_manager.play_sound("Audio3D_pickup_baby")
+	if pickup.get_scene_file_path() == "res://scenes/items/coconut.tscn":
+		audio_manager.play_sound("Audio3D_pickup_coconut")
+	if pickup.get_scene_file_path() == "res://scenes/items/krab.tscn":
+		audio_manager.play_sound("Audio3D_pickup_crab")
+	if pickup.get_scene_file_path() == "res://scenes/items/urchin.tscn":
+		audio_manager.play_sound("Audio3D_pickup_urchin")
+		
+		
 	_set_held_item(pickup)
 	_last_holder_position = held_item_holder.global_position
 	_holder_velocity = Vector3.ZERO

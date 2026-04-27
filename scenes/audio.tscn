@@ -311,15 +311,23 @@ stream = SubResource("AudioStreamRandomizer_ccco1")
 
 [node name="Audio3D_food_Coconut" type="AudioStreamPlayer3D" parent="." unique_id=27137561]
 stream = SubResource("AudioStreamRandomizer_1pfdt")
+attenuation_model = 3
+volume_db = -4.5
 
 [node name="Audio3D_food_Urchin" type="AudioStreamPlayer3D" parent="." unique_id=1698346612]
 stream = SubResource("AudioStreamRandomizer_humvb")
+attenuation_model = 3
+volume_db = -4.5
 
 [node name="Audio3D_food_baby_mermaid" type="AudioStreamPlayer3D" parent="." unique_id=1663719903]
 stream = SubResource("AudioStreamRandomizer_3ug1q")
+attenuation_model = 3
+volume_db = -4.5
 
 [node name="Audio3D_food_Crab" type="AudioStreamPlayer3D" parent="." unique_id=166114337]
 stream = SubResource("AudioStreamRandomizer_0l6x5")
+attenuation_model = 3
+volume_db = -4.5
 
 [node name="Audio3D_MermaidTail" type="AudioStreamPlayer3D" parent="." unique_id=363294548]
 stream = SubResource("AudioStreamRandomizer_11ral")
