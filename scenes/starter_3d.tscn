@@ -16,6 +16,12 @@
 [ext_resource type="PackedScene" path="res://scenes/baby_mermaid_item_pile_spawner.tscn" id="11_w266b"]
 [ext_resource type="PackedScene" path="res://scenes/krab_item_pile_spawner.tscn" id="12_0onai"]
 [ext_resource type="PackedScene" path="res://scenes/urchin_item_pile_spawner.tscn" id="13_3nobw"]
+[ext_resource type="PackedScene" uid="uid://by7tr4stivq8q" path="res://scenes/octobussy.tscn" id="5_octobussy"]
+[ext_resource type="PackedScene" uid="uid://dt2m1osxcfcry" path="res://scenes/coconut_item_pile_spawner.tscn" id="10_7oiso"]
+[ext_resource type="PackedScene" uid="uid://cbd32f1bc1uwj" path="res://scenes/baby_mermaid_item_pile_spawner.tscn" id="11_w266b"]
+[ext_resource type="PackedScene" uid="uid://dynoodpdky3ky" path="res://scenes/krab_item_pile_spawner.tscn" id="12_0onai"]
+[ext_resource type="PackedScene" uid="uid://cx7puiu50rrwr" path="res://scenes/urchin_item_pile_spawner.tscn" id="13_3nobw"]
+[ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="14_pause_menu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uxg2d"]
 render_priority = 0
@@ -28,40 +34,8 @@ shader_parameter/wave_speed = 0.9
 shader_parameter/distort_amount = 0.009
 shader_parameter/foam_boost = 0.08
 
-[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_7oiso"]
-clip_count = 3
-clip_0/name = &"Game Theme Loop 100"
-clip_0/stream = ExtResource("5_2bmlf")
-clip_0/auto_advance = 0
-clip_1/name = &"Game Theme Loop 120"
-clip_1/stream = ExtResource("6_qr6qn")
-clip_1/auto_advance = 0
-clip_2/name = &"Game Theme Loop 140"
-clip_2/stream = ExtResource("7_8jr5k")
-clip_2/auto_advance = 0
-_transitions = {
-Vector2i(0, 0): {
-"fade_beats": 1.0,
-"fade_mode": 3,
-"from_time": 2,
-"to_time": 0
-},
-Vector2i(1, 0): {
-"fade_beats": 1.0,
-"fade_mode": 3,
-"from_time": 2,
-"to_time": 0
-},
-Vector2i(2, 0): {
-"fade_beats": 1.0,
-"fade_mode": 3,
-"from_time": 2,
-"to_time": 0
-}
-}
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4uxoh"]
-rough = true
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_floor"]
+friction = 0.55
 bounce = 0.25
 
 [sub_resource type="BoxShape3D" id="3_floor_shape"]
@@ -73,6 +47,10 @@ uv1_scale = Vector3(10, 10, 10)
 
 [sub_resource type="PlaneMesh" id="2_floor_mesh"]
 size = Vector2(200, 200)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4uxoh"]
+rough = true
+bounce = 0.25
 
 [sub_resource type="BoxShape3D" id="4_wall_vertical_shape"]
 size = Vector3(2, 20, 44)
@@ -109,7 +87,7 @@ light_energy = 2.0
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1833675114]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
-physics_material_override = SubResource("PhysicsMaterial_4uxoh")
+physics_material_override = SubResource("PhysicsMaterial_floor")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1801628329]
 shape = SubResource("3_floor_shape")
@@ -188,12 +166,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.889149, 6.9662113, 4.88691
 [node name="UrchinItemPileSpawner" parent="." unique_id=20315944 instance=ExtResource("13_3nobw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.054876, 8.628871, 3.995201)
 
-[node name="FadeLayer" type="CanvasLayer" parent="." unique_id=1663681927]
+[node name="FadeLayer" type="CanvasLayer" parent="." unique_id=226922779]
 layer = 200
 
-[node name="FadeRect" type="ColorRect" parent="FadeLayer" unique_id=317965430]
+[node name="FadeRect" type="ColorRect" parent="FadeLayer" unique_id=1900200966]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = 1477.0
 offset_bottom = 789.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PauseMenu" parent="." unique_id=884376440 instance=ExtResource("14_pause_menu")]

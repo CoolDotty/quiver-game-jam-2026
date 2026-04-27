@@ -5,6 +5,8 @@ enum State {
 	COOKING
 }
 
+@export var cooking_time: float = 3.0
+
 @onready var timer: Timer = $Timer
 @onready var interaction_area: Area3D = $InteractionArea
 @onready var item_spawn_point: Marker3D = $ItemSpawnPoint

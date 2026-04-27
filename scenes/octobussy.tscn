@@ -20,7 +20,6 @@ shader_parameter/squash_speed = 2.2
 shader_parameter/center_rigidity = 0.75
 
 [node name="Octobussy" type="Node3D" unique_id=1303750881]
-process_mode = 3
 script = ExtResource("1_script")
 
 [node name="Portrait" type="Sprite3D" parent="." unique_id=110932492]

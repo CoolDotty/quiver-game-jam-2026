@@ -86,7 +86,6 @@ var _chew_remaining: float = 0.0
 
 
 func _ready() -> void:
-	process_mode = Node.PROCESS_MODE_ALWAYS
 	_rng.randomize()
 	_recipe_size = _get_recipe_size_from_pot()
 

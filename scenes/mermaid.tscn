@@ -1,16 +1,21 @@
 [gd_scene format=3 uid="uid://cjsufkx45xq8g"]
 
 [ext_resource type="Script" uid="uid://dy8p2dt6t1fn5" path="res://scripts/mermaid.gd" id="1_k32jb"]
+[ext_resource type="Script" path="res://scripts/mermaid_movement_controller.gd" id="20_movement_controller"]
 [ext_resource type="Script" uid="uid://uflo8kwjqnuj" path="res://scripts/arm.gd" id="2_cx8og"]
 [ext_resource type="Script" uid="uid://bs8f4b6eesrcy" path="res://scripts/segment_shadow_sprite.gd" id="3_n8k2q"]
 [ext_resource type="Shader" uid="uid://chdtkxll2mgea" path="res://resources/billboard.gdshader" id="3_oprnn"]
-[ext_resource type="Texture2D" uid="uid://cqqctuv83p5d6" path="res://assets/placeholders/arm-right.png" id="4_lunbq"]
+[ext_resource type="Texture2D" uid="uid://dmo1167j6a3xa" path="res://assets/Art/Characters/Char_mermaid_armspatula.png" id="4_k32jb"]
 [ext_resource type="Texture2D" uid="uid://cjfdvxd3gy4sj" path="res://assets/placeholders/head.png" id="5_2ue8w"]
-[ext_resource type="Texture2D" uid="uid://cigsydrcfi0oo" path="res://assets/Art/Char_Sprites/char_mermaid_head.png" id="6_vfsj7"]
+[ext_resource type="Texture2D" uid="uid://nvbb4wb0qe1s" path="res://assets/Art/Characters/Char_mermaid_armclose.png" id="5_cx8og"]
 [ext_resource type="Texture2D" uid="uid://b4ca63k5a5s1o" path="res://assets/Art/Char_Sprites/char_mermaid_chest.png" id="7_ex356"]
-[ext_resource type="Texture2D" uid="uid://cm0hqmydp86me" path="res://assets/Art/Characters/char_mermaid_head.png" id="7_isxfi"]
+[ext_resource type="Texture2D" uid="uid://7ylw5b5fvg75" path="res://assets/Art/Characters/Char_mermaid_head.png" id="7_lunbq"]
+[ext_resource type="Texture2D" uid="uid://1i3o5rcyaha" path="res://assets/Art/Characters/Char_mermaid_torso.png" id="9_2ue8w"]
+[ext_resource type="Texture2D" uid="uid://rqphnqjlqd8e" path="res://assets/Art/Characters/Char_mermaid_hips.png" id="11_bmyc2"]
+[ext_resource type="Texture2D" uid="uid://dmahwpdfufb8e" path="res://assets/Art/Characters/Char_mermaid_tail_1.png" id="13_vfsj7"]
 [ext_resource type="Texture2D" uid="uid://37dvd41b5hpu" path="res://assets/placeholders/tail.jpg" id="14_lgxpy"]
 [ext_resource type="Texture2D" uid="uid://bkff4s1w2jm1l" path="res://assets/Art/Char_Sprites/char_mermaid_mid.png" id="16_cri7n"]
+[ext_resource type="Texture2D" uid="uid://dygnps8o70q2a" path="res://assets/Art/Characters/Char_mermaid_tail_2.png" id="16_ex356"]
 [ext_resource type="Texture2D" uid="uid://b814obyp6cotk" path="res://assets/Art/Char_Sprites/char_mermaid_knee.png" id="17_n58kw"]
 [ext_resource type="Texture2D" uid="uid://cl2urs1rj3u5m" path="res://assets/Art/Char_Sprites/char_mermaid_tail.png" id="19_8rn3h"]
 
@@ -21,7 +26,7 @@ height = 3.4540405
 [sub_resource type="ShaderMaterial" id="BillboardSpriteMaterial_starter"]
 render_priority = 0
 shader = ExtResource("3_oprnn")
-shader_parameter/billboard_texture = ExtResource("4_lunbq")
+shader_parameter/billboard_texture = ExtResource("4_k32jb")
 shader_parameter/blur_amount = 0.0
 shader_parameter/step_time = 0.25
 shader_parameter/wobble_amount = 0.012
@@ -36,7 +41,7 @@ shader_parameter/center_rigidity = 0.35
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k32jb"]
 render_priority = 0
 shader = ExtResource("3_oprnn")
-shader_parameter/billboard_texture = ExtResource("4_lunbq")
+shader_parameter/billboard_texture = ExtResource("5_cx8og")
 shader_parameter/blur_amount = 0.0
 shader_parameter/step_time = 0.25
 shader_parameter/wobble_amount = 0.012
@@ -50,6 +55,7 @@ shader_parameter/center_rigidity = 0.35
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4xkce"]
 rough = true
+friction = 0.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vhc0g"]
 radius = 0.45
@@ -60,7 +66,67 @@ albedo_texture = ExtResource("5_2ue8w")
 [sub_resource type="ShaderMaterial" id="BillboardSpriteMaterial_head"]
 render_priority = 4
 shader = ExtResource("3_oprnn")
-shader_parameter/billboard_texture = ExtResource("6_vfsj7")
+shader_parameter/billboard_texture = ExtResource("7_lunbq")
+shader_parameter/blur_amount = 0.0
+shader_parameter/step_time = 0.25
+shader_parameter/wobble_amount = 0.012
+shader_parameter/wobble_speed = 2.0
+shader_parameter/uv_wobble_amount = 0.0018
+shader_parameter/uv_wobble_speed = 2.7
+shader_parameter/squash_x = 0.0
+shader_parameter/squash_y = 0.0
+shader_parameter/squash_speed = 2.2
+shader_parameter/center_rigidity = 0.35
+
+[sub_resource type="ShaderMaterial" id="BillboardSpriteMaterial_chest"]
+render_priority = 0
+shader = ExtResource("3_oprnn")
+shader_parameter/billboard_texture = ExtResource("9_2ue8w")
+shader_parameter/blur_amount = 0.0
+shader_parameter/step_time = 0.25
+shader_parameter/wobble_amount = 0.012
+shader_parameter/wobble_speed = 2.0
+shader_parameter/uv_wobble_amount = 0.0018
+shader_parameter/uv_wobble_speed = 2.7
+shader_parameter/squash_x = 0.0
+shader_parameter/squash_y = 0.0
+shader_parameter/squash_speed = 2.2
+shader_parameter/center_rigidity = 0.35
+
+[sub_resource type="ShaderMaterial" id="BillboardSpriteMaterial_mid"]
+render_priority = 0
+shader = ExtResource("3_oprnn")
+shader_parameter/billboard_texture = ExtResource("11_bmyc2")
+shader_parameter/blur_amount = 0.0
+shader_parameter/step_time = 0.25
+shader_parameter/wobble_amount = 0.012
+shader_parameter/wobble_speed = 2.0
+shader_parameter/uv_wobble_amount = 0.0018
+shader_parameter/uv_wobble_speed = 2.7
+shader_parameter/squash_x = 0.0
+shader_parameter/squash_y = 0.0
+shader_parameter/squash_speed = 2.2
+shader_parameter/center_rigidity = 0.35
+
+[sub_resource type="ShaderMaterial" id="BillboardSpriteMaterial_knee"]
+render_priority = 0
+shader = ExtResource("3_oprnn")
+shader_parameter/billboard_texture = ExtResource("13_vfsj7")
+shader_parameter/blur_amount = 0.0
+shader_parameter/step_time = 0.25
+shader_parameter/wobble_amount = 0.012
+shader_parameter/wobble_speed = 2.0
+shader_parameter/uv_wobble_amount = 0.0018
+shader_parameter/uv_wobble_speed = 2.7
+shader_parameter/squash_x = 0.0
+shader_parameter/squash_y = 0.0
+shader_parameter/squash_speed = 2.2
+shader_parameter/center_rigidity = 0.35
+
+[sub_resource type="ShaderMaterial" id="BillboardSpriteMaterial_tail"]
+render_priority = 0
+shader = ExtResource("3_oprnn")
+shader_parameter/billboard_texture = ExtResource("16_ex356")
 shader_parameter/blur_amount = 0.0
 shader_parameter/step_time = 0.25
 shader_parameter/wobble_amount = 0.012
@@ -75,68 +141,8 @@ shader_parameter/center_rigidity = 0.35
 [sub_resource type="SphereShape3D" id="SphereShape3D_8jr5k"]
 radius = 3.0
 
-[sub_resource type="ShaderMaterial" id="BillboardSpriteMaterial_chest"]
-render_priority = 3
-shader = ExtResource("3_oprnn")
-shader_parameter/billboard_texture = ExtResource("7_ex356")
-shader_parameter/blur_amount = 0.0
-shader_parameter/step_time = 0.25
-shader_parameter/wobble_amount = 0.012
-shader_parameter/wobble_speed = 2.0
-shader_parameter/uv_wobble_amount = 0.0018
-shader_parameter/uv_wobble_speed = 2.7
-shader_parameter/squash_x = 0.0
-shader_parameter/squash_y = 0.0
-shader_parameter/squash_speed = 2.2
-shader_parameter/center_rigidity = 0.35
-
-[sub_resource type="ShaderMaterial" id="BillboardSpriteMaterial_mid"]
-render_priority = 2
-shader = ExtResource("3_oprnn")
-shader_parameter/billboard_texture = ExtResource("16_cri7n")
-shader_parameter/blur_amount = 0.0
-shader_parameter/step_time = 0.25
-shader_parameter/wobble_amount = 0.012
-shader_parameter/wobble_speed = 2.0
-shader_parameter/uv_wobble_amount = 0.0018
-shader_parameter/uv_wobble_speed = 2.7
-shader_parameter/squash_x = 0.0
-shader_parameter/squash_y = 0.0
-shader_parameter/squash_speed = 2.2
-shader_parameter/center_rigidity = 0.35
-
-[sub_resource type="ShaderMaterial" id="BillboardSpriteMaterial_knee"]
-render_priority = 1
-shader = ExtResource("3_oprnn")
-shader_parameter/billboard_texture = ExtResource("17_n58kw")
-shader_parameter/blur_amount = 0.0
-shader_parameter/step_time = 0.25
-shader_parameter/wobble_amount = 0.012
-shader_parameter/wobble_speed = 2.0
-shader_parameter/uv_wobble_amount = 0.0018
-shader_parameter/uv_wobble_speed = 2.7
-shader_parameter/squash_x = 0.0
-shader_parameter/squash_y = 0.0
-shader_parameter/squash_speed = 2.2
-shader_parameter/center_rigidity = 0.35
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fmo7n"]
 albedo_texture = ExtResource("14_lgxpy")
-
-[sub_resource type="ShaderMaterial" id="BillboardSpriteMaterial_tail"]
-render_priority = 0
-shader = ExtResource("3_oprnn")
-shader_parameter/billboard_texture = ExtResource("19_8rn3h")
-shader_parameter/blur_amount = 0.0
-shader_parameter/step_time = 0.25
-shader_parameter/wobble_amount = 0.012
-shader_parameter/wobble_speed = 2.0
-shader_parameter/uv_wobble_amount = 0.0018
-shader_parameter/uv_wobble_speed = 2.7
-shader_parameter/squash_x = 0.0
-shader_parameter/squash_y = 0.0
-shader_parameter/squash_speed = 2.2
-shader_parameter/center_rigidity = 0.35
 
 [node name="Mermaid" type="Node3D" unique_id=1293432093]
 transform = Transform3D(-0.024815975, 0.999692, 0, -0.999692, -0.024815975, 0, 0, 0, 1, 0, 0, 0)
@@ -153,11 +159,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004004836, -1.814985, 0)
 shape = SubResource("CapsuleShape3D_2tnqr")
 
 [node name="Sprite3D" type="Sprite3D" parent="Arm1" unique_id=1074684612]
-transform = Transform3D(-0.0101375915, 0.24979435, 0, -0.24979435, -0.0101375915, 0, 0, 0, 0.25, 0, 0, 0)
+transform = Transform3D(-0.02027518, 0.49958876, 0, -0.49958876, -0.02027518, 0, 0, 0, 0.5, 0, 0, 0)
 material_override = SubResource("BillboardSpriteMaterial_starter")
-offset = Vector2(-750, 0)
+offset = Vector2(500, -109.615)
 flip_h = true
-texture = ExtResource("4_lunbq")
+flip_v = true
+texture = ExtResource("4_k32jb")
 
 [node name="Arm2" type="RigidBody3D" parent="." unique_id=1094448378]
 transform = Transform3D(-0.9999773, 0.0067719026, 0, -0.0067719026, -0.9999773, 0, 0, 0, 1, 1.003245, 0.15182054, 0.17048824)
@@ -170,10 +177,11 @@ transform = Transform3D(1, 5.029142e-08, 0, -5.029142e-08, 1, 0, 0, 0, 1, 0.0040
 shape = SubResource("CapsuleShape3D_2tnqr")
 
 [node name="Sprite3D" type="Sprite3D" parent="Arm2" unique_id=1426194475]
-transform = Transform3D(-0.010137592, 0.24979438, 0, -0.24979438, -0.010137592, 0, 0, 0, 0.25, 0, 0, 0)
+transform = Transform3D(-0.02027518, 0.49958876, 0, -0.49958876, -0.02027518, 0, 0, 0, 0.5, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_k32jb")
-offset = Vector2(750, 0)
-texture = ExtResource("4_lunbq")
+offset = Vector2(500, 150.495)
+flip_h = true
+texture = ExtResource("5_cx8og")
 
 [node name="Holding" type="Marker3D" parent="Arm2" unique_id=1673433421]
 
@@ -181,6 +189,9 @@ texture = ExtResource("4_lunbq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.6, 0)
 
 [node name="HeldItemHolder" type="Node3D" parent="." unique_id=1492349194]
+
+[node name="MovementController" type="Node" parent="."]
+script = ExtResource("20_movement_controller")
 
 [node name="Head" type="RigidBody3D" parent="." unique_id=457580459]
 collision_layer = 2
@@ -196,15 +207,17 @@ visible = false
 material = SubResource("StandardMaterial3D_btfp6")
 
 [node name="Sprite_Head" type="Sprite3D" parent="Head" unique_id=1446563630]
+transform = Transform3D(-2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0, 0, 0.5, 0, 0, 0)
 material_override = SubResource("BillboardSpriteMaterial_head")
 billboard = 1
-texture = ExtResource("7_isxfi")
+texture = ExtResource("7_lunbq")
 
 [node name="Sprite_Head_Shadow" type="Sprite3D" parent="Head" unique_id=2146533556]
+transform = Transform3D(-2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0, 0, 0.5, 0, 0, 0)
 modulate = Color(0, 0, 0, 0.19607843)
 billboard = 1
 render_priority = -1
-texture = ExtResource("6_vfsj7")
+texture = ExtResource("7_lunbq")
 script = ExtResource("3_n8k2q")
 
 [node name="GrabRange" type="Area3D" parent="Head" unique_id=1462275154]
@@ -234,14 +247,17 @@ visible = false
 radius = 0.45
 
 [node name="Sprite_Chest" type="Sprite3D" parent="RigidBody3D2" unique_id=196691518]
+transform = Transform3D(-2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0, 0, 0.5, 0, 0, 0)
 material_override = SubResource("BillboardSpriteMaterial_chest")
-texture = ExtResource("7_ex356")
+billboard = 1
+texture = ExtResource("9_2ue8w")
 
 [node name="Sprite_Chest_Shadow" type="Sprite3D" parent="RigidBody3D2" unique_id=1746300985]
+transform = Transform3D(-2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0, 0, 0.5, 0, 0, 0)
 modulate = Color(0, 0, 0, 0.19607843)
 billboard = 1
 render_priority = -1
-texture = ExtResource("7_ex356")
+texture = ExtResource("9_2ue8w")
 script = ExtResource("3_n8k2q")
 
 [node name="HingeJoint3D5" type="HingeJoint3D" parent="." unique_id=1935950945]
@@ -282,14 +298,17 @@ visible = false
 radius = 0.4
 
 [node name="Sprite_Mid" type="Sprite3D" parent="RigidBody3D3" unique_id=1732713114]
+transform = Transform3D(-2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0, 0, 0.5, 0, 0, 0)
 material_override = SubResource("BillboardSpriteMaterial_mid")
-texture = ExtResource("16_cri7n")
+billboard = 1
+texture = ExtResource("11_bmyc2")
 
 [node name="Sprite_Mid_Shadow" type="Sprite3D" parent="RigidBody3D3" unique_id=1733142450]
+transform = Transform3D(-2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0, 0, 0.5, 0, 0, 0)
 modulate = Color(0, 0, 0, 0.19607843)
 billboard = 1
 render_priority = -1
-texture = ExtResource("16_cri7n")
+texture = ExtResource("11_bmyc2")
 script = ExtResource("3_n8k2q")
 
 [node name="HingeJoint3D3" type="HingeJoint3D" parent="." unique_id=959740729]
@@ -314,14 +333,17 @@ visible = false
 radius = 0.3
 
 [node name="Sprite_Knee" type="Sprite3D" parent="RigidBody3D4" unique_id=1964650245]
+transform = Transform3D(-2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0, 0, 0.5, 0, 0, 0)
 material_override = SubResource("BillboardSpriteMaterial_knee")
-texture = ExtResource("17_n58kw")
+billboard = 1
+texture = ExtResource("13_vfsj7")
 
 [node name="Sprite_Knee_Shadow" type="Sprite3D" parent="RigidBody3D4" unique_id=1127768423]
+transform = Transform3D(-2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0, 0, 0.5, 0, 0, 0)
 modulate = Color(0, 0, 0, 0.19607843)
 billboard = 1
 render_priority = -1
-texture = ExtResource("17_n58kw")
+texture = ExtResource("13_vfsj7")
 script = ExtResource("3_n8k2q")
 
 [node name="HingeJoint3D4" type="HingeJoint3D" parent="." unique_id=19128249]
@@ -347,12 +369,15 @@ radius = 0.25
 material = SubResource("StandardMaterial3D_fmo7n")
 
 [node name="Sprite_Tail" type="Sprite3D" parent="Tail" unique_id=1986586727]
+transform = Transform3D(-2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0, 0, 0.5, 0, 0, 0)
 material_override = SubResource("BillboardSpriteMaterial_tail")
-texture = ExtResource("19_8rn3h")
+billboard = 1
+texture = ExtResource("16_ex356")
 
 [node name="Sprite_Tail_Shadow" type="Sprite3D" parent="Tail" unique_id=1292974277]
+transform = Transform3D(-2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0, 0, 0.5, 0, 0, 0)
 modulate = Color(0, 0, 0, 0.19607843)
 billboard = 1
 render_priority = -1
-texture = ExtResource("19_8rn3h")
+texture = ExtResource("16_ex356")
 script = ExtResource("3_n8k2q")
