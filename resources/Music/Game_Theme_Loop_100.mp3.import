@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/Game_Theme_Loop_100.mp3-13696744a4663e6cb688a
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=100.0
 beat_count=0
 bar_beats=4

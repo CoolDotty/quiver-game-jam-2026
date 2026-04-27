@@ -23,7 +23,7 @@ const RECIPE_CATALOG := [
 
 var _last_portrait_texture: Texture2D = null
 
-const ROUND_DURATION := 30
+const ROUND_DURATION := 200
 const WIN_SCORE := 5
 const SCORE_EMOTE_OVERRIDE_DURATION := 3.0
 const CHEW_DURATION := 3.0
