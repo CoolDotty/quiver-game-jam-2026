@@ -12,6 +12,7 @@ const DEFAULT_MAX_CONTACTS_REPORTED := 8
 @export_range(0.0, 5.0, 0.01) var upward_cooldown: float = 0.5
 @export_range(0.0, 5.0, 0.01) var forward_cooldown: float = 0.5
 @export_range(0.0, 2.0, 0.01) var grounded_forward_multiplier: float = 0.55
+@export_range(0.0, 4.0, 0.01) var air_forward_multiplier: float = 1.25
 @export_range(0.0, 2.0, 0.01) var grounded_forward_lift: float = 0.2
 @export_range(0.0, 2.0, 0.01) var air_forward_lift: float = 0.08
 @export_range(0.0, 2.0, 0.01) var spin_vertical_nudge: float = 0.5
@@ -110,7 +111,9 @@ func burst_forward() -> void:
 	var forward_axis := get_body_axis()
 	var side_axis := _get_side_axis(forward_axis)
 	var center_index := _get_center_index()
-	var horizontal_multiplier := grounded_forward_multiplier if _is_grounded else 1.0
+	var horizontal_multiplier := (
+		grounded_forward_multiplier if _is_grounded else air_forward_multiplier
+	)
 	var lift_amount := grounded_forward_lift if _is_grounded else air_forward_lift
 
 	for index in range(_chain_bodies.size()):

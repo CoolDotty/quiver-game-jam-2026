@@ -40,6 +40,7 @@ shape = SubResource("BoxShape3D_pot")
 material_override = SubResource("ShaderMaterial_pot")
 billboard = 1
 texture = ExtResource("2_texture")
+scale = Vector3(1.5, 1.5, 1.5)
 
 [node name="TextureSwapTimer" type="Timer" parent="." unique_id=1487560924]
 wait_time = 0.5

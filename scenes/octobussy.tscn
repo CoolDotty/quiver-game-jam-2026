@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bxywph7b3wxuq" path="res://assets/Art/Characters/octobussy_neutral.png" id="2_texture"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_portrait"]
-render_priority = 0
+render_priority = -11
 shader = ExtResource("2_shader")
 shader_parameter/billboard_texture = ExtResource("2_texture")
 shader_parameter/blur_amount = 0.0
@@ -20,20 +20,20 @@ shader_parameter/squash_speed = 2.2
 shader_parameter/center_rigidity = 0.75
 
 [sub_resource type="StyleBoxFlat" id="StyleBox_recipe_bubble"]
+content_margin_left = 30.0
+content_margin_top = 24.0
+content_margin_right = 30.0
+content_margin_bottom = 24.0
 bg_color = Color(0.101961, 0.168627, 0.203922, 0.92)
-border_color = Color(0.886275, 0.941176, 0.980392, 0.95)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
+border_color = Color(0.886275, 0.941176, 0.980392, 0.95)
 corner_radius_top_left = 26
 corner_radius_top_right = 26
 corner_radius_bottom_right = 26
 corner_radius_bottom_left = 26
-content_margin_left = 30
-content_margin_top = 24
-content_margin_right = 30
-content_margin_bottom = 24
 shadow_color = Color(0, 0, 0, 0.35)
 shadow_size = 8
 

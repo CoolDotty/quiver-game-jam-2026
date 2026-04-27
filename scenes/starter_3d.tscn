@@ -182,16 +182,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21091413, 0.5, -9.401392)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0020999908, 3.694951, -19.98154)
 
 [node name="CoconutItemPileSpawner" parent="." unique_id=1311437829 instance=ExtResource("10_7oiso")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.396126, 4.8540945, -5.7967024)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.396126, 4.8540945, -8.399106)
 
 [node name="BabyMermaidItemPileSpawner" parent="." unique_id=1578946804 instance=ExtResource("11_w266b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.044978, 2.8139868, 6.1956263)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.044978, 2.8139868, 3.9033918)
 
 [node name="KrabItemPileSpawner" parent="." unique_id=1157152294 instance=ExtResource("12_0onai")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.606831, 1.6749616, 7.489047)
 
 [node name="UrchinItemPileSpawner" parent="." unique_id=20315944 instance=ExtResource("13_3nobw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.438278, 1.628871, -9.13476)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.968632, 1.628871, -9.13476)
 
 [node name="FadeLayer" type="CanvasLayer" parent="." unique_id=226922779]
 layer = 200

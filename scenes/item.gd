@@ -93,7 +93,7 @@ func set_cooks_into(value: PackedScene) -> void:
 
 
 func set_sprite_offset(_offset: Vector2) -> void:
-	sprite_3d.position = Vector3(_offset.x * 0.001, 0.0, 0.0)
+	sprite_3d.position = Vector3(_offset.x * 0.0021, 0.0, 0.0)
 
 
 func _refresh_physics_state() -> void:
