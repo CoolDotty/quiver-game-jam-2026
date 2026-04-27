@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ci56d0qsgpiiy"]
 
-[ext_resource type="Script" uid="uid://ct60l5kdw6k6x" path="res://scenes/audio.gd" id="1_q0022"]
+[ext_resource type="Script" path="res://scenes/audio.gd" id="1_q0022"]
 [ext_resource type="AudioStream" uid="uid://bl6v3bat4wxv4" path="res://resources/ANGRY-VoiceLines/BAD FOOD/sloppy.mp3" id="1_qicqv"]
 [ext_resource type="AudioStream" uid="uid://dog0fmgw47h3i" path="res://resources/ANGRY-VoiceLines/BAD FOOD/unedible.mp3" id="2_q0022"]
 [ext_resource type="AudioStream" uid="uid://oqh3c6r1i3xj" path="res://resources/ANGRY-VoiceLines/BAD FOOD/unedible_2.mp3" id="3_x6vto"]
@@ -74,11 +74,17 @@
 [ext_resource type="AudioStream" uid="uid://cuxyso0sw7e62" path="res://resources/Food-Voices/Urchin/Woah_this_is_gonna_hurt.mp3" id="71_gcyot"]
 [ext_resource type="AudioStream" uid="uid://bcc055x3qa2d1" path="res://resources/Food-Voices/Crab/Ah_1.mp3" id="72_0meur"]
 [ext_resource type="AudioStream" uid="uid://rugcannjfb61" path="res://resources/Food-Voices/Crab/Ah_2.mp3" id="73_7nr5d"]
+[ext_resource type="AudioStream" uid="uid://cquptbypggkgh" path="res://resources/Food-Voices/Baby Mermaid/Baby_1.mp3" id="73_gefff"]
+[ext_resource type="AudioStream" uid="uid://cdrus86m6a1xh" path="res://resources/Food-Voices/Baby Mermaid/Baby_2.mp3" id="74_hp8qd"]
 [ext_resource type="AudioStream" uid="uid://cpnmobmuyfbh4" path="res://resources/Food-Voices/Crab/Ah_3.mp3" id="74_sjg6g"]
+[ext_resource type="AudioStream" uid="uid://c0jc6ljtiio4t" path="res://resources/Food-Voices/Baby Mermaid/Baby_3.mp3" id="75_hr5dn"]
 [ext_resource type="AudioStream" uid="uid://bkrfvn3attvk4" path="res://resources/Food-Voices/Crab/Im_all_claws..mp3" id="75_w1px8"]
+[ext_resource type="AudioStream" uid="uid://b0cfb8gfvb6hy" path="res://resources/Food-Voices/Baby Mermaid/Baby_4.mp3" id="76_rw4mp"]
 [ext_resource type="AudioStream" uid="uid://lxy4w7ai2thy" path="res://resources/Food-Voices/Crab/Run_away.mp3" id="76_xftfr"]
+[ext_resource type="AudioStream" uid="uid://bb1hnxg3iissl" path="res://resources/Food-Voices/Baby Mermaid/Baby_5.mp3" id="77_0oyn7"]
 [ext_resource type="AudioStream" uid="uid://d3ya1dm2n0o7h" path="res://resources/Mermaid-Flops/Movement/Sand_Hard_1_Squelch.mp3" id="77_sbj6d"]
 [ext_resource type="AudioStream" uid="uid://cfmbqgivb2xsv" path="res://resources/Mermaid-Flops/Movement/Sand_Hard_2_Squelch.mp3" id="78_e32xh"]
+[ext_resource type="AudioStream" uid="uid://bowfl2t5ktxwm" path="res://resources/Food-Voices/Baby Mermaid/Baby_6.mp3" id="78_kx18y"]
 [ext_resource type="AudioStream" uid="uid://c7ht1j4cor4xu" path="res://resources/Mermaid-Flops/Movement/Sand_Hard_3_Squelch.mp3" id="79_etsrn"]
 [ext_resource type="AudioStream" uid="uid://bsuykwrpp0ncr" path="res://resources/Mermaid-Flops/Movement/Sand_Soft_1_Squelch.mp3" id="80_wcfmk"]
 [ext_resource type="AudioStream" uid="uid://c6rui3trr34vt" path="res://resources/Mermaid-Flops/Movement/Sand_Soft_2_Squelch.mp3" id="81_u5xjw"]
@@ -206,6 +212,15 @@ stream_2/stream = ExtResource("69_bqwb1")
 stream_3/stream = ExtResource("70_lfx6h")
 stream_4/stream = ExtResource("71_gcyot")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3ug1q"]
+streams_count = 6
+stream_0/stream = ExtResource("73_gefff")
+stream_1/stream = ExtResource("74_hp8qd")
+stream_2/stream = ExtResource("75_hr5dn")
+stream_3/stream = ExtResource("76_rw4mp")
+stream_4/stream = ExtResource("77_0oyn7")
+stream_5/stream = ExtResource("78_kx18y")
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0l6x5"]
 streams_count = 5
 stream_0/stream = ExtResource("72_0meur")
@@ -299,6 +314,9 @@ stream = SubResource("AudioStreamRandomizer_1pfdt")
 
 [node name="Audio3D_food_Urchin" type="AudioStreamPlayer3D" parent="." unique_id=1698346612]
 stream = SubResource("AudioStreamRandomizer_humvb")
+
+[node name="Audio3D_food_baby_mermaid" type="AudioStreamPlayer3D" parent="." unique_id=1663719903]
+stream = SubResource("AudioStreamRandomizer_3ug1q")
 
 [node name="Audio3D_food_Crab" type="AudioStreamPlayer3D" parent="." unique_id=166114337]
 stream = SubResource("AudioStreamRandomizer_0l6x5")

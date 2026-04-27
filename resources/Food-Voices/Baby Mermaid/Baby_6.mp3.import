@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bowfl2t5ktxwm"
+path="res://.godot/imported/Baby_6.mp3-0996245095b03b4a23e4b4f1a1198b7c.mp3str"
+
+[deps]
+
+source_file="res://resources/Food-Voices/Baby Mermaid/Baby_6.mp3"
+dest_files=["res://.godot/imported/Baby_6.mp3-0996245095b03b4a23e4b4f1a1198b7c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
